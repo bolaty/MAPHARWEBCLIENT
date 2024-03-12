@@ -1,0 +1,186 @@
+﻿<!--début loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="voirPhotoCheque()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige" ng-init="afficheListePhotoCheque()">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">ASSURANCE</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Opération</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Mon exercice</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Photo</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::ajouter-->
+            <!--end::ajouter-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <!-- <div class="alert alert-custom alert-white alert-shadow gutter-b" role="alert">
+                <div class="alert-icon">
+                    <span class="svg-icon svg-icon-primary svg-icon-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                            height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24" />
+                                <path
+                                    d="M7.07744993,12.3040451 C7.72444571,13.0716094 8.54044565,13.6920474 9.46808594,14.1079953 L5,23 L4.5,18 L7.07744993,12.3040451 Z M14.5865511,14.2597864 C15.5319561,13.9019016 16.375416,13.3366121 17.0614026,12.6194459 L19.5,18 L19,23 L14.5865511,14.2597864 Z M12,3.55271368e-14 C12.8284271,3.53749572e-14 13.5,0.671572875 13.5,1.5 L13.5,4 L10.5,4 L10.5,1.5 C10.5,0.671572875 11.1715729,3.56793164e-14 12,3.55271368e-14 Z"
+                                    fill="#000000" opacity="0.3" />
+                                <path
+                                    d="M12,10 C13.1045695,10 14,9.1045695 14,8 C14,6.8954305 13.1045695,6 12,6 C10.8954305,6 10,6.8954305 10,8 C10,9.1045695 10.8954305,10 12,10 Z M12,13 C9.23857625,13 7,10.7614237 7,8 C7,5.23857625 9.23857625,3 12,3 C14.7614237,3 17,5.23857625 17,8 C17,10.7614237 14.7614237,13 12,13 Z"
+                                    fill="#000000" fill-rule="nonzero" />
+                            </g>
+                        </svg>
+                    </span>
+                </div>
+                <div class="alert-text">
+                    This example is almost identical to text based individual column example and provides the same
+                    functionality. With server-side processing enabled, all paging, searching, ordering actions that
+                    DataTables performs are handed off to a server where an SQL engine (or similar) can perform these
+                    actions on the large data set. See official documentation
+                    <a class="font-weight-bold" href="https://datatables.net/examples/api/multi_filter_select.html"
+                        target="_blank">here</a>.
+                </div>
+            </div> -->
+            <!--end::Notice- ng-click="addTask()"->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header" style="background-color: #F5F500;">
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="fas fa-camera text-dark icon-xl"></i>
+                        </span>
+                        <h3 class="card-title text-dark" style="font-size: 30px; font-family: Maiandra GD">Photo</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin::Row-->
+                    <div class="row">
+                        <div class="row" style="position:relative; text-align: center; left:100px ; top:10px" ng-if="listeRemiseChequePhoto[0].clsObjetRetour.SL_CODEMESSAGE == 99">
+                            <div class="col-lg-12">
+                                <img src="/Content/assets/media/illustration/illustr1.jpg" width="450" height="300"  alt="">
+                            </div>
+                            <div class="col-lg-12">
+                                <label style="font-family: Maiandra GD; font-size: 20px"><strong>Aucune photo n'a été enregistrée sur ce chèque</strong></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4" ng-model="img.upload" ng-repeat="lImage in listeRemiseChequePhoto" ng-if="listeRemiseChequePhoto[0].clsObjetRetour.SL_CODEMESSAGE == 00">
+                            <!--begin::Card-->
+                            <div class="col-lg-6" style="position: relative; left: 30px;">
+                                <div class="image-input image-input-outline" id="kt_user_edit_avatar">
+                                    <div class="image-input-wrapper-image" style="background-image: url(/Content/assets/media/illustration/undraw_profile_pic_ic5t.svg)"></div>
+                                    <div class="image-input-wrapper-image" style="position: absolute; top: 0; left: 0"><img ng-src='{{"data:image/jpeg;base64," + lImage.CH_CHEMINPHOTOCHEQUE}}' style="object-position: cover;" width="100%" height="100%" /></div>                                   
+                                     <a href="" class="btn btn-danger btn-shadow font-weight-bold" data-toggle="modal" data-target="#modalSupprimer"  style="position: relative; width: -1px" ng-click="supprRecupererIdChequePhoto(lImage.CH_DATESAISIECHEQUE,lImage.CH_IDEXCHEQUE,lImage.CH_NUMSEQUENCEPHOTO)">Supprimer</a>                                                   
+                                </div>
+                            </div>
+                            <!--end::Card-->
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a ng-href="#/assurances/operation/liste/ListeRemiseDeCheque" class="btn btn-icon btn-light-dark mr-2"  title="Retour" style="position: absolute; right: 27px ; top:605px">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+                <!--end:ng-click="testPhoto()":Row-->
+            </div>
+        </div>
+        <!--end::Card-->
+    </div>
+   
+    <div class="modal fade" id="modalVoirPlus" tabindex="-1" role="dialog" aria-labelledby="modalVoirPlus" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #F5F500;">
+                    <h5 class="modal-title text-white" id="modalVoirPlus" style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="far fa-eye text-white"></i>
+                        Photo
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="height: 600px;">
+                    <div class="card-body p-0">
+                        <div class="overlay-wrapper">
+                            <img src="~/Content/assets/media/illustration/undraw_profile_pic_ic5t.svg" height="400" alt="" class="w-100 rounded" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--begin modal pour  suppression-->
+    <div class="modal fade" id="modalSupprimer" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalSupprimer" aria-hidden="true">
+        <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #F5F500;">
+                    <h5 class="modal-title text-dark" id="modalSupprimer" style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ban text-dark"></i>
+                        Contrat Chèque
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center; font-size: 17px;">
+                    Etes-vous sûr de vouloir supprimer ce chèque ?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger btn-shadow font-weight-bold" id="kt_reset" ng-click="suppRemiseDeChequePhoto()" data-dismiss="modal">
+                        <span>
+                            <i class="fas fa-ban"></i>
+                            <span>Supprimer</span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Annuler</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--end::Container-->
+</div>
+<!--end::Entry-->
+<!--end::Container-->
+<!--end modal-->
+<!--end modal-->
+<!--end::Entry-->
+<!--end:ng-click="pourSupprimerAjoutDocumentCheque1():Content-->

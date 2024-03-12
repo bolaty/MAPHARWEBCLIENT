@@ -1,0 +1,649 @@
+﻿<!--début loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initEditionCompta()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">GESTION</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Comptabilité</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Edition</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #F5F500">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="far fa-bookmark text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Edition
+                                    comptabilité</h3>
+                            </div>
+                            <div class="card-toolbar">
+                                <button type="button" class="btn btn-light-primary font-weight-bolder"
+                                    aria-haspopup="true" aria-expanded="false" data-toggle="modal"
+                                    data-target="#modal_TypeFichierGlobale">
+                                    Aperçu <i class="far fa-eye text-info"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <!-- colonne de gauche -->
+                                                    <div class="col-lg-6">
+                                                        <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                            <strong>CRITERES</strong></h3>
+                                                        <div class="">
+                                                            <label>Zone ou coordination</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-sitemap text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select id="idZone" class="form-control" name=""
+                                                                    ng-model="FormListEditionComptabilite.Zone"
+                                                                    ng-disabled="verouZone"
+                                                                    ng-change="afficheListeSuccursales()">
+                                                                    <option value="">Sélectionner une zone ou une
+                                                                        coordination</option>
+                                                                    <option
+                                                                        ng-repeat="LalisteDesZoneCombo in listeDesZoneCombo"
+                                                                        value="{{LalisteDesZoneCombo.ZN_CODEZONE}}">
+                                                                        {{LalisteDesZoneCombo.ZN_NOMZONE}}</option>
+                                                                </select>
+                                                            </div><br>
+                                                            <label>Succursales</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-landmark text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select id="idSuccursales" class="form-control" name=""
+                                                                    ng-model="FormListEditionComptabilite.Succursales"
+                                                                    ng-disabled="verouSuccursales">
+                                                                    <option value="">Sélectionner une succursale
+                                                                    </option>
+                                                                    <option
+                                                                        ng-selected="FormListEditionComptabilite.Succursales == LalisteDesSuccursales.AG_CODEAGENCE"
+                                                                        ng-repeat="LalisteDesSuccursales in listeDesSuccursales"
+                                                                        value="{{LalisteDesSuccursales.AG_CODEAGENCE}}">
+                                                                        {{LalisteDesSuccursales.AG_RAISONSOCIAL}}
+                                                                    </option>
+                                                                </select>
+                                                            </div><br>
+                                                            <label>Entrepot</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-warehouse text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select id="idEntrepot" class="form-control" name=""
+                                                                    ng-model="FormListEditionComptabilite.Entrepot"
+                                                                    ng-disabled="verouEntrepot">
+                                                                    <option value="">Sélectionner un Entrepot</option>
+                                                                    <option ng-repeat="lEntrepot in listeEntrepot"
+                                                                        value="{{lEntrepot.EN_CODEENTREPOT}}">
+                                                                        {{lEntrepot.EN_DENOMINATION}}</option>
+                                                                </select>
+                                                            </div><br>
+                                                            <label>Exercice</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fab fa-etsy text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select id="idExercice" class="form-control" name=""
+                                                                    ng-model="FormListEditionComptabilite.Exercice"
+                                                                    ng-disabled="verouExercice"
+                                                                    ng-change="afficheListeDateDebutFin()">
+                                                                    <option value="">Sélectionner un exercice</option>
+                                                                    <option ng-repeat="lExercice in listeDesExercice"
+                                                                        value="{{lExercice.EX_EXERCICE}}">
+                                                                        {{lExercice.EX_EXERCICE}}</option>
+                                                                </select>
+                                                            </div><br>
+                                                            <label>Périodicité</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-hourglass-half text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select id="idPeriodicite" class="form-control" name=""
+                                                                    ng-model="FormListEditionComptabilite.Periodicite"
+                                                                    ng-disabled="verouPeriodicite"
+                                                                    ng-change="afficheListePeriode()">
+                                                                    <option value="">Sélectionner une périodicité
+                                                                    </option>
+                                                                    <option
+                                                                        ng-repeat="laPeriodicite in listeDesPeriodicite"
+                                                                        value="{{laPeriodicite.PE_CODEPERIODICITE}}">
+                                                                        {{laPeriodicite.PE_LIBELLE}}</option>
+                                                                </select>
+                                                            </div><br>
+                                                            <label>Période</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-arrows-alt-h text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select id="idPeriode" class="form-control" name=""
+                                                                    ng-model="FormListEditionComptabilite.Periode"
+                                                                    ng-disabled="verouPeriode"
+                                                                    ng-change="afficheListeDateDebutFin()">
+                                                                    <option value="">Sélectionner une période</option>
+                                                                    <option
+                                                                        ng-selected="laPeriode.MO_CODEMOIS == FormListEditionComptabilite.Periode"
+                                                                        ng-repeat="laPeriode in listeDesPeriode"
+                                                                        value="{{laPeriode.MO_CODEMOIS}}">
+                                                                        {{laPeriode.MO_LIBELLE}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div><br>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <label>Date début</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i
+                                                                                class="far fa-calendar-alt text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input id="idDateDebut" type="text"
+                                                                        class="form-control" name=""
+                                                                        ng-pattern="/^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                                                        placeholder="Entrer une date de début"
+                                                                        ng-disabled="verouDateDebut"
+                                                                        ng-model="FormListEditionComptabilite.DateDebut" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <label>Date fin</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i
+                                                                                class="far fa-calendar-alt text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input id="idDateFin" type="text"
+                                                                        class="form-control" name=""
+                                                                        ng-pattern="/^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                                                        placeholder="Entrer une date de fin°"
+                                                                        ng-disabled="verouDateFin"
+                                                                        ng-model="FormListEditionComptabilite.DateFin" />
+                                                                </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <label>Mode de règlement</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-money-bill text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idModeReglement" class="form-control"
+                                                                        name=""
+                                                                        ng-model="FormListEditionComptabilite.ModeReglement"
+                                                                        ng-pattern="/^[0-9]{1,15}$/"
+                                                                        ng-disabled="verouModeReglement">
+                                                                        <option value="">Sélectionner un mode de
+                                                                            règlement</option>
+                                                                        <option
+                                                                            ng-repeat="leModeRegl in listeDesModesReglement"
+                                                                            value="{{leModeRegl.MR_CODEMODEREGLEMENT}}">
+                                                                            {{leModeRegl.MR_LIBELLE}}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <label>Nature opération</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i
+                                                                                class="far fa-question-circle text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idNatureOperation" class="form-control"
+                                                                        name=""
+                                                                        ng-model="FormListEditionComptabilite.NatureOperation"
+                                                                        ng-disabled="verouNatureOperation">
+                                                                        <option value="">Sélectionner une nature
+                                                                            d'opération</option>
+                                                                        <option
+                                                                            ng-repeat="laNatureOperation in listeNatureOperation"
+                                                                            value="{{laNatureOperation.NO_CODENATUREOPERATION}}">
+                                                                            {{laNatureOperation.NO_LIBELLE}}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <label>Type tiers</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i
+                                                                                class="fas fa-address-card text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idTypeTiers" class="form-control"
+                                                                        name=""
+                                                                        ng-model="FormListEditionComptabilite.TypeTiers"
+                                                                        ng-change="afficheListeNatureTiers()"
+                                                                        ng-disabled="verouTypeTiers">
+                                                                        <option value="">Sélectionner un type de tiers
+                                                                        </option>
+                                                                        <option
+                                                                            ng-selected="FormListEditionComptabilite.TypeTiers == LalisteDesTypeTiers.TP_CODETYPETIERS"
+                                                                            ng-repeat="LalisteDesTypeTiers in listeDesTypeTiers"
+                                                                            value="{{LalisteDesTypeTiers.TP_CODETYPETIERS}}">
+                                                                            {{LalisteDesTypeTiers.TP_LIBELLE}}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <label>Nature tiers</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="far fa-user-circle text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idNatureTiers" class="form-control"
+                                                                        name=""
+                                                                        ng-model="FormListEditionComptabilite.NatureTiers"
+                                                                        ng-disabled="verouNatureTiers">
+                                                                        <option value="">Sélectionner une nature de
+                                                                            tiers</option>
+                                                                        <option
+                                                                            ng-selected="FormListEditionComptabilite.NatureTiers == LalisteDesNatureTiers.NT_CODENATURETIERS"
+                                                                            ng-repeat="LalisteDesNatureTiers in listeNatureTiers"
+                                                                            value="{{LalisteDesNatureTiers.NT_CODENATURETIERS}}">
+                                                                            {{LalisteDesNatureTiers.NT_LIBELLE}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <label>N° de début</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-orcid text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idNumDebut" class="form-control" name=""
+                                                                        ng-model="FormListEditionComptabilite.NumDebut"
+                                                                        ng-disabled="verouNumDebut">
+                                                                        <option value="">un n° de début</option>
+                                                                        <option
+                                                                            ng-repeat="laListeNumDebut in TableTemporaire"
+                                                                            value="{{laListeNumDebut.leCode}}">
+                                                                            {{laListeNumDebut.leLibelle}}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <label>N° de fin</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-orcid text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idNumFin" class="form-control" name=""
+                                                                        ng-model="FormListEditionComptabilite.NumFin"
+                                                                        ng-disabled="verouNumFin">
+                                                                        <option value="">un n° de fin</option>
+                                                                        <option
+                                                                            ng-repeat="laListeNumDebut in TableTemporaire"
+                                                                            value="{{laListeNumDebut.leCode}}">
+                                                                            {{laListeNumDebut.leLibelle}}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>&#160; &#160;
+                                                            <div class="col-lg-12">
+                                                                <label>Journal</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-readme text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idJournal" class="form-control" name=""
+                                                                        ng-model="FormListEditionComptabilite.Journal"
+                                                                        ng-disabled="verouJournal">
+                                                                        <option value="">Sélectionner un Journal
+                                                                        </option>
+                                                                        <option ng-repeat="leJournal in listeJournal"
+                                                                            value="{{leJournal.JO_CODEJOURNAL}}">
+                                                                            {{leJournal.JO_LIBELLE}}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <label>Type de balance</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i
+                                                                                class="fas fa-balance-scale text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idTypeBalance" class="form-control"
+                                                                        name=""
+                                                                        ng-model="FormListEditionComptabilite.TypeBalance"
+                                                                        ng-disabled="verouTypeBalance">
+                                                                        <option value="">Sélectionner un type de balance
+                                                                        </option>
+                                                                        <option
+                                                                            ng-repeat="LalisteDeTypeBalance in listeTypeBalance"
+                                                                            value="{{LalisteDeTypeBalance.TB_CODETYPEBALANCE}}">
+                                                                            {{LalisteDeTypeBalance.TB_TYPEBALANCELIBELLE}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <label>Options</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-dna text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idOption" class="form-control" name=""
+                                                                        ng-model="FormListEditionComptabilite.Options"
+                                                                        ng-disabled="verouOptions">
+                                                                        <option value="">Sélectionner une option
+                                                                        </option>
+                                                                        <option
+                                                                            ng-selected="FormListEditionComptabilite.Options == LalisteDesOptions.RS_CODERUBRIQUE"
+                                                                            ng-repeat="LalisteDesOptions in listeDesOptions"
+                                                                            value="{{LalisteDesOptions.RS_CODERUBRIQUE}}">
+                                                                            {{LalisteDesOptions.RS_LIBELLE}}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <label>Pays</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i
+                                                                                class="fas fa-globe-africa text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idPays" class="form-control" name=""
+                                                                        ng-model="FormListEditionComptabilite.Pays"
+                                                                        ng-disabled="verouPays">
+                                                                        <option value="">Sélectionner un pays</option>
+                                                                        <option ng-repeat="lePays in listePays"
+                                                                            ng-selected="FormListEditionComptabilite.Pays == lePays.PY_CODEPAYS"
+                                                                            value="{{lePays.PY_CODEPAYS}}">
+                                                                            {{lePays.PY_LIBELLE}}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <label>groupe des tiers</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-users text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idgroupeTiers" class="form-control"
+                                                                        name=""
+                                                                        ng-model="FormListEditionComptabilite.groupeTiers"
+                                                                        ng-disabled="verougroupeTiers">
+                                                                        <option value="">Sélectionner un groupe de tiers
+                                                                        </option>
+                                                                        <option
+                                                                            ng-repeat="leGroupeTiers in listeGroupeTiers"
+                                                                            value="{{leGroupeTiers.GP_CODEGROUPE}}">
+                                                                            {{leGroupeTiers.GP_LIBELLE}}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <label>Numéro de compte général</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-orcid text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input id="idNumCompt" maxlength="8" type="tel"
+                                                                        class="form-control" name=""
+                                                                        placeholder="Entrer un n° de compte général"
+                                                                        ng-model="FormListEditionComptabilite.NumCompt"
+                                                                        ng-disabled="verouNumCompt"
+                                                                        ng-pattern="/^[0-9]+$/" />
+                                                                    <div class="input-group-append"
+                                                                        title="Choix du code">
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary btn-secondary--icon"
+                                                                            id="kt_reset" data-toggle="modal"
+                                                                            data-target="#modalNumCompte"
+                                                                            ng-click="afficheListeCompteGeneral()">
+                                                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <label>Statut grand livre</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-book text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idStatut" class="form-control" name=""
+                                                                        ng-model="FormListEditionComptabilite.Statut"
+                                                                        ng-disabled="verouStatut">
+                                                                        <option value="">Sélectionner un statut grand
+                                                                            livre</option>
+                                                                        <option
+                                                                            ng-selected="FormListEditionComptabilite.Statut == LalisteDesOptions.GL_CODEGRANDLIVRE"
+                                                                            ng-repeat="LalisteDesStatuts in listeDesStatuts"
+                                                                            value="{{LalisteDesStatuts.GL_CODEGRANDLIVRE}}">
+                                                                            {{LalisteDesStatuts.GL_GRANDLIVRELIBELLE}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                            <strong>ETATS</strong></h3>
+                                                        <table class="table table-bordered table-checkable"
+                                                            id="kt_datatable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>LIBELLE ETAT</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr ng-repeat="laListe in listeEditionComptabilite"
+                                                                    style="cursor: pointer;"
+                                                                    ng-click="choixEtat($index, laListe.ET_TYPEETAT, laListe.ET_NOMETAT, laListe.ET_LIBELLEETAT, laListe.ET_INDEX)">
+                                                                    <td id="idEtat{{$index}}">{{laListe.ET_LIBELLEETAT}}
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--begin modal pour choix du code compte-->
+        <div class="modal fade" id="modalNumCompte" data-backdrop="static" tabindex="-1" role="dialog"
+            aria-labelledby="modalNumCompte" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #F5F500;">
+                        <h5 class="modal-title text-dark" id="modalNumCompte"
+                            style="font-size: 23px; font-family: Maiandra GD">
+                            <i class="fas fa-ellipsis-h text-dark"></i>
+                            N° compte
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered table-checkable" id="kt_datatable"
+                            ng-show="leChargement == false">
+                            <thead style="text-align: center">
+                                <tr>
+                                    <th>COMPTE</th>
+                                    <th>NUMERO COMPTE</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="lesNumCompte in listeCompteGeneral">
+                                    <td>{{lesNumCompte.PL_LIBELLE}}</td>
+                                    <td>{{lesNumCompte.PL_NUMCOMPTE}}</td>
+                                    <td style="text-align: center">
+                                        <!--bouton voir plus-->
+                                        <button type="button" class="btn btn-outline-secondary btn-icon"
+                                            data-toggle="tooltip" data-theme="dark" title="Choisir"
+                                            ng-click="choixNumCompte(lesNumCompte)" data-dismiss="modal">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                            <span>
+                                <i class="la la-close"></i>
+                                <span>Fermer</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end modal pour choix du code compte-->
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+<!-- modal type fichier -->
+<div class="modal fade" id="modal_TypeFichierGlobale">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="background-color: #F5F7FB; border-radius: 15px;">
+  
+        <div class="modal-body">
+          <div class=" product-box row" style="background-color: #F5F7FB;">
+            <div class="rox">
+              <div class="card-header" style="background-color: #F5F7FB; justify-content: center; text-align: center;">
+                <h5 data-bs-dismiss="modal" style="margin-bottom: 0; color: #1b12e0;"><i class="icofont icofont-external"></i>&#160;Exporter en
+                </h5>
+              </div>
+            </div>
+            <div class="rox">
+              &#160;
+              <div class="row">
+                <div class="col" style="justify-content: center; text-align: center;">
+                  <img class="image" style="cursor: pointer;"
+                    src="/Content/assets/media/logos/Microsoft-Word-Logo.png" height="100px" width="200px" alt=""
+                    ng-click="apercuEtat('doc')">
+                </div>
+                <div class="col" style="justify-content: center; text-align: center;">
+                  <img class="image" style="cursor: pointer;"
+                    src="/Content/assets/media/logos/1200px-PDF_file_icon.svg.png" height="100px" width="100px" alt=""
+                    ng-click="apercuEtat('PDF')">
+                </div>
+                <div class="col" style="justify-content: center; text-align: center;">
+                  <img class="image" style="cursor: pointer;"
+                    src="/Content/assets/media/logos/Microsoft_Office_Excel_(2019–present).svg.png" height="100px"
+                    width="120px" alt=""
+                    ng-click="apercuEtat('xls')">
+                </div>
+                <div class="col" style="justify-content: center; text-align: center;">
+                  <img class="image" style="cursor: pointer;" src="/Content/assets/media/logos/xlsx-icon-7.jpg"
+                    height="100px" width="120px" alt=""
+                    ng-click="apercuEtat('xlsx')">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

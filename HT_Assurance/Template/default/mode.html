@@ -1,0 +1,193 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgb(144, 206, 144);
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 24px;
+}
+
+p {
+  font-weight: 700;
+  text-align: center;
+  font-size: 20px;
+  font-family: Hack, sans-serif;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  letter-spacing: 5px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: shine 10s linear infinite;
+  position: relative;
+}
+
+@keyframes shine {
+  0% {
+    background-position-x: -500%;
+  }
+  100% {
+    background-position-x: 500%;
+  }
+}
+
+/*  Checkout my other pens on  https://codepen.io/grohit/  */
+
+</style>
+<!--begin::Main-->
+<div class="d-flex flex-column flex-root"
+   >
+    <!--begin::Page-->
+    <p>Bienvenu sur LGPOM: <br><a href="#">Logiciel de Gestion des Polices MAPHAR</a></p>
+    <div class="d-flex flex-row flex-column-fluid page">
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+            <!--begin::Container-->
+            <div class="d-flex flex-row flex-column-fluid container">
+                <!--begin::Content Wrapper-->
+                <div class="main d-flex flex-column flex-row-fluid">
+                    <div class="content flex-column-fluid" id="kt_content">
+                        <!--begin::Dashboard-->
+                        <!--begin::Row-->
+                        <!-- top: 100px; position: relative; -->
+                        <div class="row" >
+                            <!--begin::Presentation mode GESTION-->
+                            <div class="col-xl-4" style="width: 800px;">
+                                <a href="" ng-click="redirected('gestion')">
+                                    <div class="card card-custom bg-radial-gradient-danger bgi-no-repeat gutter-b card-stretch"
+                                        style="background-image: url(/dist/assets/media/illustration/gestion8.png); background-size: cover">
+                                        <div class="card-header border-0 py-5">
+                                            <h3 class="card-title font-weight-bolder"
+                                                style="font-size: 20px; font-family: Maiandra GD; color: yellow">GESTION
+                                            </h3>
+                                        </div>
+                                        <div class="card-body d-flex flex-column p-0">
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!--end::Presentation mode GESTION-->
+
+                            <div class="col-xl-8">
+                                <div class="row">
+                                    <!--begin::Presentation mode ASSURANCE-->
+                                    <div class="col-xl-12">
+                                        <a href="" ng-click="redirected('assurances')">
+                                            <div class="card card-custom bgi-no-repeat gutter-b"
+                                                style="height: 250px; background-image: url(/dist/assets/media/illustration/assurance12.png); background-size: cover; background-position-y: -70px;">
+                                                <div class="card-header border-0 py-5">
+                                                    <h3 class="card-title font-weight-bolder"
+                                                        style="font-size: 50px; color: yellow; font-family: Maiandra GD">
+                                                        ASSURANCE</h3>
+                                                </div>
+                                                <div class="card-body d-flex flex-column p-0">
+
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!--end::Presentation mode ASSURANCE-->
+                                    <!--begin::Presentation mode GESTION-ASSURANCE-->
+                                    <!-- <div class="col-xl-6">
+                                        <a href="" ng-click="redirected('assurances_gestion')">
+                                            <div class="card card-custom bgi-no-repeat gutter-b"
+                                                style="height: 250px; background-image: url(/dist/assets/media/illustration/gestion10.png); background-size: cover">
+                                                <div class="card-header border-0 py-5">
+                                                    <h3 class="card-title font-weight-bolder"
+                                                        style="font-size: 30px; font-family: Maiandra GD; color: Darkorange">
+                                                        GESTION / ASSURANCE</h3>
+                                                </div>
+                                                <div class="card-body d-flex flex-column p-0">
+
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div> -->
+                                    <!--end::Presentation mode GESTION-ASSURANCE-->
+                                </div>
+                                <div class="row">
+                                    <!--  <div class="col-xl-12">
+                                        <a href="" ng-click="redirected('grh')">
+                                            <div class="card card-custom bg-radial-gradient-warning gutter-b"
+                                                style="height: 250px; background-image: url(/dist/assets/media/illustration/grh12.png); background-size: cover">
+                                                <div class="card-header border-0 py-5">
+                                                    <h3 class="card-title font-weight-bolder"
+                                                        style="font-size: 50px; font-family: Maiandra GD; color: RoyalBlue">
+                                                        GRH</h3>
+                                                </div>
+                                                <div class="card-body d-flex flex-column p-0">
+
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div> -->
+                                    <div class="col-xl-12">
+                                        <a href="" ng-click="redirected('assurances_gestion')">
+                                            <div class="card card-custom bgi-no-repeat gutter-b"
+                                                style="height: 250px; background-image: url(/dist/assets/media/illustration/gestion10.png); background-size: cover; background-position-y: -90px;">
+                                                <div class="card-header border-0 py-5">
+                                                    <h3 class="card-title font-weight-bolder"
+                                                        style="font-size: 30px; font-family: Maiandra GD; color: yellow">
+                                                        GESTION / ASSURANCE</h3>
+                                                </div>
+                                                <div class="card-body d-flex flex-column p-0">
+
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Row-->
+                        <!--end::Dashboard-->
+                    </div>
+                    <!--end::Content-->
+                </div>
+                <!--begin::Content Wrapper-->
+            </div>
+            <!--end::Container-->
+            <!--begin::Footer-->
+            <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+                <!--begin::Container-->
+                <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
+                    <!--begin::Copyright-->
+                    <div class="text-dark order-2 order-md-1">
+                        <span class="text-muted font-weight-bold mr-2">2021©</span>
+                        <a href="http://www.technologyh.com" target="_blank" class="text-white text-hover-primary">MG
+                            Digital</a>
+                    </div>
+                    <!--end::Copyright-->
+                    <!--begin::Nav-->
+                    <div class="nav nav-dark order-1 order-md-2">
+                        <!--                        <a href="http://www.technologyh.com" target="_blank" class="nav-link pr-3 pl-0 text-muted text-hover-primary">A propos</a>-->
+                        <a href="#" target="_blank" class="nav-link px-3 text-muted text-hover-primary">Equipe</a>
+                        <a href="#" target="_blank"
+                            class="nav-link pl-3 pr-0 text-muted text-hover-primary">Contact</a>
+                    </div>
+                    <!--end::Nav-->
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Footer-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
+</div>
+<!--end::Main-->

@@ -1,0 +1,411 @@
+﻿@{
+ViewBag.Title = "Opération Ouverture du dossier";
+Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-controller="SuiviClientController"
+    ng-init="contrainteFormListSuiviClient()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">ASSURANCE</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Opération</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Liste</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Suivi client</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <h3 style="font-size: 25px; font-family: Maiandra GD"><strong>{{collectionContartOp.TI_NUMTIERS}} |
+                    {{collectionContartOp.TI_DENOMINATION}}</strong></h3>
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <div class="alert alert-custom alert-white alert-shadow gutter-b" role="alert">
+                <div class="alert-icon">
+                    <span class="svg-icon svg-icon-primary svg-icon-2x">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                            height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24" />
+                                <path
+                                    d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z"
+                                    fill="#000000" fill-rule="nonzero" />
+                                <path
+                                    d="M8.7295372,14.6839411 C8.35180695,15.0868534 7.71897114,15.1072675 7.31605887,14.7295372 C6.9131466,14.3518069 6.89273254,13.7189711 7.2704628,13.3160589 L11.0204628,9.31605887 C11.3857725,8.92639521 11.9928179,8.89260288 12.3991193,9.23931335 L15.358855,11.7649545 L19.2151172,6.88035571 C19.5573373,6.44687693 20.1861655,6.37289714 20.6196443,6.71511723 C21.0531231,7.05733733 21.1271029,7.68616551 20.7848828,8.11964429 L16.2848828,13.8196443 C15.9333973,14.2648593 15.2823707,14.3288915 14.8508807,13.9606866 L11.8268294,11.3801628 L8.7295372,14.6839411 Z"
+                                    fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                            </g>
+                        </svg>
+                    </span>
+                </div>
+                <div class="alert-text">
+                    <strong ng-if="nombreInfoBulle == 1 && listeSuiviClient[0].clsObjetRetour.SL_CODEMESSAGE == '99'"
+                        style="font-family: Maiandra GD; font-size: 17px;">Enregistrez des suivis et consultez-les
+                        ici</strong>
+                    <strong ng-if="nombreInfoBulle == 1 && listeSuiviClient[0].clsObjetRetour.SL_CODEMESSAGE !== '99'"
+                        style="font-family: Maiandra GD; font-size: 17px;">{{nombreInfoBulle}} suivi
+                        enregistré</strong>
+                    <strong ng-if="nombreInfoBulle > 1"
+                        style="font-family: Maiandra GD; font-size: 17px;">{{nombreInfoBulle}} suivis
+                        enregistrés</strong>
+                </div>
+            </div>
+            <!--end::Notice-->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header" style="background-color: #718E3E;">
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="fas fa-chart-line text-white icon-xl"></i>
+                        </span>
+                        <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Suivi client
+                        </h3>
+                    </div>
+                    <div class="card-toolbar">
+                        <!--begin::Dropdown-->
+                        <!-- <div class="dropdown dropdown-inline mr-2">
+                            <button type="button" class="btn btn-light-primary font-weight-bolder dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="svg-icon svg-icon-md">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <path
+                                                d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z"
+                                                fill="#000000" opacity="0.3" />
+                                            <path
+                                                d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z"
+                                                fill="#000000" />
+                                        </g>
+                                    </svg>
+                                </span>Exporter
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                <ul class="navi flex-column navi-hover py-2">
+                                    <li
+                                        class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">
+                                        CHOISIR UNE OPTION:</li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-print"></i>
+                                            </span>
+                                            <span class="navi-text">Imprimer</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-copy"></i>
+                                            </span>
+                                            <span class="navi-text">Copier</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-excel-o"></i>
+                                            </span>
+                                            <span class="navi-text">Excel</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-text-o"></i>
+                                            </span>
+                                            <span class="navi-text">CSV</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-pdf-o"></i>
+                                            </span>
+                                            <span class="navi-text">PDF</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> -->
+                        <!--end::Dropdown-->
+                        <!--begin::Button-->
+                        <a href="EnregistrementSuiviClient" class="btn btn-primary font-weight-bolder"
+                            data-toggle="tooltip" data-theme="dark" title="Enregistrement suivi client">
+                            <span class="svg-icon svg-icon-md">
+                                <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <circle fill="#000000" cx="9" cy="15" r="6" />
+                                        <path
+                                            d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z"
+                                            fill="#000000" opacity="0.3" />
+                                    </g>
+                                </svg>
+                                <!--end::Svg Icon-->
+                            </span>Nouveau
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                </div>
+                <form class="form" id="formListSuiviClient" novalidate name="ListSuiviClient">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <label>Date de début*</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="far fa-calendar-alt text-info"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" class="form-control"
+                                                        ng-class="{'is-invalid':ListSuiviClient.listSuiviClient_datedebut.$invalid}"
+                                                        ng-pattern="/^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                                        required name="listSuiviClient_datedebut"
+                                                        placeholder="Entrer une date"
+                                                        ng-model="FormListSuiviClient.datedebut" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label>Date de fin*</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="far fa-calendar-alt text-info"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" class="form-control"
+                                                        ng-class="{'is-invalid':ListSuiviClient.listSuiviClient_datefin.$invalid}"
+                                                        ng-pattern="/^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                                        required name="listSuiviClient_datefin"
+                                                        placeholder="Entrer une date"
+                                                        ng-model="FormListSuiviClient.datefin" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <label>Description*</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="fas fa-marker text-info"></i>
+                                                        </span>
+                                                    </div>
+                                                    <textarea class="form-control" maxlength="500"
+                                                        ng-class="{'is-invalid':ListSuiviClient.listSuiviClient_description.$invalid}"
+                                                        placeholder="Entrer une description"
+                                                        name="listSuiviClient_description"
+                                                        ng-model="FormListSuiviClient.description"></textarea>
+                                                    <div class="invalid-feedback"
+                                                        ng-show="ListSuiviClient.$dirty && ListSuiviClient.listSuiviClient_description.$invalid">
+                                                        Veuillez saisir la description.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-8">
+                                        <div class="col-lg-12">
+                                            <button class="btn btn-primary btn-primary--icon" id="kt_search"
+                                                ng-click="afficheListeSuiviClient(ListSuiviClient.$valid, FormListSuiviClient.datedebut, FormListSuiviClient.datefin, FormListSuiviClient.description)">
+                                                <span>
+                                                    <i class="la la-search"></i>
+                                                    <span>Rechercher</span>
+                                                </span>
+                                            </button>&#160;&#160;
+                                            <button class="btn btn-outline-warning" id="kt_reset"
+                                                ng-click="listeSuiviClientAnnuler()">
+                                                <span>
+                                                    <i class="la la-close"></i>
+                                                    <span>Annuler</span>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div><br />
+                                    <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+                                        <thead style="text-align: center;">
+                                            <!--background-color: #8CB9BA; color: White-->
+                                            <tr>
+                                                <th>DATE</th>
+                                                <th>DESCRIPTION</th>
+                                                <th>ACTIONS</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr ng-repeat="laListeSuiviClient in listeSuiviClient">
+                                                <td>{{laListeSuiviClient.SU_DATESUIVIE}}</td>
+                                                <td>{{laListeSuiviClient.SU_DESCRIPTIONEVENEMENT}}</td>
+                                                <!--ligne des actions-->
+                                                <td>
+                                                    <div class="example-preview"
+                                                        style="position: relative; right: -17px">
+                                                        <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                                            <div class="btn-group mr-2" role="group" aria-label="...">
+                                                                <!--bouton voir plus-->
+                                                                <button type="button"
+                                                                    class="btn btn-outline-secondary btn-icon"
+                                                                    data-toggle="modal" data-target="#modalVoirPlus"
+                                                                    ng-click="voirPlusSuiviClient(laListeSuiviClient)">
+                                                                    <i class="far fa-eye" data-toggle="tooltip"
+                                                                        data-theme="dark" title="Voir plus"></i>
+                                                                </button>
+                                                                <!--bouton modifier-->
+                                                                <button type="button"
+                                                                    class="btn btn-outline-secondary btn-icon"
+                                                                    ng-click="voirModifSuiviClient(laListeSuiviClient)">
+                                                                    <i class="far fa-edit" data-toggle="tooltip"
+                                                                        data-theme="dark" title="Modifier"></i>
+                                                                </button>
+                                                                <!--bouton supprimer-->
+                                                                <button id="swalSupprimer" type="button"
+                                                                    class="btn btn-outline-secondary btn-icon"
+                                                                    data-toggle="modal" data-target="#modalSupprimer"
+                                                                    ng-click="supprRecupererIdElement(laListeSuiviClient.AG_CODEAGENCE, laListeSuiviClient.SU_INDEXSUIVIE, laListeSuiviClient.SU_DATESAISIE)">
+                                                                    <i class="fas fa-ban" data-toggle="tooltip"
+                                                                        data-theme="dark" title="Supprimer"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div class="card-footer">
+                                        &#160;
+                                        <a href="OperationMultirisqueProfessionnel"
+                                            class="btn btn-icon btn-light-dark mr-2" title="Retour"
+                                            style="position: absolute; right: 27px">
+                                            <i class="fas fa-arrow-left"></i>
+                                        </a>
+                                    </div>
+
+                                    <!--begin modal pour voir plus-->
+                                    <div class="modal fade" id="modalVoirPlus" tabindex="-1" role="dialog"
+                                        aria-labelledby="modalVoirPlus" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered"
+                                            role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color: #718E3E;">
+                                                    <h5 class="modal-title text-white" id="modalVoirPlus"
+                                                        style="font-size: 23px; font-family: Maiandra GD">
+                                                        <i class="far fa-eye text-white"></i>
+                                                        Plus d'informations
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body" style="height: 300px;">
+                                                    <div class="row col-lg-12">
+                                                        <div class="col-lg-6">
+                                                            <strong
+                                                                style="font-size: 13px; font-family: 'Maiandra GD'">DATE</strong>
+                                                            : {{recuperer.SU_DATESUIVIE}} <br>
+                                                            <strong
+                                                                style="font-size: 13px; font-family: 'Maiandra GD'">DESCRIPTION</strong>
+                                                            : {{recuperer.SU_DESCRIPTIONEVENEMENT}} <br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-info"
+                                                        data-dismiss="modal">
+                                                        <span>
+                                                            <i class="la la-close"></i>
+                                                            <span>Fermer</span>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end modal-->
+
+                                    <!--begin modal pour suppression-->
+                                    <div class="modal fade" id="modalSupprimer" data-backdrop="static" tabindex="-1"
+                                        role="dialog" aria-labelledby="modalSupprimer" aria-hidden="true">
+                                        <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color: #718E3E;">
+                                                    <h5 class="modal-title text-white" id="modalSupprimer"
+                                                        style="font-size: 23px; font-family: Maiandra GD">
+                                                        <i class="fas fa-ban text-white"></i>
+                                                        Contrat
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body" style="text-align: center; font-size: 17px;">
+                                                    Etes-vous sûr de vouloir supprimer ce suivi?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-danger btn-shadow font-weight-bold"
+                                                        id="kt_reset"
+                                                        ng-click="supprimeSuiviClient(idElement1, idElement2, idElement3)"
+                                                        data-dismiss="modal">
+                                                        <span>
+                                                            <i class="fas fa-ban"></i>
+                                                            <span>Supprimer</span>
+                                                        </span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-outline-info"
+                                                        data-dismiss="modal">
+                                                        <span>
+                                                            <i class="la la-close"></i>
+                                                            <span>Annuler</span>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end modal-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

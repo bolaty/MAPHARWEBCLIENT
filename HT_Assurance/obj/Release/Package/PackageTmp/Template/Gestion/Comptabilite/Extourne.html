@@ -1,0 +1,120 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormAddExtourne()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">GESTION</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Comptabilité</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Extourne</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Enregistrement</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #F5F500">
+
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-shopping-cart text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Extourne</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="h4 text-dark-75"><strong>Information</strong> </div><br />
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <label>Date pièce*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="far fa-calendar-alt text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" id="idDate" class="form-control" name=""
+                                                            placeholder="Date piece"
+                                                            ng-model="formEnrgExtourne.datePiece" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label>N° pièce*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fab fa-orcid text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" id="numPiece" class="form-control" name=""
+                                                            placeholder="entrez le N° du client"
+                                                            ng-model="formEnrgExtourne.numPiece" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+                                    ng-click="ValiderExtourne(formEnrgExtourne.datePiece, formEnrgExtourne.numPiece)">
+                                    <span>
+                                        <i class="far fa-check-circle"></i>
+                                        <span>Enregistrer</span>
+                                    </span>
+                                </button>
+                                <button class="btn btn-light-success font-weight-bold"
+                                    ng-click="clearlistenregistrement()">
+                                    <span>
+                                        <i class="fas fa-undo"></i>
+                                        <span>Réinitialiser</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

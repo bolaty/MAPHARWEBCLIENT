@@ -1,0 +1,249 @@
+﻿@{
+    ViewBag.Title = "Enregistrement du Paramètrage Des Opérations De Trésorerie Des Tiers";
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background-color: beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    @*<h5 class="text-dark font-weight-bold my-1 mr-5">Cloture d'exercice</h5>*@
+                    <h3 class="text-dark font-weight-bold my-1 mr-5">GESTION</h3>
+
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">ParamètreII</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted"> Enregistrement</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Paramètrage Des Opérations De Trésorerie Des Tiers</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #F5F500;">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-cog text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Paramètrage Des Opérations De Trésorerie Des Tiers</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <label>Code*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-key text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="url" placeholder="Entrer un code" />
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez saisir le code.</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <label>Libellé*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-quote-left text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <textarea type="text" class="form-control" name="url" placeholder="Entrer un libellé"></textarea>
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez saisir le libellé.</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12" style="margin-top:20px">
+                                                    <label>Abréviation*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="far fa-money-bill-alt text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="url" placeholder="Entrer une abreviation" />
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez saisir l' abreviation.</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12" style="margin-top:20px">
+                                                    <label>Journal*:</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="flaticon2-open-text-book text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select class="form-control" name="option">
+                                                            <option value="">A</option>
+                                                            <option>Selectionner le  journal</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                        </select>
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez sélectionnez un journal.</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <label>Nature compte*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="far fa-question-circle text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="tel" class="form-control" name="addMP_Code1" placeholder="Entrer une nature de compte " />
+                                                        <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                            <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal">
+                                                                <i class="fas fa-ellipsis-h text-info"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <label>Numéro compte*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fab fa-orcid text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="url" placeholder="Entrer un numéro de section" />
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez saisir le numéro de section.</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label>Sens*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-exchange-alt text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select class="form-control" name="option">
+                                                            <option value="">A</option>
+                                                            <option>Selectionner le sens</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                        </select>
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez sélectionnez un sens.</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <label>Montant par defaut*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-money-bill-alt text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="url" placeholder="Entrer un montant" />
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez saisir le motant.</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="checkbox checkbox-lg checkbox-primary" style="position: relative; left: 20px; bottom: -30px">
+                                                        <input type="checkbox" value="" />
+                                                        <span class="form-text text-muted"></span>
+                                                    </label>
+                                                    <label style="position: relative; top: 10px; left: 53px;">Autoriser la modification du montant</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <label>Numéro ordre*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fab fa-orcid text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="url" placeholder="Entrer un numéro d'ordre" />
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez saisir le numéro d'ordre.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-8">
+                                    <div class="col-lg-12">
+                                        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold">
+                                            <span>
+                                                <i class="far fa-check-circle"></i>
+                                                <span>Enregistrer</span>
+                                            </span>
+                                        </button>
+                                        <button type="submit" class="btn btn-light-success font-weight-bold">
+                                            <span>
+                                                <i class="fas fa-undo"></i>
+                                                <span>Réinitialiser</span>
+                                            </span>
+                                        </button>
+                                        <a href="ParametrageDesOperationsDeTresorerieDesTiers" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip" data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+                                            <i class="fas fa-arrow-left"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                        <!--end::Card-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

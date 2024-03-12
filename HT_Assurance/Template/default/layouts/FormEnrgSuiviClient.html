@@ -1,0 +1,160 @@
+﻿<!--begin::Form-->
+<form class="form" ng-init="contrainteFormAddSuiviClient()">
+    <div class="row mb-6">
+        <div class="col-lg-6">
+            <label>Date*</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="far fa-calendar-alt text-info"></i>
+                    </span>
+                </div>
+                <input id="addSuiviClient_date" type="text" maxlength="10" class="form-control"
+                    name="addSuiviClient_date" placeholder="Entrer une date" ng-model="FormAddSuiviClient.date" />
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <label>Description*</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-marker text-info"></i>
+                    </span>
+                </div>
+                <textarea id="addSuiviClient_description" class="form-control" maxlength="500"
+                    name="addSuiviClient_description" placeholder="Entrer une description"
+                    ng-model="FormAddSuiviClient.description"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+            ng-click="ajoutFormAddSuiviClient()">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>&#160;
+        <button ng-show="etatForm !== '2'" class="btn btn-light-success font-weight-bold" ng-click="reinitialise()">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a ng-href="#/assurances/operation/multirisque-pro/liste/suivi-client" class="btn btn-icon btn-light-dark mr-2"
+            data-toggle="tooltip" data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+<!--end::Form-->
+
+
+<!--begin modal pour choix du code souscripteur-->
+<div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeSouscripteur"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - souscripteur
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                            <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                            <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixSouscripteur(lesSouscripteurs.TI_NUMTIERS, lesSouscripteurs.TI_DENOMINATION, lesSouscripteurs.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+<!--begin modal pour choix du code commercial-->
+<div class="modal fade" id="modalCodeCommercial" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeCommercial" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeCommercial"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - commercial
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesCommerciaux in listeDesCommerciaux">
+                            <td>{{lesCommerciaux.TI_NUMTIERS}}</td>
+                            <td>{{lesCommerciaux.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixCommercial(lesCommerciaux.TI_NUMTIERS, lesCommerciaux.TI_DENOMINATION, lesCommerciaux.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

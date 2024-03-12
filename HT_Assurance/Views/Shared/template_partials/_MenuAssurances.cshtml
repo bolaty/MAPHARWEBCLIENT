@@ -1,0 +1,891 @@
+﻿<!--begin::Menu assurance    ng-click="libelleMenu()"-->
+<style>
+        /* Couleur de fond de la barre de défilement */
+        ::-webkit-scrollbar {
+        background-color: #e11010;
+        }
+
+        /* Couleur de la poignée de la barre de défilement */
+        ::-webkit-scrollbar-thumb {
+        background-color: #ac0909;
+        }
+    </style>
+<li class="menu-section" ng-if="(assuranceMenu === menu || assur_gestMenu == menu) && ASSURANCE_GENERALE_EASSUR == true">
+    <h4 class="menu-text"><strong>ASSURANCE</strong></h4>
+    <i class="menu-icon fas fa-user-shield icon-md"></i>
+</li>
+<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-controller="GererMenuController" ng-if="(assuranceMenu === menu || assur_gestMenu == menu) && ASSURANCE_GENERALE_EASSUR == true" >
+    <a href="javascript:;" class="menu-link menu-toggle bg-hover-primary-o-5" ng-click="clicSurMenu('assurance')">
+        <span class="menu-text text-white">
+            <i class="fas fa-user-shield icon-lg"></i>&#160;&#160;
+            Assurance
+        </span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="menu-submenu" >
+        <i class="menu-arrow"></i>
+        <ul class="menu-subnav" >
+            <li class="menu-item menu-item-parent" aria-haspopup="true">
+                <span class="menu-link">
+                    <span class="menu-text">Themes</span>
+                </span>
+            </li>
+            @* le menu demande de contrat *@
+            <li class="menu-item" aria-haspopup="true" ng-if="LISTEDEMANDECONTRAT_EASSUR == true" ng-click="SinistreStatut('')">
+                <a href="#/assurances/liste/demandeContrat" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Liste demande de contrat</span>
+                </a>
+            </li>
+
+            @* le menu assurance *@
+            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="ENREGISTREMENT_EASSUR == true">
+                <a href="javascript:;" class="menu-link menu-toggle" ng-click="SinistreStatut('')">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Émission</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu" ng-click="SinistreStatut('')">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav" >
+                        <li ng-click="AfficheNouveau()" class="menu-item" aria-haspopup="true" ng-if="MULTIRISQUE_PROFFESSIONELLE_EASSUR == true" >
+                            <a id="idEngMP" ng-href="#/assurances/multirisque-professionnel" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Multirisque professionnel</span>
+                            </a>
+                        </li>
+                         <li class="menu-item" aria-haspopup="true" ng-if="HABITAT_EASSUR == true">
+                            <a id="idEngHabitat" ng-href="#/assurances/MultirisqueImmeuble" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Multirisque Immeuble</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="HABITAT_EASSUR == true">
+                            <a id="idEngHabitat" ng-href="#/assurances/habitat" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Habitat</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="INDIVIDUEL_ACCIDENT_EASSUR == true">
+                            <a id="idEngIndivAccident" ng-href="#/assurances/individuel-accident" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Individuel accident</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="AUTO_EASSUR == true">
+                            <a id="idEngAuto" ng-href="#/assurances/auto" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Auto</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="VOYAGE_EASSUR == true">
+                            <a id="idEngVoyage" ng-href="#/assurances/voyage" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Voyage</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="RESPONSABILITE_CIVIL_EASSUR == true">
+                            <a id="idEngRespoCivile" ng-href="#/assurances/responsabilite-civile" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Responsabilité civile</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="TRANSPORT_EASSUR == true">
+                            <a id="idEngTransMarch" ng-href="#/assurances/transport-et-marchandise" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Transport et marchandise</span>
+                            </a>
+                        </li>
+                        
+                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="SANTER_EASSUR == true">
+                            <a href="javascript:;" class="menu-link menu-toggle" >
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Santé</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                                <ul class="menu-subnav">
+                                    <li class="menu-item" aria-haspopup="true" ng-if="GESA_EASSUR == true">
+                                        <a id="idEngGesa" ng-href="#/assurances/sante/gesa" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">GESA</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="PHARMACIEN_EASSUR == true">
+                                        <a id="idEngPhar" ng-href="#/assurances/sante/pharmacien" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Pharmacien</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="AUXILIAIRE_EASSUR == true">
+                                        <a id="idEngAuxil" ng-href="#/assurances/sante/auxiliaire" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Auxiliaire</span>
+                                        </a>
+                                    </li>
+                                     <li class="menu-item" aria-haspopup="true" ng-if="YAFOLO_EASSUR == true">
+                                        <a id="idEngTransMarch" ng-href="#/assurances/Yafolo" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Yafolo</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            @* le menu transmission
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="TRANSMISSION_EASSURTRANS == true">
+                <a href="javascript:;" class="menu-link menu-toggle">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Transmission</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav">
+                        <li class="menu-item" aria-haspopup="true" ng-if="MULTIRISQUE_PROFFESSIONELLE_EASSURTRANS == true">
+                            <a href="#/assurances/transmission/multirisque-professionnel" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Multirisque professionnel</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="HABITAT_EASSURTRANS == true">
+                            <a href="#/assurances/transmission/habitat" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Habitat</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="INDIVIDUEL_ACCIDENT_EASSURTRANS == true">
+                            <a href="#/assurances/transmission/individuel-accident" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Individuel accident</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="AUTO_EASSURTRANS == true">
+                            <a href="#/assurances/transmission/auto" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Auto</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="VOYAGE_EASSURTRANS == true">
+                            <a href="#/assurances/transmission/voyage" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Voyage</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="RESPONSABILITE_CIVIL_EASSURTRANS == true">
+                            <a href="#/assurances/transmission/responsabilite-civile" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Responsabilité civile</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="TRANSPORT_EASSURTRANS == true">
+                            <a href="#/assurances/transmission/transport-et-marchandise" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Transport et marchandise</span>
+                            </a>
+                        </li>
+                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="SANTER_EASSURTRANS == true">
+                            <a href="javascript:;" class="menu-link menu-toggle">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Santé</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                                <ul class="menu-subnav">
+                                    <li class="menu-item" aria-haspopup="true" ng-if="GESA_EASSURTRANS == true">
+                                        <a href="#/assurances/transmission/sante/gesa" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">GESA</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="PHARMACIEN_EASSURTRANS == true">
+                                        <a href="#/assurances/transmission/sante/pharmacien" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Pharmacien</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="AUXILIAIRE_EASSURTRANS == true">
+                                        <a href="#/assurances/transmission/sante/auxiliaire" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Auxiliaire</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>*@
+
+                    @* le menu validation
+            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="VALIDATION_EASSURVALID == true">
+                <a href="javascript:;" class="menu-link menu-toggle">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Validation</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav">
+                        <li class="menu-item" aria-haspopup="true" ng-if="MULTIRISQUE_PROFFESSIONELLE_EASSURVALID == true">
+                            <a href="#/assurances/validation/multirisque-professionnel" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Multirisque professionnel</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="HABITAT_EASSURVALID == true">
+                            <a href="#/assurances/validation/habitat" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Habitat</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="INDIVIDUEL_ACCIDENT_EASSURVALID == true">
+                            <a href="#/assurances/validation/individuel-accident" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Individuel accident</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="AUTO_EASSURVALID == true">
+                            <a href="#/assurances/validation/auto" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Auto</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="VOYAGE_EASSURVALID == true">
+                            <a href="#/assurances/validation/voyage" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Voyage</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="RESPONSABILITE_CIVIL_EASSURVALID == true">
+                            <a href="#/assurances/validation/responsabilite-civile" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Responsabilité civile</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="TRANSPORT_EASSURVALID == true">
+                            <a href="#/assurances/validation/transport-et-marchandise" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Transport et marchandise</span>
+                            </a>
+                        </li>
+                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="SANTER_EASSURVALID == true">
+                            <a href="javascript:;" class="menu-link menu-toggle">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Santé</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                                <ul class="menu-subnav">
+                                    <li class="menu-item" aria-haspopup="true" ng-if="GESA_EASSURVALID == true">
+                                        <a href="#/assurances/validation/sante/gesa" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">GESA</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="PHARMACIEN_EASSURVALID == true">
+                                        <a href="#/assurances/validation/sante/pharmacien" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Pharmacien</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="AUXILIAIRE_EASSURVALID == true">
+                                        <a href="#/assurances/validation/sante/auxiliaire" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Auxiliaire</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>*@
+            
+            @* le menu operation *@
+            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="OPERATION_EOPERATION == true">
+                <a href="javascript:;" class="menu-link menu-toggle" >
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Opération</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu" ng-click="SinistreStatut('')">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav" >
+                        <li class="menu-item" aria-haspopup="true" ng-if="MULTIRISQUE_PROFFESSIONELLE_EOPERATION == true" >
+                            <a id="idMP" ng-href="#/assurances/operation/liste/multirisque-professionnel" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Multirisque professionnel</span>
+                            </a>
+                        </li>
+                         <li class="menu-item" aria-haspopup="true" ng-if="HABITAT_EOPERATION == true">
+                            <a href="#/assurances/operation/liste/MultirisqueImmeuble" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Multirisque Immeuble</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="HABITAT_EOPERATION == true">
+                            <a href="#/assurances/operation/liste/habitat" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Habitat</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="INDIVIDUEL_ACCIDENT_EOPERATION == true">
+                            <a href="#/assurances/operation/liste/individuel-accident" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Individuel accident</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="AUTO_EOPERATION == true">
+                            <a href="#/assurances/operation/liste/auto" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Auto</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="VOYAGE_EOPERATION == true">
+                            <a href="#/assurances/operation/liste/voyage" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Voyage</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="RESPONSABILITE_CIVIL_EOPERATION == true">
+                            <a href="#/assurances/operation/liste/responsabilite-civile" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Responsabilité civile</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="TRANSPORT_EOPERATION == true">
+                            <a href="#/assurances/operation/liste/transport-marchandise" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Transport et marchandise</span>
+                            </a>
+                        </li>
+                       
+                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="SANTER_EOPERATION == true">
+                            <a href="javascript:;" class="menu-link menu-toggle" >
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Santé</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                                <ul class="menu-subnav">
+                                    <li class="menu-item" aria-haspopup="true" ng-if="GESA_EOPERATION == true">
+                                        <a href="#/assurances/operation/liste/sante-gesa" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">GESA</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="PHARMACIEN_EOPERATION == true">
+                                        <a href="#/assurances/operation/liste/sante-pharmacien" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Pharmacien</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="AUXILIAIRE_EOPERATION == true">
+                                        <a href="#/assurances/operation/liste/sante-auxiliaire" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Auxiliaire</span>
+                                        </a>
+                                    </li>
+                                     <li class="menu-item" aria-haspopup="true" ng-if="YAFOLO_EOPERATION == true" >
+                                        <a href="#/assurances/operation/liste/Yafolo" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Yafolo</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            @* le menu Sinistre 
+             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="OPERATION_EOPERATION == true">
+                <a href="javascript:;" class="menu-link menu-toggle" ng-click="SinistreStatut('SINISTRE')">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Sinistre</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu" ng-click="SinistreStatut('SINISTRE')">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav" >
+                        <li class="menu-item" aria-haspopup="true" ng-if="MULTIRISQUE_PROFFESSIONELLE_EOPERATION == true">
+                            <a id="idMP" ng-href="#/assurances/operation/liste/multirisque-professionnel" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Multirisque professionnel</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="HABITAT_EOPERATION == true">
+                            <a href="#/assurances/operation/liste/habitat" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Habitat</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="INDIVIDUEL_ACCIDENT_EOPERATION == true">
+                            <a href="#/assurances/operation/liste/individuel-accident" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Individuel accident</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="AUTO_EOPERATION == true">
+                            <a href="#/assurances/operation/liste/auto" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Auto</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="VOYAGE_EOPERATION == true">
+                            <a href="#/assurances/operation/liste/voyage" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Voyage</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="RESPONSABILITE_CIVIL_EOPERATION == true">
+                            <a href="#/assurances/operation/liste/responsabilite-civile" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Responsabilité civile</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="TRANSPORT_EOPERATION == true">
+                            <a href="#/assurances/operation/liste/transport-marchandise" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Transport et marchandise</span>
+                            </a>
+                        </li>
+                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="SANTER_EOPERATION == true">
+                            <a href="javascript:;" class="menu-link menu-toggle">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Santé</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                                <ul class="menu-subnav">
+                                    <li class="menu-item" aria-haspopup="true" ng-if="GESA_EOPERATION == true">
+                                        <a href="#/assurances/operation/liste/sante-gesa" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">GESA</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="PHARMACIEN_EOPERATION == true">
+                                        <a href="#/assurances/operation/liste/sante-pharmacien" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Pharmacien</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="AUXILIAIRE_EOPERATION == true">
+                                        <a href="#/assurances/operation/liste/sante-auxiliaire" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Auxiliaire</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>*@
+            @* le menu relance *@
+            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="RELANCE_ERELANCE == true">
+                <a href="javascript:;" class="menu-link menu-toggle" ng-click="SinistreStatut('')">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Relance</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu" ng-click="SinistreStatut('')">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav" >
+                        <li class="menu-item" aria-haspopup="true" ng-if="MULTIRISQUE_PROFFESSIONELLE_ERELANCE == true" >
+                            <a id="idMP" ng-href="#/assurances/relance/liste/multirisque_professionnel" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Multirisque professionnel</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="HABITAT_ERELANCE == true">
+                            <a href="#/assurances/relance/liste/MultirisqueImmeuble" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Multirisque Immeuble</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="HABITAT_ERELANCE == true">
+                            <a href="#/assurances/relance/liste/habitat" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Habitat</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="INDIVIDUEL_ACCIDENT_ERELANCE == true">
+                            <a href="#/assurances/relance/liste/individuel_accident" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Individuel accident</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="AUTO_ERELANCE == true">
+                            <a href="#/assurances/relance/liste/auto" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Auto</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="VOYAGE_ERELANCE == true">
+                            <a href="#/assurances/relance/liste/voyage" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Voyage</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="RESPONSABILITE_CIVIL_ERELANCE == true">
+                            <a href="#/assurances/relance/liste/responsabilite_civile" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Responsabilité civile</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="TRANSPORT_ERELANCE == true">
+                            <a href="#/assurances/relance/liste/transport_marchandise" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Transport et marchandise</span>
+                            </a>
+                        </li>
+                         
+                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="SANTER_ERELANCE == true">
+                            <a href="javascript:;" class="menu-link menu-toggle" >
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Santé</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                                <ul class="menu-subnav">
+                                    <li class="menu-item" aria-haspopup="true" ng-if="GESA_ERELANCE == true">
+                                        <a href="#/assurances/relance/liste/sante_gesa" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">GESA</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="PHARMACIEN_ERELANCE == true">
+                                        <a href="#/assurances/relance/liste/sante_pharmacien" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Pharmacien</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="AUXILIAIRE_ERELANCE == true">
+                                        <a href="#/assurances/relance/liste/sante_auxiliaire" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Auxiliaire</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="YAFOLO_ERELANCE == true" >
+                                        <a href="#/assurances/relance/liste/Yafolo" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Yafolo</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            @* le menu renouvellement *@
+            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="RENOUVELLEMENT_ERENOUVEL == true">
+                <a href="javascript:;" class="menu-link menu-toggle" ng-click="SinistreStatut('')">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Validation Renouvellement</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu" ng-click="SinistreStatut('')">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav" >
+                        <li class="menu-item" aria-haspopup="true" ng-if="MULTIRISQUE_PROFFESSIONELLE_ERENOUVEL == true" >
+                            <a href="#/Assurances/Listes/DemandeRenouvellement/Multirisque-Professionnel" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Multirisque professionnel</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="HABITAT_ERENOUVEL == true">
+                            <a href="#/Assurances/Listes/DemandeRenouvellement/MultirisqueImmeuble" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Multirisque Immeuble</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="HABITAT_ERENOUVEL == true">
+                            <a href="#/Assurances/Listes/DemandeRenouvellement/Habitat" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Habitat</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="INDIVIDUEL_ACCIDENT_ERENOUVEL == true">
+                            <a href="#/Assurances/Listes/DemandeRenouvellement/Individuel-Accident" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Individuel accident</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="AUTO_ERENOUVEL == true">
+                            <a href="#/Assurances/Listes/DemandeRenouvellement/Auto" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Auto</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="VOYAGE_ERENOUVEL == true">
+                            <a href="#/Assurances/Listes/DemandeRenouvellement/Voyage" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Voyage</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="RESPONSABILITE_CIVIL_ERENOUVEL == true">
+                            <a href="#/Assurances/Listes/DemandeRenouvellement/Responsabilite-Civile" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Responsabilité civile</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="TRANSPORT_ERENOUVEL == true">
+                            <a href="#/Assurances/Listes/DemandeRenouvellement/Transport-Marchandise" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Transport et marchandise</span>
+                            </a>
+                        </li>
+                        
+                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="SANTER_ERENOUVEL == true">
+                            <a href="javascript:;" class="menu-link menu-toggle" >
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Santé</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                                <ul class="menu-subnav">
+                                    <li class="menu-item" aria-haspopup="true" ng-if="GESA_ERENOUVEL == true">
+                                        <a href="#/Assurances/Listes/DemandeRenouvellement/Sante/Gesa" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">GESA</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="PHARMACIEN_ERENOUVEL == true">
+                                        <a href="#/Assurances/Listes/DemandeRenouvellement/Sante/Pharmacien" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Pharmacien</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="AUXILIAIRE_ERENOUVEL == true" >
+                                        <a href="#/Assurances/Listes/DemandeRenouvellement/Sante/Auxiliaire" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Auxiliaire</span>
+                                        </a>
+                                    </li>
+                                     <li class="menu-item" aria-haspopup="true" ng-if="YAFOLO_ERENOUVEL == true">
+                                        <a href="#/Assurances/Listes/DemandeRenouvellement/Yafolo" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Yafolo</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li> 
+
+            @* le menu edition *@
+            <li class="menu-item" aria-haspopup="true" ng-if="EDITION_ASSURANCE_ERENOUVEL == true" ng-click="SinistreStatut('')">
+                <a href="#/assurances/edition" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Edition</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<!--end::Menu assurance-->

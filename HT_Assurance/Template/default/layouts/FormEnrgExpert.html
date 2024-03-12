@@ -1,0 +1,66 @@
+﻿<!--begin::Form-->
+<form class="form">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10"><strong>INFORMATIONS De
+                            L'EXPERT</strong>
+                    </h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Contact*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addcontexpert" id="addcontexpert"
+                                        placeholder="Entrer le Contact" ng-model="FormAddExpert.contact"
+                                        maxlength="15" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Dénomination*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addDenominationexpert"
+                                        id="addDenominationexpert" placeholder="Entrer le Contact"
+                                        ng-model="FormAddExpert.Denominationexpert" maxlength="150" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="ajoutFormAddExpert()">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <button ng-show="etatForm !== '2'" type="submit" id="kt_notify" class="btn btn-light-success font-weight-bold"
+            ng-click="resetFormAddExpert()">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a href="#/Template/ParametreI/ListeExpert" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip"
+            data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+<!--end::Form-->

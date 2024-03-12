@@ -1,0 +1,600 @@
+﻿@{
+    ViewBag.Title = "Transport et Marchandise Modification";
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-controller="TransportetMarchandiseController" ng-init="initFormAddInfoTransportetMarchandise()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Modification Transport et Marchandise</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Assurance</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Modification</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Transport et Marchandise</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <div class="d-flex align-items-center">
+                <!--begin::Actions-->
+                <a href="#" class="btn btn-light-primary font-weight-bolder btn-sm">Actions</a>
+                <!--end::Actions-->
+                <!--begin::Dropdown-->
+                <div class="dropdown dropdown-inline" data-toggle="tooltip" title="Quick actions" data-placement="left">
+                    <a href="#" class="btn btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="svg-icon svg-icon-success svg-icon-2x">
+                            <!--begin::Svg Icon | path:assets/media/svg/icons/Files/File-plus.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                    <path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                    <path d="M11,14 L9,14 C8.44771525,14 8,13.5522847 8,13 C8,12.4477153 8.44771525,12 9,12 L11,12 L11,10 C11,9.44771525 11.4477153,9 12,9 C12.5522847,9 13,9.44771525 13,10 L13,12 L15,12 C15.5522847,12 16,12.4477153 16,13 C16,13.5522847 15.5522847,14 15,14 L13,14 L13,16 C13,16.5522847 12.5522847,17 12,17 C11.4477153,17 11,16.5522847 11,16 L11,14 Z" fill="#000000" />
+                                </g>
+                            </svg>
+                            <!--end::Svg Icon-->
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-md dropdown-menu-right p-0 m-0">
+                        <!--begin::Navigation-->
+                        <ul class="navi navi-hover">
+                            <li class="navi-header font-weight-bold py-4">
+                                <span class="font-size-lg">Choose Label:</span>
+                                <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="Click to learn more..."></i>
+                            </li>
+                            <li class="navi-separator mb-3 opacity-70"></li>
+                            <li class="navi-item">
+                                <a href="#" class="navi-link">
+                                    <span class="navi-text">
+                                        <span class="label label-xl label-inline label-light-success">Customer</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="#" class="navi-link">
+                                    <span class="navi-text">
+                                        <span class="label label-xl label-inline label-light-danger">Partner</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="#" class="navi-link">
+                                    <span class="navi-text">
+                                        <span class="label label-xl label-inline label-light-warning">Suplier</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="#" class="navi-link">
+                                    <span class="navi-text">
+                                        <span class="label label-xl label-inline label-light-primary">Member</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="#" class="navi-link">
+                                    <span class="navi-text">
+                                        <span class="label label-xl label-inline label-light-dark">Staff</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="navi-separator mt-3 opacity-70"></li>
+                            <li class="navi-footer py-4">
+                                <a class="btn btn-clean font-weight-bold btn-sm" href="#">
+                                    <i class="ki ki-plus icon-sm"></i>Add new
+                                </a>
+                            </li>
+                        </ul>
+                        <!--end::Navigation-->
+                    </div>
+                </div>
+                <!--end::Dropdown-->
+            </div>
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid" >
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #718E3E;">
+                            <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Modification Transport et Marchandise</h3>
+                            <div class="card-toolbar">
+                                <div class="example-tools justify-content-center">
+                                    <span class="example-toggle text-white" data-toggle="tooltip" title="View code"></span>
+                                    <span class="example-copy text-white" data-toggle="tooltip" title="Copy code"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form" id="formaddMODIFTransportetMarchandise">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS SUR LE SOUSCRIPTEUR</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Code*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addTransportetMarchandise_Code01" placeholder="Entrer un code" ng-model="recupererinfoTransportetMarchandise[0].TI_NUMTIERS" ng-disabled="isDisabledmodif" />
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" type="button" id="kt_reset" data-toggle="modal" data-target="#modalCodeSouscripteur" ng-click="afficheListeTiersSouscripteur()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le code.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Dénomination*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addTransportetMarchandise_Dénomination01" placeholder="Entrer une Dénomination" ng-model="recupererinfoTransportetMarchandise[0].TI_DENOMINATION" ng-disabled="isDisabledmodif" />
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" type="button" id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial" ng-click="afficheListeTiersSouscripteur()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la Dénomination.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Adresse*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-periscope text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addTransportetMarchandise_Adresse" placeholder="Entrer une adresse" ng-model="recupererinfoTransportetMarchandise[0].CO_LIBELLE" ng-disabled="isDisabledmodif"/>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'adresse.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS SUR LE COMMERCIAL</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Code*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addTransportetMarchandise_Code02" placeholder="Entrer un code" ng-model="recupererinfoTransportetMarchandise[0].TI_NUMTIERSCOMMERCIAL" ng-disabled="isDisabledmodf"/>
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial" ng-click="afficheListeTiersCommercial()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le code.</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Dénomination*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addTransportetMarchandise_Dénomination02" placeholder="Entrer une Dénomination" ng-model="recupererinfoTransportetMarchandise[0].TI_DENOMINATIONCOMMERCIAL" ng-disabled="isDisabledmodf"/>
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial" ng-click="afficheListeTiersCommercial()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la Dénomination.</span>
+                                                    </div>
+                                                    @*<div class="col-lg-4">
+                                                        <label>Commission*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-money-bill-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addTransportetMarchandise_Commission" placeholder="Entrer une commission" ng-model="listeListeCommissionCommercialmodifAuto[0].SOLDE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la commission.</span>
+                                                    </div>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS GENERALES</strong></h3>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <label>N° police/ N.C*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addTransportetMarchandise_N_Police" placeholder="Entrer un n°" ng-model="recupererinfoTransportetMarchandise[0].CA_NUMPOLICE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le n° de la Police.</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Pays*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-globe-africa text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addTransportetMarchandise_Pays" ng-model="recupererinfoTransportetMarchandise[0].PY_CODEPAYS" id="idPaysModif">
+                                                                <option value="">Sélectionner un pays</option>
+                                                                <option ng-repeat="lePays in listeDesPaysTransportetMarchandise" ng-selected="recupererinfoTransportetMarchandise[0].PY_CODEPAYS == lePays.PY_CODEPAYS" value="{{lePays.PY_CODEPAYS}}">{{lePays.PY_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le pays.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Ville*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map-marker-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addTransportetMarchandise_Ville" ng-model="recupererinfoTransportetMarchandise[0].VL_CODEVILLE" id="idVilleModif">
+                                                                <option value="">Sélectionner une ville</option>
+                                                                <option ng-repeat="laVille in modifListeVille" ng-selected="recupererinfoTransportetMarchandise[0].VL_CODEVILLE == laVille.VL_CODEVILLE" value="{{laVille.VL_CODEVILLE}}">{{laVille.VL_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez séléctionner la ville.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Section*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map-pin text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addTransportetMarchandise_Commune" ng-model="recupererinfoTransportetMarchandise[0].CO_CODECOMMUNE">
+                                                                <option value="">Sélectionner une commune</option>
+                                                                <option ng-repeat="laCommune in modifListeCommune" ng-selected="recupererinfoTransportetMarchandise[0].CO_CODECOMMUNE == laCommune.CO_CODECOMMUNE" value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la commune.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Situation géographique*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control datatable-input" name="addTransportetMarchandise_Situation_géographique" placeholder="Entrer un nom" data-col-index="0" ng-model="recupererinfoTransportetMarchandise[0].CA_SITUATIONGEOGRAPHIQUE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la situation géograpgique.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Effet*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-calendar text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addTransportetMarchandise_Effet" placeholder="Entrer un effet" ng-model="recupererinfoTransportetMarchandise[0].CA_DATEEFFET" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'effet.</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Echéance*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-calendar text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addTransportetMarchandise_Echeance" placeholder="Entrer une écheance" ng-model="recupererinfoTransportetMarchandise[0].CA_DATEECHEANCE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'écheance.</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Zone*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-circle text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Zone_circ" ng-model="recupererinfoTransportetMarchandise[0].ZA_CODEZONEAUTO">
+                                                                <option value="">Sélectionner une zone circ</option>
+                                                                <option ng-repeat="lAlisteDesZoneAuto in listeDesZoneTransportetMarchandise" ng-selected="recupererinfoTransportetMarchandise[0].ZA_CODEZONEAUTO == lAlisteDesZoneAuto.ZA_CODEZONEAUTO" value="{{lAlisteDesZoneAuto.ZA_CODEZONEAUTO}}">{{lAlisteDesZoneAuto.ZA_NOMZONEAUTO}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la zone circ.</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Assureur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-cog text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addmd_Assur" ng-model="recupererinfoTransportetMarchandise[0].TI_IDTIERSASSUREUR">
+                                                                <option value="">Sélectionner un assureur</option>
+                                                                <option ng-repeat="lAssureur in listeDesAssureursTransportetMarchandise" ng-selected="recupererinfoTransportetMarchandise[0].TI_IDTIERSASSUREUR == lAssureur.TI_IDTIERS" value="{{lAssureur.TI_IDTIERS}}">{{lAssureur.TI_DENOMINATION}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner l'assureur.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Pharmacien*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-md text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addTransportetMarchandise_Interlocuteur" placeholder="Entrer un interlocuteur" ng-model="recupererinfoTransportetMarchandise[0].CA_NOMINTERLOCUTEUR" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'interlocuteur.</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Téléphone Pharmacien*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-phone-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addTransportetMarchandise_Telephone_interlocuteur" placeholder="Entrer un n° de téléphone" ng-model="recupererinfoTransportetMarchandise[0].CA_CONTACTINTERLOCUTEUR" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le téléphone interlocuteur.</span>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group row">
+
+                                                    <div class="col-lg-3" style="position: relative; left: 15px; bottom: -28px">
+                                                        <div class="d-flex flex-column flex-grow-1 py-2" ng-click="choixclienttaxe()">
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="{{FormAddTransportetMarchandise.btntaxe}}" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                            <label style="position: relative; top: -20px; left: 30px;">Client exonéré de taxe</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <label>Type d'affaire*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-briefcase text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addTransportetMarchandise_typeAffaire" ng-model="recupererinfoTransportetMarchandise[0].TA_CODETYPEAFFAIRES">
+                                                                <option value="">Sélectionner un type</option>
+                                                                <option ng-repeat="leTypeAffaire in listeTypeAffaireTransportetMarchandise" ng-selected="recupererinfoTransportetMarchandise[0].TA_CODETYPEAFFAIRES == leTypeAffaire.TA_CODETYPEAFFAIRES" value="{{leTypeAffaire.TA_CODETYPEAFFAIRES}}">{{leTypeAffaire.TA_LIBLLETYPEAFFAIRES}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="separator separator-dashed separator-success my-1"></div><br>
+                                    <div class="form-group row col-lg-12">
+                                        <div class="col-12 ">
+                                            <table class="table table-bordered table-checkable" id="kt_datatable">
+                                                <thead style="text-align: center">
+                                                    <tr>
+                                                        <th>LIBELLE </th>
+                                                        <th>VALEUR</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="prime in tabPrimes">
+                                                        <td>{{prime.RE_LIBELLERESUME}}</td>
+                                                        <td>
+                                                            <input type="text" name="" class="form-control" placeholder="" ng-model="prime.CG_PRIMES" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" id="kt_notify" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="ajoutFormAddModifTransportetMarchandise()">
+                                        <span>
+                                            <i class="far fa-check-circle"></i>
+                                            <span>Enregistrer</span>
+                                        </span>
+                                    </button>&#160;&#160;
+                                    @*<button type="submit" class="btn btn-light-success font-weight-bold">
+                                        <span>
+                                            <i class="fas fa-undo"></i>
+                                            <span>Réinitialiser</span>
+                                        </span>
+                                    </button>*@
+                                    <a href="ListeTransportetMarchandise" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip" data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+    <!--begin modal pour choix du code souscripteur-->
+    <div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalCodeSouscripteur" style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-white"></i>
+                        Liste des tiers - souscripteur
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-checkable" id="kt_datatable">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th>N° TIERS</th>
+                                <th>DENOMINATION</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                                <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                                <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                                <td style="text-align: center">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip" data-theme="dark" title="Choisir" ng-click="choixSouscripteurmodif(lesSouscripteurs.TI_NUMTIERS, lesSouscripteurs.TI_DENOMINATION, lesSouscripteurs.TI_IDTIERS, lesSouscripteurs.TI_ADRESSEGEOGRAPHIQUE)" data-dismiss="modal">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+    <div class="modal fade" id="modalCodeCommercial" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalCodeCommercial" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalCodeCommercial" style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-white"></i>
+                        Liste des tiers - commercial
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-checkable" id="kt_datatable">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th>N° TIERS</th>
+                                <th>DENOMINATION</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lesCommerciaux in listeDesCommerciaux">
+                                <td>{{lesCommerciaux.TI_NUMTIERS}}</td>
+                                <td>{{lesCommerciaux.TI_DENOMINATION}}</td>
+                                <td style="text-align: center">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip" data-theme="dark" title="Choisir" ng-click="choixCommercialmodif(lesCommerciaux.TI_NUMTIERS, lesCommerciaux.TI_DENOMINATION, lesCommerciaux.TI_IDTIERS)" data-dismiss="modal">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Content-->

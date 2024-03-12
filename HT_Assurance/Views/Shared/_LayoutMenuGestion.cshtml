@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv='cache-control' content='no-cache, no-store, must-revalidate'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <link rel="shortcut icon" href="~/Content/assets/media/logos/LOGO_MAPHAR.png" />
+    <title>@ViewBag.Title | LGPOM</title>
+    @Styles.Render("~/Content/templatecss")
+</head>
+
+<body ng-app="appGestion" id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+    <!--begin::Principal-->
+    <!--begin::Header Mobile-->
+    @Html.Partial("template_partials/_MenuMobile")
+    <!--end::Header Mobile-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="d-flex flex-row flex-column-fluid page">
+            <!--begin::De côté-->
+            <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
+                <!--begin::Marque-->
+                @Html.Partial("template_partials/_BrandLogo")
+                <!--end::Marque-->
+                <!--begin::Menu de coté-->
+                <div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
+                    <!--begin::Conteneur de menu-->
+                    <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500" ng-controller="MenuController">
+                        <!--begin::Menu Nav-->
+                        <ul class="menu-nav">
+                           @*  <li class="menu-item menu-item-active" aria-haspopup="true">
+                                <a href="" class="menu-link" style="background-color: white;">
+                                    <span class="menu-text">
+                                        <i class="fab fa-buromobelexperte text-dark icon-xl"></i>&#160;&#160;&#160;
+                                        <span style="color: black; font-family: Maiandra GD; font-size: 20px">Tableau de bord</span>
+                                    </span>
+                                </a>
+                            </li> *@
+
+                            <!-- MENU GESTION -->
+                            @Html.Partial("template_partials/_MenuGestion")
+
+                            <!-- MENU ASSURANCE -->
+                            @Html.Partial("template_partials/_MenuAssurances")
+
+                            <!-- MENU GRH -->
+                            @Html.Partial("template_partials/_MenuGrh")
+
+                        </ul>
+                        <!--end::Menu Nav-->
+                    </div>
+                    <!--end::Conteneur de menu-->
+                </div>
+                <!--end::Menu de coté-->
+            </div>
+            <!--end::De côté-->
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+                <!--begin::Header-->
+                @Html.Partial("template_partials/_MenuHeader")
+                <!--end::Header-->
+
+                @RenderBody()
+                <!--begin::Footer-->
+                @Html.Partial("template_partials/_Footer")
+                <!--end::Footer-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        <!--end::Page-->
+    </div>
+    <!--end::Main-->
+    <!-- begin::User Panel-->
+    @Html.Partial("template_partials/_Panel")
+    <!-- end::User Panel-->
+
+    @Scripts.Render("~/bundles/angularjs") @Scripts.Render("~/bundles/script")
+
+
+    <script>
+        var KTAppSettings = {
+            "breakpoints": {
+                "sm": 576,
+                "md": 768,
+                "lg": 992,
+                "xl": 1200,
+                "xxl": 1400
+            },
+            "colors": {
+                "theme": {
+                    "base": {
+                        "white": "#ffffff",
+                        "primary": "#3699FF",
+                        "secondary": "#E5EAEE",
+                        "success": "#1BC5BD",
+                        "info": "#8950FC",
+                        "warning": "#FFA800",
+                        "danger": "#F64E60",
+                        "light": "#E4E6EF",
+                        "dark": "#181C32"
+                    },
+                    "light": {
+                        "white": "#ffffff",
+                        "primary": "#E1F0FF",
+                        "secondary": "#EBEDF3",
+                        "success": "#C9F7F5",
+                        "info": "#EEE5FF",
+                        "warning": "#FFF4DE",
+                        "danger": "#FFE2E5",
+                        "light": "#F3F6F9",
+                        "dark": "#D6D6E0"
+                    },
+                    "inverse": {
+                        "white": "#ffffff",
+                        "primary": "#ffffff",
+                        "secondary": "#3F4254",
+                        "success": "#ffffff",
+                        "info": "#ffffff",
+                        "warning": "#ffffff",
+                        "danger": "#ffffff",
+                        "light": "#464E5F",
+                        "dark": "#ffffff"
+                    }
+                },
+                "gray": {
+                    "gray-100": "#F3F6F9",
+                    "gray-200": "#EBEDF3",
+                    "gray-300": "#E4E6EF",
+                    "gray-400": "#D1D3E0",
+                    "gray-500": "#B5B5C3",
+                    "gray-600": "#7E8299",
+                    "gray-700": "#5E6278",
+                    "gray-800": "#3F4254",
+                    "gray-900": "#181C32"
+                }
+            },
+            "font-family": "Poppins"
+        };
+
+    </script>
+    <script>
+        var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+
+    </script>
+    <script>document.write('<script src="/Scripts/assets/plugins/global/plugins.bundle.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/Scripts/assets/plugins/crud/datatables/search-options/advanced-search.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/Scripts/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/Scripts/assets/plugins/custom/datatables/datatables.bundle.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/Scripts/assets/plugins/custom/prismjs/prismjs.bundle.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+
+    <script>document.write('<script src="/Scripts/assets/js/scripts.bundle.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/Scripts/assets/js/pages/widgets.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/Scripts/assets/js/pages/Crud/Forms/Validation/form-controls.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/Scripts/assets/js/pages/Crud/Forms/Validation/form-widgets.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/Scripts/assets/js/pages/Crud/Forms/widgets/bootstrap-maxlength.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/Scripts/assets/js/pages/features/miscellaneous/toastr.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/Scripts/assets/js/pages/features/miscellaneous/bootstrap-notify.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/Scripts/assets/js/pages/custom/user/add-user.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/Scripts/assets/js/pages/custom/user/edit-user.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+
+
+    <script>document.write('<script src="/App/General/FooterController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/General/MenuController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/General/AppController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+
+    <!-- TRANSMISSION CONTROLLER -->
+    <script>document.write('<script src="/App/Controllersjs/Transmission/TransMultirisqueProController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Transmission/TransAutoController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Transmission/TransHabitatController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Transmission/TransIndividuelAccidentController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Transmission/TransVoyageController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Transmission/TransAuxiliaireController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Transmission/TransGesaController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Transmission/TransPharmacienController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Transmission/TransRespoCivileController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Transmission/TransTransportMarchandiseController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+
+    <!-- VALIDATION CONTROLLER -->
+    <script>document.write('<script src="/App/Controllersjs/Validation/ValidMultirisqueProController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Validation/ValidAutoController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Validation/ValidAuxiliaireController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Validation/ValidGesaController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Validation/ValidHabitatController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Validation/ValidIndividuelAccidentController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Validation/ValidPharmacienController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Validation/ValidRespoCivileController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Validation/ValidTransportMarchandiseController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Validation/ValidVoyageController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+
+    <!-- OPERATION CONTROLLER -->
+    <script>document.write('<script src="/App/Controllersjs/Operation/OperationController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+
+    <!-- RELANCE CONTROLLER -->
+    <script>document.write('<script src="/App/Controllersjs/Relance/RelanceController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+
+    <!-- TIERS CONTROLLER -->
+    <script>document.write('<script src="/App/Controllersjs/Tiers/TiTiersController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Tiers/SituationTiersController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Tiers/GroupeTiersController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Tiers/SituationTiersController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Tiers/EditionTiersController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Tiers/CommerciauxController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Tiers/ListeCommandesController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Tiers/SituationDesAssureursController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Tiers/SituationDesCommerciauxController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Tiers/prospectController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Tiers/SaisieAssureurController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+
+    <!-- ASSURANCE CONTROLLER -->
+   
+    <script>document.write('<script src="/App/Controllersjs/Assurances/HabitatController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/MultirisqueImmeubleController.js?version=' + Math.floor(Math.random() * 100) + '"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/MultirisqueProfessionnelController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/VoyageController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/AutoController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/SanteController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/IndividuelAccidentController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/ResponsabiliteCivileController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/SantePharmacienController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/SanteAuxiliaireController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/TransportetMarchandiseController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/AssuranceGESAController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/ChequeController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/OuvertureDossierController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/ClotureDossierController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/TransmissionDossierController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/ValidationDossierController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/SuiviDossierController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/SuiviClientController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/SaisieRDVClientController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/SaisieEcheancierController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/ConsultationReglementController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/ReleveCommissionController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/ConsultationsQuestionnairesController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/RemiseDeChequeController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/EditionAssuranceController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/DemandeContratController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Assurances/YafoloController.js?version=' + Math.floor(Math.random() * 100) + '"\><\/script>')</script>
+ 
+    <!-- REGLEMENT ASSURANCE CONTROLLER -->
+    <script>document.write('<script src="/App/Controllersjs/ReglementAssurance/ReglementAssuranceMPController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ReglementAssurance/ReglementAssuranceAutoController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ReglementAssurance/ReglementAssuranceAuxiliaireController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ReglementAssurance/ReglementAssuranceGesaController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ReglementAssurance/ReglementAssuranceHabitatController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ReglementAssurance/ReglementAssuranceIndividuelAccidentController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ReglementAssurance/ReglementAssurancePharmacienController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ReglementAssurance/ReglementAssuranceRespoCivileController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ReglementAssurance/ReglementAssuranceTransportMarchandiseController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ReglementAssurance/ReglementAssuranceVoyageController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+
+    <!-- GESTION CONTROLLER -->
+    <script>document.write('<script src="/App/Controllersjs/Gestion/CommissionCommerciauxController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/ReleveCommissionController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/ReleveClientController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/ReglementChequeController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/RemiseChequeController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/ReglementCommissionAssuranceController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/ReglementFactureClientController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/ApprovisionnementStockController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/VentesController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/SaisieEcritureComptableController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/OpTresorerieTiersController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/ExtourneController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/ArticlesEtPrestationsController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/EditionComptabiliteController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/EditionArticlesEtPrestationsController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/OperationsCaisseController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/EditionStockController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/EditionTresorerieController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/EcritureAutoTiersController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/ConsultationController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Gestion/ReeditionController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+
+    <!-- OPERATEUR CONTROLLER-->
+    <script>document.write('<script src="/App/Controllersjs/Operateur/DroitAutreOperationTiersController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Operateur/DroitOperationTresorerieEtAutreEcritureController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Operateur/DroitSurCompteController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script> 
+    <script>document.write('<script src="/App/Controllersjs/Operateur/DroitSurOperationTresorerieTiersController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script> 
+    <script>document.write('<script src="/App/Controllersjs/Operateur/ModificationEntrepotController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Operateur/DroitSurMenuController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Operateur/OperateurController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Operateur/DroitAgenceController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Operateur/DroitEntrepotController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Operateur/DroitTransfertStockController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/Operateur/DroitFamilleOperationController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+
+    <!-- OUTILS ET SECURITES CONTROLLER-->
+    <script>document.write('<script src="/App/Controllersjs/OutilsEtSecurites/CreationExerciceController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/OutilsEtSecurites/CreationJrneeTravailController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/OutilsEtSecurites/EditionOutilsSecuriteController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/OutilsEtSecurites/FermetureJrneeTravailController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/OutilsEtSecurites/MotDePasseController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/OutilsEtSecurites/ProfilsController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/OutilsEtSecurites/NewDateJourTravailController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/OutilsEtSecurites/DroitAgenceProfilsController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/OutilsEtSecurites/DroitEntrepotProfilsController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/OutilsEtSecurites/DroitFamOperationProfilsController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/OutilsEtSecurites/DroitMenuProfilsController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/OutilsEtSecurites/DroitTransfertStockProfilsController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    
+<!-- PARAMETRE I CONTROLLER -->
+    @*<script>document.write('<script src="/App/Controllersjs/ParametreI/EditionParametreController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>*@
+    <script>document.write('<script src="/App/Controllersjs/ParametreI/ParametreIController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ParametreI/ExpertNommeController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ParametreI/MarqueController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ParametreI/BanqueAgenceController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <!-- PARAMETRE II CONTROLLER -->
+    <script>document.write('<script src="/App/Controllersjs/ParametreII/EditionParametreIIController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ParametreII/ParametrageOperationsController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ParametreII/parametrageComptesProduitsController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ParametreII/parametrageAutreOperationDesTiersController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ParametreII/Parametre2Controller.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ParametreII/FamilleDeBiensImmobilisesController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ParametreII/ParametresBudgetController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ParametreII/ParametresDetailsDuTypeDeBudgetController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ParametreII/ParametresposteBudgetaireController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    <script>document.write('<script src="/App/Controllersjs/ParametreII/ParametresFamilleAmortissementController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    
+    <!-- RENOUVELLEMENT CONTROLLER -->
+    <script>document.write('<script src="/App/Controllersjs/Renouvellement/RenouvellementController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+    
+ 
+
+    <script>document.write('<script src="/App/Controllersjs/MenuGauche/GererMenuController.js?version='+Math.floor(Math.random()*100)+'"\><\/script>')</script>
+</body>
+
+</html>

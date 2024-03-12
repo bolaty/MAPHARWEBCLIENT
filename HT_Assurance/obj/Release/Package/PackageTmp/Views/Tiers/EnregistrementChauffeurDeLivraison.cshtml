@@ -1,0 +1,752 @@
+﻿@{
+    ViewBag.Title = "Chauffeur De Livraison";
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background-color: beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h3 class="text-dark font-weight-bold my-1 mr-5">GESTION</h3>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Tiers</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Enregistrement</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Chauffeur De Livraison</a>
+                        </li>
+
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #F5F500;">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-shuttle-van icon-xl text-dark"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Chauffeur De Livraison</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <h3 class="h4 text-dark-75">IDENTITE:</h3>
+                                                <div class="mb-2">
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-9">
+                                                            <div class="row">
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <label>Opérateur</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="fas fa-user-tie text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <select class="form-control" name="option">
+                                                                                <option value="">Sélectionnez un opérateur</option>
+                                                                                <option>ABC</option>
+                                                                                <option>2</option>
+                                                                                <option>3</option>
+                                                                                <option>4</option>
+                                                                                <option>5</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez sélectionnez un opérateur.</span>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label>Numéro du Tiers</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control datatable-input" placeholder="Entrer le numéro du tiers" data-col-index="1" />
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez saisir un numéro du tiers.</span>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label>Dénomination*</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="fas fa-user-alt text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control" name="url" placeholder="Entrer la Dénomination" />
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez saisir la Dénomination.</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <label>Siège</label>
+                                                                        <input type="text" class="form-control datatable-input" placeholder="Entrer le siège" data-col-index="0" />
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label>Description *</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="fas fa-marker text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control" placeholder="Entrer une description">
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez saisir la description.</span>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label> Sexe</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="fas fa-restroom text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <select class="form-control" name="option">
+                                                                                <option value="">Sélectionnez le sexe</option>
+                                                                                <option>HOMME</option>
+                                                                                <option>FEMME</option>
+                                                                                <option>PERSONNE MORALE</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez sélectionnez un sexe.</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <label>Type du tiers</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="far fa-user text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <select class="form-control" name="option">
+                                                                                <option value="">CLIENT</option>
+                                                                                <option>Enseignant</option>
+                                                                                <option>Informaticien</option>
+                                                                                <option>Medecin</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez sélectionnez le type du tiers.</span>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label>Date de naissance</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="fas fa-calendar text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control datatable-input" placeholder="02/01/2020">
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez saisir la date de naissance.</span>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label>Nature tiers*</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="far fa-question-circle text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <select class="form-control" name="option">
+                                                                                <option value="">Sélectionner la nature tiers</option>
+                                                                                <option>nature 1</option>
+                                                                                <option>nature 2</option>
+                                                                                <option>nature 3</option>
+                                                                                <option>nature 4</option>
+                                                                                <option>nature 5</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez selectionner une nature tiers</span>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                                
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="row">
+                                                                <div class="col-lg-12 col-xl-12">
+                                                                    <div class="image-input image-input-outline" id="kt_user_add_avatar">
+                                                                        <div class="image-input-wrapper-image" style="background-image: url(/Content/assets/media/users/100_6.jpg)"></div>
+                                                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                                                            <i class="fa fa-pen icon-sm text-muted"></i>
+                                                                            <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
+                                                                            <input type="hidden" name="profile_avatar_remove" />
+                                                                        </label>
+                                                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                                                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <button class="btn btn-primary" id="kt_reset">
+                                                                        <span>
+                                                                            <i class="la"></i>
+                                                                            <span>Inserer photo</span>
+                                                                        </span>
+                                                                    </button>
+
+                                                                    <button class="btn btn-outline-warning" id="kt_reset">
+                                                                        <span>
+                                                                            <i class="la la-close"></i>
+                                                                            <span>Annuler</span>
+                                                                        </span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="mb-2">
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-9">
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <label>TVA</label>
+                                                                        <select class="form-control" name="option">
+                                                                            <option value="">Sélectionnez le TVA</option>
+                                                                            <option>NON</option>
+                                                                            <option>2</option>
+                                                                            <option>3</option>
+                                                                        </select>
+                                                                        <span class="form-text text-muted">Veuillez sélectionnez un TVA.</span>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label>ASDI</label>
+                                                                        <select class="form-control" name="option">
+                                                                            <option value="">Sélectionnez l'ASDI</option>
+                                                                            <option>NON</option>
+                                                                            <option>2</option>
+                                                                            <option>3</option>
+                                                                        </select>
+                                                                        <span class="form-text text-muted">Veuillez sélectionnez unASDI.</span>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label>Plafond crédit</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class=" flaticon flaticon2-chart text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control datatable-input" placeholder="20000000" data-col-index="0" />
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez saisir un plafond .</span>
+                                                                    </div>
+                                                                </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4">
+                                                                            <label>Type cpte add</label>
+                                                                            <select class="form-control" name="option">
+                                                                                <option value="">Sélectionnez le type cpte add</option>
+                                                                                <option>NON</option>
+                                                                                <option>2</option>
+                                                                                <option>3</option>
+                                                                            </select>
+                                                                            <span class="form-text text-muted">Veuillez sélectionnez un type cpte add.</span>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <label>N° compte</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i class="fab fa-orcid text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input type="text" class="form-control datatable-input" placeholder="Entrer le numéro de cpte">
+                                                                            </div>
+                                                                            <span class="form-text text-muted">Veuillez sélectionnez un numéro de cpte.</span>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <label>N°CC</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i class="fab fa-orcid text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input type="text" class="form-control datatable-input" placeholder="Entrer le numéro CC">
+                                                                            </div>
+                                                                            <span class="form-text text-muted">Veuillez sélectionnez un numéro CC.</span>
+                                                                        </div>
+                                                                    </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <label>Gérant</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="flaticon2-user-outline-symbol text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control datatable-input" placeholder="Entrer le nom du gérant" data-col-index="4" />
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez saisir un gérant.</span>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label>Secteur d'activité</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="flaticon2-shelter text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <select class="form-control" name="option">
+                                                                                <option value="">Sélectionnez un secteur d'activité</option>
+                                                                                <option>Activité immobilière</option>
+                                                                                <option>2</option>
+                                                                                <option>3</option>
+                                                                                <option>4</option>
+                                                                                <option>5</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez sélectionnez un secteur d'activité.</span>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label>Cas d'utilisation</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="flaticon2 text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <select class="form-control" name="option">
+                                                                                <option value="">Sélectionnez le cas d'utilisation</option>
+                                                                                <option>Activité immobilière</option>
+                                                                                <option>2</option>
+                                                                                <option>3</option>
+                                                                                <option>4</option>
+                                                                                <option>5</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez sélectionnez un cas d'utilisation.</span>
+                                                                    </div>   
+                                                                </div>                                                            
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 col-xl-12">
+                                                                        <div class="image-input image-input-outline" id="kt_user_add_avatar">
+                                                                            <div class="image-input-wrapper-image" style="background-image:"></div>
+                                                                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                                                                <i class="fa fa-pen icon-sm text-muted"></i>
+                                                                                <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
+                                                                                <input type="hidden" name="profile_avatar_remove" />
+                                                                            </label>
+                                                                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                                                                <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <button class="btn btn-primary" id="kt_reset">
+                                                                            <span>
+                                                                                <i class="la"></i>
+                                                                                <span>Inserer signature</span>
+                                                                            </span>
+                                                                        </button>
+                                                                        <button class="btn btn-outline-warning" id="kt_reset">
+                                                                            <span>
+                                                                                <i class="la la-close"></i>
+                                                                                <span>Annuler</span>
+                                                                            </span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <label>N° Agrement</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fab fa-orcid text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" class="form-control datatable-input" placeholder="Entrer le numéro numéro d'agrement">
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez sélectionnez un numéro d'agrement.</span>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>Régime d'imposition</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="flaticon2 text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select class="form-control" name="option">
+                                                            <option value="">Sélectionnez le régime d'imposition</option>
+                                                            <option>Activité immobilière</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                        </select>
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez sélectionnez un régime d'imposition.</span>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>Spécialité</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="flaticon2 text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select class="form-control" name="option">
+                                                            <option value="">Sélectionnez la spécialité</option>
+                                                            <option>Activité immobilière</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                        </select>
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez sélectionnez une spécialité.</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label>Pays*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-globe-africa text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select class="form-control" name="option">
+                                                            <option value="">Sélectionner un pays</option>
+                                                            <option>pays 1</option>
+                                                            <option>pays 2</option>
+                                                            <option>pays 3</option>
+                                                            <option>pays 4</option>
+                                                            <option>pays 5</option>
+                                                        </select>
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez saisir le pays.</span>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label>Ville*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-map-marker-alt text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select class="form-control" name="option">
+                                                            <option value="">Sélectionner une ville</option>
+                                                            <option>ville 1</option>
+                                                            <option>ville 2</option>
+                                                            <option>ville 3</option>
+                                                            <option>ville 4</option>
+                                                            <option>ville 5</option>
+                                                        </select>
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez saisir la ville.</span>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label>Groupe des tiers*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-users text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select class="form-control" name="option">
+                                                            <option value="">Sélectionner un groupe</option>
+                                                            <option>Groupe 1</option>
+                                                            <option>Groupe 2</option>
+                                                            <option>Groupe 3</option>
+                                                            <option>Groupe 4</option>
+                                                            <option>Groupe 5</option>
+                                                        </select>
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez saisir le groupe.</span>
+                                                </div>
+                                                <br /><br />
+                                                <label class="checkbox checkbox-lg checkbox-primary ">
+                                                    <input type="checkbox" value="" />
+                                                    <span class="form-text text-muted"></span>
+                                                    <label>Autorisation d'escompte</label>
+                                                </label>
+                                            </div>
+                                            <br />
+                                            <div class="separator separator-dashed separator-success"></div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="mb-3">
+                                                            <div class="h4 text-dark-75">Adresse et Contact :</div><br />
+                                                            <div class="mb-2">
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <label>Téléphone</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="fas fa-phone-alt text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un téléphone de l'interlocuteur">
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez saisir le  téléphone de l'interlocuteur .</span>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label>Site Web</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="fas fa-globe text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control" name="url" placeholder="Entrer le site web">
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez saisir le  site web .</span>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label>Fax</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="fas fa-tty text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control" name="url" placeholder="Entrer le fax">
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez saisir le fax .</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <label>E-mail</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="flaticon2-email text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control datatable-input" placeholder="Entrer l'e-mail">
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez saisir  l'e-mail.</span>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label>Adresse postale</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="fas fa-map text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control" name="url" placeholder="Entrer une adresse postale" />
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez saisir l'adresse postale.</span>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <label>Localisation</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="fas fa-map text-info"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control" name="url" placeholder="Entrer une localisation" />
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Veuillez saisir  localisation.</span>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--begin::Code example example-highlight  -->
+                                            <div class="mt-10  example-code">
+                                                <div class="p-3 bg-light rounded-card">
+                                                    <div class="">
+                                                        <div class="card card-custom mb-3">
+                                                            <div class="card-body">
+                                                                <!--begin: Datatable-->
+                                                                <div class="row bg-white">
+                                                                    <div class="col-12 ">
+                                                                        <table class="table table-bordered table-checkable" id="kt_datatable">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>LIBELLE SOUS CATEGORIE</th>
+                                                                                    <th>EVENEMENTS ASSURES</th>
+                                                                                    <th>CAPITAUX ASSURES</th>
+                                                                                    <th>PRIMES</th>
+                                                                                    <th>APRES REDUCTION</th>
+                                                                                    <th>PRORATA</th>
+                                                                                    <th>FRANCHISES</th>
+                                                                                    <th>ACTIONS</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>1</td>
+                                                                                    <td>64616-103</td>
+                                                                                    <td>Brazil</td>
+                                                                                    <td>São Félix do Xingu</td>
+                                                                                    <td>698 Oriole Pass</td>
+                                                                                    <td>Hayes Boule</td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>2</td>
+                                                                                    <td>54868-3377</td>
+                                                                                    <td>Vietnam</td>
+                                                                                    <td>Bình Minh</td>
+                                                                                    <td>8998 Delaware Court</td>
+                                                                                    <td>Humbert Bresnen</td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>3</td>
+                                                                                    <td>0998-0355</td>
+                                                                                    <td>Philippines</td>
+                                                                                    <td>Palagao Norte</td>
+                                                                                    <td>91796 Sutteridge Road</td>
+                                                                                    <td>Jareb Labro</td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </tr>
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                                <!--end: Datatable-->
+                                                            </div>
+                                                        </div>
+                                                        <div class="card card-custom ">
+                                                            <div class="card-body">
+                                                                <!--begin: Datatable-->
+                                                                <div class="row bg-white">
+                                                                    <div class="col-12 ">
+                                                                        <table class="table table-bordered table-checkable" id="kt_datatable">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>LIBELLE </th>
+                                                                                    <th>CAPITAUX ASSURES</th>
+                                                                                    <th>PRIMES</th>
+                                                                                    <th>APRES REDUCTION</th>
+                                                                                    <th>PRORATA</th>
+                                                                                    <th>FRANCHISES</th>
+                                                                                    <th>ACTIONS</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>1</td>
+                                                                                    <td>64616-103</td>
+                                                                                    <td>Brazil</td>
+                                                                                    <td>São Félix do Xingu</td>
+                                                                                    <td>698 Oriole Pass</td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>2</td>
+                                                                                    <td>54868-3377</td>
+                                                                                    <td>Vietnam</td>
+                                                                                    <td>Bình Minh</td>
+                                                                                    <td>8998 Delaware Court</td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </tr>
+
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                                <!--end: Datatable-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-8">
+                                    <div class="col-lg-12">
+                                        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold">
+                                            <span>
+                                                <i class="far fa-check-circle"></i>
+                                                <span>Enregistrer</span>
+                                            </span>
+                                        </button>
+                                        <button type="submit" class="btn btn-light-success font-weight-bold">
+                                            <span>
+                                                <i class="fas fa-undo"></i>
+                                                <span>Réinitialiser</span>
+                                            </span>
+                                        </button>
+                                        <a href="ChauffeurDeLivraison" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip" data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+                                            <i class="fas fa-arrow-left"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!--end::Code example-->
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

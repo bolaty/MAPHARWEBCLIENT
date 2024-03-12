@@ -1,0 +1,1014 @@
+﻿<!--begin::Form-->
+<form class="form" id="formAddOuvertureDSPf" ng-show="etatFormAutre != '06'">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10"><strong>INFORMATIONS DU
+                            SINISTRE</strong>
+                    </h3><br>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <h6><strong style="color: DarkSlateBlue">IDENTIFICATION DE CONTRAT</strong></h6>
+                                    <strong style="font-size: 13px; font-family: 'Maiandra GD'">N° CONTRAT</strong> :
+                                      {{collectionContartOp.CA_CODECONTRAT}}  <br>
+                                    <strong style="font-size: 13px; font-family: 'Maiandra GD'">RISQUE</strong> :
+                                      {{collectionContartOp.RQ_LIBELLERISQUE}}   <br>
+                                    <strong style="font-size: 13px; font-family: 'Maiandra GD'">N° WHATSAPP</strong> :
+                                      {{collectionContartOp.TI_NUMWHATSAPP}}<br>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h6><strong style="color: DarkSlateBlue">IDENTIFICATION DE ASSURE</strong></h6>
+                                    <strong style="font-size: 13px; font-family: 'Maiandra GD'">NOM PRENOM</strong> :
+                                    {{collectionContartOp.TI_DENOMINATION}}  <br>
+                                    <strong style="font-size: 13px; font-family: 'Maiandra GD'">N° TELEPHONE</strong> :
+                                    {{collectionContartOp.TI_TELEPHONE}} <br>
+                                    <strong style="font-size: 13px; font-family: 'Maiandra GD'">EMAIL</strong> :
+                                    {{collectionContartOp.TI_EMAIL}} <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>     
+                    <br>
+                    <div class="mb-2">
+                        <h6><strong style="color: DarkSlateBlue">CIRCONSTANCE DE L' ACCIDENT</strong></h6><br>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Nature du sinistre*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-question-circle text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" name="addOuvertureDSP_natureSinitre"
+                                        ng-model="FormAddOuvertureDSP.NatSinistre"
+                                        ng-init="afficheListeSinistreOuvertureDSP()" id="idNatureSinistre">
+                                        <option value="">Sélectionner nature sinistre</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-repeat="laNatSi in listeDesSinistreOuvertureDSP"
+                                            value="{{laNatSi.NS_CODENATURESINISTRE}}">
+                                            {{laNatSi.NS_LIBELLENATURESINISTRE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddOuvertureDSP.NatSinistre == laNatSi.NS_CODENATURESINISTRE"
+                                            ng-repeat="laNatSi in listeDesSinistreOuvertureDSP"
+                                            value="{{laNatSi.NS_CODENATURESINISTRE}}">
+                                            {{laNatSi.NS_LIBELLENATURESINISTRE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Date*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDate" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_date" placeholder="Entrer une date"
+                                        ng-model="FormAddOuvertureDSP.Date"
+                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                        maxlength="10" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Heure*</label>
+                                <div class="input-daterange input-group">
+                                    <input type="text" class="form-control datatable-input"
+                                        name="addOuvertureDSP_temps_heure" placeholder="Heure" data-col-index="5"
+                                        ng-model="FormAddOuvertureDSP.heure" maxlength="2" id="idTempsHeure"
+                                        ng-pattern="/^[0-9]{2}$/" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="far fa-clock text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control datatable-input"
+                                        name="addOuvertureDSP_temps_minute" placeholder="Minute" data-col-index="5"
+                                        ng-model="FormAddOuvertureDSP.minute" maxlength="2" id="idTempsMinute"
+                                        ng-pattern="/^[0-9]{2}$/" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <!--<div class="col-lg-6">
+                                <label>N° sinistre</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addOuvertureDSP_numSinitre"
+                                        placeholder="Entrer un numéro" ng-model="FormAddOuvertureDSP.SinistreN"
+                                        id="idNumSinistre" maxlength="8" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Montant préjudice</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-money-bill text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idMontant" maxlength="12" type="text" class="form-control"
+                                        name="addOuvertureDSP_montPrejudice" placeholder="Entrer le montant préjudice"
+                                        ng-model="FormAddOuvertureDSP.MontantPrej" ng-pattern="/^[0-9]{1,12}$/" />
+                                </div>
+                            </div>-->
+                            <div class="col-lg-6">
+                                <label>Conducteur</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-money-bill text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idnomcondcteur" maxlength="12" type="text" class="form-control"
+                                        name="addOuvertureDSP_nomcondcteur" placeholder="Entrer nom du Conducteur"
+                                        ng-model="FormAddOuvertureDSP.nomcondcteur"  />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Commentaire*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <textarea class="form-control" name="addOuvertureDSP_description"
+                                        placeholder="Entrer un Commentaire"
+                                        ng-model="FormAddOuvertureDSP.DescriptionSinistre" id="idDescription"
+                                        maxlength="500"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-3">
+                                <label>Pays*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-globe-africa text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" name="addOuvertureDSP_pays"
+                                        ng-model="FormAddOuvertureDSP.Pays" id="idPays">
+                                        <option value="">Sélectionner un pays</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-selected="FormAddOuvertureDSP.Pays == lePays.PY_CODEPAYS"
+                                            ng-repeat="lePays in listeDesPaysOuvertureDSP"
+                                            value="{{lePays.PY_CODEPAYS}}"
+                                            ng-click="afficheListeVille(FormAddOuvertureDSP.Pays)">{{lePays.PY_LIBELLE}}
+                                        </option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddOuvertureDSP.Pays == lePays.PY_CODEPAYS"
+                                            ng-repeat="lePays in listeDesPaysOuvertureDSP"
+                                            value="{{lePays.PY_CODEPAYS}}"
+                                            ng-click="afficheListeVille(FormAddOuvertureDSP.Pays)">{{lePays.PY_LIBELLE}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Ville*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-map-marker-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" name="addOuvertureDSP_ville"
+                                        ng-model="FormAddOuvertureDSP.Ville" id="idVille" ng-disabled="verouVille">
+                                        <option value="">Sélectionner une ville</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="laVille in listeDesVilles"
+                                            ng-selected="FormAddOuvertureDSP.Ville == laVille.VL_CODEVILLE"
+                                            value="{{laVille.VL_CODEVILLE}}"
+                                            ng-click="afficheListeCommune(FormAddOuvertureDSP.Ville)">
+                                            {{laVille.VL_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddOuvertureDSP.Ville == laVille.VL_CODEVILLE"
+                                            ng-repeat="laVille in listeDesVilles" value="{{laVille.VL_CODEVILLE}}"
+                                            ng-click="afficheListeCommune(FormAddOuvertureDSP.Ville)">
+                                            {{laVille.VL_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Commune*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-map-pin text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" name="addOuvertureDSP_commune"
+                                        ng-model="FormAddOuvertureDSP.Commune" id="idCommune"
+                                        ng-disabled="verouCommune">
+                                        <option value="">Sélectionner la commune</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="laCommune in listeDesCommunes"
+                                            value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddOuvertureDSP.Commune == laCommune.CO_CODECOMMUNE"
+                                            ng-repeat="laCommune in listeDesCommunes"
+                                            value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Adresse géographique*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-map text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idAdresseGeo" type="text" class="form-control"
+                                        name="addOuvertureDSP_adresseGeo" ng-model="FormAddOuvertureDSP.AdresseGeo"
+                                        placeholder="Entrer une adresse géographique" ng-pattern="/^[a-z-A-Z]/"
+                                        maxlength="150">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <h6><strong style="color: DarkSlateBlue">IDENTIFICATION COMPLEMENTAIRE</strong></h6><br>
+        <div class="form-group row" style="padding-left: 350px; ">
+            <div class="col-lg-2">
+                <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px">
+                    <input type="checkbox" ng-click="testval(FormAddbtnsinistre.Police)"
+                        ng-checked="COCHE(FormAddbtnsinistre.Police)"
+                        ng-model="FormAddbtnsinistre.Police" />
+                    <span class="form-text text-muted"></span>
+                </label>
+                <label style="position: relative; top: 10px; left: 53px;">Police
+                    </label>
+            </div>
+            <div class="col-lg-2">
+                <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px">
+                    <input type="checkbox" ng-click="testval1(FormAddbtnsinistre.Gendarmerie)"
+                        ng-checked="COCHE1(FormAddbtnsinistre.Gendarmerie)"
+                        ng-model="FormAddbtnsinistre.Gendarmerie" />
+                    <span class="form-text text-muted"></span>
+                </label>
+                <label style="position: relative; top: 10px; left: 53px;">Gendarmerie
+                    </label>
+            </div>
+            <div class="col-lg-2">
+                <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px">
+                    <input type="checkbox" ng-click="testval2(FormAddbtnsinistre.Huissier)"
+                        ng-checked="COCHE2(FormAddbtnsinistre.Huissier)"
+                        ng-model="FormAddbtnsinistre.Huissier" />
+                    <span class="form-text text-muted"></span>
+                </label>
+                <label style="position: relative; top: 10px; left: 53px;">Huissier
+                   </label>
+            </div><br>
+           
+            <div class="col-lg-6">
+                <label>Contact*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-map text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idContact" type="text" class="form-control"
+                        name="addOuvertureDSP_Contact" ng-model="FormAddOuvertureDSP.Contact"
+                        placeholder="Entrer un Contact" 
+                        maxlength="15">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+            ng-click="validerOuvertureDossier()">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <button ng-show="etatForm !== '2'" type="reset" id="kt_notify" class="btn btn-light-success font-weight-bold"
+            ng-click="resetFormAddOuvertureDSP()">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a href="#/assurances/operation/multirisque-pro/liste/ouverture-dossier"
+            class="btn btn-icon btn-light-dark mr-2" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+<!--end::Form-->
+<!--begin::Form-->
+<form class="form" id="formAddOuvertureDSPf" ng-show="etatFormAutre == '06'">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10"><strong>INFORMATIONS DU
+                            SINISTRE</strong>
+                    </h3><br>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <h6><strong style="color: DarkSlateBlue">IDENTIFICATION DE CONTRAT</strong></h6>
+                                    <strong style="font-size: 13px; font-family: 'Maiandra GD'">N° CONTRAT</strong> :
+                                      {{collectionContartOp.CA_CODECONTRAT}}  <br>
+                                    <strong style="font-size: 13px; font-family: 'Maiandra GD'">RISQUE</strong> :
+                                      {{collectionContartOp.RQ_LIBELLERISQUE}}   <br>
+                                    <strong style="font-size: 13px; font-family: 'Maiandra GD'">N° WHATSAPP</strong> :
+                                      {{collectionContartOp.TI_NUMWHATSAPP}}<br>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h6><strong style="color: DarkSlateBlue">IDENTIFICATION DE ASSURE</strong></h6>
+                                    <strong style="font-size: 13px; font-family: 'Maiandra GD'">NOM PRENOM</strong> :
+                                    {{collectionContartOp.TI_DENOMINATION}}  <br>
+                                    <strong style="font-size: 13px; font-family: 'Maiandra GD'">PROFESSION</strong> :
+                                    {{collectionContartOp.TI_DENOMINATION}}  <br>
+                                    <strong style="font-size: 13px; font-family: 'Maiandra GD'">N° TELEPHONE</strong> :
+                                    {{collectionContartOp.TI_TELEPHONE}} <br>
+                                    <strong style="font-size: 13px; font-family: 'Maiandra GD'">EMAIL</strong> :
+                                    {{collectionContartOp.TI_EMAIL}}<br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>     
+                    <br>
+                    <div class="mb-2">
+                        <h6><strong style="color: DarkSlateBlue">IDENTIFICATION CONDUCTEUR</strong></h6><br>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Nom et Prenom*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idConducteur" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_Conducteur" placeholder="Entrer un Nom et Prenom"
+                                        ng-model="FormAddOuvertureDSP.Conducteur"
+                                       
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Numero Telephone*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNumeroTelephone" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_NumeroTelephone" placeholder="Entrer un NumeroTelephone"
+                                        ng-model="FormAddOuvertureDSP.NumeroTelephone"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Numero WhatsApp*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNumeroWhatsApp" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_NumeroWhatsApp" placeholder="Entrer une Numero WhatsApp"
+                                        ng-model="FormAddOuvertureDSP.NumeroWhatsApp"
+                                       
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4" style="margin-top: 25px;">
+                                <label>Date Naissance*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDateNaissance" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_DateNaissance" placeholder="Entrer une Date Naissance"
+                                        ng-model="FormAddOuvertureDSP.DateNaissance"
+                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                        maxlength="10" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4" style="margin-top: 25px;">
+                                <label>Numero Permis*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNumeroPermis" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_NumeroPermis" placeholder="Entrer une Numero Permis"
+                                        ng-model="FormAddOuvertureDSP.NumeroPermis"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4" style="margin-top: 25px;">
+                                <label>Délivré le*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDelivrele" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_Delivrele" placeholder="Entrer une date"
+                                        ng-model="FormAddOuvertureDSP.Delivrele"
+                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                        maxlength="10" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4" style="margin-top: 25px;">
+                                <label>Validité*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idValidite" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_Validite" placeholder="Entrer une Validite"
+                                        ng-model="FormAddOuvertureDSP.Validite"
+                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                        maxlength="10" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <h6><strong style="color: DarkSlateBlue">IDENTIFICATION VEHICULE ASSURER</strong></h6><br>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Marque*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idMarque" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_Marque" placeholder="Entrer une Marque"
+                                        ng-model="FormAddOuvertureDSP.Marque"
+                                       
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Immatriculation*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idImmatriculation" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_Immatriculation" placeholder="Entrer une Immatriculation"
+                                        ng-model="FormAddOuvertureDSP.Immatriculation"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <h6><strong style="color: DarkSlateBlue">DOMMAGES AU VEHICULE</strong></h6><br>
+        <div class="form-group row">
+            <div class="col-lg-2">
+                <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px">
+                    <input type="checkbox" ng-click="testval4(FormAddbtnsinistre.AilearriereDroit)"
+                        ng-checked="COCHE4(FormAddbtnsinistre.AilearriereDroit)"
+                        ng-model="FormAddbtnsinistre.AilearriereDroit" />
+                    <span class="form-text text-muted"></span>
+                </label>
+                <label style="position: relative; top: 10px; left: 53px;">Aile arriere Droit
+                    </label>
+            </div>
+            <div class="col-lg-2">
+                <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px">
+                    <input type="checkbox" ng-click="testval5(FormAddbtnsinistre.AilearriereGauche)"
+                        ng-checked="COCHE5(FormAddbtnsinistre.AilearriereGauche)"
+                        ng-model="FormAddbtnsinistre.AilearriereGauche" />
+                    <span class="form-text text-muted"></span>
+                </label>
+                <label style="position: relative; top: 10px; left: 53px;">Aile arriere Gauche
+                    </label>
+            </div>
+            <div class="col-lg-2">
+                <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px">
+                    <input type="checkbox" ng-click="testval6(FormAddbtnsinistre.Parechocavant)"
+                        ng-checked="COCHE6(FormAddbtnsinistre.Parechocavant)"
+                        ng-model="FormAddbtnsinistre.Parechocavant" />
+                    <span class="form-text text-muted"></span>
+                </label>
+                <label style="position: relative; top: 10px; left: 53px;">Pare-choc avant
+                   </label>
+            </div><br>
+            <div class="col-lg-2">
+                <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px">
+                    <input type="checkbox" ng-click="testval7(FormAddbtnsinistre.Parechocarriere)"
+                        ng-checked="COCHE7(FormAddbtnsinistre.Parechocarriere)"
+                        ng-model="FormAddbtnsinistre.Parechocarriere" />
+                    <span class="form-text text-muted"></span>
+                </label>
+                <label style="position: relative; top: 10px; left: 53px;">Pare-choc arriere
+                    </label>
+            </div>
+            <div class="col-lg-2">
+                <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px">
+                    <input type="checkbox" ng-click="testval8(FormAddbtnsinistre.Lateraldroit)"
+                        ng-checked="COCHE8(FormAddbtnsinistre.Lateraldroit)"
+                        ng-model="FormAddbtnsinistre.Lateraldroit" />
+                    <span class="form-text text-muted"></span>
+                </label>
+                <label style="position: relative; top: 10px; left: 53px;">Lateral droit
+                    </label>
+            </div>
+            <div class="col-lg-2">
+                <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px">
+                    <input type="checkbox" ng-click="testval9(FormAddbtnsinistre.Lateralgauche)"
+                        ng-checked="COCHE9(FormAddbtnsinistre.Lateralgauche)"
+                        ng-model="FormAddbtnsinistre.Lateralgauche" />
+                    <span class="form-text text-muted"></span>
+                </label>
+                <label style="position: relative; top: 10px; left: 53px;">Lateral gauche
+                   </label>
+            </div>
+            <div class="col-lg-2" style="margin-top: 25px;">
+                <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px">
+                    <input type="checkbox" ng-click="testval10(FormAddbtnsinistre.Capotmoteur)"
+                        ng-checked="COCHE10(FormAddbtnsinistre.Capotmoteur)"
+                        ng-model="FormAddbtnsinistre.Capotmoteur" />
+                    <span class="form-text text-muted"></span>
+                </label>
+                <label style="position: relative; top: 10px; left: 53px;">Capot moteur
+                   </label>
+            </div><br>
+            <div class="col-lg-6" style="margin-top: 25px;">
+                <label>Reparateur*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-map text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idReparateur" type="text" class="form-control"
+                        name="addOuvertureDSP_Reparateur" ng-model="FormAddOuvertureDSP.Reparateur"
+                        placeholder="Entrer une adresse géographique" 
+                        maxlength="15">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                   
+                    <div class="mb-2">
+                        <h6><strong style="color: DarkSlateBlue">DOMMAGE CORPORELS</strong></h6><br>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Nombre de blessés | vehicule assur *</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNombredeblessesvehiculeassur" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_Nombredeblessesvehiculeassur" placeholder="Entrer un Nom et Nombre de blesses vehicule assur"
+                                        ng-model="FormAddOuvertureDSP.Nombredeblessesvehiculeassur"
+                                       
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Nombre de décès | vehicule assur *</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNombrededecesvehiculeassur" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_Nombrededecesvehiculeassur" placeholder="Entrer un Nom et Nombre de deces vehicule assur"
+                                        ng-model="FormAddOuvertureDSP.Nombrededecesvehiculeassur"
+                                       
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Nombre de blessés | vehicule tiers *</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNombredeblessesvehiculetiers" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_Nombredeblessesvehiculetiers" placeholder="Entrer un Nom et Nombre de blesses vehicule tiers"
+                                        ng-model="FormAddOuvertureDSP.Nombredeblessesvehiculetiers"
+                                       
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6" style="margin-top: 25px;">
+                                <label>Nombre de décès | vehicule tiers *</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNombrededecesvehiculetiers" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_Nombrededecesvehiculetiers" placeholder="Entrer un Nom et Nombre de deces vehicule assur"
+                                        ng-model="FormAddOuvertureDSP.Nombrededecesvehiculetiers"
+                                       
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6" style="margin-top: 25px;">
+                                <label>Nom et contact des victimes*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <textarea class="form-control" name="addOuvertureDSP_Nometcontactdesvictime"
+                                    placeholder="Entrer un Commentaire"
+                                    ng-model="FormAddOuvertureDSP.Nometcontactdesvictime" id="idNometcontactdesvictime"
+                                    maxlength="10000"></textarea>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <h6><strong style="color: DarkSlateBlue">CIRCONSTANCE DE L' ACCIDENT</strong></h6><br>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Nature du sinistre*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-question-circle text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" name="addOuvertureDSP_natureSinitre"
+                                        ng-model="FormAddOuvertureDSP.NatSinistre"
+                                        ng-init="afficheListeSinistreOuvertureDSP()" id="idNatureSinistre">
+                                        <option value="">Sélectionner nature sinistre</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-repeat="laNatSi in listeDesSinistreOuvertureDSP"
+                                            value="{{laNatSi.NS_CODENATURESINISTRE}}">
+                                            {{laNatSi.NS_LIBELLENATURESINISTRE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddOuvertureDSP.NatSinistre == laNatSi.NS_CODENATURESINISTRE"
+                                            ng-repeat="laNatSi in listeDesSinistreOuvertureDSP"
+                                            value="{{laNatSi.NS_CODENATURESINISTRE}}">
+                                            {{laNatSi.NS_LIBELLENATURESINISTRE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Date*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDate" maxlength="10" type="text" class="form-control"
+                                        name="addOuvertureDSP_date" placeholder="Entrer une date"
+                                        ng-model="FormAddOuvertureDSP.Date"
+                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                        maxlength="10" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Heure*</label>
+                                <div class="input-daterange input-group">
+                                    <input type="text" class="form-control datatable-input"
+                                        name="addOuvertureDSP_temps_heure" placeholder="Heure" data-col-index="5"
+                                        ng-model="FormAddOuvertureDSP.heure" maxlength="2" id="idTempsHeure"
+                                        ng-pattern="/^[0-9]{2}$/" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="far fa-clock text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control datatable-input"
+                                        name="addOuvertureDSP_temps_minute" placeholder="Minute" data-col-index="5"
+                                        ng-model="FormAddOuvertureDSP.minute" maxlength="2" id="idTempsMinute"
+                                        ng-pattern="/^[0-9]{2}$/" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <div class="mb-2">
+                                    <div class="form-group row">
+                                        <!--<div class="col-lg-6">
+                                            <label>N° sinistre</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-key text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control" name="addOuvertureDSP_numSinitre"
+                                                    placeholder="Entrer un numéro" ng-model="FormAddOuvertureDSP.SinistreN"
+                                                    id="idNumSinistre" maxlength="8" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label>Montant préjudice</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-money-bill text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input id="idMontant" maxlength="12" type="text" class="form-control"
+                                                    name="addOuvertureDSP_montPrejudice" placeholder="Entrer le montant préjudice"
+                                                    ng-model="FormAddOuvertureDSP.MontantPrej" ng-pattern="/^[0-9]{1,12}$/" />
+                                            </div>
+                                        </div>-->
+                                       
+                                        <div class="col-lg-12">
+                                            <label>Commentaire*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-marker text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <textarea class="form-control" name="addOuvertureDSP_description"
+                                                    placeholder="Entrer un Commentaire"
+                                                    ng-model="FormAddOuvertureDSP.DescriptionSinistre" id="idDescription"
+                                                    maxlength="500"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <div class="mb-2">
+                                    <div class="form-group row">
+                                        <div class="col-lg-3">
+                                            <label>Pays*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-globe-africa text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <select class="form-control" name="addOuvertureDSP_pays"
+                                                    ng-model="FormAddOuvertureDSP.Pays" id="idPays">
+                                                    <option value="">Sélectionner un pays</option>
+                                                    <option ng-show="etatForm !== '2'"
+                                                        ng-selected="FormAddOuvertureDSP.Pays == lePays.PY_CODEPAYS"
+                                                        ng-repeat="lePays in listeDesPaysOuvertureDSP"
+                                                        value="{{lePays.PY_CODEPAYS}}"
+                                                        ng-click="afficheListeVille(FormAddOuvertureDSP.Pays)">{{lePays.PY_LIBELLE}}
+                                                    </option>
+                                                    <option ng-show="etatForm == '2'"
+                                                        ng-selected="FormAddOuvertureDSP.Pays == lePays.PY_CODEPAYS"
+                                                        ng-repeat="lePays in listeDesPaysOuvertureDSP"
+                                                        value="{{lePays.PY_CODEPAYS}}"
+                                                        ng-click="afficheListeVille(FormAddOuvertureDSP.Pays)">{{lePays.PY_LIBELLE}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label>Ville*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-map-marker-alt text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <select class="form-control" name="addOuvertureDSP_ville"
+                                                    ng-model="FormAddOuvertureDSP.Ville" id="idVille" ng-disabled="verouVille">
+                                                    <option value="">Sélectionner une ville</option>
+                                                    <option ng-show="etatForm !== '2'" ng-repeat="laVille in listeDesVilles"
+                                                        ng-selected="FormAddOuvertureDSP.Ville == laVille.VL_CODEVILLE"
+                                                        value="{{laVille.VL_CODEVILLE}}"
+                                                        ng-click="afficheListeCommune(FormAddOuvertureDSP.Ville)">
+                                                        {{laVille.VL_LIBELLE}}</option>
+                                                    <option ng-show="etatForm == '2'"
+                                                        ng-selected="FormAddOuvertureDSP.Ville == laVille.VL_CODEVILLE"
+                                                        ng-repeat="laVille in listeDesVilles" value="{{laVille.VL_CODEVILLE}}"
+                                                        ng-click="afficheListeCommune(FormAddOuvertureDSP.Ville)">
+                                                        {{laVille.VL_LIBELLE}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label>Commune*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-map-pin text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <select class="form-control" name="addOuvertureDSP_commune"
+                                                    ng-model="FormAddOuvertureDSP.Commune" id="idCommune"
+                                                    ng-disabled="verouCommune">
+                                                    <option value="">Sélectionner la commune</option>
+                                                    <option ng-show="etatForm !== '2'" ng-repeat="laCommune in listeDesCommunes"
+                                                        value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                                    <option ng-show="etatForm == '2'"
+                                                        ng-selected="FormAddOuvertureDSP.Commune == laCommune.CO_CODECOMMUNE"
+                                                        ng-repeat="laCommune in listeDesCommunes"
+                                                        value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label>Adresse géographique*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-map text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input id="idAdresseGeo" type="text" class="form-control"
+                                                    name="addOuvertureDSP_adresseGeo" ng-model="FormAddOuvertureDSP.AdresseGeo"
+                                                    placeholder="Entrer une adresse géographique" ng-pattern="/^[a-z-A-Z]/"
+                                                    maxlength="150">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+        <h6><strong style="color: DarkSlateBlue">IDENTIFICATION COMPLEMENTAIRE</strong></h6><br>
+        <div class="form-group row" >
+            <div class="col-lg-2">
+                <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px">
+                    <input type="checkbox" ng-click="testval(FormAddbtnsinistre.Police)"
+                        ng-checked="COCHE(FormAddbtnsinistre.Police)"
+                        ng-model="FormAddbtnsinistre.Police" />
+                    <span class="form-text text-muted"></span>
+                </label>
+                <label style="position: relative; top: 10px; left: 53px;">Police
+                    </label>
+            </div>
+            <div class="col-lg-2">
+                <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px">
+                    <input type="checkbox" ng-click="testval1(FormAddbtnsinistre.Gendarmerie)"
+                        ng-checked="COCHE1(FormAddbtnsinistre.Gendarmerie)"
+                        ng-model="FormAddbtnsinistre.Gendarmerie" />
+                    <span class="form-text text-muted"></span>
+                </label>
+                <label style="position: relative; top: 10px; left: 53px;">Gendarmerie
+                    </label>
+            </div>
+            <div class="col-lg-2">
+                <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px">
+                    <input type="checkbox" ng-click="testval3(FormAddbtnsinistre.Amiable)"
+                        ng-checked="COCHE3(FormAddbtnsinistre.Amiable)"
+                        ng-model="FormAddbtnsinistre.Amiable" />
+                    <span class="form-text text-muted"></span>
+                </label>
+                <label style="position: relative; top: 10px; left: 53px;">Amiable
+                   </label>
+            </div><br>
+           
+            <div class="col-lg-6">
+                <label>Unité*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-map text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idUnite" type="text" class="form-control"
+                        name="addOuvertureDSP_idUnite" ng-model="FormAddOuvertureDSP.Unite"
+                        placeholder="Entrer une Unite" 
+                        maxlength="15">
+                </div>
+            </div>
+            <div class="col-lg-6" style="margin-top: 25px;">
+                <label>Nom de l'Agent*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-map text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idNomdelAgent" type="text" class="form-control"
+                        name="addOuvertureDSP_NomdelAgent" ng-model="FormAddOuvertureDSP.NomdelAgent"
+                        placeholder="Entrer le Nom de l'Agent" 
+                        maxlength="15">
+                </div>
+            </div>
+            <div class="col-lg-6" style="margin-top: 25px;">
+                <label>Numero de tel de l'Agent*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-map text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idContact" type="text" class="form-control"
+                        name="addOuvertureDSP_Contact" ng-model="FormAddOuvertureDSP.Contact"
+                        placeholder="Entrer un Numero de tel de l'Agent" 
+                        maxlength="15">
+                </div>
+            </div>
+        </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+            ng-click="validerOuvertureDossier()">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <button ng-show="etatForm !== '2'" type="reset" id="kt_notify" class="btn btn-light-success font-weight-bold"
+            ng-click="resetFormAddOuvertureDSP()">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a href="#/assurances/operation/multirisque-pro/liste/ouverture-dossier"
+            class="btn btn-icon btn-light-dark mr-2" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+<!--end::Form-->

@@ -1,0 +1,925 @@
+﻿ <!--begin::Menu article et prestation-->
+@* <li class="menu-section" ng-if="gestionMenu === menu || assur_gestMenu == menu">
+    <h4 class="menu-text"><strong>Articles et Prestations</strong></h4>
+    <i class="menu-icon far fa-handshake icon-md"></i>
+</li> *@
+@* <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="gestionMenu === menu  || assur_gestMenu == menu">
+    <a href="#/Assurances/enregistrements/multi-risque-professionnel" class="menu-link menu-toggle bg-hover-primary-o-5">
+        <span class="menu-text text-white">
+            <i class="far fa-handshake icon-lg"></i>&#160;&#160;
+            Articles et prestations
+        </span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="menu-submenu">
+        <i class="menu-arrow"></i>
+        <ul class="menu-subnav">
+            <li class="menu-item menu-item-parent" aria-haspopup="true">
+                <span class="menu-link">
+                    <span class="menu-text">Applications</span>
+                </span>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/ArticleEtPrestation/Fabricants" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Fabricants</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/ArticleEtPrestation/Marques" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Marques</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/ArticleEtPrestation/Modeles" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Modèles</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/ArticleEtPrestation/Formes" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Formes</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/ArticleEtPrestation/TypesdArticlesetPrestations" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Types d'articles et prestations</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/ArticleEtPrestation/ArticlesEtPrestations" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Articles et prestations</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                <a href="javascript:;" class="menu-link menu-toggle">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Prix d'articles et prestations</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav">
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="/ArticleEtPrestation/PrixdAchat" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Prix d'achat</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="/ArticleEtPrestation/PrixdeVente" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Prix de vente</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/ArticleEtPrestation/Promotions" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Promotions</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/ArticleEtPrestation/SituationArticleEtPrestation" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Situation article et prestation</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="#/ArticlesEtPrestations/Edition" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Edition</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li> *@
+<!--end::Menu article et prestation-->
+<!--begin::Menu tiers-->
+<li class="menu-section" ng-if="(gestionMenu === menu || assur_gestMenu == menu) && TIERS_GENERALE_ETIERS == true">
+    <h4 class="menu-text"><strong>Tiers</strong></h4>
+    <i class="menu-icon far fa-user icon-md"></i>
+</li>
+<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-controller="GererMenuController" ng-if="(gestionMenu === menu || assur_gestMenu == menu) && TIERS_GENERALE_ETIERS == true">
+    <a href="javascript:;" class="menu-link menu-toggle bg-hover-primary-o-5" ng-click="clicSurMenu('tiers')">
+        <span class="menu-text text-white">
+            <i class="far fa-user icon-lg"></i>&#160;&#160;
+            Tiers
+        </span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="menu-submenu" >
+        <i class="menu-arrow"></i>
+        <ul class="menu-subnav">
+            <li class="menu-item" aria-haspopup="true" ng-if="GROUPES_DES_TIERS_ETIERS == true">
+                <a href="#/Tiers/GroupeTiers" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Groupe des tiers</span>
+                </a>
+            </li>
+            @* <li class="menu-item" aria-haspopup="true">
+                <a href="/Tiers/ComptesAdditionnels" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Comptes additionnels</span>
+                </a>
+            </li> *@
+            <li class="menu-item" aria-haspopup="true" ng-if="SAIASSUR_ETIERS == true">
+                <a href="#/gestion/liste/saisieAssureurs" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Saisie des assureurs</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true" ng-if="TIERS_ETIERS == true">
+                <a href="#/gestion/liste/tiers" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Tiers</span>
+                </a>
+            </li>
+             <li class="menu-item" aria-haspopup="true" ng-if="PROSPECT_ETIERS == true">
+                <a href="#/gestion/liste/prospect" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Prospect</span>
+                </a>
+            </li>
+           @* <li class="menu-item" aria-haspopup="true">
+                <a href="/Tiers/Client" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Client</span>
+                </a>
+            </li>
+             <li class="menu-item" aria-haspopup="true">
+                <a href="/Tiers/AdhésionAssurance" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Adhésion assurance</span>
+                </a>
+            </li> *@
+            <li class="menu-item" aria-haspopup="true" ng-click="test(1, 'sdt')" ng-if="SITUATION_DES_TIERS_ETIERS == true">
+                <a href="#/assurances-gestion/Tiers/SituationTiers" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Situation des tiers</span>
+                </a>
+            </li>
+            @* <li class="menu-item" aria-haspopup="true">
+                <a href="#/assurances-gestion/Tiers/ListeCommandes" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Liste des Commandes</span>
+                </a>
+            </li> *@
+            <li class="menu-item" aria-haspopup="true" ng-click="test(1, 'sda')" ng-if="SITUATIONDESASSUREURS_ETIERS == true">
+                <a href="#/Tiers/SituationDesAssureurs" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Situation des assureurs</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true" ng-if="COMMERCIAUX_ETIERS == true">
+                <a href="#/gestion/liste/ListeCommerciaux" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Commerciaux</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true" ng-click="test(2, 'sdc')" ng-if="SITUATION_DES_COMMERCIAUX_ETIERS == true">
+                <a href="#/Tiers/SituationDesCommerciaux" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Situation des commerciaux</span>
+                </a>
+            </li>
+            @* <li class="menu-item" aria-haspopup="true">
+                <a href="/Tiers/Transporteur" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Transporteur</span>
+                </a>
+            </li> 
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Tiers/ChauffeurDeLivraison" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Chauffeurs de livraison</span>
+                </a>
+            </li> *@
+            <li class="menu-item" aria-haspopup="true" ng-if="EDITION_ETIERS == true">
+                <a ng-href="#/gestion/Tiers/EditionTiers" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Edition</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<!--end::Menu tiers-->
+<!--begin::Menu stock-->
+@* <li class="menu-section" ng-if="gestionMenu === menu || assur_gestMenu == menu">
+    <h4 class="menu-text"><strong>Stocks</strong></h4>
+    <i class="menu-icon fas fa-truck-loading icon-md"></i>
+</li> *@
+@* <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="gestionMenu === menu || assur_gestMenu == menu">
+    <a href="javascript:;" class="menu-link menu-toggle bg-hover-primary-o-5">
+        <span class="menu-text text-white">
+            <i class="fas fa-truck-loading icon-lg"></i>&#160;&#160;
+            Stocks
+        </span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="menu-submenu">
+        <i class="menu-arrow"></i>
+        <ul class="menu-subnav">
+            <li class="menu-item menu-item-parent" aria-haspopup="true">
+                <span class="menu-link">
+                    <span class="menu-text">Applications</span>
+                </span>
+            </li>
+
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Stocks/InventaireStockExceptionnel" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text"> Inventaire de stock exceptionnel </span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Stocks/InventaireStockExceptionnelAnnulation" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text"> Annulation d'inventaire de stock exceptionnel </span>
+                </a>
+            </li> *@
+            @* <li class="menu-item" aria-haspopup="true">
+                <a href="/Stocks/ApprovisionnementSansAccessoire" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Approvisionnement sans accessoire </span>
+                </a>
+            </li> *@
+          @*   <li class="menu-item" aria-haspopup="true">
+                <a href="#/Stocks/enregistrement/EditionStock" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Edition</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Stocks/InventaireStock" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Inventaire de stock</span>
+                </a>
+            </li> 
+            <li class="menu-item" aria-haspopup="true">
+                <a ng-href="#/assurances-gestion/stocks/liste/approvisionnement" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Approvisionnements</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Stocks/ListeArticlesHorsUsage" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Liste des articles hors d'usage</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Stocks/ListeTransactions" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Liste des transactions</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Stocks/ModificationDatePeremptionArticles" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Modification de la date de péremption des articles </span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Stocks/Production" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Production</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Stocks/ReglementFacture" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Règlement facture </span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Stocks/SortieArticlesHorsUsage" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Sortie des articles hors d'usage </span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Stocks/Transfert" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Transferts</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li> *@
+<!--end::Menu stock-->
+<!--begin::Menu trésorerie-->
+<li class="menu-section" ng-if="(gestionMenu === menu|| assur_gestMenu == menu) && TRESORERIE_GENERALE_ETRSO == true">
+    <h4 class="menu-text"><strong>trésorerie</strong></h4>
+    <i class="menu-icon fas fas fa-coins icon-md"></i>
+</li>
+<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="(gestionMenu === menu || assur_gestMenu == menu) && OPERATION_DE_TRESORERIE_ETRSO == true">
+    <a href="javascript:;" class="menu-link menu-toggle bg-hover-primary-o-5">
+        <span class="menu-text text-white">
+            <i class="fas fas fa-coins icon-lg"></i>&#160;&#160;
+            Trésorerie
+        </span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="menu-submenu">
+        <i class="menu-arrow"></i>
+        <ul class="menu-subnav">
+            <li class="menu-item menu-item-parent" aria-haspopup="true" ng-if="OPERATION_DE_TRESORERIE_ETRSO == true">
+                <span class="menu-link">
+                    <span class="menu-text">Trésorerie</span>
+                </span>
+            </li>
+            @* <li class="menu-item" aria-haspopup="true">
+                <a ng-href="#/assurances-gestion/CaisseTresorerie/liste/Consultation" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text"> Consultation</span>
+                </a>
+            </li>
+             <li class="menu-item" aria-haspopup="true">
+                <a href="/Caisse/AttributionChambre" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Attribution de chambre</span>
+                </a>
+            </li> 
+            <li class="menu-item" aria-haspopup="true">
+                <a ng-href="#/assurances-gestion/tresorerie/liste/vente" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Ventes</span>
+                </a>
+            </li> 
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Caisse/VenteTresorerie" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Vente trésorerie</span>
+                </a>
+            </li> *@
+            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="OPERATION_DE_TRESORERIE_ETRSO == true">
+                <a href="javascript:;" class="menu-link menu-toggle">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text"> Opérations de trésorerie </span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav">
+                        <li class="menu-item" aria-haspopup="true" ng-if="OPERATION_DE_TRESORERIEI_ETRSO == true">
+                            <a href="#/Caisse/OperationsCaisse" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Opérations de trésorerie</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="OPERATION_DE_TRESORERIE_TIERS_ETRSO == true">
+                            <a href="#/assurances-gestion/tresorerie/enregistrement/operation-tresorerie-tiers" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Opérations de trésorerie tiers</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            @*<li class="menu-item" aria-haspopup="true">
+                <a ng-href="#/gestion/liste/commission-commerciaux" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Règlement des commissions des commerciaux</span>
+                </a>
+            </li>*@
+           @*  <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                <a href="javascript:;" class="menu-link menu-toggle">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Règlement des sinistres </span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav">
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="/Caisse/ReglementSinistresMultiRisqueProfessionnel" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Règlement des sinistres multirisque professionnel</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="/Caisse/ReglementSinistresHabitat" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Règlement des Sinistres habitat</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="/Caisse/ReglementSinistresIndividuelAccident" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Règlement des sinistres individuel accident</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="/Caisse/ReglementSinistresAuto" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Règlement des Sinistres auto</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="/Caisse/ReglementSinistresSante" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Règlement des Sinistres santé</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="/Caisse/ReglementSinistresVoyage" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Règlement des Sinistres voyage</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li> *@
+            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="REGLEMENT_ASSURANCE_ETRSO == true">
+                <a href="javascript:;" class="menu-link menu-toggle">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Règlement assurances </span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav">
+                        <li class="menu-item" aria-haspopup="true" ng-if="MULTIRISQUE_PROFFESSIONELLE_ETRSO == true">
+                            <a ng-href="#/gestion/ReglementAssurance/liste/multirisque-professionnel" class="menu-link" ng-click="laDirection('mp')">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Multirisque professionnel</span>
+                            </a>
+                        </li>
+                         <li class="menu-item" aria-haspopup="true" ng-if="HABITAT_ETRSO == true">
+                            <a ng-href="#/gestion/ReglementAssurance/liste/habitat" class="menu-link" ng-click="laDirection('Habitat')">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Habitat</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="INDIVIDUEL_ACCIDENT_ETRSO == true">
+                            <a ng-href="#/gestion/ReglementAssurance/liste/individuel-accident" class="menu-link" ng-click="laDirection('ia')">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Individuel Accident</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="AUTO_ETRSO == true">
+                            <a ng-href="#/gestion/ReglementAssurance/liste/auto" class="menu-link" ng-click="laDirection('Auto')">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Auto</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="VOYAGE_ETRSO == true">
+                            <a ng-href="#/gestion/ReglementAssurance/liste/voyage" class="menu-link" ng-click="laDirection('Voyage')">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Voyage</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="RESPONSABILITE_CIVIL_ETRSO == true" >
+                            <a ng-href="#/gestion/ReglementAssurance/liste/responsabilite-civile" class="menu-link" ng-click="laDirection('rc')">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Responsabilité civile</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true" ng-if="TRANSPORT_ETRSO == true">
+                            <a ng-href="#/gestion/ReglementAssurance/liste/transport-marchandise" class="menu-link" ng-click="laDirection('tm')">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Transport et marchandise</span>
+                            </a>
+                        </li>
+                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="SANTER_ETRSO == true">
+                            <a href="javascript:;" class="menu-link menu-toggle">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Santé</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                                <ul class="menu-subnav">
+                                    <li class="menu-item" aria-haspopup="true" ng-if="GESA_ETRSO == true">
+                                        <a ng-href="#/gestion/ReglementAssurance/liste/sante-gesa" class="menu-link" ng-click="laDirection('GESA')">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">GESA</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="PHARMACIEN_ETRSO == true">
+                                        <a ng-href="#/gestion/ReglementAssurance/liste/sante-pharmacien" class="menu-link" ng-click="laDirection('Pharmacien')">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Pharmacien</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" aria-haspopup="true" ng-if="AUXILIAIRE_ETRSO == true">
+                                        <a ng-href="#/gestion/ReglementAssurance/liste/sante-auxiliaire" class="menu-link" ng-click="laDirection('Auxiliaire')">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Auxiliaire</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+             <li class="menu-item" aria-haspopup="true" ng-if="REEDITION_ETRSO == true">
+                <a href="#/gestion/tresorerie/enregistrement/reedition" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text"> Réédition </span>
+                </a>
+            </li>
+            @* <li class="menu-item" aria-haspopup="true">
+                <a href="layout/subheader/tabbed.html" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text"> Règlement facture groupe en espèce </span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="layout/subheader/tabbed.html" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text"> Liste des règlements facture groupe en espèce </span>
+                </a>
+            </li> *@
+            <li class="menu-item" aria-haspopup="true" ng-if="EDITION_ETRSO == true">
+                <a href="#/Caisse/EditionTresorerie" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text"> Edition </span>
+                </a>
+            </li>
+            @* <li class="menu-item" aria-haspopup="true">
+                <a href="/Caisse/VenteSansAccessoire" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Vente sans accessoire</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Caisse/VenteSansAccessoireCliniqueOfficiel" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Vente sans accessoire clinique officielle</span>
+                </a>
+            </li> *@
+        </ul>
+    </div>
+</li>
+<!--end::Menu trésorerie-->
+<!--begin::Menu comptabilité-->
+<li class="menu-section" ng-if="(gestionMenu === menu || assur_gestMenu == menu) && COMPTABILITE_GENERALE_COMPTA == true">
+    <h4 class="menu-text"><strong>comptabilité</strong></h4>
+    <i class="menu-icon fas fa-wallet icon-md"></i>
+</li>
+<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="(gestionMenu === menu || assur_gestMenu == menu) && COMPTABILITE_GENERALE_COMPTA == true">
+    <a href="javascript:;" class="menu-link menu-toggle bg-hover-primary-o-5">
+        <span class="menu-text text-white">
+            <i class="fas fa-wallet icon-lg"></i>&#160;&#160;
+            Comptabilité
+        </span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="menu-submenu">
+        <i class="menu-arrow"></i>
+        <ul class="menu-subnav">
+            <li class="menu-item menu-item-parent" aria-haspopup="true" ng-if="COMPTABILITE_GENERALE_COMPTA == true">
+                <span class="menu-link">
+                    <span class="menu-text">Comptabilité</span>
+                </span>
+            </li>
+            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover" ng-if="ECRITURE_COMPTABLE_COMPTA == true">
+                <a href="javascript:;" class="menu-link menu-toggle">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Ecritures comptables</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav">
+                        <li class="menu-item" aria-haspopup="true" ng-if="ECRITURE_COMPTABLEI_COMPTA == true">
+                            <a href="#/Comptabilite/SaisieEcritureComptable" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Ecritures comptables</span>
+                            </a>
+                        </li>
+                        @* <li class="menu-item" aria-haspopup="true">
+                            <a href="/Comptabilite/EcrituresAutomatiques" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Ecritures automatiques</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="#/Comptabilite/EcrituresAutomatiquesDesTiers" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Ecritures automatiques des tiers</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="/Comptabilite/EcrituresComptablesEnAttente" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Ecritures comptables en attente</span>
+                            </a>
+                        </li>
+                        @* <li class="menu-item" aria-haspopup="true">
+                            <a href="/Comptabilite/ModificationDecrituresComptables" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Modification d'écritures comptables</span>
+                            </a>
+                        </li> *@
+                       @* <li class="menu-item" aria-haspopup="true">
+                            <a href="/Comptabilite/SuppressionDecrituresComptables" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Suppression d'écritures comptables</span>
+                            </a>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="/Comptabilite/ValidationDecrituresComptables" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Validation d'écritures comptables</span>
+                            </a>
+                        </li> *@
+                    </ul>
+                </div>
+            </li> 
+            @* <li class="menu-item" aria-haspopup="true">
+                <a href="/Comptabilite/Lettrage" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Lettrage</span>
+                </a>
+            </li> 
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Comptabilite/ReglementFactureGroupeParCheque" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Règlement facture groupe par chèque</span>
+                </a>
+            </li>
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Comptabilite/ListedesReglementsFactureGroupeparCheque" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Liste des règlements facture groupe par chèque</span>
+                </a>
+            </li> *@
+            <li class="menu-item" aria-haspopup="true" ng-if="EXTOURNE_COMPTA == true">
+                <a href="#/Comptabilite/Extourne" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Extourne</span>
+                </a>
+            </li>
+             <li class="menu-item" aria-haspopup="true" ng-if="CLOTURE_EXERCICE_COMPTA == true">
+                <a href="#/gestion/comptabilite/cloture-exercice" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Clôture d'exercice</span>
+                </a>
+            </li>
+            @* <li class="menu-item" aria-haspopup="true">
+                <a href="/Comptabilite/ListedesRepartitions" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Liste des repartitions</span>
+                </a>
+            </li> 
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Comptabilite/ModificationdeReferencePiece" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Modification de reférence pièce</span>
+                </a>
+            </li> 
+            <li class="menu-item" aria-haspopup="true">
+                <a href="/Comptabilite/RecherchedePieceComptable" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Recherche de pièce comptable</span>
+                </a>
+            </li> *@
+            <li class="menu-item" aria-haspopup="true" ng-if="EDITION_COMPTA == true">
+                <a href="#/Comptabilite/Edition" class="menu-link">
+                    <i class="menu-bullet menu-bullet-dot">
+                        <span></span>
+                    </i>
+                    <span class="menu-text">Edition</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<!--end::Menu comptabilité-->
+@*<li class="menu-item" aria-haspopup="true">
+    <a href="/Caisse/ReglementCompagniesAssurancesHabitat" class="menu-link">
+        <i class="menu-bullet menu-bullet-dot">
+            <span></span>
+        </i>
+        <span class="menu-text">Habitat</span>
+    </a>
+</li>
+<li class="menu-item" aria-haspopup="true">
+    <a href="/Caisse/ReglementCompagniesAssurancesIndividuelAccident" class="menu-link">
+        <i class="menu-bullet menu-bullet-dot">
+            <span></span>
+        </i>
+        <span class="menu-text">Individuel accident</span>
+    </a>
+</li>
+<li class="menu-item" aria-haspopup="true">
+    <a href="/Caisse/ReglementCompagniesAssurancesAuto" class="menu-link">
+        <i class="menu-bullet menu-bullet-dot">
+            <span></span>
+        </i>
+        <span class="menu-text">Auto</span>
+    </a>
+</li>
+<li class="menu-item" aria-haspopup="true">
+    <a href="/Caisse/ReglementCompagniesAssurancesVoyage" class="menu-link">
+        <i class="menu-bullet menu-bullet-dot">
+            <span></span>
+        </i>
+        <span class="menu-text">Voyage</span>
+    </a>
+</li>
+<li class="menu-item" aria-haspopup="true">
+    <a href="/Caisse/ReglementCompagniesAssurancesVoyage" class="menu-link">
+        <i class="menu-bullet menu-bullet-dot">
+            <span></span>
+        </i>
+        <span class="menu-text">Responsabilité Civile</span>
+    </a>
+</li>
+<li class="menu-item" aria-haspopup="true">
+    <a href="/Caisse/ReglementCompagniesAssurancesVoyage" class="menu-link">
+        <i class="menu-bullet menu-bullet-dot">
+            <span></span>
+        </i>
+        <span class="menu-text">Transport et marchandise</span>
+    </a>
+</li>*@

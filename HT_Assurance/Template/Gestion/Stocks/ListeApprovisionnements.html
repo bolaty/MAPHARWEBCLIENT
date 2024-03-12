@@ -1,0 +1,305 @@
+﻿<!--début loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormListeAppro()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">GESTION</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Stock</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Liste</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Approvisionnements</a>
+                        </li>                       
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header" style="background-color: #F5F500">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-clipboard-list text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Approvisionnements</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Période*</label>
+                                                        <div class="input-daterange input-group">
+                                                            <input id="idPeriodeDu" type="text" class="form-control datatable-input" name="start" placeholder="Du" ng-model="FormListAppro.periodeDu" ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/" />
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-arrows-alt-h text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input id="idPeriodeAu" type="text" class="form-control datatable-input" name="end" placeholder="Au" ng-model="FormListAppro.periodeAu" ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>N° bordereau*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input id="idNumBord" type="text" class="form-control" name="url" placeholder="Entrer un n°" ng-model="FormListAppro.numBordereau" ng-pattern="/^[0-9]+$/" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>N° fournisseur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input id="idNumFour" type="text" class="form-control" name="url" placeholder="Entrer un n°" ng-model="FormListAppro.numFournisseur" ng-pattern="/^[0-9]+$/" />
+                                                        </div>
+                                                    </div>                                                                                                    
+                                                </div>
+                                            </div>                                         
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Nom fournisseur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-address-card text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input id="idNomFour" type="text" class="form-control" name="url" placeholder="Entrer un nom" ng-model="FormListAppro.nomFournisseur" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Opérateur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-teamspeak text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select id="idOperateur" class="form-control" name="option" ng-model="FormListAppro.operateur">
+                                                                <option value="">Sélectionner un opérateur</option>
+                                                                <option ng-repeat="lOperateur in listeOperateur" value="{{lOperateur.OP_CODEOPERATEUR}}">{{lOperateur.OP_NOMPRENOM}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>                                                                                                     
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-1">
+                                    <div class="form-group row">                                                    
+                                        <div class="row mt-8">
+                                            <div class="col-lg-12">&#160;&#160;
+                                                <button class="btn btn-primary btn-primary--icon" id="kt_search" ng-click="afficheListeAppro(FormListAppro.periodeDu, FormListAppro.periodeAu, FormListAppro.numBordereau, FormListAppro.numFournisseur, FormListAppro.nomFournisseur, FormListAppro.operateur)">
+                                                    <span>
+                                                        <i class="la la-search"></i>
+                                                        <span>Rechercher</span>
+                                                    </span>
+                                                </button>&#160;&#160;
+                                                <button type="button" class="btn btn-outline-warning" id="kt_reset" ng-click="listeAnnuler()">
+                                                    <span>
+                                                        <i class="la la-close"></i>
+                                                        <span>Annuler</span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-1">
+                                    <div class="row">
+                                        <table class="table table-bordered table-checkable" id="kt_datatable">
+                                            <thead>
+                                                <tr style="text-align: center;">
+                                                    <th>N° BORDEREAU</th>
+                                                    <th>DATE</th>
+                                                    <th>MATRICULE</th>
+                                                    <th>NOM FOURNISSEUR</th>
+                                                    <th>REFERENCE PIECE</th>
+                                                    <th>MONTANT REMISE</th>                                                                    
+                                                    <th>MONTANT VERSE</th>
+                                                    <th>ACTION</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot ng-show="listeApprovisionnement[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                                                <tr ng-repeat="laListeAppro in listeApprovisionnement">                                                                    
+                                                    <td>{{laListeAppro.NUMEROBORDEREAU}}</td>
+                                                    <td>{{laListeAppro.MS_DATEPIECE}}</td>
+                                                    <td>{{laListeAppro.FR_MATRICULE}}</td>
+                                                    <td>{{laListeAppro.TI_DENOMINATION}}</td>
+                                                    <td>{{laListeAppro.MS_REFPIECE}}</td>
+                                                    <td>{{laListeAppro.TI_DATESAISIE}}</td>
+                                                    <td>{{laListeAppro.MS_MONTANTTOTALREMISE}}</td>
+                                                    <td>{{laListeAppro.MS_MONTANTVERSE}}</td>
+                                                    <td>
+                                                        <div class="example-preview" style="position: relative; right: -3px">
+                                                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                                                <div class="btn-group mr-2" role="group" aria-label="...">
+                                                                    <!--bouton voir plus-->
+                                                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="modal" data-target="#modalVoirPlus">
+                                                                        <i class="far fa-eye" data-toggle="tooltip" data-theme="dark" title="Voir plus"></i>
+                                                                    </button>
+                                                                    <!--bouton modifier-->
+                                                                    <button type="button" class="btn btn-outline-secondary btn-icon">
+                                                                        
+                                                                        <i class="far fa-edit"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-outline-secondary btn-icon">
+                                                                        <i class="fas fa-ban"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-outline-secondary btn-icon dropleft" data-toggle="modal" data-target="#modalOption">
+                                                                        <i class="fas fa-ellipsis-v"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="card-footer">
+                                
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+<!--begin modal pour autres options-->
+<div class="modal fade" id="modalOption" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalOption" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #F5F500;">
+                <h5 class="modal-title text-dark" id="modalOption" style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-v text-dark"></i>
+                    Autres options
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card card-custom gutter-b">
+                    <div class="card-header card-header-tabs-line">
+                        <div class="card-toolbar">
+                            <ul class="nav nav-tabs nav-bold nav-tabs-line">
+                                <li class="nav-item">
+                                    <a class="nav-link active" ng-click="redirectConsultationQuestionnaire()" data-dismiss="modal" style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fab fa-weixin"></i></span>
+                                        <span class="nav-text">Réaliser un approvisionnement sans accéssoire</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectConsultReglement()" data-dismiss="modal" style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-id-card"></i></span>
+                                        <span class="nav-text">Règlement de facture</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link">
+                                        <span class="nav-icon"><i class="fas fa-handshake-slash"></i></span>
+                                        <span class="nav-text">Facture</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectReleveCommission()" data-dismiss="modal" style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-file-invoice"></i></span>
+                                        <span class="nav-text">Situation des règlements</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectReleveCommission()" data-dismiss="modal" style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-file-invoice"></i></span>
+                                        <span class="nav-text">Annuler l'approvisionnement</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectReleveCommission()" data-dismiss="modal" style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-file-invoice"></i></span>
+                                        <span class="nav-text">Liste des repartitions</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectReleveCommission()" data-dismiss="modal" style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-file-invoice"></i></span>
+                                        <span class="nav-text">Modification de la date de peremption des articles</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

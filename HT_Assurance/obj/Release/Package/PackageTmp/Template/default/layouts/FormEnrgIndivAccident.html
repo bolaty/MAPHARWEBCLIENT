@@ -1,0 +1,910 @@
+﻿<!--begin::Form-->
+<form class="form" id="formAddIndivAccident">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS SUR LE
+                            SOUSCRIPTEUR</strong></h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>N° souscripteur*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idCode1" type="text" class="form-control" name="addIA_Code1"
+                                        placeholder="Entrer un n°"
+                                        ng-model="FormAddIndivAccident.infoSouscripteur.code1" ng-disabled="isDisabled1"
+                                        maxlength="8" ng-pattern="/^[0-9]+$/" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button ng-show="etatForm !== '2'" type="button"
+                                            class="btn btn-secondary btn-secondary--icon" id="kt_reset"
+                                            data-toggle="modal" data-target="#modalCodeSouscripteur"
+                                            ng-click="afficheListeTiersSouscripteur()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Nom assuré*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-address-card text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNomAssure" type="text" class="form-control" name="addIA_NomAssure1"
+                                        placeholder="Entrer un nom"
+                                        ng-model="FormAddIndivAccident.infoSouscripteur.nomAssureSouscript"
+                                        ng-disabled="isDisabled1" ng-pattern="/^([a-z-A-Z])([a-z-A-Z0-9 ]+)/"
+                                        maxlength="150" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button ng-show="etatForm !== '2'" type="button"
+                                            class="btn btn-secondary btn-secondary--icon" id="kt_reset"
+                                            data-toggle="modal" data-target="#modalCodeSouscripteur"
+                                            ng-click="afficheListeTiersSouscripteur()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Date de naissance*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDateNaiss" type="text" class="form-control"
+                                        name="addIA_DateDeNaissance" placeholder="Entrer une date"
+                                        ng-model="FormAddIndivAccident.infoSouscripteur.date" maxlength="10"
+                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Lieu de naissance*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-map-marker-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idLieuNaiss" type="text" class="form-control"
+                                        name="addIA_LieuDeNaissance" placeholder="Entrer un lieu de naissance"
+                                        ng-model="FormAddIndivAccident.infoSouscripteur.lieuNaissance"
+                                        ng-pattern="/^([a-z-A-Z])([a-z-A-Z0-9 ]+)/" maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Main forte*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-sign-language text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idMainForte" class="form-control" name="addIA_MainForte"
+                                        ng-model="FormAddIndivAccident.infoSouscripteur.mainForte">
+                                        <option value="">Sélectionner une main forte</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="laMainForte in listeMainForte"
+                                            value="{{laMainForte.MF_CODEMAINFORTE}}">{{laMainForte.MF_LIBLLEMAINFORTE}}
+                                        </option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddIndivAccident.infoSouscripteur.mainForte == laMainForte.MF_CODEMAINFORTE"
+                                            ng-repeat="laMainForte in listeMainForte"
+                                            value="{{laMainForte.MF_CODEMAINFORTE}}">{{laMainForte.MF_LIBLLEMAINFORTE}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Profession*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-chalkboard-teacher text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idProfession" class="form-control" name="addIA_Profession"
+                                        ng-model="FormAddIndivAccident.infoSouscripteur.profession">
+                                        <option value="">Sélectionner une profession</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="laProfession in listeProfession"
+                                            value="{{laProfession.PF_CODEPROFESSION}}">{{laProfession.PF_LIBELLE}}
+                                        </option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddIndivAccident.infoSouscripteur.profession == laProfession.PF_CODEPROFESSION"
+                                            ng-repeat="laProfession in listeProfession"
+                                            value="{{laProfession.PF_CODEPROFESSION}}">{{laProfession.PF_LIBELLE}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Sport*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-running text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idSport" type="text" class="form-control" name="addIA_Sport"
+                                        placeholder="Entrer un sport"
+                                        ng-model="FormAddIndivAccident.infoSouscripteur.sport"
+                                        ng-pattern="/^([a-z-A-Z])([a-z-A-Z0-9 ]+)/" maxlength="150" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator separator-dashed separator-success my-1"></div><br>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS SUR LE
+                            COMMERCIAL</strong></h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>N° commercial*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idCode2" type="text" class="form-control" name="addIA_Code2"
+                                        placeholder="Entrer un n°" ng-model="FormAddIndivAccident.infoCommercial.code2"
+                                        ng-disabled="isDisabled2" maxlength="8" ng-pattern="/^[0-9]+$/" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button type="button" class="btn btn-secondary btn-secondary--icon"
+                                            id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial"
+                                            ng-click="afficheListeTiersCommercial()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <label>Dénomination*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDenomination2" type="text" class="form-control"
+                                        name="addIA_Denomination" placeholder="Entrer une Dénomination"
+                                        ng-model="FormAddIndivAccident.infoCommercial.denomination"
+                                        ng-disabled="isDisabled2" ng-pattern="/^([a-z-A-Z])([a-z-A-Z0-9 ]+)/"
+                                        maxlength="150" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button type="button" class="btn btn-secondary btn-secondary--icon"
+                                            id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial"
+                                            ng-click="afficheListeTiersCommercial()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator separator-dashed separator-success my-1"></div><br>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS GENERALES</strong>
+                    </h3>
+                    <div class="form-group row">
+                        <div class="col-lg-3">
+                            <label>N° police/ N.C*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-orcid text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idNumPolice" type="text" maxlength="150" class="form-control"
+                                    name="addIA_NumPolice" placeholder="Entrer un n°"
+                                    ng-model="FormAddIndivAccident.infoGenerale.numPolice" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Intermédiaire*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-people-arrows text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idIntermediaire" class="form-control" name="addIA_Intermediaire"
+                                    ng-model="FormAddIndivAccident.infoGenerale.intermediaire">
+                                    <option value="">Sélectionnez un intermédiaire</option>
+                                    <option ng-show="etatForm !== '2'"
+                                        ng-repeat="lIntermediaire in listeDesIntermediaires"
+                                        value="{{lIntermediaire.IT_CODEINTERMEDIAIRE}}">
+                                        {{lIntermediaire.IT_DENOMMINATION}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddIndivAccident.infoGenerale.intermediaire == lIntermediaire.IT_CODEINTERMEDIAIRE"
+                                        ng-repeat="lIntermediaire in listeDesIntermediaires"
+                                        value="{{lIntermediaire.IT_CODEINTERMEDIAIRE}}">
+                                        {{lIntermediaire.IT_DENOMMINATION}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Effet*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="far fa-calendar-alt text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idDateEffet" type="text" class="form-control" name="addIA_Effet"
+                                    placeholder="Entrer une date" ng-model="FormAddIndivAccident.infoGenerale.effet"
+                                    maxlength="10"
+                                    ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Echéance*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="far fa-calendar-alt text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idDateEcheance" type="text" class="form-control" name="addIA_Echeance"
+                                    placeholder="Entrer une date" ng-model="FormAddIndivAccident.infoGenerale.echeance"
+                                    maxlength="10"
+                                    ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-3">
+                            <label>Pays*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-globe-africa text-info"></i>
+                                    </span>
+                                </div>
+                                <select class="form-control" id="idPays" name="addIA_Pays"
+                                    ng-model="FormAddIndivAccident.infoGenerale.pays">
+                                    <option value="">Sélectionner un pays</option>
+                                    <option ng-show="etatForm !== '2'"
+                                        ng-click="afficheListeVille(FormAddIndivAccident.infoGenerale.pays)"
+                                        ng-selected="FormAddIndivAccident.infoGenerale.pays == lePays.PY_CODEPAYS"
+                                        ng-repeat="lePays in listeDesPays" value="{{lePays.PY_CODEPAYS}}">
+                                        {{lePays.PY_LIBELLE}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddIndivAccident.infoGenerale.pays == lePays.PY_CODEPAYS"
+                                        ng-click="afficheListeVille(FormAddIndivAccident.infoGenerale.pays)"
+                                        ng-repeat="lePays in listeDesPays" value="{{lePays.PY_CODEPAYS}}">
+                                        {{lePays.PY_LIBELLE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Ville*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-map-marker-alt text-info"></i>
+                                    </span>
+                                </div>
+                                <select class="form-control" id="idVille" name="addIA_Ville"
+                                    ng-model="FormAddIndivAccident.infoGenerale.ville" ng-disabled="verouVille">
+                                    <option value="">Sélectionner une ville</option>
+                                    <option ng-show="etatForm !== '2'"
+                                        ng-click="afficheListeCommune(FormAddIndivAccident.infoGenerale.ville)"
+                                        ng-repeat="laVille in listeDesVilles" value="{{laVille.VL_CODEVILLE}}">
+                                        {{laVille.VL_LIBELLE}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddIndivAccident.infoGenerale.ville == laVille.VL_CODEVILLE"
+                                        ng-click="afficheListeCommune(FormAddIndivAccident.infoGenerale.ville)"
+                                        ng-repeat="laVille in listeDesVilles" value="{{laVille.VL_CODEVILLE}}">
+                                        {{laVille.VL_LIBELLE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Commune*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-map-pin text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idCommmune" class="form-control" name="addIA_Commune"
+                                    ng-model="FormAddIndivAccident.infoGenerale.commune" ng-disabled="verouCommune">
+                                    <option value="">Sélectionner une commune</option>
+                                    <option ng-show="etatForm !== '2'" ng-repeat="laCommune in listeDesCommunes"
+                                        value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddIndivAccident.infoGenerale.commune == laCommune.CO_CODECOMMUNE"
+                                        ng-repeat="laCommune in listeDesCommunes" value="{{laCommune.CO_CODECOMMUNE}}">
+                                        {{laCommune.CO_LIBELLE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Situation géographique*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-map text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idSituationGeo" type="text" class="form-control" name="addIA_SituationGeo"
+                                    placeholder="Entrer une situation géograpgique"
+                                    ng-model="FormAddIndivAccident.infoGenerale.situationGeo"
+                                    ng-pattern="/^([a-z-A-Z])([a-z-A-Z0-9 ]+)/" maxlength="150" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>Nombres assurés*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-tasks text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idNbreAssure" maxlength="2" type="text" class="form-control"
+                                    name="addIA_NombreAssure" placeholder="Entrer un nombre d'assurés"
+                                    ng-model="FormAddIndivAccident.infoGenerale.nombreAssure"
+                                    ng-pattern="/^[0-9]{1,2}$/" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Garantie</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-map-pin text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idgarantie" class="form-control" name="addgarantie"
+                                    ng-model="FormAddIndivAccident.valgarantie">
+                                    <option value="">Sélectionner une garantie</option>
+                                    <option ng-show="etatForm !== '2'" ng-repeat="lAgarantie in listeDesGarantie"
+                                        value="{{lAgarantie.GR_CODEGARENTIEPRIME}}">
+                                        {{lAgarantie.GR_LIBELLEGARENTIEPRIME}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddIndivAccident.valgarantie == lAgarantie.GR_CODEGARENTIEPRIME"
+                                        ng-repeat="lAgarantie in listeDesGarantie"
+                                        value="{{lAgarantie.GR_CODEGARENTIEPRIME}}">
+                                        {{lAgarantie.GR_LIBELLEGARENTIEPRIME}}</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-3">
+                            <label>Assureur*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user-cog text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idAssureur" class="form-control" name="addIA_Assureur"
+                                    ng-model="FormAddIndivAccident.infoGenerale.assureur">
+                                    <option value="">Sélectionner un assureur</option>
+                                    <option ng-show="etatForm !== '2'"
+                                        ng-selected="FormAddIndivAccident.infoGenerale.assureur == lAssureur.TI_IDTIERS"
+                                        ng-repeat="lAssureur in listeDesAssureurs" value="{{lAssureur.TI_IDTIERS}}">
+                                        {{lAssureur.TI_DENOMINATION}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddIndivAccident.infoGenerale.assureur == lAssureur.TI_IDTIERS"
+                                        ng-repeat="lAssureur in listeDesAssureurs" value="{{lAssureur.TI_IDTIERS}}">
+                                        {{lAssureur.TI_DENOMINATION}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Interlocuteur*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-assistive-listening-systems text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idInterlocuteur" type="text" class="form-control" name="addIA_Interlocuteur"
+                                    placeholder="Entrer un interlocuteur"
+                                    ng-model="FormAddIndivAccident.infoGenerale.interlocuteur"
+                                    ng-pattern="/^([a-z-A-Z])([a-z-A-Z0-9 ]+)/" maxlength="150" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Téléphone interlocuteur*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-phone-alt text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idTelInter" type="text" class="form-control" name="addIA_TelInterlocuteur"
+                                    placeholder="Entrer un n° de téléphone"
+                                    ng-model="FormAddIndivAccident.infoGenerale.telInterlocuteur" maxlength="15"
+                                    ng-pattern="/^\d+$/" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Type d'affaire*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-briefcase text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idTypeAffaire" class="form-control" name="addMP_TypeAffaire"
+                                    ng-model="FormAddIndivAccident.infoGenerale.typeAffaire">
+                                    <option value="">Sélectionner un type</option>
+                                    <option ng-show="etatForm !== '2'" ng-repeat="leTypeAffaire in listeTypeAffaire"
+                                        value="{{leTypeAffaire.TA_CODETYPEAFFAIRES}}">
+                                        {{leTypeAffaire.TA_LIBLLETYPEAFFAIRES}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddIndivAccident.infoGenerale.typeAffaire == leTypeAffaire.TA_CODETYPEAFFAIRES"
+                                        ng-repeat="leTypeAffaire in listeTypeAffaire"
+                                        value="{{leTypeAffaire.TA_CODETYPEAFFAIRES}}">
+                                        {{leTypeAffaire.TA_LIBLLETYPEAFFAIRES}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator separator-dashed separator-success my-1"></div><br>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS SUR LE
+                            BENEFICIAIRE</strong></h3>
+                    <div class="form-group row">
+                        <div class="col-lg-4">
+                            <label>Nom assuré*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-address-card text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idNomAssure3" type="text" class="form-control" name="addIA_NomAssure2"
+                                    placeholder="Entrer un nom"
+                                    ng-model="FormAddIndivAccident.infoBeneficiaire.nomAssureBenef"
+                                    ng-disabled="isDisabled3" maxlength="150" />
+                                <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                    title="Choix du code">
+                                    <button type="button" class="btn btn-secondary btn-secondary--icon" id="kt_reset"
+                                        data-toggle="modal" data-target="#modalCodeBeneficiaire"
+                                        ng-click="afficheListeTiersBeneficiaire()">
+                                        <i class="fas fa-ellipsis-h text-info"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Taux*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user-edit text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idTaux" type="text" class="form-control" name="addIA_Taux"
+                                    placeholder="Entrer un taux" ng-model="FormAddIndivAccident.infoBeneficiaire.taux"
+                                    maxlength="5" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Titre bénéficiaire*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user-edit text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idTitreBenef" class="form-control" name="addIA_TitreBenef"
+                                    ng-model="FormAddIndivAccident.infoBeneficiaire.codeTitreBeneficiaire">
+                                    <option value="">Sélectionner un titre</option>
+                                    <option ng-repeat="leTitreBenef in listeTitreBeneficiaire"
+                                        value="{{leTitreBenef.TA_CODETITREAYANTDROIT}}">
+                                        {{leTitreBenef.TA_LIBELLETITREAYANTDROIT}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <button type="button" ng-show="etatForm !== '2'"
+                            class="btn btn-hover-bg-success btn-text-dark btn-hover-text-white border-0 font-weight-bold"
+                            ng-click="ajoutDansTabBeneficiaire()">
+                            <span>
+                                <i class="fas fa-arrow-down text-dark"></i>
+                                <span>Ajouter</span>
+                            </span>
+                        </button>
+                        <button type="button" ng-show="etatForm == '2'"
+                            class="btn btn-hover-bg-success btn-text-dark btn-hover-text-white border-0 font-weight-bold"
+                            ng-click="ajoutDansTabBeneficiaireModif()">
+                            <span>
+                                <i class="fas fa-arrow-down text-dark"></i>
+                                <span>Ajouter</span>
+                            </span>
+                        </button>
+                        <button ng-click="annulerModifAyantDroit()" class="btn btn-outline-warning" id="kt_reset">
+                            <span>
+                                <i class="la la-close"></i>
+                                <span>Annuler</span>
+                            </span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>&#160;
+
+        <!--tableau du beneficiaire-->
+        <div class="form-group row">
+            <div class="col-12 ">
+                <h6><strong style="color: DarkSlateBlue"><u>TABLEAU DES BENEFICIAIRES</u></strong></h6>
+                <table class="table table-bordered table-checkable" id="kt_datatable">
+                    <thead style="text-align: center">
+                        <tr>
+                            <!-- <th>MATRICULE</th> -->
+                            <th>NOM BENEFICIAIRE</th>
+                            <th>TAUX</th>
+                            <th>TITRE BENEFICIAIRE</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-show="etatForm !== '2'" ng-repeat="leBeneficiaire in tabBeneficiaire">
+                            <!-- <td>{{leBeneficiaire.code3}}</td> -->
+                            <td>{{leBeneficiaire.nomAssureBenef}}</td>
+                            <td>{{leBeneficiaire.taux}}</td>
+                            <td>{{leBeneficiaire.titreBeneficiaire}}</td>
+                            <td style="text-align: center">
+                                <button type="button" class="btn btn-outline-danger btn-icon" title="Supprimer"
+                                    ng-click="retirerLeBenefBase(leBeneficiaire)" data-dismiss="modal">
+                                    <i class="fas fa-ban"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr ng-if="etatForm == '2'" ng-show="tabBeneficiaire !== '' "
+                            ng-repeat="leBeneficiaireBase in tabBeneficiaire">
+                            <!-- <td>{{leBeneficiaireBase.code3}}</td> -->
+                            <td>{{leBeneficiaireBase.nomAssureBenef}}</td>
+                            <td>{{leBeneficiaireBase.taux}}</td>
+                            <td>{{leBeneficiaireBase.titreBeneficiaire}}</td>
+                            <td style="text-align: center">
+                                <button type="button" class="btn btn-outline-info btn-icon" title="Modifier"
+                                    ng-click="modifAyantDroitBase(leBeneficiaireBase)" data-dismiss="modal">
+                                    <i class="fas fa-edit"></i>
+                                </button>&#160;&#160;
+                                <button type="button" class="btn btn-outline-danger btn-icon" title="Supprimer"
+                                    ng-click="retirerLeBenefBase(leBeneficiaireBase)" data-dismiss="modal">
+                                    <i class="fas fa-ban"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr ng-show="etatForm == '2'" ng-repeat="leBeneficiaire in tabBeneficiaire2">
+                            <!-- <td>{{leBeneficiaire.code3}}</td> -->
+                            <td>{{leBeneficiaire.nomAssureBenef}}</td>
+                            <td>{{leBeneficiaire.taux}}</td>
+                            <td>{{leBeneficiaire.titreBeneficiaire}}</td>
+                            <td style="text-align: center">
+                                <button type="button" class="btn btn-outline-info btn-icon" title="Modifier"
+                                    ng-click="modifAyantDroit(leBeneficiaire)" data-dismiss="modal">
+                                    <i class="fas fa-edit"></i>
+                                </button>&#160;&#160;
+                                <button type="button" class="btn btn-outline-danger btn-icon" title="Supprimer"
+                                    ng-click="retirerLeBenef(leBeneficiaire)" data-dismiss="modal">
+                                    <i class="fas fa-ban"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="separator separator-dashed separator-success my-1"></div><br>
+
+        <div class="form-group row">
+            <!--tableau des garanties-->
+            <div class="col-lg-6">
+                <h6><strong style="color: DarkSlateBlue"><u>TABLEAU DES GARANTIES</u></strong></h6>
+                <table class="table table-bordered table-checkable" id="kt_datatable">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>GARANTIE</th>
+                            <th>CAPITAUX ASSURES</th>
+                            <th>TAUX</th>
+                            <th>PRIMES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-show="etatForm !== '2'" ng-repeat="laGarentie in tabGarenties">
+                            <td>
+                                {{laGarentie.GA_LIBELLEGARANTIE}}
+                            </td>
+                            <td>
+                                <input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="laGarentie.CG_CAPITAUXASSURES" />
+                            </td>
+                            <td>
+                                <input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="laGarentie.CG_TAUX" />
+                            </td>
+                            <td>
+                                <input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="laGarentie.CG_PRIMES" />
+                            </td>
+                        </tr>
+                        <tr ng-show="etatForm == '2'" ng-repeat="laGarentie in recupererInfo.clsCtcontratgaranties">
+                            <td>
+                                {{laGarentie.GA_LIBELLEGARANTIE}}
+                            </td>
+                            <td>
+                                <input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="laGarentie.CG_CAPITAUXASSURES" />
+                            </td>
+                            <td>
+                                <input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="laGarentie.CG_TAUX" />
+                            </td>
+                            <td>
+                                <input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="laGarentie.CG_PRIMES" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!--tableau des primes-->
+            <div class="col-lg-6">
+                <h6><strong style="color: DarkSlateBlue"><u>TABLEAU DES PRIMES</u></strong></h6>
+                <table class="table table-bordered table-checkable" id="kt_datatable">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>LIBELLE</th>
+                            <th>VALEUR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-if="etatForm !== '2'" ng-repeat="laPrime in tabPrimes">
+                            <td style="max-width: 100px;">{{laPrime.RE_LIBELLERESUME}}</td>
+                            <td>
+                                <label ng-show="laPrime.RE_CODERESUME != '05'">{{laPrime.CG_PRIMES | currency:"":0}}
+                                    FCFA</label>
+                                <input ng-change="calculprimettc()" id="idPrime{{$index}}" type="text" name=""
+                                    class="form-control" placeholder="" ng-model="laPrime.CG_PRIMES"
+                                    ng-pattern="/^[0-9]+$/" />
+                            </td>
+                        </tr>
+                        <tr ng-if="etatForm == '2'" ng-repeat="laPrime in recupererInfo.clsCtcontratprimes">
+                            <td style="max-width: 100px;">{{laPrime.RE_LIBELLERESUME}}</td>
+                            <td>
+                                <label ng-show="laPrime.RE_CODERESUME != '05'">{{laPrime.CG_PRIMES | currency:"":0}}
+                                    FCFA</label>
+                                <input ng-change="calculprimettc()" id="idPrime{{$index}}" type="text" name=""
+                                    class="form-control" placeholder="" ng-model="laPrime.CG_PRIMES"
+                                    ng-pattern="/^[0-9]+$/" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--end: Datatable-->
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+            ng-click="validerFormIndivAccident(FormAddIndivAccident.infoGenerale.effet, FormAddIndivAccident.infoGenerale.echeance, FormAddIndivAccident.infoSouscripteur.date)">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>&#160;&#160;
+        <button type="reset" ng-show="etatForm !== '2'" class="btn btn-light-success font-weight-bold"
+            ng-click="resetFormAddIndivAccident()">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a href="#/assurances/individuel-accident" class="btn btn-icon btn-light-dark mr-2" title="Retour"
+            style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+</form>
+<!--end::Form-->
+
+<!--begin modal pour choix du code souscripteur-->
+<div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeSouscripteur"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - souscripteur
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                            <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                            <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixSouscripteur(lesSouscripteurs.TI_NUMTIERS, lesSouscripteurs.TI_DENOMINATION, lesSouscripteurs.TI_IDTIERS, lesSouscripteurs.TI_ADRESSEPOSTALE)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+<!--begin modal pour choix du code commercial-->
+<div class="modal fade" id="modalCodeCommercial" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeCommercial" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeCommercial"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - commercial
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesCommerciaux in listeDesCommerciaux">
+                            <td>{{lesCommerciaux.TI_NUMTIERS}}</td>
+                            <td>{{lesCommerciaux.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixCommercial(lesCommerciaux.TI_NUMTIERS, lesCommerciaux.TI_DENOMINATION, lesCommerciaux.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+<!--begin modal pour choix du code beneficiaire-->
+<div class="modal fade" id="modalCodeBeneficiaire" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeBeneficiaire" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeBeneficiaire"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - bénéficiaire
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                            <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                            <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixSouscripteurBenef(lesSouscripteurs.TI_NUMTIERS, lesSouscripteurs.TI_DENOMINATION, lesSouscripteurs.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

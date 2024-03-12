@@ -1,0 +1,220 @@
+﻿<!--début loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="voirPhotoCheque()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige"
+        ng-init="afficheListePhotoCheque()">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">ASSURANCE</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Opération</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Chèque</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Photo</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::ajouter-->
+            <!--end::ajouter-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <div ng-include="'Template/default/layouts/form_info_bulle_photo.html'"></div>
+            <!--end::Notice- ng-click="addTask()"->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header" style="background-color: #718E3E;">
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="fas fa-camera text-white icon-xl"></i>
+                        </span>
+                        <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Photo</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin::Row-->
+                    <div class="row">
+                        <div class="row" style="text-align: center; left: 170px; position: relative;"
+                            ng-if="listeChequeDocument[0].clsObjetRetour.SL_CODEMESSAGE == 99">
+                            <div class="col-lg-12">
+                                <img src="/Content/assets/media/illustration/illustr1.jpg" width="450" height="400"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-12">
+                                <label style="font-family: Maiandra GD; font-size: 20px"><strong>Aucune photo n'a été
+                                        enregistrée sur ce chèque</strong></label>
+                            </div>
+                        </div>
+                        <div class="row" ng-model="img.upload" ng-repeat="lImage in listeChequeDocument"
+                            ng-if="listeChequeDocument[0].clsObjetRetour.SL_CODEMESSAGE == 00"
+                            style="text-align: center; margin-right: 5px; margin-bottom: 30px;">
+                            <!--begin::Card-->
+                            <div class="col-lg-6" style="position: relative; left: 90px;">
+                                <div class="image-input image-input-outline" id="kt_user_edit_avatar">
+                                    <div class="image-input-wrapper-image"
+                                        style="background-image: url(/Content/assets/media/illustration/undraw_profile_pic_ic5t.svg)">
+                                    </div>
+                                    <div class="image-input-wrapper-image"
+                                        style="position: absolute; top: 0; left: 0; cursor: pointer;"
+                                        ng-click="agrandirPhoto($index)" data-toggle="modal"
+                                        data-target="#modalVoirPhoto">
+                                        <img ng-src='{{"data:image/jpeg;base64," + lImage.CH_CHEMINPHOTOCHEQUE}}'
+                                            style="object-position: cover;" width="100%" height="100%" /></div>
+                                    <a href="" class="btn btn-danger btn-shadow font-weight-bold" data-toggle="modal"
+                                        data-target="#modalSupprimer" style="position: relative; width: -1px;"
+                                        ng-click="supprRecupererIdChequePhoto(lImage.CH_DATESAISIECHEQUE, lImage.CH_IDEXCHEQUE, lImage.CH_NUMSEQUENCEPHOTO)">Supprimer</a>
+                                </div>
+                            </div>
+                            <!--end::Card-->
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer" style="height: 90px;">
+                    <a ng-href="#/assurances/operation/multirisque-pro/liste/cheque"
+                        class="btn btn-icon btn-light-dark mr-2" title="Retour"
+                        style="position: absolute; right: 27px;">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+                <!--end:ng-click="testPhoto()":Row-->
+            </div>
+        </div>
+        <!--end::Card-->
+    </div>
+    <!--begin modal pour  suppression-->
+    <div class="modal fade" id="modalSupprimer" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalSupprimer" aria-hidden="true">
+        <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalSupprimer"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ban text-white"></i>
+                        Contrat Chèque
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center; font-size: 17px;">
+                    Etes-vous sûr de vouloir supprimer ce chèque ?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger btn-shadow font-weight-bold" id="kt_reset"
+                        ng-click="suppChequePhoto()" data-dismiss="modal">
+                        <span>
+                            <i class="fas fa-ban"></i>
+                            <span>Supprimer</span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Annuler</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalVoirPlus" tabindex="-1" role="dialog" aria-labelledby="modalVoirPlus"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalVoirPlus"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="far fa-eye text-white"></i>
+                        Photo
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="height: 600px;">
+                    <div class="card-body p-0">
+                        <div class="overlay-wrapper">
+                            <img src="~/Content/assets/media/illustration/undraw_profile_pic_ic5t.svg" height="400"
+                                alt="" class="w-100 rounded" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalVoirPhoto" tabindex="-1" role="dialog" aria-labelledby="modalVoirPhoto"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalVoirPhoto"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-camera text-white"></i>
+                        Photo du chèque
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="height: 600px;">
+                    <div class="card-body p-0">
+                        <div class="overlay-wrapper">
+                            <img src="/Content/assets/media/illustration/undraw_profile_pic_ic5t.svg" height="555px"
+                                width="400px" alt="" class="w-100 rounded" />
+                            <div class="image-input-wrapper-image" style="position: absolute; top: 23px; left: 32px">
+                                <img ng-src='{{"data:image/jpeg;base64," + listeChequeDocument[indexPhotoSelect].CH_CHEMINPHOTOCHEQUE}}'
+                                    style="object-position: cover;" width="735px" height="555px" /></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--end::Container-->
+</div>
+<!--end::Entry-->
+<!--end::Container-->
+<!--end modal-->
+<!--end modal-->
+<!--end::Entry-->
+<!--end:ng-click="pourSupprimerAjoutDocumentCheque1():Content-->

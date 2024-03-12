@@ -1,0 +1,486 @@
+﻿@{
+    ViewBag.Title = "Assurance GESA";
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-controller="AssuranceGESAController" ng-init="initFormAddGESA()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background-color: beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">ASSURANCE</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Enregistrement</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Enregistrement</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">ASSURANCE GESA</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header" style="background-color: #718E3E;">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-home text-white icon-xl"></i>
+                                </span>
+                                <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">ASSURANCE GESA</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form" id="formAddGESA">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS SUR LE NOM DE LA PHARMACIE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Code*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addGESA_Code01" placeholder="Entrer un code" ng-model="FormAddGESA.code1" ng-disabled="verrouiller1"/>
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeSouscripteur" ng-click="afficheListeTiersSouscripteur()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Dénomination*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addGESA_Dénomination01" placeholder="Entrer une Dénomination" ng-model="FormAddGESA.denomination1" ng-disabled="verrouiller1"/>
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial" ng-click="afficheListeTiersSouscripteur()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Adresse*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-periscope text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addGESA_Adresse" placeholder="Entrer une adresse" ng-model="FormAddGESA.Adresse" ng-disabled="verrouiller1"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS SUR LE COMMERCIAL</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Code*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addGESA_Code02" placeholder="Entrer un code" ng-model="FormAddGESA.code2" ng-disabled="verrouiller2"/>
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial" ng-click="afficheListeTiersCommercial()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Dénomination*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addGESA_Dénomination02" placeholder="Entrer une Dénomination" ng-model="FormAddGESA.denomination2" ng-disabled="verrouiller2"/>
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial" ng-click="afficheListeTiersCommercial()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @*<div class="col-lg-4">
+                                                        <label>Commission*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-money-bill-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addGESA_Commission" placeholder="Entrer une commission" ng-model="FormAddGESA.Commission" />
+                                                        </div>
+                                                    </div>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS GENERALES</strong></h3>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>N° police/ N.C*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addGESA_N_Police" placeholder="Entrer un n°" ng-model="FormAddGESA.N_Police" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Pays*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-globe-africa text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addGESA_Pays" ng-model="FormAddGESA.pays" ng-change="afficheListeVille()">
+                                                                <option value="">Sélectionner un pays</option>
+                                                                <option ng-repeat="lePays in listePays" value="{{lePays.PY_CODEPAYS}}">{{lePays.PY_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Ville*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map-marker-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addGESA_Ville" ng-model="FormAddGESA.ville" ng-change="afficheListeCommune()">
+                                                                <option value="">Sélectionner une ville</option>
+                                                                <option ng-repeat="laVille in listeVillesGESA" value="{{laVille.VL_CODEVILLE}}">{{laVille.VL_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Section*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map-pin text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addGESA_Commune" ng-model="FormAddGESA.section">
+                                                                <option value="">Sélectionner une section</option>
+                                                                <option ng-repeat="laCommune in listeCommunesGESA" value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Situation géographique*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control datatable-input" name="addGESA_Situation_géographique" placeholder="Entrer un nom" data-col-index="0" ng-model="FormAddGESA.situationGeo" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Effet*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-calendar text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addGESA_Effet" placeholder="Entrer un effet" ng-model="FormAddGESA.effet" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Echéance*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-calendar text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addGESA_Echeance" placeholder="Entrer une écheance" ng-model="FormAddGESA.echeance" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Zone *</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-circle text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addGESA_Zone" ng-model="FormAddGESA.zone">
+                                                                <option value="">Sélectionner une zone </option>
+                                                                <option ng-repeat="lAlisteDesZoneMaladie in listeDesZoneMaladie" value="{{lAlisteDesZoneMaladie.ZM_CODEZONEMALADIE}}">{{lAlisteDesZoneMaladie.ZM_NOMZONEMALADIE}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Assureur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-cog text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addGESA_Assureur" ng-model="FormAddGESA.assureur">
+                                                                <option value="">Sélectionner un assureur</option>
+                                                                <option ng-repeat="lAssureur in listeDesAssureurs" value="{{lAssureur.TI_IDTIERS}}">{{lAssureur.TI_DENOMINATION}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Pharmacien*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-assistive-listening-systems text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addGESA_pharmacien" placeholder="Entrer un pharmacien" ng-model="FormAddGESA.pharmacien" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Téléphone Pharmacien*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-phone-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addGESA_Telephone_pharmacien" placeholder="Entrer un n° de téléphone" ng-model="FormAddGESA.Telephone_pharmacien" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Type d'affaire*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-briefcase text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addGESA_typeAffaire" ng-model="FormAddGESA.typeAffaire">
+                                                                <option value="">Sélectionner un type</option>
+                                                                <option ng-repeat="leTypeAffaire in listeTypeAffaireGESA" value="{{leTypeAffaire.TA_CODETYPEAFFAIRES}}">{{leTypeAffaire.TA_LIBLLETYPEAFFAIRES}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="separator separator-dashed separator-success my-1"></div><br>
+                                    <div class="form-group row col-lg-12">
+                                        <div class="col-12 ">
+
+                                            <table class="table table-bordered table-checkable" id="kt_datatable">
+                                                <thead style="text-align: center">
+                                                    <tr>
+                                                        <th>LIBELLE </th>
+                                                        <th>VALEUR</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="prime in tabPrimes">
+                                                        <td>{{prime.RE_LIBELLERESUME}}</td>
+                                                        <td>
+                                                            <input type="text" name="" class="form-control" placeholder="" ng-model="prime.CG_PRIMES" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="ajoutFormAddGESA(FormAddGESA.effet, FormAddGESA.echeance)">
+                                    <span>
+                                        <i class="far fa-check-circle"></i>
+                                        <span>Enregistrer</span>
+                                    </span>
+                                </button>&#160;
+                                <button type="submit" class="btn btn-light-success font-weight-bold" ng-click="resetFormAddGESA()">
+                                    <span>
+                                        <i class="fas fa-undo"></i>
+                                        <span>Réinitialiser</span>
+                                    </span>
+                                </button>
+                                <a href="ListeGESA" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip" data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+    <!--begin modal pour choix du code souscripteur-->
+    <div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalCodeSouscripteur" style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-white"></i>
+                        Liste des tiers - souscripteur
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-checkable" id="kt_datatable">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th>N° TIERS</th>
+                                <th>DENOMINATION</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                                <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                                <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                                <td style="text-align: center">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip" data-theme="dark" title="Choisir" ng-click="choixSouscripteur(lesSouscripteurs.TI_NUMTIERS, lesSouscripteurs.TI_DENOMINATION, lesSouscripteurs.TI_IDTIERS, lesSouscripteurs.TI_ADRESSEGEOGRAPHIQUE)" data-dismiss="modal">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+    <div class="modal fade" id="modalCodeCommercial" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalCodeCommercial" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalCodeCommercial" style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-white"></i>
+                        Liste des tiers - commercial
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-checkable" id="kt_datatable">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th>N° TIERS</th>
+                                <th>DENOMINATION</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lesCommerciaux in listeDesCommerciaux">
+                                <td>{{lesCommerciaux.TI_NUMTIERS}}</td>
+                                <td>{{lesCommerciaux.TI_DENOMINATION}}</td>
+                                <td style="text-align: center">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip" data-theme="dark" title="Choisir" ng-click="choixCommercial(lesCommerciaux.TI_NUMTIERS, lesCommerciaux.TI_DENOMINATION, lesCommerciaux.TI_IDTIERS)" data-dismiss="modal">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Content-->

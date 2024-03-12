@@ -1,0 +1,172 @@
+﻿<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content"
+    ng-init="initenregistrementAutreEcrituresmodif()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background-color: beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">PARAMETRE 2</h5>
+
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Paramétrage des opérations</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Paramétrage des autres écritures</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Modification</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #90CCC8;">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-cog text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Paramétrage
+                                    des autres écritures</h3>
+                            </div>
+                        </div>
+                        <!--begin:ng-model="FormAddMultirisquePro.code1":Form-->
+                        <div ng-include="'Template/default/layouts/FormEnrgParametrageAutresEcriture.html'"></div>
+                        <!--end::Form-->
+                        <!--end::Card-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end:data-target="#modalCodeSouscripteur" ng-click="listeDesTiersSouscripteur():Container-->
+    </div>
+
+    <!--end::Entry-->
+    <div class="modal fade" id="modalNumCompte" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalNumCompte" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #F5F500;">
+                    <h5 class="modal-title text-dark" id="modalNumCompte"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-dark"></i>
+                        N° compte
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-checkable" id="kt_datatable"
+                        ng-show="leChargement == false">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th>COMPTE</th>
+                                <th>NUMERO COMPTE</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lesNumCompte in listeDesNumComptesautreEcriture1">
+                                <td>{{lesNumCompte.PL_LIBELLE}}</td>
+                                <td>{{lesNumCompte.PL_NUMCOMPTE}}</td>
+                                <td style="text-align: center">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                        data-toggle="tooltip" data-theme="dark" title="Choisir"
+                                        ng-click="choixNumCompte1(lesNumCompte)" data-dismiss="modal">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalNumCompte1" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalNumCompte1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #F5F500;">
+                    <h5 class="modal-title text-dark" id="modalNumCompte1"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-dark"></i>
+                        N° compte
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-checkable" id="kt_datatable"
+                        ng-show="leChargement == false">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th>COMPTE</th>
+                                <th>NUMERO COMPTE</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lesNumCompte in listeDesNumComptesautreEcriture2">
+                                <td>{{lesNumCompte.PL_LIBELLE}}</td>
+                                <td>{{lesNumCompte.PL_NUMCOMPTE}}</td>
+                                <td style="text-align: center">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                        data-toggle="tooltip" data-theme="dark" title="Choisir"
+                                        ng-click="choixNumCompte2(lesNumCompte)" data-dismiss="modal">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--end::Content-->

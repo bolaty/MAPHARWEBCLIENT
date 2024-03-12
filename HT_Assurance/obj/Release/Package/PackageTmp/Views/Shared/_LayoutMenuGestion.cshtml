@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="~/Content/assets/media/logos/LOGO_MAPHAR.png" />
+      <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <title>@ViewBag.Title | MAPHAR</title>
+    @Styles.Render("~/Content/templatecss")
+</head>
+
+<body ng-app="appGestion" id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+    <!--begin::Principal-->
+    <!--begin::Header Mobile-->
+    @Html.Partial("template_partials/_MenuMobile")
+    <!--end::Header Mobile-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="d-flex flex-row flex-column-fluid page">
+            <!--begin::De côté-->
+            <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
+                <!--begin::Marque-->
+                @Html.Partial("template_partials/_BrandLogo")
+                <!--end::Marque-->
+                <!--begin::Menu de coté-->
+                <div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
+                    <!--begin::Conteneur de menu-->
+                    <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500" ng-controller="MenuController">
+                        <!--begin::Menu Nav-->
+                        <ul class="menu-nav">
+                           @*  <li class="menu-item menu-item-active" aria-haspopup="true">
+                                <a href="" class="menu-link" style="background-color: white;">
+                                    <span class="menu-text">
+                                        <i class="fab fa-buromobelexperte text-dark icon-xl"></i>&#160;&#160;&#160;
+                                        <span style="color: black; font-family: Maiandra GD; font-size: 20px">Tableau de bord</span>
+                                    </span>
+                                </a>
+                            </li> *@
+
+                            <!-- MENU GESTION -->
+                            @Html.Partial("template_partials/_MenuGestion")
+
+                            <!-- MENU ASSURANCE -->
+                            @Html.Partial("template_partials/_MenuAssurances")
+
+                            <!-- MENU GRH -->
+                            @Html.Partial("template_partials/_MenuGrh")
+
+                        </ul>
+                        <!--end::Menu Nav-->
+                    </div>
+                    <!--end::Conteneur de menu-->
+                </div>
+                <!--end::Menu de coté-->
+            </div>
+            <!--end::De côté-->
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+                <!--begin::Header-->
+                @Html.Partial("template_partials/_MenuHeader")
+                <!--end::Header-->
+
+                @RenderBody()
+                <!--begin::Footer-->
+                @Html.Partial("template_partials/_Footer")
+                <!--end::Footer-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        <!--end::Page-->
+    </div>
+    <!--end::Main-->
+    <!-- begin::User Panel-->
+    @Html.Partial("template_partials/_Panel")
+    <!-- end::User Panel-->
+
+    @Scripts.Render("~/bundles/angularjs") @Scripts.Render("~/bundles/script")
+
+
+    <script>
+        var KTAppSettings = {
+            "breakpoints": {
+                "sm": 576,
+                "md": 768,
+                "lg": 992,
+                "xl": 1200,
+                "xxl": 1400
+            },
+            "colors": {
+                "theme": {
+                    "base": {
+                        "white": "#ffffff",
+                        "primary": "#3699FF",
+                        "secondary": "#E5EAEE",
+                        "success": "#1BC5BD",
+                        "info": "#8950FC",
+                        "warning": "#FFA800",
+                        "danger": "#F64E60",
+                        "light": "#E4E6EF",
+                        "dark": "#181C32"
+                    },
+                    "light": {
+                        "white": "#ffffff",
+                        "primary": "#E1F0FF",
+                        "secondary": "#EBEDF3",
+                        "success": "#C9F7F5",
+                        "info": "#EEE5FF",
+                        "warning": "#FFF4DE",
+                        "danger": "#FFE2E5",
+                        "light": "#F3F6F9",
+                        "dark": "#D6D6E0"
+                    },
+                    "inverse": {
+                        "white": "#ffffff",
+                        "primary": "#ffffff",
+                        "secondary": "#3F4254",
+                        "success": "#ffffff",
+                        "info": "#ffffff",
+                        "warning": "#ffffff",
+                        "danger": "#ffffff",
+                        "light": "#464E5F",
+                        "dark": "#ffffff"
+                    }
+                },
+                "gray": {
+                    "gray-100": "#F3F6F9",
+                    "gray-200": "#EBEDF3",
+                    "gray-300": "#E4E6EF",
+                    "gray-400": "#D1D3E0",
+                    "gray-500": "#B5B5C3",
+                    "gray-600": "#7E8299",
+                    "gray-700": "#5E6278",
+                    "gray-800": "#3F4254",
+                    "gray-900": "#181C32"
+                }
+            },
+            "font-family": "Poppins"
+        };
+
+    </script>
+    <script>
+        var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+
+    </script>
+    <script src="~/Scripts/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/Scripts/assets/plugins/crud/datatables/search-options/advanced-search.js"></script>
+    <script src="~/Scripts/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+    <script src="~/Scripts/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script src="~/Scripts/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+
+    <script src="~/Scripts/assets/js/scripts.bundle.js"></script>
+    <script src="~/Scripts/assets/js/pages/widgets.js"></script>
+    <script src="~/Scripts/assets/js/pages/Crud/Forms/Validation/form-controls.js"></script>
+    <script src="~/Scripts/assets/js/pages/Crud/Forms/Validation/form-widgets.js"></script>
+    <script src="~/Scripts/assets/js/pages/Crud/Forms/widgets/bootstrap-maxlength.js"></script>
+    <script src="~/Scripts/assets/js/pages/features/miscellaneous/toastr.js"></script>
+    <script src="~/Scripts/assets/js/pages/features/miscellaneous/bootstrap-notify.js"></script>
+    <script src="~/Scripts/assets/js/pages/custom/user/add-user.js"></script>
+    <script src="~/Scripts/assets/js/pages/custom/user/edit-user.js"></script>
+
+
+    <script src="~/App/General/FooterController.js"></script>
+    <script src="~/App/General/MenuController.js"></script>
+    <script src="~/App/General/AppController.js"></script>
+
+    <!-- TRANSMISSION CONTROLLER -->
+    <script src="~/App/Controllersjs/Transmission/TransMultirisqueProController.js"></script>
+    <script src="~/App/Controllersjs/Transmission/TransAutoController.js"></script>
+    <script src="~/App/Controllersjs/Transmission/TransHabitatController.js"></script>
+    <script src="~/App/Controllersjs/Transmission/TransIndividuelAccidentController.js"></script>
+    <script src="~/App/Controllersjs/Transmission/TransVoyageController.js"></script>
+    <script src="~/App/Controllersjs/Transmission/TransAuxiliaireController.js"></script>
+    <script src="~/App/Controllersjs/Transmission/TransGesaController.js"></script>
+    <script src="~/App/Controllersjs/Transmission/TransPharmacienController.js"></script>
+    <script src="~/App/Controllersjs/Transmission/TransRespoCivileController.js"></script>
+    <script src="~/App/Controllersjs/Transmission/TransTransportMarchandiseController.js"></script>
+
+    <!-- VALIDATION CONTROLLER -->
+    <script src="~/App/Controllersjs/Validation/ValidMultirisqueProController.js"></script>
+    <script src="~/App/Controllersjs/Validation/ValidAutoController.js"></script>
+    <script src="~/App/Controllersjs/Validation/ValidAuxiliaireController.js"></script>
+    <script src="~/App/Controllersjs/Validation/ValidGesaController.js"></script>
+    <script src="~/App/Controllersjs/Validation/ValidHabitatController.js"></script>
+    <script src="~/App/Controllersjs/Validation/ValidIndividuelAccidentController.js"></script>
+    <script src="~/App/Controllersjs/Validation/ValidPharmacienController.js"></script>
+    <script src="~/App/Controllersjs/Validation/ValidRespoCivileController.js"></script>
+    <script src="~/App/Controllersjs/Validation/ValidTransportMarchandiseController.js"></script>
+    <script src="~/App/Controllersjs/Validation/ValidVoyageController.js"></script>
+
+    <!-- OPERATION CONTROLLER -->
+    <script src="~/App/Controllersjs/Operation/OperationController.js"></script>
+
+    <!-- RELANCE CONTROLLER -->
+    <script src="~/App/Controllersjs/Relance/RelanceController.js"></script>
+
+    <!-- TIERS CONTROLLER -->
+    <script src="~/App/Controllersjs/Tiers/TiTiersController.js"></script>
+    <script src="~/App/Controllersjs/Tiers/SituationTiersController.js"></script>
+    <script src="~/App/Controllersjs/Tiers/GroupeTiersController.js"></script>
+    <script src="~/App/Controllersjs/Tiers/SituationTiersController.js"></script>
+    <script src="~/App/Controllersjs/Tiers/EditionTiersController.js"></script>
+    <script src="~/App/Controllersjs/Tiers/CommerciauxController.js"></script>
+    <script src="~/App/Controllersjs/Tiers/ListeCommandesController.js"></script>
+    <script src="~/App/Controllersjs/Tiers/SituationDesAssureursController.js"></script>
+    <script src="~/App/Controllersjs/Tiers/SituationDesCommerciauxController.js"></script>
+    <script src="~/App/Controllersjs/Tiers/prospectController.js"></script>
+    <script src="~/App/Controllersjs/Tiers/SaisieAssureurController.js"></script>
+
+    <!-- ASSURANCE CONTROLLER -->
+    <script src="~/App/Controllersjs/Assurances/HabitatController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/MultirisqueProfessionnelController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/VoyageController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/AutoController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/SanteController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/IndividuelAccidentController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/ResponsabiliteCivileController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/SantePharmacienController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/SanteAuxiliaireController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/TransportetMarchandiseController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/AssuranceGESAController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/ChequeController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/OuvertureDossierController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/ClotureDossierController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/TransmissionDossierController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/ValidationDossierController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/SuiviDossierController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/SuiviClientController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/SaisieRDVClientController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/SaisieEcheancierController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/ConsultationReglementController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/ReleveCommissionController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/ConsultationsQuestionnairesController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/RemiseDeChequeController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/EditionAssuranceController.js"></script>
+    <script src="~/App/Controllersjs/Assurances/DemandeContratController.js"></script>
+
+    <!-- REGLEMENT ASSURANCE CONTROLLER -->
+    <script src="~/App/Controllersjs/ReglementAssurance/ReglementAssuranceMPController.js"></script>
+    <script src="~/App/Controllersjs/ReglementAssurance/ReglementAssuranceAutoController.js"></script>
+    <script src="~/App/Controllersjs/ReglementAssurance/ReglementAssuranceAuxiliaireController.js"></script>
+    <script src="~/App/Controllersjs/ReglementAssurance/ReglementAssuranceGesaController.js"></script>
+    <script src="~/App/Controllersjs/ReglementAssurance/ReglementAssuranceHabitatController.js"></script>
+    <script src="~/App/Controllersjs/ReglementAssurance/ReglementAssuranceIndividuelAccidentController.js"></script>
+    <script src="~/App/Controllersjs/ReglementAssurance/ReglementAssurancePharmacienController.js"></script>
+    <script src="~/App/Controllersjs/ReglementAssurance/ReglementAssuranceRespoCivileController.js"></script>
+    <script src="~/App/Controllersjs/ReglementAssurance/ReglementAssuranceTransportMarchandiseController.js"></script>
+    <script src="~/App/Controllersjs/ReglementAssurance/ReglementAssuranceVoyageController.js"></script>
+
+    <!-- GESTION CONTROLLER -->
+    <script src="~/App/Controllersjs/Gestion/CommissionCommerciauxController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/ReleveCommissionController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/ReleveClientController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/ReglementChequeController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/RemiseChequeController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/ReglementCommissionAssuranceController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/ReglementFactureClientController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/ApprovisionnementStockController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/VentesController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/SaisieEcritureComptableController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/OpTresorerieTiersController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/ExtourneController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/ArticlesEtPrestationsController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/EditionComptabiliteController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/EditionArticlesEtPrestationsController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/OperationsCaisseController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/EditionStockController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/EditionTresorerieController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/EcritureAutoTiersController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/ConsultationController.js"></script>
+    <script src="~/App/Controllersjs/Gestion/ReeditionController.js"></script>
+
+    <!-- OPERATEUR CONTROLLER-->
+    <script src="~/App/Controllersjs/Operateur/DroitAutreOperationTiersController.js"></script>
+    <script src="~/App/Controllersjs/Operateur/DroitOperationTresorerieEtAutreEcritureController.js"></script>
+    <script src="~/App/Controllersjs/Operateur/DroitSurCompteController.js"></script> 
+    <script src="~/App/Controllersjs/Operateur/DroitSurOperationTresorerieTiersController.js"></script> 
+    <script src="~/App/Controllersjs/Operateur/ModificationEntrepotController.js"></script>
+    <script src="~/App/Controllersjs/Operateur/DroitSurMenuController.js"></script>
+    <script src="~/App/Controllersjs/Operateur/OperateurController.js"></script>
+    <script src="~/App/Controllersjs/Operateur/DroitAgenceController.js"></script>
+    <script src="~/App/Controllersjs/Operateur/DroitEntrepotController.js"></script>
+    <script src="~/App/Controllersjs/Operateur/DroitTransfertStockController.js"></script>
+    <script src="~/App/Controllersjs/Operateur/DroitFamilleOperationController.js"></script>
+
+    <!-- OUTILS ET SECURITES CONTROLLER-->
+    <script src="~/App/Controllersjs/OutilsEtSecurites/CreationExerciceController.js"></script>
+    <script src="~/App/Controllersjs/OutilsEtSecurites/CreationJrneeTravailController.js"></script>
+    <script src="~/App/Controllersjs/OutilsEtSecurites/EditionOutilsSecuriteController.js"></script>
+    <script src="~/App/Controllersjs/OutilsEtSecurites/FermetureJrneeTravailController.js"></script>
+    <script src="~/App/Controllersjs/OutilsEtSecurites/MotDePasseController.js"></script>
+    <script src="~/App/Controllersjs/OutilsEtSecurites/ProfilsController.js"></script>
+    <script src="~/App/Controllersjs/OutilsEtSecurites/NewDateJourTravailController.js"></script>
+    <script src="~/App/Controllersjs/OutilsEtSecurites/DroitAgenceProfilsController.js"></script>
+    <script src="~/App/Controllersjs/OutilsEtSecurites/DroitEntrepotProfilsController.js"></script>
+    <script src="~/App/Controllersjs/OutilsEtSecurites/DroitFamOperationProfilsController.js"></script>
+    <script src="~/App/Controllersjs/OutilsEtSecurites/DroitMenuProfilsController.js"></script>
+    <script src="~/App/Controllersjs/OutilsEtSecurites/DroitTransfertStockProfilsController.js"></script>
+    
+<!-- PARAMETRE I CONTROLLER -->
+    @*<script src="~/App/Controllersjs/ParametreI/EditionParametreController.js"></script>*@
+    <script src="~/App/Controllersjs/ParametreI/ParametreIController.js"></script>
+    <script src="~/App/Controllersjs/ParametreI/ExpertNommeController.js"></script>
+
+    <!-- PARAMETRE II CONTROLLER -->
+    <script src="~/App/Controllersjs/ParametreII/EditionParametreIIController.js"></script>
+    <script src="~/App/Controllersjs/ParametreII/ParametrageOperationsController.js"></script>
+    <script src="~/App/Controllersjs/ParametreII/parametrageComptesProduitsController.js"></script>
+    <script src="~/App/Controllersjs/ParametreII/parametrageAutreOperationDesTiersController.js"></script>
+    <script src="~/App/Controllersjs/ParametreII/Parametre2Controller.js"></script>
+    <script src="~/App/Controllersjs/ParametreII/FamilleDeBiensImmobilisesController.js"></script>
+    <script src="~/App/Controllersjs/ParametreII/ParametresBudgetController.js"></script>
+    <script src="~/App/Controllersjs/ParametreII/ParametresDetailsDuTypeDeBudgetController.js"></script>
+    <script src="~/App/Controllersjs/ParametreII/ParametresposteBudgetaireController.js"></script>
+    <script src="~/App/Controllersjs/ParametreII/ParametresFamilleAmortissementController.js"></script>
+    
+    <!-- RENOUVELLEMENT CONTROLLER -->
+    <script src="~/App/Controllersjs/Renouvellement/RenouvellementController.js"></script>
+    
+ 
+
+    <script src="~/App/Controllersjs/MenuGauche/GererMenuController.js"></script>
+</body>
+
+</html>

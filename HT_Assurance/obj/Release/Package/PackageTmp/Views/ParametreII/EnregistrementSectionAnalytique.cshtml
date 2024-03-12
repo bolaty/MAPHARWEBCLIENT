@@ -1,0 +1,258 @@
+﻿@{
+    ViewBag.Title = "Enregistrement de Section Analytique";
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background-color: beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    @*<h5 class="text-dark font-weight-bold my-1 mr-5">Cloture d'exercice</h5>*@
+                    <h3 class="text-dark font-weight-bold my-1 mr-5">GESTION</h3>
+
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">ParamètreII</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Enregistrement</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Section Analytique</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin: style="margin-top:100px; width:900px;margin-left:100px":Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #F5F500;">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fab fa-wpforms text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Section Analytique</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <label>Code*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-key text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="url" placeholder="Entrer un code" />
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez saisir le code.</span>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>Numéro section*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fab fa-orcid text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="url" placeholder="Entrer un numéro de section" />
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez saisir le numéro de section.</span>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>Type*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-file-invoice-dollar text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select class="form-control" name="option">
+                                                            <option value="">Sélectionner un Type</option>
+                                                            <option>Type 1</option>
+                                                            <option>Type 2</option>
+                                                            <option>Type 3</option>
+                                                            <option>Type 4</option>
+                                                            <option>Type 5</option>
+                                                        </select>
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez sélectionner le Type.</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <label>Intitulé *</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-italic text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="url" placeholder="Entrer un intitulé" />
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez saisir l' intitulé.</span>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>Abrégé*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="far fa-money-bill-alt text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="url" placeholder="Entrer une abreviation" />
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez saisir l' abreviation.</span>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>Statut compte*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-ellipsis-h  text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select class="form-control" name="option">
+                                                            <option value="">Sélectionner un statut de compte</option>
+                                                            <option>statut 1</option>
+                                                            <option>statut 2</option>
+                                                            <option>statut 3</option>
+                                                            <option>statut 4</option>
+                                                            <option>statut 5</option>
+                                                        </select>
+                                                    </div>
+                                                    <span class="form-text text-muted">Veuillez sélectionner le statut de compte.</span>
+                                                </div>
+                                            </div>
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <label>Plan reporting*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-video text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un plan reporting</option>
+                                                                <option>statut 1</option>
+                                                                <option>statut 2</option>
+                                                                <option>statut 3</option>
+                                                                <option>statut 4</option>
+                                                                <option>statut 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le plan reporting.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Saut de *</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-chevron-down  text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un saut de ligne</option>
+                                                                <option>statut 1</option>
+                                                                <option>statut 2</option>
+                                                                <option>statut 3</option>
+                                                                <option>statut 4</option>
+                                                                <option>statut 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le saut de ligne.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Nombre de ligne*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-question  text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un nombre ligne" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le nombre ligne.</span>
+                                                    </div>
+                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-3">
+                                                            <label class="checkbox checkbox-lg checkbox-primary" style="position: relative; left: 20px; bottom: -30px">
+                                                                <input type="checkbox" value="" />
+                                                                <span class="form-text text-muted"></span>
+                                                            </label>
+                                                            <label style="position: relative; top: 10px; left: 53px;">Report à nouveau</label>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <label class="checkbox checkbox-lg checkbox-primary" style="position: relative; left: 20px; bottom: -30px">
+                                                                <input type="checkbox" value="" />
+                                                                <span class="form-text text-muted"></span>
+                                                            </label>
+                                                            <label style="position: relative; top: 10px; left: 53px;">Actif</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-8">
+                                    <div class="col-lg-12">
+                                        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold">
+                                            <span>
+                                                <i class="far fa-check-circle"></i>
+                                                <span>Enregistrer</span>
+                                            </span>
+                                        </button>
+                                        <button type="submit" class="btn btn-light-success font-weight-bold">
+                                            <span>
+                                                <i class="fas fa-undo"></i>
+                                                <span>Réinitialiser</span>
+                                            </span>
+                                        </button>
+                                        <a href="SectionAnalytique" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip" data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+                                            <i class="fas fa-arrow-left"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                        <!--end::Form-->
+                        <!--end::Card-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

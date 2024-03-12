@@ -1,0 +1,108 @@
+﻿<!--begin::Form-->
+<form class="form">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10">
+                        <strong>
+                            INFORMATIONS DE
+                            L'EXERCICE
+                        </strong>
+                    </h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Exercice*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" ng-disabled="isDisabled" name="addExercice" id="addExercice"
+                                           placeholder="Entrer l'Exercice" ng-model="FormAddExercice.Exercice"
+                                           maxlength="10" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Date de Debut*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" ng-disabled="verouform" class="form-control" name="addDateDeDebut"
+                                           id="addDateDeDebut" placeholder="Entrer la Date de debut"
+                                           ng-model="FormAddExercice.Datededebut" maxlength="20" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4" style="margin-top: 25px;">
+                                <label>Date de fin*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" ng-disabled="verouform" class="form-control" name="addDatedefin" id="addDatedefin"
+                                           placeholder="Entrer la date de fin" ng-model="FormAddExercice.Datedefin"
+                                           maxlength="20" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4" style="margin-top: 25px;">
+                                <label>Date de la premiere journée*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addDateDepremierejournee"
+                                           id="addDateDepremierejournee" placeholder="Entrer la date de la journée"
+                                           ng-model="FormAddExercice.DateDepremierejournee" maxlength="20" />
+                                </div>
+                            </div>
+                            <div class="form-group row" style="padding-left: 150px;">
+                                <div >
+                                    <label class="checkbox checkbox-lg checkbox-primary"
+                                     class="col-lg-4" style="position: relative; left: 20px; bottom: -50px" >
+                                        <input type="checkbox"  ng-click="testval(FormAddExercice.ExerciceStatut)"
+                                        ng-checked="COCHE(FormAddExercice.ExerciceStatut)"
+                                        ng-model="FormAddExercice.ExerciceStatut"/>
+                                        <span class="form-text text-muted"></span>
+                                    </label>
+                                    <label style="position: relative; top: 30px; left: 53px;">Exercice en cours</label>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="ajoutFormAddExercice()">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <button ng-show="etatForm !== '2'" type="submit" id="kt_notify" class="btn btn-light-success font-weight-bold"
+                ng-click="resetFormAddExercice()">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a href="#/OutilsEtSecurites/Liste/ListecreationExercice" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip"
+           data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+<!--end::Form-->

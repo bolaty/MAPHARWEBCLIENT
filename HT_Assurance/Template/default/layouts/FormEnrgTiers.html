@@ -1,0 +1,861 @@
+﻿<!--begin::Form-->
+<form class="form" id="idFormAddTiTiers">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>IDENTITE</strong></h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Opérateur*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user-tie text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idOperateur" class="form-control" name="addOp"
+                                        ng-model="FormAddTiTiers.operateur">
+                                        <option value="">Sélectionnez un opérateur</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="lOperateur in listeOperateur"
+                                            ng-selected="FormAddTiTiers.operateur == lOperateur.OP_CODEOPERATEUR"
+                                            value="{{lOperateur.OP_CODEOPERATEUR}}">{{lOperateur.OP_NOMPRENOM}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.operateur == lOperateur.OP_CODEOPERATEUR"
+                                            ng-repeat="lOperateur in listeOperateur"
+                                            value="{{lOperateur.OP_CODEOPERATEUR}}">{{lOperateur.OP_NOMPRENOM}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Dénomination*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDenomination" type="text" class="form-control" name="addDenomination"
+                                        placeholder="Entrer une dénomination" ng-model="FormAddTiTiers.denomination"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <!--<div class="col-lg-3">
+                                <label>Siège*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fab fa-black-tie text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idSiege" name="addSiege" type="text" class="form-control datatable-input"
+                                        placeholder="Entrer un siège" data-col-index="0" ng-model="FormAddTiTiers.siege"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Description*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDescription" name="addDescription" type="text" class="form-control"
+                                        placeholder="Entrer une description" ng-model="FormAddTiTiers.description"
+                                        maxlength="150">
+                                </div>
+                            </div>-->
+                            <div class="col-lg-6">
+                                <label>Sexe*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-restroom text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idSexe" class="form-control" name="addSexe"
+                                        ng-model="FormAddTiTiers.sexe">
+                                        <option value="">Sélectionnez le sexe</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="leSexe in listeSexes"
+                                            value="{{leSexe.SX_CODESEXE}}">{{leSexe.SX_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.sexe == leSexe.SX_CODESEXE"
+                                            ng-repeat="leSexe in listeSexes" value="{{leSexe.SX_CODESEXE}}">
+                                            {{leSexe.SX_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Profession</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-chalkboard-teacher text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idProfession" class="form-control" name="addProfession"
+                                        ng-model="FormAddTiTiers.profession">
+                                        <option value="">Sélectionnez une profession</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="leProfession in listeProfession"
+                                            value="{{leProfession.PF_CODEPROFESSION}}">{{leProfession.PF_LIBELLE}}
+                                        </option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.profession == leProfession.PF_CODEPROFESSION"
+                                            ng-repeat="leProfession in listeProfession"
+                                            value="{{leProfession.PF_CODEPROFESSION}}">{{leProfession.PF_LIBELLE}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-3">
+                                <label>Type du tiers*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-user text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idTypeTiers" class="form-control" name="addTypeTiers"
+                                        ng-model="FormAddTiTiers.typeDuTiers">
+                                        <option value="">Sélectionnez le type du tiers</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="leTypeTiers in listeTypeDesTiers"
+                                            value="{{leTypeTiers.TP_CODETYPETIERS}}">{{leTypeTiers.TP_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.typeDuTiers == leTypeTiers.TP_CODETYPETIERS"
+                                            ng-repeat="leTypeTiers in listeTypeDesTiers"
+                                            value="{{leTypeTiers.TP_CODETYPETIERS}}">{{leTypeTiers.TP_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Date de naissance*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDateNaissance" name="addDateNaissance" type="text"
+                                        class="form-control datatable-input" placeholder="Entrer une date"
+                                        ng-model="FormAddTiTiers.dateDeNaissance" maxlength="10"
+                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Nature tiers*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-question-circle text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idNatTiers" class="form-control" name="addNatureTiers"
+                                        ng-model="FormAddTiTiers.natureTiers">
+                                        <option value="">Sélectionner une nature</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="laNatureTiers in listeNatureTiers"
+                                            value="{{laNatureTiers.NT_CODENATURETIERS}}">{{laNatureTiers.NT_LIBELLE}}
+                                        </option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.natureTiers == laNatureTiers.NT_CODENATURETIERS"
+                                            ng-repeat="laNatureTiers in listeNatureTiers"
+                                            value="{{laNatureTiers.NT_CODENATURETIERS}}">{{laNatureTiers.NT_LIBELLE}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>numéro client axa</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idnumclientaxa" name="addnumclientaxa" type="text"
+                                        class="form-control datatable-input" placeholder="Entrer un numero"
+                                        ng-model="FormAddTiTiers.numclientaxa" maxlength="15">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>TVA*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-percent text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idTva" class="form-control" name="addTva" ng-model="FormAddTiTiers.tva">
+                                        <option value="">Sélectionnez une TVA</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="laTVA in listeTVA"
+                                            ng-selected="FormAddTiTiers.tva == laTVA.TI_TVA" value="{{laTVA.TI_TVA}}">
+                                            {{laTVA.TI_TVALIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.tva == laTVA.TI_TVA"
+                                            ng-repeat="laTVA in listeTVA" value="{{laTVA.TI_TVA}}">
+                                            {{laTVA.TI_TVALIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>ASDI*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-chart-bar text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idAsdi" class="form-control" name="addAsdi"
+                                        ng-model="FormAddTiTiers.asdi">
+                                        <option value="">Sélectionnez un ASDI</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="lASDI in listeASDI"
+                                            ng-selected="FormAddTiTiers.asdi == lASDI.TI_ASDI"
+                                            value="{{lASDI.TI_ASDI}}">{{lASDI.TI_ASDILIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.asdi == lASDI.TI_ASDI"
+                                            ng-repeat="lASDI in listeASDI" value="{{lASDI.TI_ASDI}}">
+                                            {{lASDI.TI_ASDILIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Plafond crédit*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class=" flaticon flaticon2-chart text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idPlafondCred" maxlength="15" name="addPlafond" type="text"
+                                        class="form-control datatable-input" placeholder="Entrer un plafond crédit"
+                                        data-col-index="0" ng-model="FormAddTiTiers.plafondCredit"
+                                        ng-pattern="/^[0-9]{1,15}$/" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <!-- <div class="col-lg-4">
+                                <label>Type compte additionnel</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-suitcase text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idCompteAdd" class="form-control" name="addTypeCompte"
+                                        ng-model="FormAddTiTiers.typeCompteAdd">
+                                        <option value="">Sélectionnez un type compte add</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-repeat="leTypeCmpteAdd in listeTypeCompteAdd"
+                                            value="{{leTypeCmpteAdd.TC_CODECOMPTETYPETIERS}}">
+                                            {{leTypeCmpteAdd.TC_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.typeCompteAdd == leTypeCmpteAdd.TC_CODECOMPTETYPETIERS"
+                                            ng-repeat="leTypeCmpteAdd in listeTypeCompteAdd"
+                                            value="{{leTypeCmpteAdd.TC_CODECOMPTETYPETIERS}}">
+                                            {{leTypeCmpteAdd.TC_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>-->
+                            <div class="col-lg-6">
+                                <label>N° compte*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fab fa-orcid text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNumCompte" maxlength="8" name="addNumCompte" type="text"
+                                        class="form-control datatable-input" placeholder="Entrer un numéro de compte"
+                                        ng-model="FormAddTiTiers.numCompte" ng-disabled="isDisabled1"
+                                        ng-pattern="/^[0-9]+$/">
+                                    <div class="input-group-append" title="Choix du n° compte">
+                                        <button type="button" class="btn btn-secondary btn-secondary--icon"
+                                            id="kt_reset" data-toggle="modal" data-target="#modalNumCompte"
+                                            ng-click="afficheListeNumCompte()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Interlocuteur*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-assistive-listening-systems text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idInterlocuteur" type="text" class="form-control"
+                                        name="add_Interlocuteur" placeholder="Entrer un nom Interlocuteur"
+                                        ng-model="FormAddTiTiers.interlocuteur" maxlength="150"
+                                        ng-pattern="/^([a-z-A-Z])([a-z-A-Z0-9 ]+)/" />
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-6">
+                                <label>N° compte contribuable</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fab fa-orcid text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNumCC" maxlength="8" name="addNumCc" type="text"
+                                        class="form-control datatable-input" placeholder="Entrer un numéro CC"
+                                        ng-model="FormAddTiTiers.numCc" ng-pattern="/^[0-9]+$/">
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Gérant</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="flaticon2-user-outline-symbol text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idGerant" name="addGerant" type="text"
+                                        class="form-control datatable-input" placeholder="Entrer un nom"
+                                        data-col-index="4" ng-model="FormAddTiTiers.gerant" ng-pattern="/^[a-z-A-Z]/"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Secteur d'activité</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="flaticon2-shelter text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idSecteurActivite" class="form-control" name="addSecteurAct"
+                                        ng-model="FormAddTiTiers.secteurDactivite">
+                                        <option value="">Sélectionnez un secteur d'activité</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-repeat="leSecteurActivite in listeSecteurDActivite"
+                                            value="{{leSecteurActivite.AC_CODEACTIVITE}}">
+                                            {{leSecteurActivite.AC_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.secteurDactivite == leSecteurActivite.AC_CODEACTIVITE"
+                                            ng-repeat="leSecteurActivite in listeSecteurDActivite"
+                                            value="{{leSecteurActivite.AC_CODEACTIVITE}}">
+                                            {{leSecteurActivite.AC_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-4">
+                                <label>Cas d'utilisation</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-receipt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idCasUtil" class="form-control" name="addCasUtil"
+                                        ng-model="FormAddTiTiers.casDutilisation">
+                                        <option value="">Sélectionnez un cas d'utilisation</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="leCasUtil in listeCasDUtilisation"
+                                            value="{{leCasUtil.CU_CODECASUTILISATION}}">{{leCasUtil.CU_LIBELLE}}
+                                        </option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.casDutilisation == leCasUtil.CU_CODECASUTILISATION"
+                                            ng-repeat="leCasUtil in listeCasDUtilisation"
+                                            value="{{leCasUtil.CU_CODECASUTILISATION}}">{{leCasUtil.CU_LIBELLE}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>N° agrement</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fab fa-orcid text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idAgrement" maxlength="8" name="addNumAgrement" type="text"
+                                        class="form-control datatable-input"
+                                        placeholder="Entrer un numéro numéro agrement"
+                                        ng-model="FormAddTiTiers.numAgremant" ng-pattern="/^[0-9]+$/">
+                                </div>
+                            </div>
+                            <!--<div class="col-lg-4">
+                                <label>Régime d'imposition</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-clipboard-check text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idRegimeImpo" class="form-control" name="addRegime"
+                                        ng-model="FormAddTiTiers.regimeDimposition">
+                                        <option value="">Sélectionnez un régime d'imposition</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-repeat="leRegime in listeRegimeDImposition"
+                                            value="{{leRegime.RE_CODEREGIMEIMPOSITION}}">
+                                            {{leRegime.RE_LIBELLEREGIMEIMPOSITION}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.regimeDimposition == leRegime.RE_CODEREGIMEIMPOSITION"
+                                            ng-repeat="leRegime in listeRegimeDImposition"
+                                            value="{{leRegime.RE_CODEREGIMEIMPOSITION}}">
+                                            {{leRegime.RE_LIBELLEREGIMEIMPOSITION}}</option>
+                                    </select>
+                                </div>
+                            </div>-->
+                            <!--<div class="col-lg-4">
+                                <label>Spécialité</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-certificate text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idSpecialite" class="form-control" name="addSpecialite"
+                                        ng-model="FormAddTiTiers.specialite">
+                                        <option value="">Sélectionnez une spécialité</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="laSpecialite in listeSpecialite"
+                                            value="{{laSpecialite.SP_CODESPECIALITE}}">
+                                            {{laSpecialite.SP_LIBELLESPECIALITE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.specialite == laSpecialite.SP_CODESPECIALITE"
+                                            ng-repeat="laSpecialite in listeSpecialite"
+                                            value="{{laSpecialite.SP_CODESPECIALITE}}">
+                                            {{laSpecialite.SP_LIBELLESPECIALITE}}</option>
+                                    </select>
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-3">
+                                <label>Pays*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-globe-africa text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idPays" class="form-control" name="addPays"
+                                        ng-model="FormAddTiTiers.pays">
+                                        <option value="">Sélectionner un pays</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-repeat="lePays in listeDesPays"
+                                            ng-selected="statuPv === lePays.PY_REFERENCE"
+                                            value="{{lePays.PY_CODEPAYS}}"
+                                            ng-click="afficheListeVille(FormAddTiTiers.pays)">{{lePays.PY_LIBELLE}}
+                                        </option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.pays == lePays.PY_CODEPAYS"
+                                            ng-repeat="lePays in listeDesPays" value="{{lePays.PY_CODEPAYS}}"
+                                            ng-click="afficheListeVille(FormAddTiTiers.pays)">{{lePays.PY_LIBELLE}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Ville*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-map-marker-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idVille" class="form-control" name="addVille"
+                                        ng-model="FormAddTiTiers.ville" ng-disabled="verouVille">
+                                        <option value="">Sélectionner une ville</option>
+                                        <option ng-show="etatForm !== '2'" 
+                                            ng-selected="FormAddTiTiers.ville === laVille.VL_CODEVILLE"
+                                            ng-repeat="laVille in listeDesVilles"
+                                            value="{{laVille.VL_CODEVILLE}}">{{laVille.VL_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.ville == laVille.VL_CODEVILLE"
+                                            ng-repeat="laVille in listeDesVilles" value="{{laVille.VL_CODEVILLE}}">
+                                            {{laVille.VL_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Groupe des tiers</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-users text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idGroupeTiers" class="form-control" name="addGroupeTiers"
+                                        ng-model="FormAddTiTiers.groupeDesTiers">
+                                        <option value="">Sélectionner un groupe</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-repeat="leGrpeTiers in listeGroupeDesTiers"
+                                            value="{{leGrpeTiers.GP_CODEGROUPE}}">{{leGrpeTiers.GP_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.groupeDesTiers == leGrpeTiers.GP_CODEGROUPE"
+                                            ng-repeat="leGrpeTiers in listeGroupeDesTiers"
+                                            value="{{leGrpeTiers.GP_CODEGROUPE}}">{{leGrpeTiers.GP_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Escompte*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-tag text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idEscompte" class="form-control" name="addEscompte"
+                                        ng-model="FormAddTiTiers.autorisationDescompte">
+                                        <option value="">Sélectionner un escompte</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="lEscompte in listeEscompte"
+                                            value="{{lEscompte.TI_ESCOMPTE}}">{{lEscompte.TI_ESCOMPTELIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddTiTiers.autorisationDescompte == lEscompte.TI_ESCOMPTE"
+                                            ng-repeat="lEscompte in listeEscompte" value="{{lEscompte.TI_ESCOMPTE}}">
+                                            {{lEscompte.TI_ESCOMPTELIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="form-group row" ng-show="etatForm !== '2'">
+                            <div class="col-lg-6" style="position: relative; left: 350px;">
+                                <div class="image-input image-input-outline" id="kt_user_edit_avatar">
+                                    <div class="image-input-wrapper-image"
+                                        style="background-image: url(/Content/assets/media/illustration/undraw_profile_pic_ic5t.svg)">
+                                    </div>
+                                    <div id="idDeImage" class="image-input-wrapper-image"
+                                        style="position: absolute; top: 0; left: 0; border: none"><img id="idPhoto"
+                                            ng-src="{{avatar}}" style="object-position: cover;" width="100%"
+                                            height="100%" /></div>
+                                    <label
+                                        class="btn btn-xs btn-icon btn-circle btn-info btn-hover-text-primary btn-shadow"
+                                        data-action="change" data-toggle="tooltip" title=""
+                                        data-original-title="Nouvelle photo">
+                                        <i class="fa fa-pen icon-sm text-white"></i>
+                                        <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg"
+                                            img-profile="FormAddTiTiers.img_avatar"
+                                            onchange="angular.element(this).scope().previewPhoto(event)" />
+                                        <input type="hidden" name="profile_avatar_remove" />
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="image-input image-input-outline" id="kt_user_edit_avatar_1">
+                                    <div class="image-input-wrapper-image"
+                                        style="background-image: url(/Content/assets/media/illustration/illustr4.jpg)">
+                                    </div>
+                                    <div class="image-input-wrapper-image"
+                                        style="position: absolute; top: 0; left: 0; border: none"><img
+                                            ng-src="{{signature}}" id="idSignature" style="object-position: cover;"
+                                            width="100%" height="100%" /></div>
+                                    <label
+                                        class="btn btn-xs btn-icon btn-circle btn-info btn-hover-text-primary btn-shadow"
+                                        data-action="change" data-toggle="tooltip" title=""
+                                        data-original-title="Nouvelle signature">
+                                        <i class="fa fa-pen icon-sm text-white"></i>
+                                        <input type="file" name="img_Signature" accept=".png, .jpg, .jpeg"
+                                            img-signature="FormAddTiTiers.img_signature"
+                                            onchange="angular.element(this).scope().previewSignature(event)" />
+                                        <input type="hidden" name="profile_avatar_remove" />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row" ng-show="etatForm == '2'">
+                            <div class="col-lg-6" style="position: relative; left: 350px;">
+                                <div class="image-input image-input-outline" id="kt_user_edit_avatar">
+                                    <div class="image-input-wrapper-image"
+                                        style="background-image: url(/Content/assets/media/illustration/undraw_profile_pic_ic5t.svg)">
+                                    </div>
+                                    <div class="image-input-wrapper-image"
+                                        style="position: absolute; top: 0; left: 0; border: none"><img
+                                            ng-src='{{avatar != undefined ? avatar : "data:image/jpeg;base64," + recupererInfo.TI_PHOTO}}'
+                                            style="object-position: cover;" width="100%" height="100%" /></div>
+                                    <label
+                                        class="btn btn-xs btn-icon btn-circle btn-info btn-hover-text-primary btn-shadow"
+                                        data-action="change" data-toggle="tooltip" title=""
+                                        data-original-title="Nouvelle photo">
+                                        <i class="fa fa-pen icon-sm text-white"></i>
+                                        <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg"
+                                            img-profile="FormAddTiTiers.img_avatar"
+                                            onchange="angular.element(this).scope().previewPhoto(event)" />
+                                        <input type="hidden" name="profile_avatar_remove" />
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="image-input image-input-outline" id="kt_user_edit_avatar_1">
+                                    <div class="image-input-wrapper-image"
+                                        style="background-image: url(/Content/assets/media/illustration/illustr4.jpg)">
+                                    </div>
+                                    <div class="image-input-wrapper-image"
+                                        style="position: absolute; top: 0; left: 0; border: none"><img
+                                            ng-src='{{signature != undefined ? signature : "data:image/jpeg;base64," + recupererInfo.TI_SIGNATURE}}'
+                                            style="object-position: cover;" width="100%" height="100%" /></div>
+                                    <label
+                                        class="btn btn-xs btn-icon btn-circle btn-info btn-hover-text-primary btn-shadow"
+                                        data-action="change" data-toggle="tooltip" title=""
+                                        data-original-title="Nouvelle signature">
+                                        <i class="fa fa-pen icon-sm text-white"></i>
+                                        <input type="file" name="img_Signature" accept=".png, .jpg, .jpeg"
+                                            img-signature="FormAddTiTiers.img_signature"
+                                            onchange="angular.element(this).scope().previewSignature(event)" />
+                                        <input type="hidden" name="profile_avatar_remove" />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="separator separator-dashed separator-success my-1"></div><br>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>PHOTO ET
+                                            SIGNATURE</strong></h3>
+                                    <div class="mb-2">
+                                        <div class="form-group row">
+                                            <div class="col-lg-6">
+                                                <div class="d-flex flex-column-fluid">
+                                                    <div class="container">
+                                                        <div class="card card-custom">
+                                                            <div class="card-header" style="background-color: #CCDCD5;">
+                                                                <div class="card-title">
+                                                                    <span class="card-icon">
+                                                                        <i
+                                                                            class="flaticon2-photograph text-dark icon-xl"></i>
+                                                                    </span>
+                                                                    <h3 class="card-label"
+                                                                        style="font-size: 15px; font-family: 'Maiandra GD'">
+                                                                        PHOTO</h3>
+                                                                </div>
+                                                            </div><br /><br /><br />
+                                                            <div class="modal-body"
+                                                                style="text-align: center; font-size: 17px; background-color: rgb(223, 248, 245)">
+                                                                <div class="col-12 text-right">
+                                                                </div>
+                                                                <div class="form-group col-lg-12">
+                                                                    <!--  <input type="file" id="upload" multiple />
+                                                                    <button ng-click="process()">Charger le
+                                                                        Fichier</button> -->
+
+                                                                    <input id="upload" type="file" class="form-control"
+                                                                        name="photoTiers_ChampImage"
+                                                                        placeholder="Choisir une image" multiple
+                                                                        accept="image/*" /><br>
+                                                                    <button
+                                                                        class="btn btn-hover-light-info font-weight-bold"
+                                                                        id="pourChargerImage" ng-click="process()">
+                                                                        <span>
+                                                                            <i class="fas fa-arrow-down"></i>
+                                                                            <span>Charger le fichier</span>
+                                                                        </span>
+                                                                    </button>
+                                                                    <table>
+                                                                        <tbody>
+                                                                            <tr id="boucleimg"> </tr>
+                                                                        </tbody>
+                                                                        <tfoot>
+                                                                            <tr id="boucleimgsuppr"></tr>
+                                                                        </tfoot>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="d-flex flex-column-fluid">
+                                                    <div class="container">
+                                                        <div class="card card-custom">
+                                                            <div class="card-header" style="background-color: #CCDCD5;">
+                                                                <div class="card-title">
+                                                                    <span class="card-icon">
+                                                                        <i class="fas fa-pen-nib text-dark icon-xl"></i>
+                                                                    </span>
+                                                                    <h3 class="card-label"
+                                                                        style="font-size: 15px; font-family: 'Maiandra GD'">
+                                                                        SIGNATURE</h3>
+                                                                </div>
+                                                            </div><br /><br /><br />
+                                                            <div class="modal-body"
+                                                                style="text-align: center; font-size: 17px; background-color: rgb(223, 248, 245)">
+                                                                <div class="col-12 text-right">
+                                                                </div>
+                                                                <div class="form-group col-lg-12">
+                                                                    <!-- <input type="file" id="upload2" multiple />
+                                                                    <button ng-click="process2()">Charger le
+                                                                        Fichier</button> -->
+
+                                                                    <input id="upload2" type="file" class="form-control"
+                                                                        name="photoTiers_ChampImage"
+                                                                        placeholder="Choisir une image" multiple
+                                                                        accept="image/*" /><br>
+                                                                    <button
+                                                                        class="btn btn-hover-light-info font-weight-bold"
+                                                                        id="pourChargerImage" ng-click="process2()">
+                                                                        <span>
+                                                                            <i class="fas fa-arrow-down"></i>
+                                                                            <span>Charger le fichier</span>
+                                                                        </span>
+                                                                    </button>
+                                                                    <table>
+                                                                        <tbody>
+                                                                            <tr id="boucleimg2"></tr>
+                                                                        </tbody>
+                                                                        <tfoot>
+                                                                            <tr id="boucleimgsuppr2"></tr>
+                                                                        </tfoot>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator separator-dashed separator-success my-1"></div><br>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>ADRESSE ET CONTACT</strong></h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-3">
+                                <label>Téléphone*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-phone-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idTelephone" type="text" class="form-control" name="addTelephone"
+                                        placeholder="Entrer un numéro" ng-model="FormAddTiTiers.telephone"
+                                        maxlength="15" ng-pattern="/^\d+$/">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Numero WhatsApp*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-phone-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idWhatsApp" type="text" class="form-control" name="addWhatsApp"
+                                        placeholder="Entrer un numéro" ng-model="FormAddTiTiers.telWhatsApp"
+                                        maxlength="15" ng-pattern="/^\d+$/">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Site web</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-globe text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idSiteWeb" type="text" class="form-control" name="addSiteWeb"
+                                        placeholder="Entrer un site web" ng-model="FormAddTiTiers.siteWeb"
+                                        maxlength="150">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Fax</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-tty text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idFax" type="text" class="form-control" name="addFax"
+                                        placeholder="Entrer un fax" ng-model="FormAddTiTiers.fax" maxlength="15"
+                                        ng-pattern="/^\d+$/" ng-minlength="8">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Email*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="flaticon2-email text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idEmail" name="addEmail" type="text" class="form-control datatable-input"
+                                        placeholder="Entrer une adresse email valide" ng-model="FormAddTiTiers.email"
+                                        ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'
+                                        maxlength="150">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Adresse postale</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-envelope-open text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idAdressePost" type="text" class="form-control" name="addAdressePostal"
+                                        placeholder="Entrer une adresse postale"
+                                        ng-model="FormAddTiTiers.adressePostale" maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Localisation*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-map text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idLocalisation" type="text" class="form-control" name="addLocalisation"
+                                        placeholder="Entrer une localisation" ng-model="FormAddTiTiers.localisation"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="validerFormTiers()">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <button ng-click="resetPage()" ng-show="etatForm !== '2'" type="submit"
+            class="btn btn-light-success font-weight-bold">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a href="#/gestion/liste/tiers" class="btn btn-icon btn-light-dark mr-2" title="Retour"
+            style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+<!--end::Form-->

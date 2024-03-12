@@ -1,0 +1,279 @@
+﻿<form class="form">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Code*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-key text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idCode" type="text" class="form-control" name="url"
+                                    placeholder="Entrer un code" ng-model="formParamOperationsTresoreries.code"
+                                    ng-disabled="true" maxlength="8" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Libellé*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-quote-left text-info"></i>
+                                    </span>
+                                </div>
+                                <textarea id="idLibelle" type="text" class="form-control" name="url"
+                                    placeholder="Entrer un libellé" ng-model="formParamOperationsTresoreries.libelle"
+                                    maxlength="500"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Abréviation*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="far fa-money-bill-alt text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idAbreviation" type="text" class="form-control" name="url"
+                                    placeholder="Entrer une abreviation"
+                                    ng-model="formParamOperationsTresoreries.abreviation" maxlength="5" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Journal*:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="flaticon2-open-text-book text-info"></i>
+                                    </span>
+                                </div>
+                                <select class="form-control" name="option"
+                                    ng-model="formParamOperationsTresoreries.journal" id="idJournal">
+                                    <option value="">Selectionner le journal</option>
+                                    <option ng-show="etatEcran == ''" ng-repeat="comboJournal in listeComboJournal"
+                                        value="{{comboJournal.JO_CODEJOURNAL}}">
+                                        {{comboJournal.JO_LIBELLE}}
+                                    </option>
+                                    <option ng-show="etatEcran  == '2'" ng-repeat="comboJournal in listeComboJournal"
+                                        ng-selected="formParamOperationsTresoreries.journal == comboJournal.JO_CODEJOURNAL"
+                                        value="{{comboJournal.JO_CODEJOURNAL}}">
+                                        {{comboJournal.JO_LIBELLE}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Nature compte*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="far fa-question-circle text-info"></i>
+                                    </span>
+                                </div>
+                                <select class="form-control" name="option"
+                                    ng-model="formParamOperationsTresoreries.natureCompte" id="idNatureCompte">
+                                    <option value="" ng-click="verifnaturecompte()">Selectionner la nature du compte
+                                    </option>
+                                    <option ng-show="etatEcran == ''"
+                                        ng-repeat="comboNatureCompte in listeComboNatureCompte"
+                                        value="{{comboNatureCompte.NC_CODENATURECOMPTE}}"
+                                        ng-click="verifnaturecompte()">
+                                        {{comboNatureCompte.NC_LIBELLENATURECOMPTE}}
+                                    </option>
+                                    <option ng-show="etatEcran  == '2'"
+                                        ng-repeat="comboNatureCompte in listeComboNatureCompte"
+                                        ng-selected="formParamOperationsTresoreries.natureCompte == comboNatureCompte.NC_CODENATURECOMPTE"
+                                        value="{{comboNatureCompte.NC_CODENATURECOMPTE}}"
+                                        ng-click="verifnaturecompte()">
+                                        {{comboNatureCompte.NC_LIBELLENATURECOMPTE}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>Numéro compte*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-orcid text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idNumCompte" type="tel" class="form-control" name="addMP_Code1"
+                                    placeholder="Entrer un numéro de compte "
+                                    ng-model="formParamOperationsTresoreries.numCompteNum" ng-disabled="verouNumCompte"
+                                    maxlength="8" />
+                                <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                    title="Choix du code">
+                                    <button ng-click="chargerNumeroCompte()"
+                                        class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal"
+                                        data-target="#modalNumeroCompte">
+                                        <i class="fas fa-ellipsis-h text-info"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Sens*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-exchange-alt text-info"></i>
+                                    </span>
+                                </div>
+                                <select class="form-control" name="option"
+                                    ng-model="formParamOperationsTresoreries.sens" id="idSens">
+                                    <option value="">Selectionner le sens</option>
+                                    <option ng-show="etatEcran == ''" ng-repeat="comboSens in listeComboSens"
+                                        value="{{comboSens.NO_SENS}}">
+                                        {{comboSens.NO_SENSLIBELLE}}
+                                    </option>
+                                    <option ng-show="etatEcran  == '2'" ng-repeat="comboSens in listeComboSens"
+                                        ng-selected="formParamOperationsTresoreries.sens == comboSens.NO_SENS"
+                                        value="{{comboSens.NO_SENS}}">
+                                        {{comboSens.NO_SENSLIBELLE}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>Montant par defaut*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-money-bill-alt text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idMontantDefaut" type="text" class="form-control" name="url"
+                                    placeholder="Entrer un montant"
+                                    ng-model="formParamOperationsTresoreries.montantDefaut" ng-pattern="/^[0-9]+$/"
+                                    maxlength="12" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="checkbox checkbox-lg checkbox-primary"
+                                style="position: relative; left: 20px; bottom: -30px">
+                                <input type="checkbox"
+                                    ng-click="testValAMM(formParamAutreEcriture.Autorisermodificationmontant)"
+                                    ng-checked="cocherLaCase(formParamOperationsTresoreries.autoriserModifMontant)"
+                                    ng-model="formParamOperationsTresoreries.autoriserModifMontant" />
+                                <span class="form-text text-muted"></span>
+                            </label>
+                            <label style="position: relative; top: 10px; left: 53px;">Autoriser
+                                la modification du montant</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Numéro ordre*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-orcid text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idNumOrdre" type="text" class="form-control" name="url"
+                                    placeholder="Entrer un numéro d'ordre"
+                                    ng-model="formParamOperationsTresoreries.numOrdre" ng-pattern="/^[0-9]+$/"
+                                    maxlength="2" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button ng-click="validerParamOperationsTresoreries()" type="submit"
+            class="btn btn-primary btn-shadow-hover font-weight-bold">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <button ng-click="btnReinitialiser()" type="submit" class="btn btn-light-success font-weight-bold"
+            ng-show="etatEcran != '2'">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a href="" ng-click="btnRetour()" class="btn btn-icon btn-light-dark mr-2" title="Retour"
+            style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+
+
+<!--begin modal pour numero compte-->
+<div class="modal fade" id="modalNumeroCompte" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalNumeroCompte" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #90CCC8;">
+                <h5 class="modal-title text-dark" id="modalNumeroCompte"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-dark"></i>
+                    Numéro compte
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° COMPTE</th>
+                            <th>LIBELLE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesNumerosComptes in listeChampNumeroCompte">
+                            <td>{{lesNumerosComptes.PL_NUMCOMPTE}}</td>
+                            <td style="max-width: 100px;">{{lesNumerosComptes.PL_LIBELLE}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixNumeroCompte(lesNumerosComptes.PL_NUMCOMPTE, lesNumerosComptes.PL_LIBELLE, lesNumerosComptes.PL_CODENUMCOMPTE)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal pour numero compte-->

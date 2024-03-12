@@ -1,0 +1,304 @@
+﻿@{
+    ViewBag.Title = "ReglementSinistresVoyage";
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">GESTION</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Trésorerie</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Règlement sinistres</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Liste</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Règlement sinistres voyage</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header" style="background-color: #F5F500">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="far fa-money-bill-alt text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Règlement des sinistres voyage</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Période*</label>
+                                                        <div class="input-daterange input-group" id="kt_datepicker">
+                                                            <input type="text" class="form-control datatable-input" name="start" placeholder="Du" data-col-index="5" />
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-arrows-alt-h text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control datatable-input" name="end" placeholder="Au" data-col-index="5" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>N° police*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un n°" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le n° police.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>N° souscripteur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un n°" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le n° du souscripteur.</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Nom souscripteur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-address-card text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un nom" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le nom du souscripteur.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>N° commercial*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un n° commercial" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le n° commercial.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Nom commercial*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-address-card text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un nom commercial" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le nom commercial.</span>
+                                                    </div>
+                                                    <div class="row mt-8">
+                                                        <div class="col-lg-12">
+                                                            &#160;&#160;<button class="btn btn-primary btn-primary--icon" id="kt_search">
+                                                                <span>
+                                                                    <i class="la la-search"></i>
+                                                                    <span>Rechercher</span>
+                                                                </span>
+                                                            </button>&#160;&#160;
+                                                            <button class="btn btn-outline-warning" id="kt_reset">
+                                                                <span>
+                                                                    <i class="la la-close"></i>
+                                                                    <span>Annuler</span>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <table class="table table-bordered table-checkable" id="kt_datatable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>DATE</th>
+                                                                    <th>N° POLICE/N.C</th>
+                                                                    <th>SOUSCRIPTEUR</th>
+                                                                    <th>EFFET</th>
+                                                                    <th>ECHEANCE</th>
+                                                                    <th>STATUT CONTRAT</th>
+                                                                    <th>ACTION</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                        <div class="example-preview" style="position: relative; right: -19px">
+                                                                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                                                                <div class="btn-group mr-2" role="group" aria-label="...">
+                                                                                    <!--bouton voir plus-->
+                                                                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="modal" data-target="#modalVoirPlus">
+                                                                                        <i class="far fa-eye" data-toggle="tooltip" data-theme="dark" title="Voir plus"></i>
+                                                                                    </button>
+                                                                                    <!--bouton modifier-->
+                                                                                    <button type="button" class="btn btn-outline-secondary btn-icon">
+                                                                                        <i class="far fa-edit" data-toggle="tooltip" data-theme="dark" title="Modifier"></i>
+                                                                                    </button>
+                                                                                    <!--bouton supprimer-->
+                                                                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="pill">
+                                                                                        <i class="fas fa-ban" data-toggle="tooltip" data-theme="dark" title="Supprimer"></i>
+                                                                                    </button>
+                                                                                    <!--bouton autres options-->
+                                                                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="modal" data-target="#modalOption">
+                                                                                        <i class="fas fa-ellipsis-v" data-toggle="tooltip" data-theme="dark" title="Autres options"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-8">
+                                                <div class="col-lg-12">
+                                                    <button type="button" class="btn btn-outline-info">
+                                                        <span>
+                                                            <i class="la la-close"></i>
+                                                            <span>Fermer</span>
+                                                        </span>
+                                                    </button>
+                                                    <button class="btn btn-outline-warning" id="kt_reset">
+                                                        <span>
+                                                            <i class="la la-close"></i>
+                                                            <span>Annuler</span>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalOption" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalOption" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #F5F500">
+                        <h5 class="modal-title" id="modalOption">
+                            <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <polygon fill="#000000" opacity="0.3" points="5 15 3 21.5 9.5 19.5" />
+                                        <path d="M13.5,21 C8.25329488,21 4,16.7467051 4,11.5 C4,6.25329488 8.25329488,2 13.5,2 C18.7467051,2 23,6.25329488 23,11.5 C23,16.7467051 18.7467051,21 13.5,21 Z M9,8 C8.44771525,8 8,8.44771525 8,9 C8,9.55228475 8.44771525,10 9,10 L18,10 C18.5522847,10 19,9.55228475 19,9 C19,8.44771525 18.5522847,8 18,8 L9,8 Z M9,12 C8.44771525,12 8,12.4477153 8,13 C8,13.5522847 8.44771525,14 9,14 L14,14 C14.5522847,14 15,13.5522847 15,13 C15,12.4477153 14.5522847,12 14,12 L9,12 Z" fill="#000000" />
+                                    </g>
+                                </svg>
+                            </span>
+                            Option
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i aria-hidden="true" class="ki ki-close"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card card-custom gutter-b">
+                            <div class="card-header card-header-tabs-line">
+                                <div class="card-toolbar">
+                                    <ul class="nav nav-tabs nav-bold nav-tabs-line">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="/Caisse/ReglementSinistresMultiRisqueProfessionnel">
+                                                <span class="nav-icon"><i class="flaticon-edit-1"></i></span>
+                                                <span class="nav-text">Relevé client</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                                <span class="nav-icon"><i class="flaticon-interface-10"></i></span>
+                                                <span class="nav-text">Règlements différés</span>
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="/Caisse/ReglementSinistresMultiRisqueProfessionnel">Saisie chèque</a>
+                                                <a class="dropdown-item" href="/Caisse/ReglementSinistresMultiRisqueProfessionnel">Liste des chèques</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                                <span>
+                                    <i class="la la-close"></i>
+                                    <span>Fermer</span>
+                                </span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--end modal-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

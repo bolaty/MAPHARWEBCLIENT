@@ -1,0 +1,549 @@
+﻿@{
+ViewBag.Title = "Opération Multirisque professionnel";
+Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    @*<h5 class="text-dark font-weight-bold my-1 mr-5">Règlement Facture Groupe Par Chèque</h5>*@
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">GESTION</h5>&nbsp;&nbsp;
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Comptabilité</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Saisie</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Règlement Facture Groupe Par Chèque</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+           
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #F5F500">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-shopping-cart text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Règlement Facture Groupe Par Chèque</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="h4 text-dark-75"><strong>Recherche Piece Comptable :</strong> </div><br />
+                                            @*<h3 class="font-size-lg text-dark-75 font-weight-bold mb-10">Recherche Piece Comptable</h3>*@
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4" style="margin-top:20px">
+                                                        <label>Période*</label>
+                                                        <div class="input-daterange input-group" id="kt_datepicker">
+                                                            <input type="text" class="form-control datatable-input" name="start" placeholder="Du" data-col-index="5" />
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-arrows-alt-h text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control datatable-input" name="end" placeholder="Au" data-col-index="5" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3" style="margin-top:20px">
+                                                        <label> N° Bordereau*:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer le numéro du Bordereau" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-2" style="margin-top:20px">
+                                                        <label> Type Client*:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un type client</option>
+                                                                <option>type client 1</option>
+                                                                <option>type client 2</option>
+                                                                <option>type client 3</option>
+                                                                <option>type client 4</option>
+                                                                <option>type client 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le type client.</span>
+                                                    </div>
+                                                    <div class="col-lg-3" style="margin-top:20px">
+                                                        <label> Groupe*:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-users text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un groupe</option>
+                                                                <option>Groupe 1</option>
+                                                                <option>Groupe 2</option>
+                                                                <option>Groupe 3</option>
+                                                                <option>Groupe 4</option>
+                                                                <option>Groupe 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le groupe.</span>
+                                                    </div>
+
+                                                    <div class="col-lg-2" style="margin-top:25px">
+                                                        <label>N° commercial*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Charger Ecriture" disabled />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-2" style="margin-top:25px">
+                                                        <label>Nom commercial*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-address-card text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Appliquer le lettrage" disabled />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-2" style="margin-top:20px">
+                                                        <label>Nature Article* :</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-box-open text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value=""></option>
+                                                                <option>FEVRIER</option>
+                                                                <option>MARS</option>
+                                                                <option>AVRIL</option>
+                                                                <option>MAI</option>
+                                                                <option>JUIN</option>
+                                                            </select>
+                                                            </div>
+                                                            @*<span class="form-text text-muted">Veuillez sélectionnez un annee.</span>*@
+                                                        </div>
+                                                    <div class="col-lg-2" style="margin-top:20px">
+                                                        <label>Type article*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-filter text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un type</option>
+                                                                <option>type article 1</option>
+                                                                <option>type article 2</option>
+                                                                <option>type article 3</option>
+                                                                <option>type article 4</option>
+                                                                <option>type article 5</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-2" style="margin-top:20px">
+                                                        <label>Article*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-box-open text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un article</option>
+                                                                <option>article 1</option>
+                                                                <option>article 2</option>
+                                                                <option>article 3</option>
+                                                                <option>article 4</option>
+                                                                <option>article 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la nature article.</span>
+                                                    </div>
+                                                    <div class="col-lg-2" style="margin-top:20px">
+                                                        <label>Opérateur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-id-badge text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un opérateur</option>
+                                                                <option>opérateur 1</option>
+                                                                <option>opérateur 2</option>
+                                                                <option>opérateur 3</option>
+                                                                <option>opérateur 4</option>
+                                                                <option>opérateur 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner l'opérateur.</span>
+                                                    </div>
+
+                                                    <div class="col-lg-3" style="margin-top:25px">
+                                                        <label> N° Bordereau*:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer le numéro du Bordereau" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3" style="margin-top:25px">
+                                                        <label> N° Client*:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer la Date debut" />
+                                                        </div>
+                                                        @*<span class="form-text text-muted">Veuillez saisir la Date debut.</span>*@
+                                                    </div>
+                                                    <div class="col-lg-3" style="margin-top:25px">
+                                                        <label> Nom Client*:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-address-card text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer la Date debut" />
+                                                        </div>
+                                                        @*<span class="form-text text-muted">Veuillez saisir la Date debut.</span>*@
+                                                    </div>
+                                                    <div class="col-lg-3" style="margin-top:-25px; margin-left:1100px;">
+                                                        <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                            <input type="checkbox" value="Due in 1 Year" />
+                                                            <span class="blue"></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-3" style="margin-top:45px">
+                                                        <button class="btn btn-primary btn-primary--icon" id="kt_search">
+                                                            <span>
+                                                                <i class="la la-search"></i>
+                                                                <span>Rechercher</span>
+                                                            </span>
+                                                        </button>
+                                                        <button class="btn btn-outline-warning" id="kt_reset">
+                                                            <span>
+                                                                <i class="la la-close"></i>
+                                                                <span>Annuler</span>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="separator separator-dashed my-10"></div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            @*<h3 class="font-size-lg text-dark-75 font-weight-bold mb-10"> OPERATION :</h3>*@
+                                            <div class="h4 text-dark-75"><strong> Operation :</strong></div><br />
+                                            <div class="">
+                                                <div class="card card-custom mb-3">
+                                                    <div class="card-body">
+                                                        <!--begin: Datatable-->
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <table class="table table-bordered table-checkable" id="kt_datatable">
+                                                                    <thead style="text-align: center;">
+                                                                        <tr>
+                                                                            <th>N° BORDEREAU</th>
+                                                                            <th>DATE</th>
+                                                                            <th>N° CLIENT </th>
+                                                                            <th>NOM CLIENT</th>
+                                                                            <th>N° COMMERCIAL</th>
+                                                                            <th>NOM COMMERCIAL</th>
+                                                                            <th>MONTANT FACTURE</th>
+                                                                            <th>MONTANT VERSE</th>
+                                                                            <th>RESTE A VERSE</th>
+                                                                            <th>VERSSEMENT</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>   </td>
+                                                                            <td>   </td>
+                                                                            <td>   </td>
+                                                                            <td>   </td>
+                                                                            <td>   </td>
+                                                                            <td>   </td>
+                                                                            <td>   </td>
+                                                                            <td>   </td>
+                                                                            <td>   </td>
+                                                                            <td>   </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td colspan="6"></td>
+                                                                            <td>0</td>
+                                                                            <td>0</td>
+                                                                            <td>0</td>
+                                                                            <td>0</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Datatable-->
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="separator separator-dashed my-10"></div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="h4 text-dark-75"><strong> Information generales :</strong></div><br />
+                                            @*<h3 class="font-size-lg text-dark-75 font-weight-bold mb-10">INFORMATION GENERALES</h3>*@
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6" style="margin-top:25px">
+                                                        <label> Nom remettant*:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-address-card text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="" />
+                                                        </div>
+                                                        @*<span class="form-text text-muted">Veuillez saisir la Date debut.</span>*@
+                                                    </div>
+                                                    <div class="col-lg-6" style="margin-top:20px">
+                                                        <label> Mode de règlement*:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-file-signature text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un mode règlement</option>
+                                                                <option>mode règlement 1</option>
+                                                                <option>mode règlement 2</option>
+                                                                <option>mode règlement 3</option>
+                                                                <option>mode règlement 4</option>
+                                                                <option>mode règlement 5</option>
+                                                            </select>
+                                                        </div>                                                     
+                                                    </div>
+                                                    <div class="col-lg-6" style="margin-top:20px">
+                                                        <label>Nature compte*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-file-signature text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner une nature compte</option>
+                                                                <option>nature compte 1</option>
+                                                                <option>nature compte 2</option>
+                                                                <option>nature compte 3</option>
+                                                                <option>nature compte 4</option>
+                                                                <option>nature compte 5</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4" style="margin-top:20px">
+                                                        <label> N° Compte*:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer le N° Compte" />                                                           
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-2 mb-lg-0 mb-6" style="position: relative; top: 40px">
+                                                        <button class="btn btn-secondary btn-secondary--icon" id="kt_reset">
+                                                            ...
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="separator separator-dashed my-10"></div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6" style="margin-top:20px">
+                                                        <label>Banque* :</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-landmark text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner une Banque</option>
+                                                                <option>nature compte 1</option>
+                                                                <option>nature compte 2</option>
+                                                                <option>nature compte 3</option>
+                                                                <option>nature compte 4</option>
+                                                                <option>nature compte 5</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6" style="margin-top:20px">
+                                                        <label> Agence*:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-landmark text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner une Banque</option>
+                                                                <option>nature compte 1</option>
+                                                                <option>nature compte 2</option>
+                                                                <option>nature compte 3</option>
+                                                                <option>nature compte 4</option>
+                                                                <option>nature compte 5</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6" style="margin-top:25px">
+                                                        <label> N° Cheque*:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="" />
+                                                        </div>
+                                                        @*<span class="form-text text-muted">Veuillez saisir la Date debut.</span>*@
+                                                    </div>
+                                                    <div class="col-lg-3" style="margin-top:25px">
+                                                        <label> Montant total*:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-money-bill text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="0" disabled />
+                                                        </div>
+                                                        @*<span class="form-text text-muted">Veuillez saisir la Date debut.</span>*@
+                                                    </div>
+                                                    <div class="col-lg-3" style="margin-top:25px">
+                                                        <label> Montant*:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-money-bill text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="0" disabled/>
+                                                        </div>
+                                                        @*<span class="form-text text-muted">Veuillez saisir la Date debut.</span>*@
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--begin::Code example example-highlight  -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold">
+                                    <span>
+                                        <i class="far fa-check-circle"></i>
+                                        <span>Enregistrer</span>
+                                    </span>
+                                </button>
+                                <button class="btn btn-outline-warning" id="kt_reset">
+                                    <span>
+                                        <i class="la la-close"></i>
+                                        <span>Annuler</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

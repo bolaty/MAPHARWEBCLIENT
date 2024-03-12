@@ -1,0 +1,327 @@
+﻿<!--begin::Form-->
+<form class="form" ng-if="statutAgenceBanque">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10">
+                        <strong>
+                            INFORMATIONS DE BANQUE
+                        </strong>
+                    </h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Code*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addCode" id="addCode"
+                                           placeholder="Entrer le Code" ng-model="FormAddBanqueAgence.Code"
+                                           maxlength="15" disabled/>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Sigle*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addSigle"
+                                           id="addSigle" placeholder="Entrer le Sigle"
+                                           ng-model="FormAddBanqueAgence.Sigle" maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <label>Raison Sociale*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addRaisonSociale"
+                                           id="addRaisonSociale" placeholder="Entrer la Raison Sociale"
+                                           ng-model="FormAddBanqueAgence.RaisonSociale" maxlength="150" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="ajoutFormAddBanqueAgence()">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <button ng-show="etatForm !== '2'" type="submit" id="kt_notify" class="btn btn-light-success font-weight-bold"
+                ng-click="resetFormAddBanqueAgence()">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a href="#/Template/ParametreI/ListeBanqueAgence" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip"
+           data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form><br><br><hr>
+
+<form class="form" ng-if="!statutAgenceBanque">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10">
+                        <strong>
+                            INFORMATIONS DE L AGENCE - {{libellebanq}}
+                        </strong>
+                    </h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Code*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addCode" id="addCode"
+                                           placeholder="Entrer le Code" ng-model="FormAddBanqueAgence.Code"
+                                           maxlength="15" disabled/>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Abrege*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addAbrege"
+                                           id="addAbrege" 
+                                           ng-model="FormAddBanqueAgence.Abrege" maxlength="150" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Code BIC*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addBIC" id="addBIC"
+                                           placeholder="Entrer le Code BIC" ng-model="FormAddBanqueAgence.CodeBIC"
+                                           maxlength="15" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Intitulé*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addIntitulE"
+                                           id="addIntitulE" placeholder="Entrer le Intitule "
+                                           ng-model="FormAddBanqueAgence.IntitulE" maxlength="150" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Pays*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-globe-africa text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" name="addAuto_Pays" ng-model="FormAddBanqueAgence.pays"
+                                        id="addAuto_Pays">
+                                        <option value="">Sélectionner un pays</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="lePays in listeDesPaysAuto"
+                                            ng-selected="FormAddBanqueAgence.pays == lePays.PY_CODEPAYS"
+                                            value="{{lePays.PY_CODEPAYS}}"
+                                            ng-click="afficheListeVilleAuto(FormAddBanqueAgence.pays)">{{lePays.PY_LIBELLE}}
+                                        </option>
+                                        <option ng-show="etatForm == '2'" ng-repeat="lePays in listeDesPaysAuto"
+                                            ng-selected="FormAddBanqueAgence.pays == lePays.PY_CODEPAYS"
+                                            value="{{lePays.PY_CODEPAYS}}"
+                                            ng-click="afficheListeVilleAuto(FormAddBanqueAgence.pays)">{{lePays.PY_LIBELLE}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Ville*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-map-marker-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" name="addAuto_Ville" ng-model="FormAddBanqueAgence.ville"
+                                        id="addAuto_Ville" ng-disabled="verouVille">
+                                        <option value="">Sélectionner une ville</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="laVille in listeDesVillesAuto"
+                                            ng-selected="FormAddBanqueAgence.ville == laVille.VL_CODEVILLE"
+                                            value="{{laVille.VL_CODEVILLE}}"
+                                            ng-click="afficheListeCommuneAuto(FormAddBanqueAgence.ville)">{{laVille.VL_LIBELLE}}
+                                        </option>
+                                        <option ng-show="etatForm  == '2'" ng-repeat="laVille in listeDesVillesAuto"
+                                            ng-selected="FormAddBanqueAgence.ville == laVille.VL_CODEVILLE"
+                                            value="{{laVille.VL_CODEVILLE}}"
+                                            ng-click="afficheListeCommuneAuto(FormAddBanqueAgence.ville)">{{laVille.VL_LIBELLE}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Commune*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-map-pin text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" name="addAuto_Commune" ng-model="FormAddBanqueAgence.commune"
+                                        id="addAuto_Commune" ng-disabled="verouCommune">
+                                        <option value="">Sélectionner une commune</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="laCommune in listeDesCommunesAuto"
+                                            value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                        <option ng-show="etatForm  == '2'" ng-repeat="laCommune in listeDesCommunesAuto"
+                                            ng-selected="FormAddBanqueAgence.commune == laCommune.CO_CODECOMMUNE"
+                                            value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Telephone*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addTelephone" id="addTelephone"
+                                           placeholder="Entrer le Telephone" ng-model="FormAddBanqueAgence.Telephone"
+                                           maxlength="15" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Fax*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addFax"
+                                           id="addFax" placeholder="Entrer le Fax"
+                                           ng-model="FormAddBanqueAgence.Fax" maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <label>Email*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addEmail"
+                                           id="addEmail" placeholder="Entrer le Email"
+                                           ng-model="FormAddBanqueAgence.Email" maxlength="150" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Boite postale*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addBoitepostale" id="addBoitepostale"
+                                           placeholder="Entrer la Boite postale" ng-model="FormAddBanqueAgence.Boitepostale"
+                                           maxlength="15" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Site web*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addSiteweb"
+                                           id="addSiteweb" placeholder="Entrer le Site web"
+                                           ng-model="FormAddBanqueAgence.Siteweb" maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <label>Autre infos*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addAutreInfos"
+                                           id="addAutreInfos" placeholder="Entrer une Autre Infos"
+                                           ng-model="FormAddBanqueAgence.AutreInfos" maxlength="150" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="ajoutFormAddBanqueAgence2()">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <button ng-show="etatForm !== '2'" type="submit" id="kt_notify" class="btn btn-light-success font-weight-bold"
+                ng-click="resetFormAddBanqueAgence()">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a href="#/Template/ParametreI/ListeBanqueAgence" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip"
+           data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+<!--end::Form-->

@@ -1,0 +1,269 @@
+﻿@{
+    ViewBag.Title = "Opération Ouverture du dossier santé";
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-controller="OuvertureDossierSPController" ng-init="initFormAddModifOuvertureDSP()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">ASSURANCE</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Opération</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Enregistrement</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Ouverture du dossier santé</a>
+                        </li>
+
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #718E3E;">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-book-open text-white icon-xl"></i>
+                                </span>
+                                <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Ouverture du dossier</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form" id="formAddOuvertureDSPf" ng-init="contrainteFormAddOuvertureDSP()">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10"><strong>INFORMATIONS DU SINISTRE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>N° sinistre*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addOuvertureDSP_numSinitre" placeholder="Entrer le code du sinistre" ng-model="recuperer.SI_NUMSINISTRE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le code du sinistre.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Date*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-calendar text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addOuvertureDSP_date" placeholder="Entrer la Dénomination" ng-model="recuperer.SI_DATESINISTRE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la Dénomination.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Heure*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-clock text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="time" class="form-control" name="addOuvertureDSP_heure" placeholder="Entrer la Dénomination" ng-model="recuperer.SI_HEURESINISTRE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'heure.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Nature du sinistre*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-question-circle text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addOuvertureDSP_natureSinitre" ng-model="FormAddOuvertureDSP.NatSinistre" >
+                                                                <option value="">Sélectionner nature sinistre</option>
+                                                                <option ng-repeat="laNatSi in listeDesSinistreOuvertureDSP" ng-selected="recuperer.NS_CODENATURESINISTRE == laNatSi.NS_LIBELLENATURESINISTRE" value="{{laNatSi.NS_CODENATURESINISTRE}}">{{laNatSi.NS_LIBELLENATURESINISTRE}}</option>
+
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le code du sinistre.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Montant préjudice*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-money-bill text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addOuvertureDSP_montPrejudice" placeholder="Entrer le montant préjudice" ng-model="recuperer.SI_MONTANTPREJUDICE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le montant préjudice.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Pays*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-globe-africa text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addOuvertureDSP_pays" ng-model="FormAddOuvertureDSP.Pays">
+                                                                <option value="">Sélectionner un pays</option>
+                                                                <option ng-repeat="lePays in listeDesPaysOuvertureDSP" ng-selected="recuperer.PY_CODEPAYS == lePays.PY_CODEPAYS" value="{{lePays.PY_CODEPAYS}}">{{lePays.PY_LIBELLE}}</option>
+
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le pays.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Ville*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map-marker-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addOuvertureDSP_ville" ng-model="FormAddOuvertureDSP.Ville">
+                                                                <option value="">Sélectionner une ville</option>
+                                                                <option ng-repeat="laVille in listeDesVillesOuvertureDSP" ng-selected="recuperer.VL_CODEVILLE == laVille.VL_CODEVILLE" value="{{laVille.VL_CODEVILLE}}">{{laVille.VL_LIBELLE}}</option>
+
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la ville.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Commune*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map-pin text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addOuvertureDSP_commune" ng-model="FormAddOuvertureDSP.Commune">
+                                                                <option value="">Sélectionner la commune</option>
+                                                                <option ng-repeat="laCommune in listeDesCommunesOuvertureDSP" ng-selected="recuperer.CO_CODECOMMUNE == laCommune.CO_CODECOMMUNE" value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la commune.</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Adresse géographique*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addOuvertureDSP_adresseGeo" ng-model="recuperer.SI_ADRESSEGEOGRPHIQUESINISTRE">
+
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'adresse géograpgique.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <label>Description du sinistre*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-marker text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <textarea class="form-control" name="addOuvertureDSP_description" placeholder="Entrer une dénomination" ng-model="recuperer.SI_DESCRIPTIONSINISTRE"></textarea>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la dénomination.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="ModifFormAddOuvertureDSP()">
+                                    <span>
+                                        <i class="far fa-check-circle"></i>
+                                        <span>Enregistrer</span>
+                                    </span>
+                                </button>
+                                <button type="submit" id="kt_notify" class="btn btn-light-success font-weight-bold" ng-click="resetFormAddOuvertureDSP()">
+                                    <span>
+                                        <i class="fas fa-undo"></i>
+                                        <span>Réinitialiser</span>
+                                    </span>
+                                </button>
+                                <a href="ListeOuvertureDossierSP" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip" data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

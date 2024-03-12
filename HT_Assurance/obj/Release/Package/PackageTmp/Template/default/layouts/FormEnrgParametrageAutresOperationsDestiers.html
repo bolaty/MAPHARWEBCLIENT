@@ -1,0 +1,373 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Form-->
+<form class="form">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <div class="form-group row" ng-show="etatFormAutreEcriture == '2'">
+                        <div class="col-lg-12">
+                            <label>Code*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-key text-info"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" name="url"
+                                    ng-model="formParamAutreEcriture.Code" placeholder="Entrer un code"
+                                    ng-disabled="true" maxlength="8" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Libellé*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-quote-left text-info"></i>
+                                    </span>
+                                </div>
+                                <textarea type="text" class="form-control" ng-model="formParamAutreEcriture.Libelle"
+                                    maxlength="150" id="Libelle" name="Libelle"
+                                    placeholder="Entrer un libellé"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Abréviation*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="far fa-money-bill-alt text-info"></i>
+                                    </span>
+                                </div>
+                                <input type="text" ng-model="formParamAutreEcriture.Abreviation" maxlength="5"
+                                    class="form-control" id="Abreviation" name="url"
+                                    placeholder="Entrer une abreviation" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Journal*:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="flaticon2-open-text-book text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="Journal" class="form-control" name="Journal"
+                                    ng-model="formParamAutreEcriture.Journal">
+                                    <option value="">Selectionner le Journal</option>
+                                    <option ng-show="etatFormAutreEcriture !== '2'"
+                                        ng-repeat="listeretourJournal in retourJournal"
+                                        value="{{listeretourJournal.JO_CODEJOURNAL}}">
+                                        {{listeretourJournal.JO_LIBELLE}}</option>
+                                    <option ng-show="etatFormAutreEcriture == '2'"
+                                        ng-selected="formParamAutreEcriture.Journal == listeretourJournal.JO_CODEJOURNAL"
+                                        ng-repeat="listeretourJournal in retourJournal"
+                                        value="{{listeretourJournal.JO_CODEJOURNAL}}">
+                                        {{listeretourJournal.JO_LIBELLE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>Nature compte 1*:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="far fa-question-circle text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="Naturecompte1" class="form-control" name="Naturecompte1"
+                                    ng-model="formParamAutreEcriture.Naturecompte1">
+                                    <option value="">Selectionner la nature du compte 1</option>
+                                    <option ng-show="etatFormAutreEcriture !== '2'"
+                                        ng-repeat="laretourretourlistenatureCompte1 in retourretourlistenatureCompte1"
+                                        value="{{laretourretourlistenatureCompte1.NC_CODENATURECOMPTE}}"
+                                        ng-click="resetNumeroCompte1()">
+                                        {{laretourretourlistenatureCompte1.NC_LIBELLENATURECOMPTE}}</option>
+                                    <option ng-show="etatFormAutreEcriture == '2'"
+                                        ng-selected="formParamAutreEcriture.Naturecompte1 == lIlisteDesNumComptesautreEcriture.NC_CODENATURECOMPTE"
+                                        ng-repeat="lIlisteDesNumComptesautreEcriture in retourretourlistenatureCompte1"
+                                        value="{{lIlisteDesNumComptesautreEcriture.NC_CODENATURECOMPTE}}"
+                                        ng-click="resetNumeroCompte1()">
+                                        {{lIlisteDesNumComptesautreEcriture.NC_LIBELLENATURECOMPTE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Numéro compte 1*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-orcid text-info"></i>
+                                    </span>
+                                </div>
+                                <input type="tel" class="form-control" ng-model="formParamAutreEcriture.Numerocompte1"
+                                    name="addMP_Code1" placeholder="Entrer un numéro de compte" maxlength="8" />
+                                <div class="input-group-append" title="Choix du n° compte">
+                                    <button type="button" class="btn btn-secondary btn-secondary--icon" id="kt_reset"
+                                        data-toggle="modal" data-target="#modalNumCompte"
+                                        ng-click="afficheListeNumeroCompte1(formParamAutreEcriture.Numerocompte1, formParamAutreEcriture.Naturecompte1)">
+                                        <i class="fas fa-ellipsis-h text-info"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Sens*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-exchange-alt text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idIsense" class="form-control" name="addidIsense"
+                                    ng-model="formParamAutreEcriture.Sens">
+                                    <option value="">Sélectionner un sens</option>
+                                    <option ng-show="etatFormAutreEcriture !== '2'"
+                                        ng-repeat="lIlisteDessens in listeDessens" value="{{lIlisteDessens.NO_SENS}}">
+                                        {{lIlisteDessens.NO_SENSLIBELLE}}</option>
+                                    <option ng-show="etatFormAutreEcriture == '2'"
+                                        ng-selected="formParamAutreEcriture.Sens == lIlisteDessens.NO_SENS"
+                                        ng-repeat="lIlisteDessens in listeDessens" value="{{lIlisteDessens.NO_SENS}}">
+                                        {{lIlisteDessens.NO_SENSLIBELLE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>Nature compte 2*:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="far fa-question-circle text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="Naturecompte2" class="form-control" name="Naturecompte2"
+                                    ng-model="formParamAutreEcriture.Naturecompte2">
+                                    <option value="">Selectionner la nature du compte 2</option>
+                                    <option ng-show="etatFormAutreEcriture !== '2'"
+                                        ng-repeat="laretourlistenatureCompte2 in retourlistenatureCompte2"
+                                        value="{{laretourlistenatureCompte2.NC_CODENATURECOMPTE}}"
+                                        ng-click="resetNumeroCompte2()">
+                                        {{laretourlistenatureCompte2.NC_LIBELLENATURECOMPTE}}</option>
+                                    <option ng-show="etatFormAutreEcriture == '2'"
+                                        ng-selected="formParamAutreEcriture.Naturecompte2 == lIretourlistenatureCompte2.NC_CODENATURECOMPTE"
+                                        ng-repeat="lIretourlistenatureCompte2 in retourlistenatureCompte2"
+                                        value="{{lIretourlistenatureCompte2.NC_CODENATURECOMPTE}}"
+                                        ng-click="resetNumeroCompte2()">
+                                        {{lIretourlistenatureCompte2.NC_LIBELLENATURECOMPTE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Numéro compte 2*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-orcid text-info"></i>
+                                    </span>
+                                </div>
+                                <input type="tel" class="form-control" ng-model="formParamAutreEcriture.Numerocompte2"
+                                    name="addMP_Code1" placeholder="Entrer un numéro de compte" maxlength="8" />
+                                <div class="input-group-append" title="Choix du n° compte">
+                                    <button type="button" class="btn btn-secondary btn-secondary--icon" id="kt_reset"
+                                        data-toggle="modal" data-target="#modalNumCompte1"
+                                        ng-click="afficheListeNumeroCompte2(formParamAutreEcriture.Numerocompte2, formParamAutreEcriture.Naturecompte2)">
+                                        <i class="fas fa-ellipsis-h text-info"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-4">
+                            <label>Montant par defaut*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-money-bill-alt text-info"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control"
+                                    ng-model="formParamAutreEcriture.Montantpardefaut" maxlength="12"
+                                    id="Montantpardefaut" name="Montantpardefaut" placeholder="Entrer un montant" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="checkbox checkbox-lg checkbox-primary"
+                                style="position: relative; left: 20px; bottom: -30px">
+                                <input type="checkbox"
+                                    ng-click="testval(formParamAutreEcriture.Autorisermodificationmontant)"
+                                    ng-checked="COCHE(formParamAutreEcriture.Autorisermodificationmontant)"
+                                    ng-model="formParamAutreEcriture.Autorisermodificationmontant" />
+                                <span class="form-text text-muted"></span>
+                            </label>
+                            <label style="position: relative; top: 10px; left: 53px;">Autoriser
+                                la modification du montant</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Numéro ordre*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-orcid text-info"></i>
+                                    </span>
+                                </div>
+                                <input type="text" ng-model="formParamAutreEcriture.Numeroordre" class="form-control"
+                                    id="Numeroordre" name="Numeroordre" placeholder="Entrer un numéro d'ordre"
+                                    maxlength="2" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button ng-click="ajoutFormAddAutreEcriture()" class="btn btn-primary btn-shadow-hover font-weight-bold">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <button ng-click="reloadpage()" ng-show="etatFormAutreEcriture !== '2'"
+            class="btn btn-light-success font-weight-bold">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a href="#/parametre2/parametrageOperations/parametrageAutresOperationsTiers/liste"
+            class="btn btn-icon btn-light-dark mr-2" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+<!--end::Form-->
+
+<!--begin modal pour choix du code souscripteur-->
+<div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeSouscripteur"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - souscripteur
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                            <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                            <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixSouscripteur(lesSouscripteurs.TI_NUMTIERS, lesSouscripteurs.TI_DENOMINATION, lesSouscripteurs.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+<!--begin modal pour choix du code commercial-->
+<div class="modal fade" id="modalCodeCommercial" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeCommercial" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeCommercial"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - commercial
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesCommerciaux in listeDesCommerciaux">
+                            <td>{{lesCommerciaux.TI_NUMTIERS}}</td>
+                            <td>{{lesCommerciaux.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixCommercial(lesCommerciaux.TI_NUMTIERS, lesCommerciaux.TI_DENOMINATION, lesCommerciaux.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

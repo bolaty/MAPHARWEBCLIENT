@@ -1,0 +1,280 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormAddDroitSurMenu()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">OUTILS ET SECURITES</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Gestion utilisateur</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Profil utilisateur</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Droit sur menu</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <h3 style="font-size: 25px; font-family: Maiandra GD"><strong>{{collectionOperateur.OP_NOMPRENOM}}</strong>
+            </h3>
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <div class="alert alert-custom alert-white alert-shadow gutter-b" role="alert">
+                <div class="alert-text" style="position:relative; left:175px">
+                    <a href="" id="MenuPrincipaux" ng-click="tabMenuOperateur2Colonne(1,'MenuPrincipaux')"
+                        class="btn btn-text-dark-50 btn-icon-primary btn-hover-icon-danger font-weight-bold btn-hover-bg-light mr-3">
+                        <i class="fas fa-home"></i>MENUS PRINCIPAUX
+                    </a>
+                    <a href="" id="Menu" ng-click="tabMenuOperateur2Colonne(1,'Menu')"
+                        class="btn btn-text-dark-50 btn-icon-primary btn-hover-icon-danger font-weight-bold btn-hover-bg-light mr-3">
+                        <i class="flaticon2-pie-chart"></i>MENUS
+                    </a>
+                    <a href="" id="MenuDeroulant" ng-click="tabMenuOperateur2Colonne(1,'MenuDeroulant')"
+                        class="btn btn-text-dark-50 btn-icon-primary btn-hover-icon-danger font-weight-bold btn-hover-bg-light mr-3">
+                        <i class="fas fa-list-ul"></i>MENUS DEROULANT
+                    </a>
+                    <a href="" id="PopupMenu" ng-click="tabMenuOperateur2Colonne(1,'PopupMenu')"
+                        class="btn btn-text-dark-50 btn-icon-primary btn-hover-icon-danger font-weight-bold btn-hover-bg-light mr-3">
+                        <i class="fas fa-stream"></i>POPUP MENUS
+                    </a>
+                    <a href="" id="MenuEcran" ng-click="tabMenuOperateur2Colonne(1,'MenuEcran')"
+                        class="btn btn-text-dark-50 btn-icon-primary btn-hover-icon-danger font-weight-bold btn-hover-bg-light mr-3">
+                        <i class="fas fa-desktop"></i>ECRANS
+                    </a>
+                    <a href="" id="MenuEtat" ng-click="tabMenuOperateur2Colonne(1,'MenuEtat')"
+                        class="btn btn-text-dark-50 btn-icon-primary btn-hover-icon-danger font-weight-bold btn-hover-bg-light mr-3">
+                        <i class="fas fa-file-alt"></i>ETATS
+                    </a>
+                </div>
+            </div>
+            <!--end::Notice-->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header" style="background-color: #B666D2;">
+                    <!--#F5F500 jaune/-->
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="far fa-user icon-xl text-white"></i>
+                        </span>
+                        <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Droit sur
+                            menu/ecrans/commandes/etats</h3>
+                    </div>
+                </div>
+                <!--begin: Search Form-->
+                <form class="mb-15">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Logiciel*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" name="LO_CODELOGICIEL" id="LO_CODELOGICIEL"
+                                        ng-model="FormAddDroitSurMenu.Logiciel" ng-change="afficheListeMenuPrincipal()"
+                                        ng-disabled="verou1">
+                                        <option value="">Sélectionner un logiciel</option>
+                                        <option ng-repeat="leLogiciel in listeLogiciel"
+                                            value="{{leLogiciel.LO_CODELOGICIEL}}">{{leLogiciel.LO_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Menu principal*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-home text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" name="leMenuPrincipal" id="leMenuPrincipal"
+                                        ng-model="FormAddDroitSurMenu.Menu_principal" ng-change="afficheListeEcran()"
+                                        ng-disabled="verou2">
+                                        <option value="">Sélectionner un menu principal</option>
+                                        <option ng-repeat="leMenuPrincipal in listeMenuPrincipal"
+                                            value="{{leMenuPrincipal.OB_CODEOBJET}}"
+                                            ng-click="recupvalmenu(leMenuPrincipal)">{{leMenuPrincipal.OB_LIBELLE}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Edition*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-desktop text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" name="listeEcran" id="listeEcran"
+                                        ng-model="FormAddDroitSurMenu.Ecran" ng-disabled="verou3">
+                                        <option value="">Sélectionner un écran</option>
+                                        <option ng-repeat="lEcran in listeEcran" value="{{lEcran.OB_CODEOBJET}}">
+                                            {{lEcran.OB_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-8">
+                            <div class="col-lg-12">
+                                <button ng-disabled="verou4" class="btn btn-primary btn-primary--icon" id="kt_search"
+                                    ng-click="afficheListDroitSurMenu(FormAddDroitSurMenu.Logiciel, FormAddDroitSurMenu.Menu_principal, FormAddDroitSurMenu.Ecran)">
+                                    <span>
+                                        <i class="la la-search"></i>
+                                        <span>Rechercher</span>
+                                    </span>
+                                </button>&#160;&#160;
+                                <button class="btn btn-outline-warning" id="kt_reset" ng-click="listAnnuler()">
+                                    <span>
+                                        <i class="la la-close"></i>
+                                        <span>Annuler</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <br /><br />
+                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+                            <thead style="text-align: center;">
+                                <!--background-color: #8CB9BA; color: White-->
+                                <tr style="text-align:center">
+                                    <th ng-if="etatBoutonDroit == 1 || etatBoutonDroit == 2 || etatBoutonDroit == 3">
+                                        <!-- <label  class="checkbox checkbox-xl checkbox-primary"
+                                            style="position:relative; left:-5px; top:15px">
+                                            <input ng-disabled="veroutoutautoriser" type="checkbox" ng-model="selectedMore"
+                                                ng-checked="existedMore(veroutoutautoriserbtn)"
+                                                ng-click="toggleSelectedMore1()">
+                                            <span class="form-text text-muted"></span>
+                                        </label>--> <button style="width: 75px;height: 40px;"
+                                            class="btn btn-secondary btn-shadow-hover font-weight-bold"
+                                            ng-click="toggleSelectedMore1()">
+                                            <span>
+                                                <span>Cocher</span>
+                                            </span>
+                                        </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TOUT AUTORISER
+                                    </th>
+                                    <th ng-if="etatBoutonDroit == 1 || etatBoutonDroit == 2 || etatBoutonDroit == 3">
+                                        AUTORISER</th>
+                                    <th ng-if="etatBoutonDroit == 2">AJOUTER</th>
+                                    <th ng-if="etatBoutonDroit == 2">MODIFIER</th>
+                                    <th ng-if="etatBoutonDroit == 2">SUPPRIMER</th>
+                                    <th ng-if="etatBoutonDroit == 2 || etatBoutonDroit == 3">APERCU</th>
+                                    <th ng-if="etatBoutonDroit == 2 || etatBoutonDroit == 3">IMPRIMER</th>
+                                    <th ng-if="etatBoutonDroit == 2">IMPRIMER TOUT</th>
+                                </tr>
+                            </thead>
+                            <tfoot ng-show="listeDroitSurMenu[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                                <tr ng-repeat="laListeDroitSurMenu in listeDroitSurMenu">
+                                    <td ng-if="etatBoutonDroit == 1 || etatBoutonDroit == 2 || etatBoutonDroit == 3">
+                                        {{laListeDroitSurMenu.OB_LIBELLE}}</td>
+                                    <td ng-if="etatBoutonDroit == 1 || etatBoutonDroit == 2 || etatBoutonDroit == 3">
+                                        <label class="checkbox checkbox-lg checkbox-primary">
+                                            <input type="checkbox" ng-model="selectedMore"
+                                                ng-checked="existedMore(laListeDroitSurMenu.PD_AUTORISER)"
+                                                ng-click="toggleSelectedMore(laListeDroitSurMenu,infoBtn.PD_AUTORISER)">
+                                            <span class="form-text text-muted"></span>
+                                        </label>
+                                    </td>
+                                    <td ng-if="etatBoutonDroit == 2">
+                                        <label class="checkbox checkbox-lg checkbox-primary">
+                                            <input type="checkbox" ng-model="selectedMore"
+                                                ng-checked="existedMore(laListeDroitSurMenu.PD_AJOUTER)"
+                                                ng-click="toggleSelectedMore(laListeDroitSurMenu,infoBtn.PD_AJOUTER)">
+                                            <span class="form-text text-muted"></span>
+                                        </label>
+                                    </td>
+                                    <td ng-if="etatBoutonDroit == 2">
+                                        <label class="checkbox checkbox-lg checkbox-primary">
+                                            <input type="checkbox" ng-model="selectedMore"
+                                                ng-checked="existedMore(laListeDroitSurMenu.PD_MODIFIER)"
+                                                ng-click="toggleSelectedMore(laListeDroitSurMenu,infoBtn.PD_MODIFIER)">
+                                            <span class="form-text text-muted"></span>
+                                        </label>
+                                    </td>
+                                    <td ng-if="etatBoutonDroit == 2">
+                                        <label class="checkbox checkbox-lg checkbox-primary">
+                                            <input type="checkbox" ng-model="selectedMore"
+                                                ng-checked="existedMore(laListeDroitSurMenu.PD_SUPPRIMER)"
+                                                ng-click="toggleSelectedMore(laListeDroitSurMenu,infoBtn.PD_SUPPRIMER)">
+                                            <span class="form-text text-muted"></span>
+                                        </label>
+                                    </td>
+                                    <td ng-if="etatBoutonDroit == 2 || etatBoutonDroit == 3">
+                                        <label class="checkbox checkbox-lg checkbox-primary">
+                                            <input type="checkbox" ng-model="selectedMore"
+                                                ng-checked="existedMore(laListeDroitSurMenu.PD_APERCU)"
+                                                ng-click="toggleSelectedMore(laListeDroitSurMenu,infoBtn.PD_APERCU)">
+                                            <span class="form-text text-muted"></span>
+                                        </label>
+                                    </td>
+                                    <td ng-if="etatBoutonDroit == 2 || etatBoutonDroit == 3">
+                                        <label class="checkbox checkbox-lg checkbox-primary">
+                                            <input type="checkbox" ng-model="selectedMore"
+                                                ng-checked="existedMore(laListeDroitSurMenu.PD_IMPRIMER)"
+                                                ng-click="toggleSelectedMore(laListeDroitSurMenu,infoBtn.PD_IMPRIMER)">
+                                            <span class="form-text text-muted"></span>
+                                        </label>
+                                    </td>
+                                    <td ng-if="etatBoutonDroit == 2">
+                                        <label class="checkbox checkbox-lg checkbox-primary">
+                                            <input type="checkbox" ng-model="selectedMore"
+                                                ng-checked="existedMore(laListeDroitSurMenu.PD_IMPRIMERTOUT)"
+                                                ng-click="toggleSelectedMore(laListeDroitSurMenu,infoBtn.PD_IMPRIMERTOUT)">
+                                            <span class="form-text text-muted"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <div class="card-footer" style="height: 20px;">
+                        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+                            ng-click="ValiderDroitSurMenu()">
+                            <span>
+                                <i class="far fa-check-circle"></i>
+                                <span>Enregistrer</span>
+                            </span>
+                        </button>
+                        <!--<button class="btn btn-light-success font-weight-bold" ng-click="clearlistenregistrement()">
+                            <span>
+                                <i class="fas fa-undo"></i>
+                                <span>Réinitialiser</span>
+                            </span>
+                        </button>-->
+                        <a href="#/OutilsEtSecurites/liste/profils" class="btn btn-icon btn-light-dark mr-2"
+                            title="Retour" style="position: absolute; right: 27px">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+</div>
+<!--end::Content-->

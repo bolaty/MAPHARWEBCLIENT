@@ -1,0 +1,406 @@
+﻿@{
+    ViewBag.Title = "Opération";
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">GESTION</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Trésorerie</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Opération de trésorerie</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Enregistrement</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted"> Opération de trésorerie</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header"style="background-color: #F5F500">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="far fa-money-bill-alt text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Opérations de trésorerie</h3> 
+                            </div>                          
+                            </div>
+                            <!--begin::Form-->
+                            <form class="form">                                                                                                  
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-5">
+                                            <table class="table table-bordered table-checkable" id="kt_datatable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Famille des opérations</th>
+                                                        <th>CHOIX</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>LIBELLE</td>
+                                                        <td>
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="Due in 1 Year" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>TRESORERIE</td>
+                                                        <td>
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="Due in 1 Year" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>PRODUIT</td>
+                                                        <td>
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="Due in 1 Year" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>CHARGES</td>
+                                                        <td>
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="Due in 1 Year" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <table class="table table-bordered table-checkable" id="kt_datatable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Opérations</th>
+                                                        <th>CHOIX</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>OPERATIONS</td>
+                                                        <td>
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="Due in 1 Year" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>APPROVISIONNEMENT DE CAISSE</td>
+                                                        <td>
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="Due in 1 Year" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>REVERSEMENT DE CAISSE</td>
+                                                        <td>
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="Due in 1 Year" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>SORTIE PROVISOIRE DE CAISSE</td>
+                                                        <td>
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="Due in 1 Year" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>REVERSEMENT SUR SORTIE PROVISOIRE DE CAISSE</td>
+                                                        <td>
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="Due in 1 Year" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>APPROVISIONNEMENT DE CAISSE PAR BANQUE</td>
+                                                        <td>
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="Due in 1 Year" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>DEFICIT DE CAISSE</td>
+                                                        <td>
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="Due in 1 Year" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>EXEDENT DE CAISSE</td>
+                                                        <td>
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="Due in 1 Year" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>REVERSEMENT A LA BANQUE    </td>
+                                                        <td>
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="Due in 1 Year" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div> 
+                                    <br /> 
+                                    <div class="separator separator-dashed separator-success my-1"></div>                                 
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>DETAIL DES OPERATIONS</strong></h3>
+                                                    <div class="mb-2">
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-4">
+                                                                <label>Libéllé opération*</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-quote-left text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" name="url" placeholder="Entrer un libéllé opération" />
+                                                                </div>
+                                                                <span class="form-text text-muted">Veuillez saisir le libéllé opération.</span>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <label>N° pièce*</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-orcid text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" name="url" placeholder="Entrer un n° pièce" />
+                                                                </div>
+                                                                <span class="form-text text-muted">Veuillez saisir le n° pièce.</span>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <label>Montant*</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-money-bill-alt text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" name="url" placeholder="Entrer un montant" />
+                                                                </div>
+                                                                <span class="form-text text-muted">Veuillez saisir le montant.</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="separator separator-dashed separator-success my-1"></div><br>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>ECRITURE COMPTABLE</strong></h3>
+                                                    <div class="mb-2">
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-4">
+                                                                <label>N° compte 1*</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-orcid text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" name="addMP_Denomination1" placeholder="Entrer un n°" ng-model="FormAddMultirisquePro.denomination1" />
+                                                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                        <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeSouscripteur" ng-click="listeDesTiersSouscripteur()">
+                                                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <label></label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class=" text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select class="form-control" name="option">
+                                                                        <option value=""></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                    </select>
+                                                                </div>
+                                                                <span class="form-text text-muted">.</span>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <label>Sens*</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-exchange-alt text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select class="form-control" name="option">
+                                                                        <option value="">Sélectionner un sens</option>
+                                                                        <option>sens 1</option>
+                                                                        <option>sens 2</option>
+                                                                        <option>sens 3</option>
+                                                                        <option>sens 4</option>
+                                                                        <option>sens 5</option>
+                                                                    </select>
+                                                                </div>
+                                                                <span class="form-text text-muted">Veuillez sélectionner le sens.</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-4">
+                                                                <label>N° compte 2*</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-orcid text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" name="addMP_Denomination1" placeholder="Entrer un n°" ng-model="FormAddMultirisquePro.denomination1" />
+                                                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                        <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeSouscripteur" ng-click="listeDesTiersSouscripteur()">
+                                                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <label></label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class=" text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select class="form-control" name="option">
+                                                                        <option value=""></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                    </select>
+                                                                </div>
+                                                                <span class="form-text text-muted"></span>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <label>Sens*</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-exchange-alt text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select class="form-control" name="option">
+                                                                        <option value="">Sélectionner un sens</option>
+                                                                        <option>sens 1</option>
+                                                                        <option>sens 2</option>
+                                                                        <option>sens 3</option>
+                                                                        <option>sens 4</option>
+                                                                        <option>sens 5</option>
+                                                                    </select>
+                                                                </div>
+                                                                <span class="form-text text-muted">Veuillez sélectionner le sens.</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold">
+                                        <span>
+                                            <i class="far fa-check-circle"></i>
+                                            <span>Enregistrer</span>
+                                        </span>
+                                    </button>&#160;
+                                    <button type="submit" class="btn btn-light-success font-weight-bold">
+                                        <span>
+                                            <i class="fas fa-undo"></i>
+                                            <span>Réinitialiser</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                            <!--end::Form-->
+                        </div>
+                        <!--end::Card-->
+                    </div>
+                </div>
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::Entry-->
+    </div>
+    <!--end::Content-->

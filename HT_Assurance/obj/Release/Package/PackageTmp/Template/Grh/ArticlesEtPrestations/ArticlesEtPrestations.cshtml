@@ -1,0 +1,330 @@
+﻿@{
+ViewBag.Title = "Habitat";
+Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">GESTION</h5>&nbsp;&nbsp;
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Articles et Prestations</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Liste</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Articles et prestations</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #F5F500">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-shopping-cart text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Articles et prestations</h3>
+                            </div>
+                            <div class="card-toolbar">
+                                <!--begin::Button-->
+                                <a href="/ArticleEtPrestation/ArticlesetPrestationsAjout" class="btn btn-primary font-weight-bolder" data-toggle="tooltip" data-theme="dark" title="Enregistrement artocles et prestations">
+                                    <span class="svg-icon svg-icon-md">
+                                        <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <circle fill="#000000" cx="9" cy="15" r="6" />
+                                                <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
+                                            </g>
+                                        </svg>
+                                        <!--end::Svg Icon-->
+                                    </span>Nouveau
+                                </a>
+                                <!--end::Button-->
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>OPTIONS DE RECHERCHES</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Date de debut*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-calendar-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="date" class="form-control" name="url" placeholder="Entrer une date" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la date de debut.</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Date de fin*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-calendar-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="date" class="form-control" name="url" placeholder="Entrer une date" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la date de fin.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Code CIP*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un code" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le code CIP.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Nom*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-tag text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un nom" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le nom.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Type*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-barcode text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un type</option>
+                                                                <option>type 1</option>
+                                                                <option>type 2</option>
+                                                                <option>type 3</option>
+                                                                <option>type 4</option>
+                                                                <option>type 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le type.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Marque*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-mix text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner une marque</option>
+                                                                <option>marque 1</option>
+                                                                <option>marque 2</option>
+                                                                <option>marque 3</option>
+                                                                <option>marque 4</option>
+                                                                <option>marque 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la marque.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Fabriquant*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-hands-wash text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un fabriquant</option>
+                                                                <option>fabriquant 1</option>
+                                                                <option>fabriquant 2</option>
+                                                                <option>fabriquant 3</option>
+                                                                <option>fabriquant 4</option>
+                                                                <option>fabriquant 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le fabriquant.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Forme*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-prescription-bottle text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner une forme</option>
+                                                                <option>forme 1</option>
+                                                                <option>forme 2</option>
+                                                                <option>forme 3</option>
+                                                                <option>forme 4</option>
+                                                                <option>forme 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la forme.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Rayon*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-bars text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un rayon</option>
+                                                                <option>rayon 1</option>
+                                                                <option>rayon 2</option>
+                                                                <option>rayon 3</option>
+                                                                <option>rayon 4</option>
+                                                                <option>rayon 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le rayon.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Model*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-drafting-compass text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un model</option>
+                                                                <option>model 1</option>
+                                                                <option>model 2</option>
+                                                                <option>model 3</option>
+                                                                <option>model 4</option>
+                                                                <option>model 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le model.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-1">
+                                    <div class="col-lg-12">
+                                        <button class="btn btn-primary btn-primary--icon" id="kt_search">
+                                            <span>
+                                                <i class="la la-search"></i>
+                                                <span>Rechercher</span>
+                                            </span>
+                                        </button>&#160;&#160;
+                                        <button class="btn btn-outline-warning" id="kt_reset">
+                                            <span>
+                                                <i class="la la-close"></i>
+                                                <span>Annuler</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div><br><br>
+                                <h3 class="font-size-lg text-dark-75 font-weight-bold mb-3"><strong>ETATS</strong></h3>
+                                <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+                                    <thead style="text-align: center;">
+                                        <!--background-color: #8CB9BA; color: White-->
+                                        <tr>
+                                            <th>CODE</th>
+                                            <th>DESIGNATION</th>
+                                            <th>FABRICANT</th>
+                                            <th>TYPE</th>
+                                            <th>MARQUE</th>
+                                            <th>N° ORDRE</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>0</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <div>
+                                    <button class="btn btn-outline-success" id="kt_reset">
+                                        <span>
+                                            <i class="fas fa-circle"></i>
+                                            <span>Accessoires</span>
+                                        </span>
+                                    </button>
+                                    <button class="btn btn-primary btn-primary--icon" id="kt_search">
+                                        <span>
+                                            <i class="fas fa-binoculars"></i>
+                                            <span>Afficher</span>
+                                        </span>
+                                    </button>
+                                    <button class="btn btn-danger btn-shadow font-weight-bold" id="kt_reset">
+                                        <span>
+                                            <i class="fas fa-ban"></i>
+                                            <span>Supprimer</span>
+                                        </span>
+                                    </button>
+                                    <button class="btn btn-outline-warning" id="kt_reset">
+                                        <span>
+                                            <i class="la la-close"></i>
+                                            <span>Annuler</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

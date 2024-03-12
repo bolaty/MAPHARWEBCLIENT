@@ -1,0 +1,450 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+<form class="form">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>AJOUT OPERATEUR</strong></h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Nom et prénoms*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-address-card text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" id="idNomPrenom" class="form-control"
+                                        name="addOperateur_NomPrenom" placeholder="Entrer le nom et prénoms"
+                                        data-col-index="4" ng-model="FormAddOperateur.Nom_Prenom"
+                                        ng-pattern="/^[a-z-A-Z]/" maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Login*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idLogin" type="text" class="form-control" name="addOperateur_Login"
+                                        placeholder="Entrer un login" ng-model="FormAddOperateur.Login"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Mot de passe*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fab fa-black-tie text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idMotPasse" name="addOperateur_MotDePasse" type="password"
+                                        class="form-control datatable-input" placeholder="Entrer un mot de passe"
+                                        data-col-index="0" ng-model="FormAddOperateur.MotDePasse" maxlength="150" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Confirmation*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-marker text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idConfirmation" name="addOperateur_Confirmation" type="password"
+                                        class="form-control" placeholder="Confirmer le mot de passe"
+                                        ng-model="FormAddOperateur.Confirmation" maxlength="150">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Profil*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-restroom text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idProfil" class="form-control" name="addOperateur_Profil"
+                                        ng-model="FormAddOperateur.Profil">
+                                        <option value="">Sélectionnez le profil</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="leProfil in listeProfil"
+                                            value="{{leProfil.PO_CODEPROFIL}}">{{leProfil.PO_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'" ng-repeat="leProfil in listeProfil"
+                                            ng-selected="FormAddOperateur.Profil == leProfil.PO_CODEPROFIL"
+                                            value="{{leProfil.PO_CODEPROFIL}}">{{leProfil.PO_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Email*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="flaticon2-email text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input name="addOperateur_Email" id="Email" type="text"
+                                        class="form-control datatable-input"
+                                        placeholder="Entrer une adresse email valide" ng-model="FormAddOperateur.Email"
+                                        maxlength="150">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Téléphone*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-phone-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idPhone" type="text" class="form-control" name="addOperateur_Telephone"
+                                        placeholder="Entrer un numéro" ng-model="FormAddOperateur.Telephone"
+                                        maxlength="15">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>N° compte de trésorerie*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fab fa-orcid text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input name="" id="Ncomptedetresorerie" type="text" class="form-control "
+                                        placeholder="Entrer un numéro de compte"
+                                        ng-model="FormAddOperateur.N_CompteTresorerie" maxlength="18"
+                                        ng-pattern="/^[0-9]+$/">
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du n° compte de trésorerie">
+                                        <button class="btn btn-secondary btn-secondary--icon" type="button"
+                                            id="kt_reset" data-toggle="modal" data-target="#modalNumCompte"
+                                            ng-click="afficheListeNumCompte(FormAddOperateur.N_CompteTresorerie)">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>N° compte coffre*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fab fa-orcid text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input name="" id="Ncomptecoffre" type="text" class="form-control "
+                                        placeholder="Entrer un numéro de compte"
+                                        ng-model="FormAddOperateur.N_CompteCoffre" maxlength="18"
+                                        ng-pattern="/^[0-9]+$/">
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du n° compte coffre">
+                                        <button class="btn btn-secondary btn-secondary--icon" type="button"
+                                            id="kt_reset" data-toggle="modal" data-target="#modalNumCompte1"
+                                            ng-click="afficheListeNumCompte(FormAddOperateur.N_CompteCoffre)">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Montant total en caisse autorisé*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="flaticon2-user-outline-symbol text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idmontant" name="addOperateur_MontCompte" type="text"
+                                        class="form-control datatable-input" placeholder="Entrer un montant de caisse"
+                                        data-col-index="4" ng-model="FormAddOperateur.MontCaisse" maxlength="12" />
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Code client de vente*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input maxlength="8" type="tel" class="form-control" name="addOperateur_NumClient"
+                                        id="idCode" placeholder="Entrer un n°" ng-model="FormAddOperateur.NumClient"
+                                        ng-pattern="/^[0-9]+$/">
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button type="button" class="btn btn-secondary btn-secondary--icon"
+                                            id="kt_reset" data-toggle="modal" data-target="#modalCodeSouscripteur"
+                                            ng-click="afficheListeTiersSouscripteur(FormAddOperateur.NumClient, FormAddOperateur.ClientDeVente)">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <label>Client de vente à la caisse*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fab fa-orcid text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input name="addOperateur_ClientVente" type="text" class="form-control "
+                                        id="idClient" placeholder="Entrer un client de vente"
+                                        ng-model="FormAddOperateur.ClientDeVente"
+                                        ng-pattern="/^([a-z-A-Z])([a-z-A-Z0-9 ]+)/" maxlength="150">
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button class="btn btn-secondary btn-secondary--icon" type="button"
+                                            id="kt_reset" data-toggle="modal" data-target="#modalCodeSouscripteur"
+                                            ng-click="afficheListeTiersSouscripteur(FormAddOperateur.NumClient, FormAddOperateur.ClientDeVente)">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Service*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-clipboard-check text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idService" class="form-control" name="addOperateur_Service"
+                                        ng-model="FormAddOperateur.Service">
+                                        <option value="">Sélectionnez un service</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="leService in listeService"
+                                            value="{{leService.SR_CODESERVICE}}">{{leService.SR_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'" ng-repeat="leService in listeService"
+                                            ng-selected="FormAddOperateur.Service == leService.SR_CODESERVICE"
+                                            value="{{leService.SR_CODESERVICE}}">{{leService.SR_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Type opérateur*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-receipt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idTypeOperateur" class="form-control" name="addOperateur_TypeOperateur"
+                                        ng-model="FormAddOperateur.TypeOperateur">
+                                        <option value="">Sélectionnez un cas d'utilisation</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="lOperateur in listeTypeOperateur"
+                                            value="{{lOperateur.TO_CODETYPEOERATEUR}}">{{lOperateur.TO_LIBELLE}}
+                                        </option>
+                                        <option ng-show="etatForm == '2'" ng-repeat="lOperateur in listeTypeOperateur"
+                                            ng-selected="FormAddOperateur.TypeOperateur == lOperateur.TO_CODETYPEOERATEUR"
+                                            value="{{lOperateur.TO_CODETYPEOERATEUR}}">{{lOperateur.TO_LIBELLE}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column-fluid">
+                            <!--begin::Container-->
+                            <div class="container">
+                                <div class="card card-custom">
+                                    <div class="card-header" style="background-color: #B666D2;">
+                                        <div class="card-title">
+                                            <span class="card-icon">
+                                                <i class="fas fa-camera text-white"></i>
+                                            </span>
+                                            <h3 class="card-label"
+                                                style="font-size: 30px; font-family: 'Maiandra GD'; color: white;">
+                                                Document</h3>
+                                        </div>
+                                    </div><br /><br /><br />
+                                    <div class="modal-body"
+                                        style="text-align: center; font-size: 17px; background-color: rgb(223, 248, 245)">
+                                        <div class="col-12 text-right">
+                                        </div>
+                                        <div class="form-group col-lg-12">
+                                            <!--  <input type="file" id="upload" multiple />
+                                            <button ng-click="process()">Charger le
+                                                Fichier</button> -->
+
+                                            <input id="upload" type="file" class="form-control"
+                                                name="photoOperateur_ChampImage" placeholder="Choisir une image"
+                                                multiple accept="image/*" /><br>
+                                            <button class="btn btn-hover-light-info font-weight-bold"
+                                                id="pourChargerImage" ng-click="process()">
+                                                <span>
+                                                    <i class="fas fa-arrow-down"></i>
+                                                    <span>Charger le fichier</span>
+                                                </span>
+                                            </button>
+                                            <table>
+                                                <tbody>
+                                                    <tr id="boucleimg"></tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr id="boucleimgsuppr"></tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Card-->
+                        </div><br><br><br>
+
+                        <!--<div class="form-group row" ng-show="etatForm !== '2'">
+                            <div class="col-lg-6" style="position: relative; left: 350px;">
+                                <div class="image-input image-input-outline" id="kt_user_edit_avatar">
+                                    <div class="image-input-wrapper-image" style="background-image: url(/Content/assets/media/illustration/undraw_profile_pic_ic5t.svg)"></div>
+                                    <div class="image-input-wrapper-image" style="position: absolute; top: 0; left: 0"><img ng-src="{{avatar}}" id="photoOp" style="object-position: cover;" width="100%" height="100%" /></div>
+                                    <label class="btn btn-xs btn-icon btn-circle btn-info btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Nouvelle photo">
+                                        <i class="fa fa-pen icon-sm text-white"></i>
+                                        <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" img-profile="FormAddOperateur.img_avatar" onchange="angular.element(this).scope().previewPhoto(event)" />
+                                        <input type="hidden" name="profile_avatar_remove" />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row" ng-show="etatForm == '2'">
+                            <div class="col-lg-6" style="position: relative; left: 350px;">
+                                <div class="image-input image-input-outline" id="kt_user_edit_avatar">
+                                    <div class="image-input-wrapper-image" style="background-image: url(/Content/assets/media/illustration/undraw_profile_pic_ic5t.svg)"></div>
+                                    <div class="image-input-wrapper-image" style="position: absolute; top: 0; left: 0"><img ng-src='{{avatar != undefined ? avatar : "data:image/jpeg;base64," + recupererInfo.OH_PHOTO}}' style="object-position: cover;" width="100%" height="100%" /></div>
+                                    <label class="btn btn-xs btn-icon btn-circle btn-info btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Nouvelle photo">
+                                        <i class="fa fa-pen icon-sm text-white"></i>
+                                        <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" img-profile="FormAddOperateur.img_avatar" onchange="angular.element(this).scope().previewPhoto(event)" />
+                                        <input type="hidden" name="profile_avatar_remove" />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>-->
+
+                        <div class="form-group row">
+                            <div class="col-lg-6" style="position: relative; width: 350px;">
+                                <label class="checkbox checkbox-lg checkbox-primary ">
+
+                                    <input ng-model="formaddboutn[0].valeur" ng-checked="COCHE0(formaddboutn[0].valeur)"
+                                        type="checkbox" id="inpu" ng-click="testval0(formaddboutn[0].valeur)">
+                                    <span class="form-text "></span>
+                                    <label> Actif </label>
+                                </label>
+                                <br />
+                                <label class="checkbox checkbox-lg checkbox-primary ">
+                                    <input ng-model="formaddboutn[1].valeur" ng-checked="COCHE1(formaddboutn[1].valeur)"
+                                        type="checkbox" id="inpu" ng-click="testval1(formaddboutn[1].valeur)">
+                                    <span class="form-text "></span>
+                                    <label>Journée ouverte</label>
+                                </label>
+                                <br />
+                                <label class="checkbox checkbox-lg checkbox-primary ">
+                                    <input ng-model="formaddboutn[2].valeur" ng-checked="COCHE2(formaddboutn[2].valeur)"
+                                        type="checkbox" id="inpu" ng-click="testval2(formaddboutn[2].valeur)">
+                                    <span class="form-text "></span>
+                                    <label>Agent de caisse</label>
+                                </label>
+                                <br />
+                                <label class="checkbox checkbox-lg checkbox-primary ">
+                                    <input ng-model="formaddboutn[3].valeur" ng-checked="COCHE3(formaddboutn[3].valeur)"
+                                        type="checkbox" id="inpu" ng-click="testval3(formaddboutn[3].valeur)">
+                                    <span class="form-text "></span>
+                                    <label>Impression automatique d'opération</label>
+                                </label>
+                                <br />
+                                <label class="checkbox checkbox-lg checkbox-primary ">
+                                    <input ng-model="formaddboutn[4].valeur" ng-checked="COCHE4(formaddboutn[4].valeur)"
+                                        type="checkbox" id="inpu" ng-click="testval4(formaddboutn[4].valeur)">
+                                    <span class="form-text "></span>
+                                    <label>Contrepartie automatique en OD</label>
+                                </label><br />
+                                <label class="checkbox checkbox-lg checkbox-primary ">
+                                    <input ng-model="formaddboutn[5].valeur" ng-checked="COCHE5(formaddboutn[5].valeur)"
+                                        type="checkbox" id="inpu" ng-click="testval5(formaddboutn[5].valeur)">
+                                    <span class="form-text "></span>
+                                    <label>Droit d'extourne</label>
+                                </label>
+                            </div>
+                            <div class="col-lg-6" style="position: relative; left: 100px;">
+                                <label class="checkbox checkbox-lg checkbox-primary ">
+                                    <input ng-model="formaddboutn[6].valeur" ng-checked="COCHE6(formaddboutn[6].valeur)"
+                                        type="checkbox" id="inpu" ng-click="testval6(formaddboutn[6].valeur)">
+                                    <span class="form-text "></span>
+                                    <label>Droit de création de journée</label>
+                                </label>
+                                <br />
+                                <label class="checkbox checkbox-lg checkbox-primary ">
+                                    <input ng-model="formaddboutn[7].valeur" ng-checked="COCHE7(formaddboutn[7].valeur)"
+                                        type="checkbox" id="inpu" ng-click="testval7(formaddboutn[7].valeur)">
+                                    <span class="form-text "></span>
+                                    <label>Droit de fermeture de journée</label>
+                                </label>
+                                <br />
+                                <label class="checkbox checkbox-lg checkbox-primary ">
+                                    <input ng-model="formaddboutn[8].valeur" ng-checked="COCHE8(formaddboutn[8].valeur)"
+                                        type="checkbox" id="inpu" ng-click="testval8(formaddboutn[8].valeur)">
+                                    <span class="form-text "></span>
+                                    <label>Droit de création de profil</label>
+                                </label>
+                                <br />
+                                <label class="checkbox checkbox-lg checkbox-primary ">
+                                    <input ng-model="formaddboutn[9].valeur" ng-checked="COCHE9(formaddboutn[9].valeur)"
+                                        type="checkbox" id="inpu" ng-click="testval9(formaddboutn[9].valeur)">
+                                    <span class="form-text "></span>
+                                    <label>Droit de création d'opérateur</label>
+                                </label>
+                                <br />
+                                <label class="checkbox checkbox-lg checkbox-primary ">
+                                    <input ng-model="formaddboutn[10].valeur"
+                                        ng-checked="COCHE10(formaddboutn[10].valeur)" type="checkbox" id="inpu"
+                                        ng-click="testval10(formaddboutn[10].valeur)">
+                                    <span class="form-text "></span>
+                                    <label>Droit de selection d'opérateur sur appro</label>
+                                </label>
+                                <br />
+                                <label class="checkbox checkbox-lg checkbox-primary ">
+                                    <input ng-model="formaddboutn[11].valeur"
+                                        ng-checked="COCHE11(formaddboutn[11].valeur)" type="checkbox" id="inpu"
+                                        ng-click="testval11(formaddboutn[11].valeur)">
+                                    <span class="form-text "></span>
+                                    <label>Droit de selection d'opérateur sur vente</label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+            ng-click="validationOperateur()">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <button ng-show="etatForm !== '2'" ng-click="resetPageOperateur()" type="submit"
+            class="btn btn-light-success font-weight-bold">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a href="#/operateur/liste/utilisateur" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip"
+            data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+</form>

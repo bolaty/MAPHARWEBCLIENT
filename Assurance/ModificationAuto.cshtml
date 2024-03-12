@@ -1,0 +1,941 @@
+﻿@{
+    ViewBag.Title = "Auto Modification";
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-controller="AutoController" ng-init="initFormAddInfoAuto()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Modification Auto</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Assurance</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Modification</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Auto</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <div class="d-flex align-items-center">
+                <!--begin::Actions-->
+                <a href="#" class="btn btn-light-primary font-weight-bolder btn-sm">Actions</a>
+                <!--end::Actions-->
+                <!--begin::Dropdown-->
+                <div class="dropdown dropdown-inline" data-toggle="tooltip" title="Quick actions" data-placement="left">
+                    <a href="#" class="btn btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="svg-icon svg-icon-success svg-icon-2x">
+                            <!--begin::Svg Icon | path:assets/media/svg/icons/Files/File-plus.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                    <path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                    <path d="M11,14 L9,14 C8.44771525,14 8,13.5522847 8,13 C8,12.4477153 8.44771525,12 9,12 L11,12 L11,10 C11,9.44771525 11.4477153,9 12,9 C12.5522847,9 13,9.44771525 13,10 L13,12 L15,12 C15.5522847,12 16,12.4477153 16,13 C16,13.5522847 15.5522847,14 15,14 L13,14 L13,16 C13,16.5522847 12.5522847,17 12,17 C11.4477153,17 11,16.5522847 11,16 L11,14 Z" fill="#000000" />
+                                </g>
+                            </svg>
+                            <!--end::Svg Icon-->
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-md dropdown-menu-right p-0 m-0">
+                        <!--begin::Navigation-->
+                        <ul class="navi navi-hover">
+                            <li class="navi-header font-weight-bold py-4">
+                                <span class="font-size-lg">Choose Label:</span>
+                                <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="Click to learn more..."></i>
+                            </li>
+                            <li class="navi-separator mb-3 opacity-70"></li>
+                            <li class="navi-item">
+                                <a href="#" class="navi-link">
+                                    <span class="navi-text">
+                                        <span class="label label-xl label-inline label-light-success">Customer</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="#" class="navi-link">
+                                    <span class="navi-text">
+                                        <span class="label label-xl label-inline label-light-danger">Partner</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="#" class="navi-link">
+                                    <span class="navi-text">
+                                        <span class="label label-xl label-inline label-light-warning">Suplier</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="#" class="navi-link">
+                                    <span class="navi-text">
+                                        <span class="label label-xl label-inline label-light-primary">Member</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="#" class="navi-link">
+                                    <span class="navi-text">
+                                        <span class="label label-xl label-inline label-light-dark">Staff</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="navi-separator mt-3 opacity-70"></li>
+                            <li class="navi-footer py-4">
+                                <a class="btn btn-clean font-weight-bold btn-sm" href="#">
+                                    <i class="ki ki-plus icon-sm"></i>Add new
+                                </a>
+                            </li>
+                        </ul>
+                        <!--end::Navigation-->
+                    </div>
+                </div>
+                <!--end::Dropdown-->
+            </div>
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #718E3E;">
+                            <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Modification Auto</h3>
+                            <div class="card-toolbar">
+                                <div class="example-tools justify-content-center">
+                                    <span class="example-toggle text-white" data-toggle="tooltip" title="View code"></span>
+                                    <span class="example-copy text-white" data-toggle="tooltip" title="Copy code"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form" id="formAddAuto">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS SUR LE SOUSCRIPTEUR</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Code*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Code01" placeholder="Entrer un code" ng-model="recupererinfoauto[0].TI_NUMTIERS" ng-disabled="isDisabledmodif" />
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" type="button" id="kt_reset" data-toggle="modal" data-target="#modalCodeSouscripteur" ng-click="afficheListeTiersSouscripteur()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le code.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Dénomination*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Dénomination01" placeholder="Entrer une Dénomination" ng-model="recupererinfoauto[0].TI_DENOMINATION" ng-disabled="isDisabledmodif"/>
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" type="button" data-toggle="modal" data-target="#modalCodeCommercial" ng-click="afficheListeTiersSouscripteur()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la Dénomination.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Adresse*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-periscope text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Adresse" placeholder="Entrer une adresse" ng-model="recupererinfoauto[0].CO_LIBELLE" ng-disabled="isDisabledmodif"/>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'adresse.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS SUR LE COMMERCIAL</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Code*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Code02" placeholder="Entrer un code" ng-model="recupererinfoauto[0].TI_NUMTIERSCOMMERCIAL" ng-disabled="isDisabledmodf"/>
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial" ng-click="afficheListeTiersCommercial()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le code.</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Dénomination*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Dénomination02" placeholder="Entrer une Dénomination" ng-model="recupererinfoauto[0].TI_DENOMINATIONCOMMERCIAL" ng-disabled="isDisabledmodf"/>
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial" ng-click="afficheListeTiersCommercial()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la Dénomination.</span>
+                                                    </div>
+                                                    @*<div class="col-lg-4">
+                                                        <label>Commission*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-money-bill-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Commission" placeholder="Entrer une commission" ng-model="listeListeCommissionCommercialmodifAuto[0].SOLDE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la commission.</span>
+                                                    </div>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS GENERALES</strong></h3>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>N° police/ N.C*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_N_Police" placeholder="Entrer un n°" ng-model="recupererinfoauto[0].CA_NUMPOLICE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le n° de la Police.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Cond. habituel*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-star text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Cond_habituel" placeholder="Entrer une cond. habituel" ng-model="recupererinfoauto[0].CA_CONDITIONHABITUEL" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la cond. habituel.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Statut socio-Prof*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-thumbs-up text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Statut_socio_Prof" ng-model="recupererinfoauto[0].ST_CODESTATUTSOCIOPROF">
+                                                                <option value="">Sélectionner un statut socio-Prof</option>
+                                                                <option ng-repeat="lalisteDesStatutSocio in listeDesStatutSocio" ng-selected="recupererinfoauto[0].ST_CODESTATUTSOCIOPROF == lalisteDesStatutSocio.ST_CODESTATUTSOCIOPROF" value="{{lalisteDesStatutSocio.ST_CODESTATUTSOCIOPROF}}">{{lalisteDesStatutSocio.ST_LIBELLESTATUTSOCIOPROF1}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le statut socio-Prof.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Ag cond./permis*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-shield text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Ag_condpermis" ng-model="recupererinfoauto[0].CD_CODECONDITION">
+                                                                <option value="">Sélectionner un ag cond./permis</option>
+                                                                <option ng-repeat="lalisteDesConditionPermis in listeDesConditionPermis" ng-selected="recupererinfoauto[0].CD_CODECONDITION == lalisteDesConditionPermis.CD_CODECONDITION" value="{{lalisteDesConditionPermis.CD_CODECONDITION}}">{{lalisteDesConditionPermis.CD_LIBELLECONDITION}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner l'ag cond./permis.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Pays*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-globe-africa text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Pays" ng-model="recupererinfoauto[0].PY_CODEPAYS" id="idPaysModif">
+                                                                <option value="">Sélectionner un pays</option>
+                                                                <option ng-repeat="lePays in listeDesPaysAuto" ng-selected="recupererinfoauto[0].PY_CODEPAYS == lePays.PY_CODEPAYS" value="{{lePays.PY_CODEPAYS}}">{{lePays.PY_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le pays.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Ville*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map-marker-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Ville" ng-model="recupererinfoauto[0].VL_CODEVILLE" id="idVilleModif">
+                                                                <option value="">Sélectionner une ville</option>
+                                                                <option ng-repeat="laVille in modifListeVille" ng-selected="recupererinfoauto[0].VL_CODEVILLE == laVille.VL_CODEVILLE" value="{{laVille.VL_CODEVILLE}}">{{laVille.VL_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez séléctionner la ville.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Commune*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map-pin text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Commune" ng-model="recupererinfoauto[0].CO_CODECOMMUNE">
+                                                                <option value="">Sélectionner une commune</option>
+                                                                <option ng-repeat="laCommune in modifListeCommune" ng-selected="recupererinfoauto[0].CO_CODECOMMUNE == laCommune.CO_CODECOMMUNE" value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la commune.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Situation géographique*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control datatable-input" name="addAuto_Situation_géographique" placeholder="Entrer un nom" data-col-index="0" ng-model="recupererinfoauto[0].CA_SITUATIONGEOGRAPHIQUE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la situation géograpgique.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Effet*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-calendar text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Effet" placeholder="Entrer un effet" ng-model="recupererinfoauto[0].CA_DATEEFFET" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'effet.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Echéance*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-calendar text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Echeance" placeholder="Entrer une écheance" ng-model="recupererinfoauto[0].CA_DATEECHEANCE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'écheance.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Durée*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-clock text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Durée" ng-model="recupererinfoauto[0].DU_CODEDUREE">
+                                                                <option value="">Sélectionner une durée</option>
+                                                                <option ng-repeat="lalisteDesDureeAuto in listeDesDureeAuto" ng-selected="recupererinfoauto[0].DU_CODEDUREE == lalisteDesDureeAuto.DU_CODEDUREE" value="{{lalisteDesDureeAuto.DU_CODEDUREE}}">{{lalisteDesDureeAuto.DU_LIBELLEDUREE}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la durée.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Branche risque*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-street-view text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Branche_risque" ng-model="recupererinfoauto[0].CB_IDBRANCHE">
+                                                                <option value="">Sélectionner une branche risque</option>
+                                                                <option ng-repeat="lalisteDesBrancheAuto in listeDesBrancheAuto" ng-selected="recupererinfoauto[0].CB_IDBRANCHE == lalisteDesBrancheAuto.CB_IDBRANCHE" value="{{lalisteDesBrancheAuto.CB_IDBRANCHE}}">{{lalisteDesBrancheAuto.CB_LIBELLEBRANCHE}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la branche risque.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Taux*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-percent text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Taux" placeholder="Entrer un taux" ng-model="recupererinfoauto[0].CA_TAUX" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le taux.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Zone circ*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-circle text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Zone_circ" ng-model="recupererinfoauto[0].ZA_CODEZONEAUTO">
+                                                                <option value="">Sélectionner une zone circ</option>
+                                                                <option ng-repeat="lAlisteDesZoneAuto in listeDesZoneAuto" ng-selected="recupererinfoauto[0].ZA_CODEZONEAUTO == lAlisteDesZoneAuto.ZA_CODEZONEAUTO" value="{{lAlisteDesZoneAuto.ZA_CODEZONEAUTO}}">{{lAlisteDesZoneAuto.ZA_NOMZONEAUTO}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la zone circ.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Catégorie*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-chart-pie text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Catégorie" ng-model="recupererinfoauto[0].AU_CODECATEGORIE">
+                                                                <option value="">Sélectionner une catégorie</option>
+                                                                <option ng-repeat="lalisteDesCategorieAuto in listeDesCategorieAuto" ng-selected="recupererinfoauto[0].AU_CODECATEGORIE == lalisteDesCategorieAuto.AU_CODECATEGORIE" value="{{lalisteDesCategorieAuto.AU_CODECATEGORIE}}">{{lalisteDesCategorieAuto.AU_LIBELLECATEGORIE}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la catégorie.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Tarif*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-donate text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Tarif" ng-model="recupererinfoauto[0].TA_CODETARIF">
+                                                                <option value="">Sélectionner un tarif</option>
+                                                                <option ng-repeat="lalisteDesTarifAuto in listeDesTarifAuto" ng-selected="recupererinfoauto[0].TA_CODETARIF == lalisteDesTarifAuto.TA_CODETARIF" value="{{lalisteDesTarifAuto.TA_CODETARIF}}">{{lalisteDesTarifAuto.TA_LIBELLETARIF}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le tarif.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Usage*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="flaticon2-clip-symbol text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Usage" ng-model="recupererinfoauto[0].US_CODEUSAGE">
+                                                                <option value="">Sélectionner un usage</option>
+                                                                <option ng-repeat="lalisteDesUsageAuto in listeDesUsageAuto" ng-selected="recupererinfoauto[0].US_CODEUSAGE == lalisteDesUsageAuto.US_CODEUSAGE" value="{{lalisteDesUsageAuto.US_CODEUSAGE}}">{{lalisteDesUsageAuto.US_LIBELLEUSAGE}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner l'usage.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Genre*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-restroom text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Genre" ng-model="recupererinfoauto[0].GE_CODEGENRE">
+                                                                <option value="">Sélectionner un genre</option>
+                                                                <option ng-repeat="lalisteDesGenreAuto in listeDesGenreAuto" ng-selected="recupererinfoauto[0].GE_CODEGENRE == lalisteDesGenreAuto.GE_CODEGENRE" value="{{lalisteDesGenreAuto.GE_CODEGENRE}}">{{lalisteDesGenreAuto.GE_LIBELLEGENRE}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le genre.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Assureur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-cog text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Assureur" ng-model="recupererinfoauto[0].TI_IDTIERSASSUREUR">
+                                                                <option value="">Sélectionner un assureur</option>
+                                                                <option ng-repeat="lAssureur in listeDesAssureursAuto" ng-selected="recupererinfoauto[0].TI_IDTIERSASSUREUR == lAssureur.TI_IDTIERS" value="{{lAssureur.TI_IDTIERS}}">{{lAssureur.TI_DENOMINATION}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner l'assureur.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Interlocuteur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-assistive-listening-systems text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Interlocuteur" placeholder="Entrer un interlocuteur" ng-model="recupererinfoauto[0].CA_NOMINTERLOCUTEUR" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'interlocuteur.</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Téléphone interlocuteur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-phone-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Telephone_interlocuteur" placeholder="Entrer un n° de téléphone" ng-model="recupererinfoauto[0].CA_CONTACTINTERLOCUTEUR" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le téléphone interlocuteur.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Marque*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="socicon-modelmayhem text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Marque" ng-model="recupererinfoauto[0].TVH_CODETYPE">
+                                                                <option value="">Sélectionner une marque</option>
+                                                                <option ng-repeat="lAlisteDesMarqueAuto in listeDesMarqueAuto" ng-selected="recupererinfoauto[0].TVH_CODETYPE == lAlisteDesMarqueAuto.TVH_CODETYPE" value="{{lAlisteDesMarqueAuto.TVH_CODETYPE}}">{{lAlisteDesMarqueAuto.TVH_LIBELE}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la marque .</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Type*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-sliders-h text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Type" placeholder="Entrer un type" ng-model="recupererinfoauto[0].CA_TYPE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le type.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>N° de série*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Nsérie" placeholder="Entrer un n°" ng-model="recupererinfoauto[0].CA_NUMSERIE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le n° de série.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Immatriculation*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-barcode text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Immatriculation" placeholder="Entrer une immatriculation" ng-model="recupererinfoauto[0].CA_IMMATRICULATION" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'immatriculation'.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Energie*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-medapps text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_Energie" ng-model="recupererinfoauto[0].EN_CODEENERGIE">
+                                                                <option value="">Sélectionner une énergie</option>
+                                                                <option ng-repeat="lAlisteDesEnergieAuto in listeDesEnergieAuto" ng-selected="recupererinfoauto[0].EN_CODEENERGIE == lAlisteDesEnergieAuto.EN_CODEENERGIE" value="{{lAlisteDesEnergieAuto.EN_CODEENERGIE}}">{{lAlisteDesEnergieAuto.EN_LIBELLEENERGIE}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner l'énergie .</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Puissance admin*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-angellist text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Puissance_admin" placeholder="Entrer une puissance" ng-model="recupererinfoauto[0].CA_PUISSANCEADMISE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la puissance admin.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Charge utile*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="socicon-buffer text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Charge_utile" placeholder="Entrer une charge" ng-model="recupererinfoauto[0].CA_CHARGEUTILE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la charge.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Nombre place*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-couch text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Nombre_place" placeholder="Entrer un nombre" ng-model="recupererinfoauto[0].CA_NBREPLACE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le nombre de place.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Val. neuve*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="socicon-vimeo text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Val_neuve" placeholder="Entrer une val. neuve" ng-model="recupererinfoauto[0].CA_VALNEUVE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la val. neuve.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Val. vénale*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="socicon-vimeo text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Val_vénale" placeholder="Entrer une val. vénale" ng-model="recupererinfoauto[0].CA_VALVENALE" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la val. vénale.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Mise circ.*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-pallet text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addAuto_Mise_circ" placeholder="Entrer une mise circ." ng-model="recupererinfoauto[0].CA_DATEMISECIRCULATION" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la mise circ.</span>
+                                                    </div>
+                                                    <div class="col-lg-3" style="position: relative; left: 15px; bottom: -28px">
+                                                        <div class="d-flex flex-column flex-grow-1 py-2" ng-click="choixclienttaxe()">
+                                                            <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                                <input type="checkbox" value="{{FormAddAuto.btntaxe}}" />
+                                                                <span class="blue"></span>
+                                                            </label>
+                                                            <label style="position: relative; top: -20px; left: 30px;">Client exonéré de taxe</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <label>Type d'affaire*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-briefcase text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addAuto_typeAffaire" ng-model="recupererinfoauto[0].TA_CODETYPEAFFAIRES">
+                                                                <option value="">Sélectionner un type</option>
+                                                                <option ng-repeat="leTypeAffaire in listeTypeAffaireAuto" ng-selected="recupererinfoauto[0].TA_CODETYPEAFFAIRES == leTypeAffaire.TA_CODETYPEAFFAIRES" value="{{leTypeAffaire.TA_CODETYPEAFFAIRES}}">{{leTypeAffaire.TA_LIBLLETYPEAFFAIRES}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row col-lg-12">
+                                        <div class="col-12 ">
+                                            @*<div class="separator separator-dashed separator-success my-1"></div><br>
+                                            <table class="table table-bordered table-checkable" id="kt_datatable">
+                                                <thead style="text-align: center">
+                                                    <tr>
+                                                        <th>LIBELLE</th>
+                                                        <th>VALEUR</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody ng-repeat="Reduction in tabReduction">
+                                                    <tr>
+                                                        <td>{{Reduction.RD_LIBELLEREDUCTION}}</td>
+                                                        <td>
+                                                            <input type="text" name="" class="form-control" placeholder="" ng-model="Reduction.RD_MONTANT" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>*@
+                                            <div class="separator separator-dashed separator-success my-1"></div>
+                                            <table class="table table-bordered table-checkable" id="kt_datatable">
+                                                <thead style="text-align: center">
+                                                    <tr>
+                                                        <th>LIBELLE SOUS CAT.</th>
+                                                        <th>EVENEMENT ASS.</th>
+                                                        <th>CAPITAUX AS.</th>
+                                                        <th>PRIMES</th>
+                                                        <th>APRES REDUCTION</th>
+                                                        <th>PRORATA</th>
+                                                        <th>FRANCHISES</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="garentie in tabGarenties">
+                                                        <td>{{garentie.SC_LIBELLESOUSCATEGORIE}}</td>
+                                                        <td>{{garentie.GA_LIBELLEGARANTIE}}</td>
+                                                        <td>
+                                                            <input type="text" name="" class="form-control" placeholder="" ng-model="garentie.CG_CAPITAUXASSURES" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="" class="form-control" placeholder="" ng-model="garentie.CG_PRIMES" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="" class="form-control" placeholder="" ng-model="garentie.CG_APRESREDUCTION" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="" class="form-control" placeholder="" ng-model="garentie.CG_PRORATA" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="" class="form-control" placeholder="" ng-model="garentie.CG_FRANCHISES" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="separator separator-dashed separator-success my-1"></div><br>
+                                    <div class="form-group row col-lg-12">
+                                        <div class="col-12 ">
+
+                                            <table class="table table-bordered table-checkable" id="kt_datatable">
+                                                <thead style="text-align: center">
+                                                    <tr>
+                                                        <th>LIBELLE </th>
+                                                        <th>VALEUR</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="prime in tabPrimes">
+                                                        <td>{{prime.RE_LIBELLERESUME}}</td>
+                                                        <td>
+                                                            <input type="text" name="" class="form-control" placeholder="" ng-model="prime.CG_PRIMES" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" id="kt_notify" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="ajoutFormAddModifAuto()">
+                                        <span>
+                                            <i class="far fa-check-circle"></i>
+                                            <span>Enregistrer</span>
+                                        </span>
+                                    </button>&#160;&#160;
+                                    @*<button type="submit" class="btn btn-light-success font-weight-bold">
+                                        <span>
+                                            <i class="fas fa-undo"></i>
+                                            <span>Réinitialiser</span>
+                                        </span>
+                                    </button>*@
+                                    <a href="ListeAuto" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip" data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+    <!--begin modal pour choix du code souscripteur-->
+    <div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalCodeSouscripteur" style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-white"></i>
+                        Liste des tiers - souscripteur
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-checkable" id="kt_datatable">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th>N° TIERS</th>
+                                <th>DENOMINATION</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                                <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                                <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                                <td style="text-align: center">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip" data-theme="dark" title="Choisir" ng-click="choixSouscripteurmodif(lesSouscripteurs.TI_NUMTIERS, lesSouscripteurs.TI_DENOMINATION, lesSouscripteurs.TI_IDTIERS, lesSouscripteurs.TI_ADRESSEGEOGRAPHIQUE)" data-dismiss="modal">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+    <div class="modal fade" id="modalCodeCommercial" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalCodeCommercial" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalCodeCommercial" style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-white"></i>
+                        Liste des tiers - commercial
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-checkable" id="kt_datatable">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th>N° TIERS</th>
+                                <th>DENOMINATION</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lesCommerciaux in listeDesCommerciaux">
+                                <td>{{lesCommerciaux.TI_NUMTIERS}}</td>
+                                <td>{{lesCommerciaux.TI_DENOMINATION}}</td>
+                                <td style="text-align: center">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip" data-theme="dark" title="Choisir" ng-click="choixCommercialmodif(lesCommerciaux.TI_NUMTIERS, lesCommerciaux.TI_DENOMINATION, lesCommerciaux.TI_IDTIERS)" data-dismiss="modal">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Content-->

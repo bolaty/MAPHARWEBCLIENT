@@ -1,0 +1,1201 @@
+﻿<!--début loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormAddreglfactclient()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background-color: beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">ASSURANCE</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Gestion</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Listes</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Règlement facture client</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <h3 style="font-size: 25px; font-family: Maiandra GD"><strong>N° {{collectionContart.TI_NUMTIERS}} |
+                    {{collectionContart.TI_DENOMINATION}}</strong></h3>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!-- <div class="alert alert-custom alert-white alert-shadow gutter-b" role="alert">
+                <div class="alert-icon">
+                    <span class="svg-icon svg-icon-primary svg-icon-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                            height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24" />
+                                <path
+                                    d="M7.07744993,12.3040451 C7.72444571,13.0716094 8.54044565,13.6920474 9.46808594,14.1079953 L5,23 L4.5,18 L7.07744993,12.3040451 Z M14.5865511,14.2597864 C15.5319561,13.9019016 16.375416,13.3366121 17.0614026,12.6194459 L19.5,18 L19,23 L14.5865511,14.2597864 Z M12,3.55271368e-14 C12.8284271,3.53749572e-14 13.5,0.671572875 13.5,1.5 L13.5,4 L10.5,4 L10.5,1.5 C10.5,0.671572875 11.1715729,3.56793164e-14 12,3.55271368e-14 Z"
+                                    fill="#000000" opacity="0.3" />
+                                <path
+                                    d="M12,10 C13.1045695,10 14,9.1045695 14,8 C14,6.8954305 13.1045695,6 12,6 C10.8954305,6 10,6.8954305 10,8 C10,9.1045695 10.8954305,10 12,10 Z M12,13 C9.23857625,13 7,10.7614237 7,8 C7,5.23857625 9.23857625,3 12,3 C14.7614237,3 17,5.23857625 17,8 C17,10.7614237 14.7614237,13 12,13 Z"
+                                    fill="#000000" fill-rule="nonzero" />
+                            </g>
+                        </svg>
+                    </span>
+                </div>
+                <div class="alert-text">
+                    This example is almost identical to text based individual column example and provides the same
+                    functionality. With server-side processing enabled, all paging, searching, ordering actions that
+                    DataTables performs are handed off to a server where an SQL engine (or similar) can perform these
+                    actions on the large data set. See official documentation.
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header" style="background-color: #F5F500;">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-money-bill text-dark"></i>
+                                </span>
+                                <h3 class="card-label" style="font-size: 30px; font-family: 'Maiandra GD'">Règlement
+                                    facture client</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+
+                                <div class="form-group row">
+                                    <!--tableau des garanties-->
+                                    <div class="col-lg-6">
+                                        <label>N° facture*</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fab fa-orcid text-info"></i>
+                                                </span>
+                                            </div>
+                                            <input id="idCode1" type="text" class="form-control"
+                                                ng-model="FormAddReglementfactClient.numfacture" name="addIA_Code1"
+                                                placeholder="Entrer un n°" maxlength="8" disabled />
+                                        </div>
+                                    </div>
+
+                                    <!--tableau des primes-->
+                                    <div class="col-lg-6">
+                                        <label>N° bordereau*</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fab fa-orcid text-info"></i>
+                                                </span>
+                                            </div>
+                                            <input id="idCode1" type="text" class="form-control" name="addIA_Code1"
+                                                ng-model="FormAddReglementfactClient.Nbordereau"
+                                                placeholder="Entrer un n°" maxlength="8" />
+                                        </div>
+                                    </div>
+                                    <!--end: Datatable-->
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <h6><strong style="color: DarkSlateBlue"><u>Situation des encaissements à ce jour</u></strong></h6>
+                                                        <table class="table table-bordered table-checkable"
+                                                            id="kt_datatable">
+                                                            <thead style="text-align: center">
+                                                                <tr>
+                                                                    <th>MONTANT A VERSER</th>
+                                                                    <th>MONTANT VERSER</th>
+                                                                    <th>RESTE A VERSER</th>
+                                                                    <th>VERSEMENT DU JOUR</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr ng-repeat="lversement in listeDesVersements">
+                                                                    <td>{{lversement.FORMATMONTANTAREGLER}}</td>
+                                                                    <td>{{lversement.FORMATMONTANTREGLER}}</td>
+                                                                    <td>{{lversement.FORMATRESTEAREGLER}}</td>
+                                                                    <td>
+                                                                        <input type="text" name="" id="idVersementJour"
+                                                                            class="form-control" placeholder=""
+                                                                            ng-model="FormAddReglementfactClient.SR_MONTANTCREDIT" />
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <h6><strong style="color: DarkSlateBlue"><u>Periode d’encaissement</u></strong></h6>
+                                                        <div class="row" ng-if="verouDates">
+                                                            <div class="col-lg-6" >
+                                                                <label>Début *</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-calendar text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input id="idDateDebutCouv" type="text" class="form-control"
+                                                                        name="addCheque_DebutCouverture"
+                                                                        placeholder="Entrer une date de début"
+                                                                        ng-model="FormAddReglementfactClient.debutCouvertureExpece"
+                                                                        maxlength="10"  />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6" >
+                                                                <label>fin*</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-calendar text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input id="idDateFinCouv" type="text" class="form-control"
+                                                                        name="addCheque_FinCouverture"
+                                                                        placeholder="Entrer une date de fin"
+                                                                        ng-model="FormAddReglementfactClient.finCouvertureExpece"
+                                                                        maxlength="10"  />
+                                                                </div>
+                                                            </div>           
+                                                        </div><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                <strong>Informations Generales</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Nom Remettant*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input id="idNomRemettant" type="text" class="form-control"
+                                                                name="addIA_Code2"
+                                                                ng-model="FormAddReglementfactClient.nomRemettant"
+                                                                placeholder="Entrer un nom" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Mode de Reglement*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-money-bill text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select id="idModeRegl" class="form-control"
+                                                                ng-model="FormAddReglementfactClient.modeRglment"
+                                                                ng-change="etatmodregl(FormAddReglementfactClient.modeRglment)"
+                                                                name="addIA_Intermediaire">
+                                                                <option value="">Sélectionnez une Banque</option>
+                                                                <option
+                                                                    ng-repeat="lAlisteDesModesReglement in listeDesModesReglement"
+                                                                    value="{{lAlisteDesModesReglement.MR_CODEMODEREGLEMENT}}"
+                                                                    ng-click="afficheListeNatureCompte(FormAddReglementfactClient.modeRglment)">
+                                                                    {{lAlisteDesModesReglement.MR_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div> 
+                                                    <div class="col-lg-3">
+                                                        <label>Nature Compte*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select id="idNatCompte" class="form-control"
+                                                                ng-model="FormAddReglementfactClient.NatCompte"
+                                                                name="addIA_Intermediaire"
+                                                                ng-disabled="isDisabledNatCpte">
+                                                                <option value="">Sélectionnez une Banque</option>
+                                                                <option
+                                                                    ng-repeat="lAlisteDesNaturesCompte in listeDesNaturesCompte"
+                                                                    value="{{lAlisteDesNaturesCompte.NC_CODENATURECOMPTE}}">
+                                                                    {{lAlisteDesNaturesCompte.NC_LIBELLENATURECOMPTE}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>N° Compte*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control"
+                                                                name="addAuto_Code01" placeholder="Entrer un code"
+                                                                ng-model="FormAddReglementfactClient.NumCompte"
+                                                                ng-pattern="/^(0|[0-9]\d*)$/" maxlength="8"
+                                                                id="idNumCompte" ng-disabled="isDisabledNumCpte" />
+                                                            <div class="input-group-append" title="Choix du n° compte">
+                                                                <button type="button"
+                                                                    class="btn btn-secondary btn-secondary--icon"
+                                                                    id="kt_reset" data-toggle="modal"
+                                                                    data-target="#modalNumCompte"
+                                                                    ng-click="afficheListeNumCompte()"
+                                                                    ng-disabled="isDisabledBtnNumCpte">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                <strong>Information sur Cheque</strong></h3>
+                                            <div class="form-group row">
+                                                <div class="col-lg-6">
+                                                    <label>Banque du client *</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fab fa-orcid text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select id="idBanque" class="form-control"
+                                                            ng-model="FormAddReglementfactClient.banque"
+                                                            ng-disabled="isDisabledBanq">
+                                                            <option value=""
+                                                                ng-click="afficheListeAgence1(FormAddReglementfactClient.banque)">
+                                                                Sélectionnez une Banque</option>
+                                                            <option ng-repeat="lAlisteDesBanques in listeDesBanques"
+                                                                value="{{lAlisteDesBanques.BQ_CODEBANQUE}}"
+                                                                ng-click="afficheListeAgence1(FormAddReglementfactClient.banque)"
+                                                                ng-selected="FormAddReglementfactClient.banque == lAlisteDesBanques.BQ_CODEBANQUE">
+                                                                {{lAlisteDesBanques.BQ_SIGLE}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-lg-6">
+                                                    <label>Agence du client*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-people-arrows text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select id="idAgence" class="form-control"
+                                                            ng-model="FormAddReglementfactClient.agence"
+                                                            ng-disabled="isDisabledAgce">
+                                                            <option value="">Sélectionnez une Banque</option>
+                                                            <option ng-repeat="lAlisteDesAgences in listeDesAgences"
+                                                                value="{{lAlisteDesAgences.AB_CODEAGENCEBANCAIRE}}"
+                                                                ng-selected="FormAddReglementfactClient.agence == lAlisteDesAgences.AB_CODEAGENCEBANCAIRE">
+                                                                {{lAlisteDesAgences.AB_LIBELLE}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>-->
+                                                <div class="col-lg-6" >
+                                                    <label>Banque de l'Assureur</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fab fa-orcid text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select id="idBanque2" class="form-control"
+                                                            ng-model="FormAddReglementfactClient.banque2"
+                                                            ng-disabled="isDisabledBanq2">
+                                                            <option value=""
+                                                                ng-click="afficheListeAgence2(FormAddReglementfactClient.banque2)">
+                                                                Sélectionnez une Banque de l'Assureur</option>
+                                                            <option ng-repeat="lAlisteDesBanques in listeDesBanques2"
+                                                                value="{{lAlisteDesBanques.BQ_CODEBANQUE}}"
+                                                                ng-click="afficheListeAgence2(FormAddReglementfactClient.banque2)"
+                                                                ng-selected="FormAddReglementfactClient.banque2 == lAlisteDesBanques.BQ_CODEBANQUE">
+                                                                {{lAlisteDesBanques.BQ_SIGLE}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-lg-6" style="margin-top: 10px;">
+                                                    <label>Agence de l'Assureur*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-people-arrows text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select id="idAgence2" class="form-control"
+                                                            ng-model="FormAddReglementfactClient.agence2"
+                                                            ng-disabled="isDisabledAgce2">
+                                                            <option value="">Sélectionnez une Agence de l'Assureur</option>
+                                                            <option ng-repeat="lAlisteDesAgences in listeDesAgences2"
+                                                                value="{{lAlisteDesAgences.AB_CODEAGENCEBANCAIRE}}"
+                                                                ng-selected="FormAddReglementfactClient.agence2 == lAlisteDesAgences.AB_CODEAGENCEBANCAIRE">
+                                                                {{lAlisteDesAgences.AB_LIBELLE}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>-->
+                                                <div class="col-lg-6" style="margin-top:15px">
+                                                    <label>Référence chèque*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="far fa-calendar-alt text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input id="idRefPiece" type="text" class="form-control"
+                                                            name="addIA_Effet"
+                                                            ng-model="FormAddReglementfactClient.refpiece"
+                                                            placeholder="Entrer une référence" maxlength="10"
+                                                            ng-disabled="isDisabledRef" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6" style="margin-top:15px">
+                                                    <label>Montant du chèque *</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-money-bill text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input id="idMontant" type="text" class="form-control"
+                                                            name="addIA_Echeance" maxlength="12"
+                                                            ng-model="FormAddReglementfactClient.montant"
+                                                            placeholder="Entrer une date" ng-pattern="/^\d+$/"
+                                                            ng-disabled="isDisabledMont" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4" style="margin-top:15px">
+                                                    <label>Date emission*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i
+                                                                    class="fas fa-calendar text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input id="idDate" type="text"
+                                                            class="form-control"
+                                                            name="addCheque_dateEmission"
+                                                            placeholder="Entrer une date"
+                                                            ng-model="FormAddCheque.dateEmission"
+                                                            maxlength="10" ng-disabled="isDisabledMont"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4" style="margin-top:15px">
+                                                    <label>Nom du payeur*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i
+                                                                    class="fas fa-address-card text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input id="idNomTireur" type="text"
+                                                            class="form-control"
+                                                            name="addCheque_nomTireur"
+                                                            placeholder="Entrer un nom"
+                                                            ng-model="FormAddCheque.nomTireur"
+                                                            maxlength="150" ng-disabled="isDisabledMont"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4" style="margin-top:15px">
+                                                    <label>Nom de l'assureur*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i
+                                                                    class="fas fa-address-card text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input id="idNomTire" type="text"
+                                                            class="form-control"
+                                                            name="addCheque_nomTiré"
+                                                            placeholder="Entrer un nom"
+                                                            ng-model="FormAddCheque.nomTire"
+                                                            maxlength="150" disabled/>
+                                                    </div>
+                                                </div>
+                                                <!--  <div class="col-lg-6" style="margin-top:15px">
+                                                    <label>Date début couverture*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-calendar text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input id="idDateDebutCouv" type="text" class="form-control"
+                                                            name="addCheque_DebutCouverture"
+                                                            placeholder="Entrer une date de début"
+                                                            ng-model="FormAddReglementfactClient.debutCouverture"
+                                                            maxlength="10" ng-disabled="isDisabledDebutCouv" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6" style="margin-top:15px">
+                                                    <label>Date fin couverture*</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-calendar text-info"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input id="idDateFinCouv" type="text" class="form-control"
+                                                            name="addCheque_FinCouverture"
+                                                            placeholder="Entrer une date de fin"
+                                                            ng-model="FormAddReglementfactClient.finCouverture"
+                                                            maxlength="10" ng-disabled="isDisabledFinCouv" />
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                            <div class="separator separator-dashed separator-success my-1"></div>
+                                            <div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-if="!isDisabledMont">
+                                                <!--begin::Subheader-->
+    
+                                                <!--end::Subheader-->
+                                                <!--begin::Entry-->
+                                                <div class="d-flex flex-column-fluid">
+                                                    <!--begin::Container-->
+                                                    <div class="container">
+                                                        <!--<input id="browse" type="file" ng-click="previewFiles()" multiple>-->
+    
+                                                        <div class="card card-custom">
+                                                            <div class="card-header" style="background-color: #F5F500;">
+                                                                <div class="card-title">
+                                                                    <span class="card-icon">
+                                                                        <i class="fas fa-book text-dark icon-xl"></i>
+                                                                    </span>
+                                                                    <h3 class="card-label"
+                                                                        style="font-size: 30px; font-family: 'Maiandra GD'">
+                                                                        Document</h3>
+                                                                </div>
+                                                            </div><br /><br /><br />
+                                                            <div class="modal-body"
+                                                                style="text-align: center; font-size: 17px; background-color: rgb(223, 248, 245)">
+                                                                <div class="col-12 text-right">
+                                                                </div>
+                                                                <div class="form-group col-lg-12">
+                                                                    <input id="upload" type="file" class="form-control"
+                                                                        name="photoReglFactCli_ChampImage"
+                                                                        placeholder="Choisir une image" multiple
+                                                                        accept="image/*" /><br>
+                                                                    <button
+                                                                        class="btn btn-hover-light-info font-weight-bold"
+                                                                        id="pourChargerImage" ng-click="process()">
+                                                                        <span>
+                                                                            <i class="fas fa-arrow-down"></i>
+                                                                            <span>Charger le fichier</span>
+                                                                        </span>
+                                                                    </button>
+                                                                    <table >
+                                                                        <tbody>
+                                                                            <tr id="boucleimg"> </tr>
+                                                                        </tbody>
+                                                                        <tfoot>
+                                                                            <tr id="boucleimgsuppr"></tr>
+                                                                        </tfoot>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Card-->
+                                                </div>
+                                            </div>
+                                           <!-- <button
+                                                class="btn btn-hover-bg-success btn-text-dark btn-hover-text-dark border-0 font-weight-bold"
+                                                ng-disabled="isDisabled2" ng-click="ajoutinfocheque()"
+                                                ng-show="valeurDuModeReglement == true">
+                                                <i class="fas fa-arrow-down text-dark"></i>
+                                                <span>Ajouter</span>
+                                            </button>
+                                            <button type="submit"
+                                                class="btn btn-primary btn-shadow-hover font-weight-bold" id="kt_reset"
+                                                data-toggle="modal" data-target="#modalenregischeque"
+                                                ng-disabled="isDisabled5"
+                                                ng-click="enregistrcheque(tabsituationactuelleversement)"
+                                                ng-show="valeurDuModeReglement == true">
+                                                <span>
+                                                    <i class="fas fa-arrow-down text-dark"></i>
+                                                    <span>Enregistrer chèque</span>
+                                                </span>
+                                            </button>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"
+                                    ng-show="valeurDuModeReglement == true"></div><br>
+                               <!-- <div class="row" ng-show="valeurDuModeReglement == true">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <h6><strong style="color: DarkSlateBlue"><u>Situation des
+                                                                    versements à ce jour</u></strong></h6>
+                                                        <table class="table table-bordered table-checkable"
+                                                            id="kt_datatable">
+                                                            <thead style="text-align: center; font-size: 10px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                                                                <tr>
+                                                                    <th>BANQUE CLIENT</th>
+                                                                    <th>AGENCE CLIENT</th>
+                                                                    <th>BANQUE ASSUREUR</th>
+                                                                    <th>AGENCE ASSUREUR</th>
+                                                                    <th>N° CHEQUE</th>
+                                                                    <th>VALEUR</th>
+                                                                    <th>ACTION</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tfoot>
+                                                                <tr
+                                                                    ng-repeat="listsituationregl in tabsituationactuelleversement">
+                                                                    <td>{{listsituationregl.libbanq}}</td>
+                                                                    <td>{{listsituationregl.libbagence}}</td>
+                                                                    <td>{{listsituationregl.libbanq2}}</td>
+                                                                    <td>{{listsituationregl.libbagence2}}</td>
+                                                                    <td>{{listsituationregl.refcheq}}</td>
+                                                                    <td>{{listsituationregl.valeur}}</td>
+                                                                    <td style="text-align: center">
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-info btn-icon"
+                                                                            title="Modifier"
+                                                                            ng-click="modifInfoCheque(listsituationregl)"
+                                                                            data-dismiss="modal">
+                                                                            <i class="fas fa-edit"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>&#160;-->
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+                                    ng-click="validerReglementFactClient()">
+                                    <span>
+                                        <i class="far fa-check-circle"></i>
+                                        <span>Enregistrer</span>
+                                    </span>
+                                </button>&#160;&#160;
+                                <button type="button" class="btn btn-outline-warning" id="kt_reset">
+                                    <span>
+                                        <i class="la la-close"></i>
+                                        <span>Annuler</span>
+                                    </span>
+                                </button>
+                                <a ng-click="retourListe()" class="btn btn-icon btn-light-dark mr-2" title="Retour"
+                                    style="position: absolute; right: 27px">
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+    <!--begin modal pour choix du code souscripteur-->
+    <!--end modal-->
+
+    <div class="modal fade" id="modalNumCompte" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalNumCompte" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #F5F500;">
+                    <h5 class="modal-title text-dark" id="modalNumCompte"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-dark"></i>
+                        N° compte
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-checkable" id="kt_datatable"
+                        ng-show="leChargement == false">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th>COMPTE</th>
+                                <th>NUMERO COMPTE</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lesNumCompte in listeDesNumComptes">
+                                <td>{{lesNumCompte.PL_LIBELLE}}</td>
+                                <td>{{lesNumCompte.PL_NUMCOMPTE}}</td>
+                                <td style="text-align: center">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                        data-toggle="tooltip" data-theme="dark" title="Choisir"
+                                        ng-click="choixNumCompte(lesNumCompte)" data-dismiss="modal">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalenregischeque" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalenregischeque" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #F5F500;">
+                    <h5 class="modal-title text-dark" id="modalenregischeque"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-dark"></i>
+                        Enregistrement de chèque
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="content d-flex flex-column flex-column-fluid" id="kt_content"
+                        ng-init="initFormAddCheque()">
+                        <!--begin::Entry-->
+                        <div class="d-flex flex-column-fluid">
+                            <!--begin::Container-->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <!--begin::Card-->
+                                        <div class="card card-custom gutter-b example example-compact">
+                                            <div class="card-header" style="background-color: #F5F500;">
+                                                <div class="card-title">
+                                                    <span class="card-icon">
+                                                        <i class="far fa-credit-card text-dark icon-xl"></i>
+                                                    </span>
+                                                    <h3 class="card-label"
+                                                        style="font-size: 30px; font-family: 'Maiandra GD'">Chèque</h3>
+                                                </div>
+                                            </div>
+                                            <!--begin::Form-->
+                                            <form class="form">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="mb-3">
+                                                                <h3
+                                                                    class="font-size-lg text-dark-75 font-weight-bold mb-10">
+                                                                    <strong>INFORMATIONS DU CHEQUE</strong>
+                                                                </h3>
+                                                                <div class="mb-2">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-lg-6">
+                                                                            <label>Reference*</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i
+                                                                                            class="fab fa-orcid text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input id="idRef" type="text"
+                                                                                    class="form-control"
+                                                                                    name="addCheque_Reference"
+                                                                                    placeholder="Entrer une reference"
+                                                                                    ng-model="recupererinfofactClient[0].refcheq"
+                                                                                    maxlength="8" ng-disabled="verouReferenceTout"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <label>Montant*</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i
+                                                                                            class="fas fa-money-bill text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input id="idMont" type="text"
+                                                                                    class="form-control"
+                                                                                    name="addCheque_Montant"
+                                                                                    placeholder="Entrer un montant"
+                                                                                    ng-model="recupererinfofactClient[0].valeur"
+                                                                                    maxlength="15" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="mb-3">
+                                                                <div class="mb-2">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-lg-4">
+                                                                            <label>Date emission*</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i
+                                                                                            class="fas fa-calendar text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input id="idDate" type="text"
+                                                                                    class="form-control"
+                                                                                    name="addCheque_dateEmission"
+                                                                                    placeholder="Entrer une date"
+                                                                                    ng-model="FormAddCheque.dateEmission"
+                                                                                    maxlength="10" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <label>Banque du client*</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i
+                                                                                            class="fas fa-landmark text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <select id="idBanque"
+                                                                                    class="form-control"
+                                                                                    name="addCheque_banqueTiré"
+                                                                                    ng-model="FormAddCheque.banqueTire"
+                                                                                    ng-disabled="verouBanqueTout">
+                                                                                    <option value=""
+                                                                                        ng-click="afficheListeBanqueAgence(FormAddCheque.banqueTire)">
+                                                                                        Sélectionner une
+                                                                                        banque du client</option>
+                                                                                    <option
+                                                                                        ng-repeat="laBanqueTire in listeBanqueTire"
+                                                                                        value="{{laBanqueTire.BQ_CODEBANQUE}}"
+                                                                                        ng-click="afficheListeBanqueAgence(FormAddCheque.banqueTire)"
+                                                                                        ng-selected="FormAddCheque.banqueTire == laBanqueTire.BQ_CODEBANQUE">
+                                                                                        {{laBanqueTire.BQ_SIGLE}}
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <label>Ag./Bq/du client*</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i
+                                                                                            class="fas fa-landmark text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <select id="idAgBanque"
+                                                                                    class="form-control"
+                                                                                    name="addCheque_Ag_BQ_duTiré"
+                                                                                    ng-model="FormAddCheque.agBanqueTire"
+                                                                                    ng-disabled="verouAgBqTout">
+                                                                                    <option value="">Sélectionner un
+                                                                                        Ag./Bq/du client</option>
+                                                                                    <option
+                                                                                        ng-repeat="laBanqueAgence in listeBanqueAgence"
+                                                                                        value="{{laBanqueAgence.AB_CODEAGENCEBANCAIRE}}"
+                                                                                        ng-selected="FormAddCheque.agBanqueTire == laBanqueAgence.AB_CODEAGENCEBANCAIRE">
+                                                                                        {{laBanqueAgence.AB_LIBELLE}}
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6" style="margin-top: 20px;">
+                                                                                <label>Banque de l'Assureur*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-landmark text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select id="idBanque2"
+                                                                                        class="form-control"
+                                                                                        name="addCheque_banqueTiré"
+                                                                                        ng-model="FormAddCheque.banqueAssureur"
+                                                                                        disabled>
+                                                                                        <option value=""
+                                                                                            ng-click="afficheListeBanqueAgence2(FormAddCheque.banqueAssureur)">
+                                                                                            Sélectionner une
+                                                                                            banque du client</option>
+                                                                                        <option
+                                                                                            ng-repeat="laBanqueClient in listeBanqueTire2"
+                                                                                            value="{{laBanqueClient.BQ_CODEBANQUE}}"
+                                                                                            ng-click="afficheListeBanqueAgence2(FormAddCheque.banqueAssureur)"
+                                                                                            ng-selected="FormAddCheque.banqueAssureur == laBanqueClient.BQ_CODEBANQUE">
+                                                                                            {{laBanqueClient.BQ_SIGLE}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6" style="margin-top: 20px;">
+                                                                                <label>Ag./Bq/de l'Assureur*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-landmark text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select id="idAgBanque2"
+                                                                                        class="form-control"
+                                                                                        name="addCheque_Ag_BQ_duTiré"
+                                                                                        ng-model="FormAddCheque.agBanqueAssureur"
+                                                                                        >
+                                                                                        <option value="">Sélectionner un
+                                                                                            Ag./Bq/de l'Assureur</option>
+                                                                                        <option
+                                                                                            ng-repeat="BanqueAgenceclient in listeBanqueAgence2"
+                                                                                            value="{{BanqueAgenceclient.AB_CODEAGENCEBANCAIRE}}"
+                                                                                            ng-selected="FormAddCheque.agBanqueAssureur == BanqueAgenceclient.AB_CODEAGENCEBANCAIRE">
+                                                                                            {{BanqueAgenceclient.AB_LIBELLE}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-lg-4">
+                                                                            <label>Nom du payeur*</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i
+                                                                                            class="fas fa-address-card text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input id="idNomTireur" type="text"
+                                                                                    class="form-control"
+                                                                                    name="addCheque_nomTireur"
+                                                                                    placeholder="Entrer un nom"
+                                                                                    ng-model="FormAddCheque.nomTireur"
+                                                                                    maxlength="150" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <label>Nom de l'assureur*</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i
+                                                                                            class="fas fa-address-card text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input id="idNomTire" type="text"
+                                                                                    class="form-control"
+                                                                                    name="addCheque_nomTiré"
+                                                                                    placeholder="Entrer un nom"
+                                                                                    ng-model="FormAddCheque.nomTire"
+                                                                                    maxlength="150" disabled/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <label>Date de reception*</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i
+                                                                                            class="fas fa-calendar text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input id="idDate1" type="text"
+                                                                                    class="form-control"
+                                                                                    name="addCheque_dateReception"
+                                                                                    placeholder="Entrer une date"
+                                                                                    ng-model="FormAddCheque.dateReception"
+                                                                                    maxlength="10" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="mb-3">
+                                                                <div class="mb-2">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-lg-4">
+                                                                            <label>Nom du déposant*</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i
+                                                                                            class="fas fa-address-card text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input id="idNomDeposant" type="text"
+                                                                                    class="form-control"
+                                                                                    name="addCheque_nomDeposant"
+                                                                                    placeholder="Entrer un nom"
+                                                                                    ng-model="FormAddCheque.nomDeposant"
+                                                                                    maxlength="150" ng-disabled="verounomDeposantTout"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <label>Téléphone du déposant*</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i
+                                                                                            class="fas fa-phone-alt text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input id="idTel" type="text"
+                                                                                    class="form-control"
+                                                                                    name="addCheque_telDeposant"
+                                                                                    placeholder="Entrer un téléphone"
+                                                                                    ng-model="FormAddCheque.telDeposant"
+                                                                                    maxlength="15" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <label>Effet*</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i
+                                                                                            class="fas fa-calendar text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input id="idDate2" type="text"
+                                                                                    class="form-control"
+                                                                                    name="addCheque_Effet"
+                                                                                    placeholder="Entrer un effet"
+                                                                                    ng-model="FormAddCheque.effet"
+                                                                                    maxlength="10" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="mb-3">
+                                                                <div class="mb-2">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-lg-6">
+                                                                            <label>Date début couverture*</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i
+                                                                                            class="fas fa-calendar text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input id="idDateDebutCouv" type="text"
+                                                                                    class="form-control"
+                                                                                    name="addCheque_DebutCouv"
+                                                                                    placeholder="Entrer une date"
+                                                                                    ng-model="FormAddCheque.debutCouverture"
+                                                                                    maxlength="10" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <label>Date fin couverture*</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i
+                                                                                            class="fas fa-calendar text-info"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input id="idDateFinCouv" type="text"
+                                                                                    class="form-control"
+                                                                                    name="addCheque_FinCouv"
+                                                                                    placeholder="Entrer une date"
+                                                                                    ng-model="FormAddCheque.finCouverture"
+                                                                                    maxlength="10" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!--end::Form-->
+                                        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                                            <!--begin::Subheader-->
+
+                                            <!--end::Subheader-->
+                                            <!--begin::Entry-->
+                                            <div class="d-flex flex-column-fluid">
+                                                <!--begin::Container-->
+                                                <div class="container">
+                                                    <!--<input id="browse" type="file" ng-click="previewFiles()" multiple>-->
+
+                                                    <div class="card card-custom">
+                                                        <div class="card-header" style="background-color: #F5F500;">
+                                                            <div class="card-title">
+                                                                <span class="card-icon">
+                                                                    <i class="fas fa-book text-dark icon-xl"></i>
+                                                                </span>
+                                                                <h3 class="card-label"
+                                                                    style="font-size: 30px; font-family: 'Maiandra GD'">
+                                                                    Document</h3>
+                                                            </div>
+                                                        </div><br /><br /><br />
+                                                        <div class="modal-body"
+                                                            style="text-align: center; font-size: 17px; background-color: rgb(223, 248, 245)">
+                                                            <div class="col-12 text-right">
+                                                            </div>
+                                                            <div class="form-group col-lg-12">
+                                                                <input id="upload" type="file" class="form-control"
+                                                                    name="photoReglFactCli_ChampImage"
+                                                                    placeholder="Choisir une image" multiple
+                                                                    accept="image/*" /><br>
+                                                                <button
+                                                                    class="btn btn-hover-light-info font-weight-bold"
+                                                                    id="pourChargerImage" ng-click="process()">
+                                                                    <span>
+                                                                        <i class="fas fa-arrow-down"></i>
+                                                                        <span>Charger le fichier</span>
+                                                                    </span>
+                                                                </button>
+                                                                <table >
+                                                                    <tbody>
+                                                                        <tr id="boucleimg"> </tr>
+                                                                    </tbody>
+                                                                    <tfoot>
+                                                                        <tr id="boucleimgsuppr"></tr>
+                                                                    </tfoot>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end::Card-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Container-->
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+                            ng-click="ajoutFormAddCheque(FormAddCheque.effet)">
+                            <span>
+                                <i class="far fa-check-circle"></i>
+                                <span>Enregistrer</span>
+                            </span>
+                        </button>
+                        <button type="submit" ng-show="etatForm !== '2'" class="btn btn-light-success font-weight-bold"
+                            ng-click="resetFormAddCheque()">
+                            <span>
+                                <i class="fas fa-undo"></i>
+                                <span>Réinitialiser</span>
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-outline-info" data-dismiss="modal"
+                            style="margin-left: 590px;">
+                            <span>
+                                <i class="la la-close"></i>
+                                <span>Fermer</span>
+                            </span>
+                        </button>
+                    </div>
+                    <!--end::Entry-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalsurpp" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalsurpp" aria-hidden="true">
+        <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #F5F500;">
+                    <h5 class="modal-title text-dark" id="modalsurpp" style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ban text-dark"></i>
+                        photo cheque
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center; font-size: 17px;">
+                    Etes-vous sûr de vouloir supprimer cette photo de cheque ?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger btn-shadow font-weight-bold" id="kt_reset" ng-click="suprimg()"
+                        data-dismiss="modal">
+                        <span>
+                            <i class="fas fa-ban"></i>
+                            <span>Supprimer</span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Annuler</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+<!--end::Content-->

@@ -1,0 +1,975 @@
+﻿<div id="kt_header" class="header header-fixed">
+    <!--begin::Container-->
+    <div class="container-fluid d-flex align-items-stretch justify-content-between">
+        <!--begin::Header Menu Wrapper-->
+        <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+            <!--begin::Header Menu-->
+            <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
+                <!--begin::Header Nav-->
+                <ul class="menu-nav">
+                     <li class="menu-item menu-item-submenu" data-menu-toggle="click" aria-haspopup="true" ng-if="PARAMETRE_I_GENERALE_EPARAMI == true">
+                        <a href="javascript:;" class="menu-link menu-toggle">
+                            <span class="menu-text text-capitalize">paramètre 1</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        @* style="width:1600px" *@
+                        <div class="menu-submenu menu-submenu-fixed menu-submenu-left" style="width: 95%; height: auto;">
+                            <div class="menu-subnav">
+                                <ul class="menu-content">
+                                    <li class="menu-item" ng-if="EXPERT_NOMME_EPARAMI == true"> 
+                                        <ul class="menu-inner">
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="#/Template/ParametreI/ListeExpert" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Expert Nommé</span>
+                                                </a>
+                                            </li>
+                                             
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="#/OutilsEtSecurites/Liste/ListecreationExercice" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Création Exercice</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                  <li class="menu-item" ng-if="CONFIGURATION_DES_PARAMETTRES_EPARAMI == true">
+                                    <h1 style="font-size: 15px; font-family: Maiandra GD; margin-left: 10px; margin-top: 10px">
+                                        <span class="svg-icon svg-icon-primary svg-icon-1.5x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Component.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24"/>
+                                                <path d="M12.7442084,3.27882877 L19.2473374,6.9949025 C19.7146999,7.26196679 20.003129,7.75898194 20.003129,8.29726722 L20.003129,15.7027328 C20.003129,16.2410181 19.7146999,16.7380332 19.2473374,17.0050975 L12.7442084,20.7211712 C12.2830594,20.9846849 11.7169406,20.9846849 11.2557916,20.7211712 L4.75266256,17.0050975 C4.28530007,16.7380332 3.99687097,16.2410181 3.99687097,15.7027328 L3.99687097,8.29726722 C3.99687097,7.75898194 4.28530007,7.26196679 4.75266256,6.9949025 L11.2557916,3.27882877 C11.7169406,3.01531506 12.2830594,3.01531506 12.7442084,3.27882877 Z M12,14.5 C13.3807119,14.5 14.5,13.3807119 14.5,12 C14.5,10.6192881 13.3807119,9.5 12,9.5 C10.6192881,9.5 9.5,10.6192881 9.5,12 C9.5,13.3807119 10.6192881,14.5 12,14.5 Z" fill="#000000"/>
+                                            </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                        <strong>Configuration des paramètres</strong>
+                                    </h1><br>
+                                    <ul class="menu-inner">
+                                        <li class="menu-item" aria-haspopup="true" style="margin-bottom: -13px;" ng-if="PARAMETTRE_EPARAMI == true">
+                                            <a href="#/ParametreI/ConfigurationParametre/Parametre" class="menu-link">
+                                                <i class="menu-bullet menu-bullet-dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="menu-text">Paramètre</span>
+                                            </a>
+                                        </li>
+                                        <hr>
+                                        <li class="menu-item" aria-haspopup="true" style="margin-bottom: -13px; margin-top: -13px" ng-if="CONFIGURATION_DE_GARANTIE_PAR_RISQUE_EPARAMI == true">
+                                                <a href="#/Parametre1/ConfigurationParametre/ConfigGarantieParRisque" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Configuration de garantie par risque</span>
+                                                </a>
+                                            </li>
+                                             @*<li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/Activite" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Activite</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/Communes" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Communes</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/ConfigurationPaysParDefaut" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Configuration du pays par défaut</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/ConfigurationVilleParDefaut" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Configuration de la ville par défaut</span>
+                                                </a>
+                                            </li>*@
+                                        </ul>
+                                    </li>
+                                      <li class="menu-item" ng-if="ETAT_EPARAMI == true">
+                                           <h1 style="font-size: 15px; font-family: Maiandra GD; margin-left: 10px; margin-top: 10px">
+                                                <span class="svg-icon svg-icon-primary svg-icon-1.5x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Files\File.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <polygon points="0 0 24 0 24 24 0 24"/>
+                                                        <path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                                        <rect fill="#000000" x="6" y="11" width="9" height="2" rx="1"/>
+                                                        <rect fill="#000000" x="6" y="15" width="5" height="2" rx="1"/>
+                                                    </g>
+                                                </svg><!--end::Svg Icon--></span>
+                                                <strong>Etats</strong>
+                                            </h1><br>
+                                        <ul class="menu-inner">
+                                           @* <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/DateExpiration" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Date d'expiration</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/DateFabrication" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Date de fabrication</span>
+                                                </a>
+                                            </li> *@
+                                            <li class="menu-item" aria-haspopup="true" ng-if="EDITION_EPARAMI == true">
+                                                <a href="#/ParametreI/EditionParametre" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Edition</span>
+                                                </a>
+                                            </li>
+                                           @* <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/Entrepots" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Entrepots</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/Unites" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Unités</span>
+                                                </a>
+                                            </li>*@
+                                        </ul>
+                                    </li>
+                                    @*<li class="menu-item">
+                                        <ul class="menu-inner">
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/Exercice" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Exercice</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/FiltreStock2" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Filtre de stock 2</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/NatureTiers" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Nature tiers</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/NumeroLot" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Numéro de lot</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/VehiculesLivraison" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Véhicules de livraison</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item">
+                                        <ul class="menu-inner">
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/Parametres" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Paramètres</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/ParametresProduction" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Parametres production</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/Quartier" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Quartier</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/Rayons" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Rayons</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item">
+                                        <ul class="menu-inner">
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/SelectionExerciceTravail" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Selection de l'exercice de travail</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/Services" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Services</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/Societe" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Société</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/Succursales" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Succursales</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreI/Tableaux" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Tableaux</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>*@
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                     <li class="menu-item menu-item-submenu" data-menu-toggle="click" aria-haspopup="true" ng-if="PARAMETRE_II_GENERALE_EPARAMII == true">
+                        <a href="javascript:;" class="menu-link menu-toggle">
+                            <span class="menu-text">Paramètre 2</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                         @* style="width:1600px" *@
+                        <div class="menu-submenu menu-submenu-fixed menu-submenu-left" style="width: 95%; height: auto;">
+                            <div class="menu-subnav">
+                                <ul class="menu-content">
+                                    <li class="menu-item" ng-if="PLAN_EPARAMII == true">
+                                        <h1 style="font-size: 15px; font-family: Maiandra GD; margin-left: 10px; margin-top: 10px">
+                                                <span class="svg-icon svg-icon-primary svg-icon-1.5x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Files\File-done.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <polygon points="0 0 24 0 24 24 0 24"/>
+                                                        <path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z M10.875,15.75 C11.1145833,15.75 11.3541667,15.6541667 11.5458333,15.4625 L15.3791667,11.6291667 C15.7625,11.2458333 15.7625,10.6708333 15.3791667,10.2875 C14.9958333,9.90416667 14.4208333,9.90416667 14.0375,10.2875 L10.875,13.45 L9.62916667,12.2041667 C9.29375,11.8208333 8.67083333,11.8208333 8.2875,12.2041667 C7.90416667,12.5875 7.90416667,13.1625 8.2875,13.5458333 L10.2041667,15.4625 C10.3958333,15.6541667 10.6354167,15.75 10.875,15.75 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                                        <path d="M10.875,15.75 C10.6354167,15.75 10.3958333,15.6541667 10.2041667,15.4625 L8.2875,13.5458333 C7.90416667,13.1625 7.90416667,12.5875 8.2875,12.2041667 C8.67083333,11.8208333 9.29375,11.8208333 9.62916667,12.2041667 L10.875,13.45 L14.0375,10.2875 C14.4208333,9.90416667 14.9958333,9.90416667 15.3791667,10.2875 C15.7625,10.6708333 15.7625,11.2458333 15.3791667,11.6291667 L11.5458333,15.4625 C11.3541667,15.6541667 11.1145833,15.75 10.875,15.75 Z" fill="#000000"/>
+                                                    </g>
+                                                </svg><!--end::Svg Icon--></span>
+                                                <strong>Plan</strong>
+                                            </h1><br>
+                                        <span></span>
+                                        <span class="menu-text"> </span>
+                                        <ul class="menu-inner">
+                                            @* <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreII/Banque" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Banque</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreII/ListeBanque" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Banque</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreII/Taxe" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Taxe</span>
+                                                </a>
+                                            </li> *@
+                                            <li class="menu-item" aria-haspopup="true" ng-if="PLAN_COMPTABLE_EPARAMII == true" style="margin-bottom: -13px;">
+                                                <a href="#/parametre2/planComptable/liste" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Plan comptable</span>
+                                                </a>
+                                            </li>
+                                           @*  <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreII/PlanAnalytiqueFamille" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Plan Analytique Famille</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreII/SectionAnalytique" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Section Analytique</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreII/PlanReporting" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Plan Reporting</span>
+                                                </a>
+                                            </li> *@
+                                            <li class="menu-item" aria-haspopup="true" style="margin-bottom: -13px; margin-top: -13px">
+                                                <a href="#/parametre2/journal/liste" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Journal</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item" ng-if="PARAMETTRAGE_DES_OPERATIONS_EPARAMII == true">
+                                        <h1 style="font-size: 15px; font-family: Maiandra GD; margin-left: 10px; margin-top: 10px">
+                                        <span class="svg-icon svg-icon-primary svg-icon-1.5x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Component.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24"/>
+                                                <path d="M12.7442084,3.27882877 L19.2473374,6.9949025 C19.7146999,7.26196679 20.003129,7.75898194 20.003129,8.29726722 L20.003129,15.7027328 C20.003129,16.2410181 19.7146999,16.7380332 19.2473374,17.0050975 L12.7442084,20.7211712 C12.2830594,20.9846849 11.7169406,20.9846849 11.2557916,20.7211712 L4.75266256,17.0050975 C4.28530007,16.7380332 3.99687097,16.2410181 3.99687097,15.7027328 L3.99687097,8.29726722 C3.99687097,7.75898194 4.28530007,7.26196679 4.75266256,6.9949025 L11.2557916,3.27882877 C11.7169406,3.01531506 12.2830594,3.01531506 12.7442084,3.27882877 Z M12,14.5 C13.3807119,14.5 14.5,13.3807119 14.5,12 C14.5,10.6192881 13.3807119,9.5 12,9.5 C10.6192881,9.5 9.5,10.6192881 9.5,12 C9.5,13.3807119 10.6192881,14.5 12,14.5 Z" fill="#000000"/>
+                                            </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                        <strong>Paramétrage des opérations</strong>
+                                       </h1><br>
+                                        <ul class="menu-inner">
+                                            <li class="menu-item" aria-haspopup="true" style="margin-bottom: -13px;" ng-if="PARAMETTRAGE_DES_COMPTES_DES_PRODUITS_EPARAMII == true">
+                                                <a href="#/parametre2/parametrageOperations/parametrageComptesProduits" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Paramétrage des comptes des produits</span>
+                                                </a>
+                                            </li>
+                                            <hr>
+                                            <li class="menu-item" aria-haspopup="true" style="margin-bottom: -13px; margin-top: -13px" ng-if="PARAMETTRAGE_DES_FAMILLES_D_OPERATION_EPARAMII == true">
+                                                <a href="#/parametre2/parametrageOperations/parametrageFamillesOperations/liste" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Paramétrage des familles d'opérations</span>
+                                                </a>
+                                            </li>
+                                            <hr>
+                                            <li class="menu-item" aria-haspopup="true" style="margin-bottom: -13px; margin-top: -13px" ng-if="PARAMETTRAGE_DES_OPERATIONS_DE_TRESORERIE_EPARAMII == true">
+                                                <a href="#/parametre2/parametrageOperations/parametrageOperationsTresorerie/liste" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Paramétrage des opérations de trésorerie</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true" style="margin-bottom: -13px; margin-top: -13px" ng-if="PARAMETTRAGE_DES_OPERATIONS_DE_TRESORERIE_DES_TIERS_EPARAMII == true">
+                                                <a href="#/parametre2/parametrageOperations/parametrageOperationsTresorerieTiers/liste" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Paramétrage des opérations de trésorerie des tiers</span>
+                                                </a>
+                                            </li>
+                                            <hr>
+                                            <li class="menu-item" aria-haspopup="true" style="margin-bottom: -13px; margin-top: -13px" ng-if="PARAMETTRAGE_DES_AUTRES_ECRITURES_EPARAMII == true">
+                                                <a href="#/parametre2/parametrageOperations/parametrageAutresEcritures/liste" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Paramétrage des autres écritures</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true" style="margin-bottom: -13px; margin-top: -13px" ng-if="PARAMETTRAGE_DES_OPERATION_DE_TIERS_EPARAMII == true">
+                                                <a href="#/parametre2/parametrageOperations/parametrageAutresOperationsTiers/liste" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Paramétrage des autres opérations de tiers</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true" style="margin-bottom: -13px; margin-top: -13px" ng-if="PARAMETTRAGE_DES_OPERATIONS_SYSTEME_EPARAMII == true">
+                                                <a href="#/parametre2/parametrageOperations/parametrageOperationsSysteme/liste" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Paramétrage des opérations systèmes</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li> 
+                                 <li class="menu-item">
+                                         <h1 style="font-size: 15px; font-family: Maiandra GD; margin-left: 10px; margin-top: 10px">
+                                        <span class="svg-icon svg-icon-primary svg-icon-1.5x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Component.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24"/>
+                                                <path d="M12.7442084,3.27882877 L19.2473374,6.9949025 C19.7146999,7.26196679 20.003129,7.75898194 20.003129,8.29726722 L20.003129,15.7027328 C20.003129,16.2410181 19.7146999,16.7380332 19.2473374,17.0050975 L12.7442084,20.7211712 C12.2830594,20.9846849 11.7169406,20.9846849 11.2557916,20.7211712 L4.75266256,17.0050975 C4.28530007,16.7380332 3.99687097,16.2410181 3.99687097,15.7027328 L3.99687097,8.29726722 C3.99687097,7.75898194 4.28530007,7.26196679 4.75266256,6.9949025 L11.2557916,3.27882877 C11.7169406,3.01531506 12.2830594,3.01531506 12.7442084,3.27882877 Z M12,14.5 C13.3807119,14.5 14.5,13.3807119 14.5,12 C14.5,10.6192881 13.3807119,9.5 12,9.5 C10.6192881,9.5 9.5,10.6192881 9.5,12 C9.5,13.3807119 10.6192881,14.5 12,14.5 Z" fill="#000000"/>
+                                            </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                        <strong>Paramètres budget</strong>
+                                    </h1><br>
+                                        <ul class="menu-inner">
+                                            <li class="menu-item" aria-haspopup="true" style="margin-bottom: -13px;">
+                                                <a href="#/parametre2/parametresBudget/typeDeBudget/liste" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Type de budget</span>
+                                                </a>
+                                            </li>
+                                           <li class="menu-item" aria-haspopup="true">
+                                                <a href="#/ParametreII/DetailsDuTypeDeBudget/liste" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Détails du type de budget</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true" style="margin-bottom: -13px; margin-top: -13px">
+                                                <a href="#/parametre2/parametresBudget/posteBudgetaire/liste" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Poste budgetaire</span>
+                                                </a>
+                                            </li>
+                                           @* <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreII/RubriqueDeTresorerie" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Rubrique de Trésorerie</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreII/PosteTresorerie" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Poste Trésorerie</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreII/Document" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Document</span>
+                                                </a>
+                                            </li> *@
+                                        </ul>
+                                    </li> 
+                                    <li class="menu-item">
+                                        <ul class="menu-inner">
+                                              <li class="menu-item" aria-haspopup="true" style="margin-bottom: -13px;">
+                                                <a href="#/parametre2/FamilleDeBiensImmobilises/liste" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Famille de biens immobilisés</span>
+                                                </a>
+                                            </li>
+                                             <li class="menu-item" aria-haspopup="true"  style="margin-bottom: -13px; margin-top: -13px">
+                                                <a href="#/ParametreII/FamilleAmortissement/liste" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Famille amortissement</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item" ng-if="ETATS_EPARAMII == true">
+                                        <h1 style="font-size: 15px; font-family: Maiandra GD; margin-left: 10px; margin-top: 10px">
+                                                <span class="svg-icon svg-icon-primary svg-icon-1.5x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Files\File.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <polygon points="0 0 24 0 24 24 0 24"/>
+                                                        <path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                                        <rect fill="#000000" x="6" y="11" width="9" height="2" rx="1"/>
+                                                        <rect fill="#000000" x="6" y="15" width="5" height="2" rx="1"/>
+                                                    </g>
+                                                </svg><!--end::Svg Icon--></span>
+                                                <strong>Etats</strong>
+                                            </h1><br>
+                                        <ul class="menu-inner">
+                                             @*<li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreII/DetailDocument" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Détail document</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreII/PosteBusinessPlan" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Poste business plan</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreII/ConfigurationModem" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Configuration modem </span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/ParametreII/ConfigurationDeLaLangue" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Configuration de la langue</span>
+                                                </a>
+                                            </li> *@
+                                            <li class="menu-item" aria-haspopup="true" ng-if="EDITION_EPARAMII == true">
+                                                <a ng-href="#/parametreII/liste/edition-parametreII" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span></span>
+                                                    <span class="menu-text">Edition</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li> 
+                                </ul>
+                            </div>
+                        </div>
+                    </li> 
+
+                   @*  <li class="menu-item menu-item-submenu" data-menu-toggle="click" aria-haspopup="true">
+                        <a href="javascript:;" class="menu-link menu-toggle">
+                            <span class="menu-text"> Analyse</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="menu-submenu menu-submenu-fixed menu-submenu-left" style="width:1000px">
+                            <div class="menu-subnav">
+                                <ul class="menu-content">
+                                    <li class="menu-item">
+                                        <span></span>
+                                        <span class="menu-text"> </span>
+                                        <ul class="menu-inner">
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/Analyse/CreationDuBudget" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Création du budget</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/Analyse/SaisieDuBudget" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Saisie du budget</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/Analyse/SaisieDuBudgetAutomatique" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Saisie du budget automatique</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/Analyse/ValidationDuBudget" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Validation du budget</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/Analyse/CorrectionDuBudgetValide" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Correction du budget validé</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/Analyse/CreationDuComplementDeBudget" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Création du complément de budget</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item">
+                                        <ul class="menu-inner">
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/Analyse/SaisieDuComplémentBudgétaireDuBudget" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Saisie du complément budgétaire du budget</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/Analyse/SaisieDuComplémentBudgétaireAutomatiqueDuBudget" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Saisie du complément budgétaire automatique du budget </span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/Analyse/ValidationDuComplementBudgetaireDuBudget" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Validation du complément budgétaire du budget</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/Analyse/CorrectionDuComplementBudgetaireDuBudgetValide" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Correction du complément budgétaire du budget validé</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="/Analyse/EditionBudget" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">Edition budget</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="menu-item menu-item-submenu" data-menu-toggle="click" aria-haspopup="true">
+                        <a href="javascript:;" class="menu-link menu-toggle">
+                            <span class="menu-text"> Autres </span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="menu-submenu menu-submenu-fixed menu-submenu-left" style="width:1000px">
+                            <div class="menu-subnav">
+                                <ul class="menu-content">
+                                    <li class="menu-item">
+                                        <span></span>
+                                        <span class="menu-text"> </span>
+                                        <ul class="menu-inner">
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="javascript:;" class="menu-link">
+
+                                                    <span class="menu-text"> Commandes fournisseurs</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="javascript:;" class="menu-link">
+
+                                                    <span class="menu-text"> Commandes clients</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="javascript:;" class="menu-link">
+
+                                                    <span class="menu-text"> Facture proforma </span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="javascript:;" class="menu-link">
+
+                                                    <span class="menu-text"> Facture</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item">
+                                        <ul class="menu-inner">
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="javascript:;" class="menu-link">
+                                                    <span></span>
+                                                    <span class="menu-text"> Bon de commande </span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="javascript:;" class="menu-link">
+                                                    <span></span>
+                                                    <span class="menu-text"> Factures clôturées </span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="javascript:;" class="menu-link">
+                                                    <span></span>
+                                                    <span class="menu-text"> Factures annulées </span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="javascript:;" class="menu-link">
+                                                    <span></span>
+                                                    <span class="menu-text"> Edition autre </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li> *@
+                </ul>
+                <!--end::Header Nav-->
+            </div>
+            <!--end::Header Menu-->
+        </div>
+        <!--end::Header Menu Wrapper-->
+        <!--begin::Topbar-->
+        <div class="topbar" >
+            <!--begin::Notifications-->
+            <div class="dropdown">
+                <!--begin::Toggle-->
+                <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
+                    <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1 pulse pulse-primary">
+                        <span class="svg-icon svg-icon-xl svg-icon-primary">
+                            <!--begin::Svg Icon | path:assets/media/svg/icons/Code/Compiling.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <path d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z" fill="#000000" opacity="0.3" />
+                                    <path d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z" fill="#000000" />
+                                </g>
+                            </svg>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="pulse-ring"></span>
+                    </div>
+                </div>
+                <!--end::Toggle-->
+                <!--begin::Dropdown-->
+                <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-xl" ng-if="OUTILS_ET_SECURITE_GENERALE_OUTILSECUR == true">
+                    <form>
+                        <!--begin::Header-->
+                        <div class="d-flex flex-column pt-12 bgi-size-cover bgi-no-repeat rounded-top bg-success" style="background-image: url(../../dist/assets/media/illustration/bg7.jpg)" ng-if="OUTILS_ET_SECURITE_GENERALE_OUTILSECUR == true">
+                            <!--- ----->
+                            <!--begin::Title-->
+                            <h4 class="d-flex flex-center rounded-top">
+                                <span class="text-white"><strong>Outils et Sécurité</strong></span>
+                                <!--<span class="btn btn-text btn-success btn-sm font-weight-bold btn-font-md ml-2"></span>-->
+                            </h4>
+                            <!--end::Title-->
+                            <!--begin::Tabs-->
+                            <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-line-transparent-white nav-tabs-line-active-border-success mt-3 px-8" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active show " data-toggle="tab" href="#topbar_notifications_notifications" ng-if="JOURNEE_DE_TRAVAIL_OUTILSECUR == true">Journée de travail</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " data-toggle="tab" href="#topbar_notifications_events" ng-if="GESTION_UTILISATEUR_OUTILSECUR == true">Gest. utilisateurs</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " data-toggle="tab" href="#topbar_notifications_logs" ng-if="EDITION_OUTILSECUR == true">Edition</a>
+                                </li>
+                            </ul>
+                            <!--end::Tabs-->
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Content-->
+                        <div class="tab-content">
+                            <!--begin::Tabpane-->
+                            <div class="tab-pane active show" id="topbar_notifications_notifications" role="tabpanel" ng-if="JOURNEE_DE_TRAVAIL_OUTILSECUR == true">
+                                <!--begin::Scroll-->
+                                <div class="navi navi-hover scroll my-4" data-scroll="true" data-height="100" data-mobile-height="200">
+                                    <!--begin::Item-->
+                                    <ul class="menu-inner">
+                                       
+                                        <li class="menu-item" aria-haspopup="true" ng-if="CREATION_JOURNEE_OUTILSECUR == true">
+                                            <a ng-href="#/outils&securites/liste/creation-jrneeTravail" class="menu-link">
+                                                <span class="menu-text"> Création journée</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" aria-haspopup="true" ng-if="FERMETURE_JOURNEE_OUTILSECUR == true">
+                                            <a ng-href="#/outils&securites/enregistrement/fermeture-jrneeTravail" class="menu-link">
+                                                <span class="menu-text"> Fermeture journée </span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" aria-haspopup="true" data-toggle="modal" data-target="#modalChangerDate" ng-if="SELECTION_OUTILSECUR == true">
+                                            <a href="javascript:;" class="menu-link">
+                                                <span class="menu-text"> Sélection </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!--end::Item-->
+                                </div>
+                                <!--end::Scroll-->
+                            </div>
+                            <!--end::Tabpane-->
+                            <!--begin::Tabpane-->
+                            <div class="tab-pane" id="topbar_notifications_events" role="tabpanel" ng-if="GESTION_UTILISATEUR_OUTILSECUR == true">
+                                <!--begin::Nav-->
+                                <div class="navi navi-hover scroll my-4" data-scroll="true" data-height="100" data-mobile-height="200">
+                                    <!--begin::Item-->
+                                    <ul class="menu-inner">
+                                        <li class="menu-item" aria-haspopup="true" ng-if="MOT_DE_PASS_OUTILSECUR == true">
+                                            <a ng-href="#/outils&securites/liste/Mot-De-Passe" class="menu-link">
+                                                <span class="menu-text"> Mot de passe </span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" aria-haspopup="true" ng-if="PROFIL_UTILISATEUR_OUTILSECUR == true">
+                                            <a ng-href="#/OutilsEtSecurites/liste/profils" class="menu-link">
+                                                <span class="menu-text"> Profil utilisateur </span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" aria-haspopup="true" ng-if="UTILISATEUR_OUTILSECUR == true">
+                                            <a ng-href="#/operateur/liste/utilisateur" class="menu-link">
+                                                <span class="menu-text"> Utilisateur </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!--end::Item-->
+                                </div>
+                                <!--end::Nav-->
+                            </div>
+                            <!--end::Tabpane-->
+                            <!--begin::Tabpane-->
+                            <div class="tab-pane" id="topbar_notifications_logs" role="tabpanel" ng-if="EDITION_OUTILSECUR == true">
+                                <!--begin::Nav-->
+                                <div class="navi navi-hover scroll my-4" data-scroll="true" data-height="100" data-mobile-height="200">
+                                    <!--begin::Item-->
+                                    <ul class="menu-inner">
+                                        <li class="menu-item" aria-haspopup="true" ng-if="EDITION_OUTILSECUR == true">
+                                            <a ng-href="#/outils&securites/edition/edition" class="menu-link">
+                                                <span class="menu-text"> Edition </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!--end::Item-->
+                                </div>
+                                <!--end::Nav-->
+                            </div>
+                            <!--end::Tabpane-->
+                        </div>
+                        <!--end::Content-->
+                    </form>
+                </div>
+                <!--end::Dropdown-->
+            </div>
+            <!--end::Notifications-->
+            <!--begin::User-->
+            <div class="topbar-item" ng-controller="AppController" ng-init="lettrePU()">
+                <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
+                    <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Profil utilisateur</span>
+                    <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
+                        <span class="symbol-label font-size-h5 font-weight-bold">{{laLettre}}</span>
+                    </span>
+                </div>
+            </div>
+            <!--end::User-->
+        </div>
+        <!--end::Topbar-->
+    </div>
+    <!--end::Container-->
+</div>
+
+
+<!--begin modal choix document-->
+    <div class="modal fade" id="modalChangerDate" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalChangerDate" aria-hidden="true" ng-controller="NewDateJourTravailController">
+        <div class="modal-dialog modal-xs modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #B666D2;">
+                    <h5 class="modal-title text-white" id="modalChangerDate" style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-pen text-white"></i>
+                        Saisie date de la journée de travail
+                    </h5>
+                </div>
+                <div class="modal-body" style="text-align: center; font-size: 17px;">
+                    <div class="col-12 text-right">
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label style="position: relative; left: -170px">Nouvelle date</label>
+                        <input id="idChampNewDate" type="text" class="form-control" ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/" name="ChampNewDate" placeholder="Entrer la nouvelle date" ng-model="FormAddOperationTresorerie.journeeTravail" maxlength="10" />
+                    </div>
+                </div>
+                <div class="modal-footer" style="background-color: beige">
+                    <button class="btn btn-success btn-shadow-hover font-weight-bold" id="pourChoixDoc" ng-click="changedate(FormAddOperationTresorerie.journeeTravail)" data-dismiss="modal">
+                        <span>
+                            <i class="far fa-check-circle"></i>
+                            <span>Enregistrer</span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Annuler</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->

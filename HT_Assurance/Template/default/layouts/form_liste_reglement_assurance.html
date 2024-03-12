@@ -1,0 +1,284 @@
+﻿<form class="mb-15" id="idList" novalidate name="nameList" ng-init="initFormListe()">
+    <div class="card-body">
+        <!--begin: Search Form-->
+        <div class="row mb-6">
+            <div class="col-lg-3 mb-lg-0 mb-6">
+                <label>Période*</label>
+                <div class="input-daterange input-group" id="">
+                    <!--kt_datepicker-->
+                    <input id="idPeriodeDu" type="text" class="form-control"
+                        ng-class="{'is-invalid':nameList.list_PeriodeDu.$invalid}"
+                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                        name="list_PeriodeDu" placeholder="Du" ng-model="FormListReglAssur.periodeDu" required
+                        maxlength="10" />
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="fas fa-arrows-alt-h text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idPeriodeAu" type="text" class="form-control"
+                        ng-class="{'is-invalid':nameList.list_PeriodeAu.$invalid}"
+                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                        name="list_PeriodeAu" placeholder="Au" ng-model="FormListReglAssur.periodeAu" required
+                        maxlength="10" />
+                </div>
+            </div>
+            <div class="col-lg-3 mb-lg-0 mb-6">
+                <label>N° police*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fab fa-orcid text-info"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" ng-class="{'is-invalid':nameList.list_NumPolice.$invalid}"
+                        name="list_NumPolice" placeholder="Entrer un numéro" ng-model="FormListReglAssur.numPolice"
+                        maxlength="8" />
+                    <div class="invalid-feeback text-danger"
+                        ng-show="nameList.$dirty && nameList.list_NumPolice.$invalid" style="font-size: 12px">Veuillez
+                        saisir un numéro correct.</div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-lg-0 mb-6">
+                <label>N° Souscripteur*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fab fa-orcid text-info"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control"
+                        ng-class="{'is-invalid':nameList.list_NumSouscripteur.$invalid}" ng-pattern="/^[0-9]/"
+                        name="list_NumSouscripteur" placeholder="Entrer un n° souscripteur"
+                        ng-model="FormListReglAssur.numSouscripteur" maxlength="8" />
+                    <div class="invalid-feeback text-danger"
+                        ng-show="nameList.$dirty && nameList.list_NumSouscripteur.$invalid" style="font-size: 12px">
+                        Veuillez saisir un numéro correct.</div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-lg-0 mb-6">
+                <label>Nom du souscripteur*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-address-card text-info"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control"
+                        ng-class="{'is-invalid':nameList.list_NomSouscripteur.$invalid}" ng-pattern="/^[a-z-A-Z]/"
+                        name="list_NomSouscripteur" placeholder="Entrer un nom"
+                        ng-model="FormListReglAssur.nomSouscripteur" maxlength="150" />
+                </div>
+                <div class="invalid-feeback text-danger"
+                    ng-show="nameList.$dirty && nameList.list_NomSouscripteur.$invalid" style="font-size: 12px">Veuillez
+                    saisir un nom correct.</div>
+            </div>
+        </div>
+        <div class="row mb-8">
+            <div class="col-lg-4">
+                <label>Exercice</label>
+                    <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                        <i class="fab fa-etsy text-info"></i>
+                                </span>
+                            </div>
+                            <select id="idExercice" class="form-control" name="addMP_Exercice"
+                            ng-model="FormListReglAssur.Exercice" >
+                            <option value="">Sélectionner un exercice</option>
+                            <option   
+                                ng-repeat="lExercice in listeDesExercice"
+                                ng-selected="FormListReglAssur.Exercice == lExercice.EX_EXERCICE"
+                               value="{{lExercice.EX_EXERCICE}}">{{lExercice.EX_EXERCICE}}</option>
+                           </select>
+                    </div>
+            </div>
+            <div class="col-lg-4">
+                <label>N° Commercial*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fab fa-orcid text-info"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control"
+                        ng-class="{'is-invalid':nameList.list_NumCommercial.$invalid}" ng-pattern="/^[0-9]/"
+                        name="list_NumCommercial" placeholder="Entrer un n° commercial"
+                        ng-model="FormListReglAssur.numCommercial" maxlength="8" />
+                </div>
+                <div class="invalid-feeback text-danger"
+                    ng-show="nameList.$dirty && nameList.list_NumCommercial.$invalid" style="font-size: 12px">Veuillez
+                    saisir un numéro correct.</div>
+            </div>
+            <div class="col-lg-4">
+                <label>Nom du Commercial*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-address-card text-info"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control"
+                        ng-class="{'is-invalid':nameList.list_NomCommercial.$invalid}" ng-pattern="/^[a-z-A-Z]/"
+                        name="list_NomCommercial" placeholder="Entrer un nom" ng-model="FormListReglAssur.nomCommercial"
+                        maxlength="150" />
+                </div>
+                <div class="invalid-feeback text-danger"
+                    ng-show="nameList.$dirty && nameList.list_NomCommercial.$invalid" style="font-size: 12px">Veuillez
+                    saisir un nom correct.</div>
+            </div>
+        </div>
+
+        <div class="row mt-8">
+            <div class="col-lg-12">
+                <button class="btn btn-primary btn-primary--icon" id="kt_search"
+                    ng-click="afficheListeReglAssurance(nameList.$valid, FormListReglAssur.periodeDu, FormListReglAssur.periodeAu, FormListReglAssur.numPolice, FormListReglAssur.numSouscripteur, FormListReglAssur.nomSouscripteur, FormListReglAssur.numCommercial, FormListReglAssur.nomCommercial,FormListReglAssur.Exercice)">
+                    <span>
+                        <i class="la la-search"></i>
+                        <span>Rechercher</span>
+                    </span>
+                </button>&#160;&#160;
+                <button type="button" class="btn btn-outline-warning" id="kt_reset" ng-click="listeAnnuler()">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Annuler</span>
+                    </span>
+                </button>
+            </div>
+        </div>&#160;&#160;
+
+        <!--begin: Datatable-->
+        <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+            <thead style="text-align: center;">
+                <!--background-color: #8CB9BA; color: White-->
+                <tr>
+                    <th>DATE</th>
+                    <th>N° POLICE/N.C</th>
+                    <th>N° SOUSCRIPTEUR</th>
+                    <th>SOUSCRIPTEUR</th>
+                    <th>EFFET</th>
+                    <th>ECHEANCE</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tfoot ng-show="listeOperation[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                <tr ng-repeat="laListeOperation in listeOperation" id="idligne{{$index}}">
+                    <td>{{laListeOperation.CA_DATESAISIE}}</td>
+                    <td>{{laListeOperation.CA_NUMPOLICE}}</td>
+                    <td>{{laListeOperation.TI_NUMTIERS}}</td>
+                    <td>{{laListeOperation.TI_DENOMINATION}}</td>
+                    <td>{{laListeOperation.CA_DATEEFFET}}</td>
+                    <td>{{laListeOperation.CA_DATEECHEANCE}}</td>
+                    <!--ligne des actions-->
+                    <td>
+                        <div class="example-preview" style="position: relative; right: -19px">
+                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                <div class="btn-group mr-2" role="group" aria-label="...">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="modal"
+                                        data-target="#modalVoirPlus" ng-click="voirPlus(laListeOperation)">
+                                        <i class="far fa-eye" data-toggle="tooltip" data-theme="dark"
+                                            title="Voir plus"></i>
+                                    </button>
+                                    <!--bouton autres options-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="modal"
+                                        data-target="#modalOption" ng-click="autreOption(laListeOperation)">
+                                        <i class="fas fa-ellipsis-v" data-toggle="tooltip" data-theme="dark"
+                                            title="Autres options"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <!--end: Datatable-->
+    </div>
+</form>
+
+<!--begin modal pour autres options-->
+<div class="modal fade" id="modalOption" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalOption" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #F5F500;">
+                <h5 class="modal-title text-dark" id="modalOption" style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-v text-dark"></i>
+                    Autres options
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card card-custom gutter-b">
+                    <div class="card-header card-header-tabs-line">
+                        <div class="card-toolbar">
+                            <ul class="nav nav-tabs nav-bold nav-tabs-line">
+                                <li class="nav-item">
+                                    <a class="nav-link active" ng-click="redirectReleveClient()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fab fa-weixin"></i></span>
+                                        <span class="nav-text">Relevé client</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectReleveCommissionAssurance()"
+                                        data-dismiss="modal" style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-id-card"></i></span>
+                                        <span class="nav-text">Relevé commission</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectReglementFactureClient()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-id-card"></i></span>
+                                        <span class="nav-text">Règlement de facture client</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectReglementCommissionAssurance()"
+                                        data-dismiss="modal" style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-id-card"></i></span>
+                                        <span class="nav-text">Règlement commission d’assurance</span>
+                                    </a>
+                                </li>
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectReglementCommissionCommerciaux()"
+                                        data-dismiss="modal" style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-id-card"></i></span>
+                                        <span class="nav-text">Règlement commissions des commerciaux</span>
+                                    </a>
+                                </li> 
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectRemiseChequeSinistre()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-pen-alt"></i></span>
+                                        <span class="nav-text">Remise chèque sinistre</span>
+                                    </a>
+                                </li>-->
+                              <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectAfficherReglementCheque()"
+                                        data-dismiss="modal" style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-file-invoice"></i></span>
+                                        <span class="nav-text">Afficher règlement chèque</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

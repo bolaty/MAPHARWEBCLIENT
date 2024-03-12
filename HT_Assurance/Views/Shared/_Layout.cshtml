@@ -1,0 +1,22 @@
+﻿@*Styles.Render("~/Content/templatecss")*@
+
+@if (HttpContext.Current.Request.Cookies["user"] != null && HttpContext.Current.Request.Cookies["user1"] == null)
+{
+    Layout = "~/Views/Shared/_Layout_Mode_De_Gestion.cshtml";
+}
+else if (HttpContext.Current.Request.Cookies["user1"] != null)
+{
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+else
+{
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+ @RenderBody()
+
+              
+
+
+
+

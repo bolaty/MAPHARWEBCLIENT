@@ -1,0 +1,749 @@
+﻿<!--début loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin ng-init="contrainteFormAddHabitat()"loader-->
+<form class="form">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATION SUR LE
+                            SOUSCRIPTEUR</strong></h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>N° souscripteur*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNumSouscripteur" type="text" class="form-control"
+                                        name="addHabitat_Code01" placeholder="Entrer un code"
+                                        ng-model="FormAddHabitat.code1" ng-disabled="verou1" maxlength="8" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button ng-show="etatForm !== '2'" type="button"
+                                            class="btn btn-secondary btn-secondary--icon" id="kt_reset"
+                                            data-toggle="modal" data-target="#modalCodeSouscripteur"
+                                            ng-click="afficheListeTiersSouscripteur()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Nom assuré*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-address-card text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDenomination1" type="text" class="form-control"
+                                        name="addHabitat_NomAssure" placeholder="Entrer un nom"
+                                        ng-model="FormAddHabitat.denomination1" ng-disabled="verou1" maxlength="150" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du nom assuré">
+                                        <button ng-show="etatForm !== '2'" type="button"
+                                            class="btn btn-secondary btn-secondary--icon" id="kt_reset"
+                                            data-toggle="modal" data-target="#modalCodeSouscripteur"
+                                            ng-click="afficheListeTiersSouscripteur()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator separator-dashed separator-success my-1"></div><br>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS SUR LE
+                            COMMERCIAL</strong></h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>N° commercial*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNumCommercial" type="text" class="form-control"
+                                        name="addHabitat_Code02" placeholder="Entrer un code"
+                                        ng-model="FormAddHabitat.code2" ng-disabled="verou2" maxlength="8" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button type="button" class="btn btn-secondary btn-secondary--icon"
+                                            id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial"
+                                            ng-click="afficheListeTiersCommercial()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Dénomination*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDenomination2" type="text" class="form-control"
+                                        name="addHabitat_Denomination02" placeholder="Entrer une Dénomination"
+                                        ng-model="FormAddHabitat.denomination2" ng-disabled="verou2" maxlength="150" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button type="button" class="btn btn-secondary btn-secondary--icon"
+                                            id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial"
+                                            ng-click="afficheListeTiersCommercial()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator separator-dashed separator-success my-1"></div><br>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS GENERALES</strong>
+                    </h3>
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>N° police/ N.C*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-orcid text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idNumPolice" type="text" class="form-control" name="addHabitat_N_Police"
+                                    placeholder="Entrer un n°" ng-model="FormAddHabitat.numPolice" maxlength="150" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Code assureur*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user-tie text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="Codeassureur" type="text" class="form-control" name="addCodeassureur"
+                                    placeholder="Entrer un Code assureur" ng-model="FormAddHabitat.Codeassureur"
+                                    maxlength="150"  />
+                            </div>
+                        </div>
+                        <div class="col-lg-6" style="margin-top: 10px;">
+                            <label>Intermédiaire*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-people-arrows text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idIntermediaire" class="form-control" name="addHabitat_Intermediaire"
+                                    ng-model="FormAddHabitat.intermediaire">
+                                    <option value="">Sélectionner un intermédiaire</option>
+                                    <option ng-show="etatForm !== '2'" ng-repeat="lIntermediaire in listeIntermediaire"
+                                        value="{{lIntermediaire.IT_CODEINTERMEDIAIRE}}">
+                                        {{lIntermediaire.IT_DENOMMINATION}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddHabitat.intermediaire == lIntermediaire.IT_CODEINTERMEDIAIRE"
+                                        ng-repeat="lIntermediaire in listeIntermediaire"
+                                        value="{{lIntermediaire.IT_CODEINTERMEDIAIRE}}">
+                                        {{lIntermediaire.IT_DENOMMINATION}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" style="margin-top: 10px;">
+                            <label>Type d'affaire*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-briefcase text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idTypeAffaire" class="form-control" name="addHabitat_typeAffaire"
+                                    ng-model="FormAddHabitat.typeAffaire">
+                                    <option value="">Sélectionner un type d'affaire</option>
+                                    <option ng-show="etatForm !== '2'"
+                                        ng-repeat="leTypeAffaire in listeTypeAffaireHabitat"
+                                        value="{{leTypeAffaire.TA_CODETYPEAFFAIRES}}">
+                                        {{leTypeAffaire.TA_LIBLLETYPEAFFAIRES}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddHabitat.typeAffaire == leTypeAffaire.TA_CODETYPEAFFAIRES"
+                                        ng-repeat="leTypeAffaire in listeTypeAffaireHabitat"
+                                        value="{{leTypeAffaire.TA_CODETYPEAFFAIRES}}">
+                                        {{leTypeAffaire.TA_LIBLLETYPEAFFAIRES}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-3">
+                            <label>Effet*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-calendar text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idDateEffet" type="text" class="form-control" name="addHabitat_Effet"
+                                    placeholder="Entrer un effet" ng-model="FormAddHabitat.effet" maxlength="10" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Echéance*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-calendar text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idDateEcheance" type="text" class="form-control" name="addHabitat_Echeance"
+                                    placeholder="Entrer une écheance" ng-model="FormAddHabitat.echeance"
+                                    maxlength="10" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Exercice</label>
+                                <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                    <i class="fab fa-etsy text-info"></i>
+                                            </span>
+                                        </div>
+                                        <select id="idExercice" class="form-control" name="addMP_Exercice"
+                                        ng-model="FormAddHabitat.Exercice" >
+                                        <option value="">Sélectionner un exercice</option>
+                                        <option ng-show="etatForm !== '2'"   
+                                            ng-repeat="lExercice in listeDesExercice"
+                                            ng-selected="FormAddHabitat.Exercice == lExercice.EX_EXERCICE"
+                                           value="{{lExercice.EX_EXERCICE}}">{{lExercice.EX_EXERCICE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddHabitat.Exercice == lExercice.EX_EXERCICE"
+                                            ng-repeat="lExercice in listeDesExercice"
+                                            value="{{lExercice.EX_EXERCICE}}">{{lExercice.EX_EXERCICE}}</option>
+                                       </select>
+                                </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Garantie</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-map-pin text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idgarantie" class="form-control" name="addgarantie"
+                                    ng-model="FormAddHabitat.valgarantie">
+                                    <option value="">Sélectionner une garantie</option>
+                                    <option ng-show="etatForm !== '2'" ng-repeat="lAgarantie in listeDesGarantie"
+                                        value="{{lAgarantie.GR_CODEGARENTIEPRIME}}">
+                                        {{lAgarantie.GR_LIBELLEGARENTIEPRIME}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddHabitat.valgarantie == lAgarantie.GR_CODEGARENTIEPRIME"
+                                        ng-repeat="lAgarantie in listeDesGarantie"
+                                        value="{{lAgarantie.GR_CODEGARENTIEPRIME}}">
+                                        {{lAgarantie.GR_LIBELLEGARENTIEPRIME}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-3">
+                            <label>Pays*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-globe-africa text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idPays" class="form-control" name="addHabitat_Pays"
+                                    ng-model="FormAddHabitat.pays">
+                                    <option value="">Sélectionner un pays</option>
+                                    <option ng-show="etatForm !== '2'" ng-repeat="lePays in listePaysHabitat"
+                                        ng-selected="FormAddHabitat.pays == lePays.PY_CODEPAYS"
+                                        value="{{lePays.PY_CODEPAYS}}"
+                                        ng-click="afficheListeVille(FormAddHabitat.pays)">{{lePays.PY_LIBELLE}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddHabitat.pays == lePays.PY_CODEPAYS"
+                                        ng-repeat="lePays in listePaysHabitat" value="{{lePays.PY_CODEPAYS}}"
+                                        ng-click="afficheListeVille(FormAddHabitat.pays)">
+                                        {{lePays.PY_LIBELLE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Ville*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-map-marker-alt text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idVille" class="form-control" name="addHabitat_Ville"
+                                    ng-model="FormAddHabitat.ville" ng-disabled="verouVille">
+                                    <option value="">Sélectionner une ville</option>
+                                    <option ng-show="etatForm !== '2'" ng-repeat="laVille in listeVillesHabitat"
+                                        ng-selected="FormAddHabitat.ville == laVille.VL_CODEVILLE"
+                                        value="{{laVille.VL_CODEVILLE}}"
+                                        ng-click="afficheListeCommune(FormAddHabitat.ville)">{{laVille.VL_LIBELLE}}
+                                    </option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddHabitat.ville == laVille.VL_CODEVILLE"
+                                        ng-repeat="laVille in listeVillesHabitat" value="{{laVille.VL_CODEVILLE}}"
+                                        ng-click="afficheListeCommune(FormAddHabitat.ville)">
+                                        {{laVille.VL_LIBELLE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Commune*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-map-pin text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idCommune" class="form-control" name="addHabitat_Commune"
+                                    ng-model="FormAddHabitat.commune" ng-disabled="verouCommune">
+                                    <option value="">Sélectionner une commune</option>
+                                    <option ng-show="etatForm !== '2'" ng-repeat="laCommune in listeCommunesHabitat"
+                                        value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddHabitat.commune == laCommune.CO_CODECOMMUNE"
+                                        ng-repeat="laCommune in listeCommunesHabitat"
+                                        value="{{laCommune.CO_CODECOMMUNE}}">
+                                        {{laCommune.CO_LIBELLE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Situation géographique*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-map text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idSitGeo" type="text" class="form-control"
+                                    name="addHabitat_Situation_géographique"
+                                    placeholder="Entrer une situation géograpgique"
+                                    ng-model="FormAddHabitat.situationGeo" maxlength="150" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-3">
+                            <label>Type d'appartement*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-hotel text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idTypeAppart" class="form-control" name="addHabitat_typeAppartement"
+                                    ng-model="FormAddHabitat.typeAppartement" ng-init="afficheListeTypeAppartement()">
+                                    <option value="">Sélectionner un type</option>
+                                    <option ng-show="etatForm !== '2'"
+                                        ng-repeat="leTypeAppartement in listeTypeAppartement"
+                                        value="{{leTypeAppartement.AP_CODETYPEAPPARTEMENT}}">
+                                        {{leTypeAppartement.AP_LIBLLETYPEAPPARTEMENT}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddHabitat.typeAppartement == leTypeAppartement.AP_CODETYPEAPPARTEMENT"
+                                        ng-repeat="leTypeAppartement in listeTypeAppartement"
+                                        value="{{leTypeAppartement.AP_CODETYPEAPPARTEMENT}}">
+                                        {{leTypeAppartement.AP_LIBLLETYPEAPPARTEMENT}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Nombre de pièce*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-sort-numeric-down text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idNombrePiece" type="text" class="form-control"
+                                    name="addHabitat_nombreDePiece" placeholder="Entrer un nombre de pièce"
+                                    ng-model="FormAddHabitat.nombrePiece" maxlength="3" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Superficie*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-ruler-combined text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idSuperficie" type="text" class="form-control" name="addHabitat_superficie"
+                                    placeholder="Entrer une superficie" ng-model="FormAddHabitat.Superficie"
+                                    maxlength="5" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Loyer mensuel / Valeur patrimoine</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-wallet text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idLoyerMensuel" ng-pattern="/^[0-9]{1,15}$/" type="text" class="form-control"
+                                    name="addHabitat_loyerMensuel" placeholder="Entrer un loyer"
+                                    ng-model="FormAddHabitat.loyerMensuel" maxlength="15" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-3">
+                            <label>Occupant*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-house-user text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idOccup" class="form-control" name="addHabitat_occupant"
+                                    ng-model="FormAddHabitat.typeOccupant">
+                                    <option value="">Sélectionner un occupant</option>
+                                    <option ng-show="etatForm !== '2'" ng-repeat="leTypeOccupant in listeTypeOccupant"
+                                        value="{{leTypeOccupant.OC_CODETYPEOCCUPANT}}">
+                                        {{leTypeOccupant.OC_LIBLLETYPEOCCUPANT}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddHabitat.typeOccupant == leTypeOccupant.OC_CODETYPEOCCUPANT"
+                                        ng-repeat="leTypeOccupant in listeTypeOccupant"
+                                        value="{{leTypeOccupant.OC_CODETYPEOCCUPANT}}">
+                                        {{leTypeOccupant.OC_LIBLLETYPEOCCUPANT}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Assureur*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user-cog text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idAssureur" class="form-control" name="addHabitat_Assureur"
+                                    ng-model="FormAddHabitat.assureur">
+                                    <option value="">Sélectionner un assureur</option>
+                                    <option ng-show="etatForm !== '2'" ng-repeat="lAssureur in listeAssureursHabitat"
+                                        ng-selected="FormAddHabitat.assureur == lAssureur.TI_IDTIERS"
+                                        value="{{lAssureur.TI_IDTIERS}}">{{lAssureur.TI_DENOMINATION}}</option>
+                                    <option ng-show="etatForm == '2'"
+                                        ng-selected="FormAddHabitat.assureur == lAssureur.TI_IDTIERS"
+                                        ng-repeat="lAssureur in listeAssureursHabitat" value="{{lAssureur.TI_IDTIERS}}">
+                                        {{lAssureur.TI_DENOMINATION}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Interlocuteur*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-assistive-listening-systems text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idInter" type="text" class="form-control" name="addHabitat_interlocuteur"
+                                    placeholder="Entrer un interlocuteur" ng-model="FormAddHabitat.interlocuteur"
+                                    maxlength="150" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Téléphone interlocuteur*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-phone-alt text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idtelInter" type="text" class="form-control"
+                                    name="addHabitat_telephoneInterlocuteur" placeholder="Entrer un n° de téléphone"
+                                    ng-model="FormAddHabitat.telInterlocuteur" maxlength="15" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--begin: Datatable-->
+        <div class="separator separator-dashed separator-success my-1"></div>
+        <br />
+        <div class="mb-3">
+            <h6><strong style="color: DarkSlateBlue"><u>TABLEAU DES GARANTIES</u></strong></h6>
+        </div>
+        <!--end: Datatable-->
+        <div class="row">
+            <div class="col-12 ">
+                <table class="table table-bordered table-checkable" id="kt_datatable">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>GARANTIES</th>
+                            <th>GARANTI /NON GARANTI</th>
+                            <th>PRIME</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-show="etatForm !== '2'" ng-repeat="garentie in tabGarentiesHabitat">
+                            <td>{{garentie.GA_LIBELLEGARANTIE}}</td>
+                            <td>
+                                {{garentie.SC_LIBELLESOUSCATEGORIE}}
+                                <label class="checkbox checkbox-lg checkbox-primary">
+                                    <input type="checkbox" ng-model="selectedMore"
+                                        ng-checked="existedMore(garentie.CG_GARANTIE)"
+                                        ng-click="toggleSelectedMore(garentie)" />
+                                    <span class="form-text text-muted"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="garentie.CG_PRIMES" />
+                            </td>
+                        </tr>
+                        <tr ng-show="etatForm == '2'" ng-repeat="garentie in recupererInfo.clsCtcontratgaranties">
+                            <td>{{garentie.GA_LIBELLEGARANTIE}}</td>
+                            <td>
+                                {{garentie.SC_LIBELLESOUSCATEGORIE}}
+                                <label class="checkbox checkbox-lg checkbox-primary">
+                                    <input type="checkbox" ng-model="selectedMore"
+                                        ng-checked="existedMore(garentie.CG_GARANTIE)"
+                                        ng-click="toggleSelectedMore(garentie)" />
+                                    <span class="form-text text-muted"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="garentie.CG_PRIMES" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <div class="separator separator-dashed separator-success my-1"></div>
+        <br />
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <h6><strong style="color: DarkSlateBlue"><u>TABLEAU DES CAPITAUX</u></strong></h6>
+                </div>
+                <table class="table table-bordered table-checkable" id="kt_datatable">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>RISQUE</th>
+                            <th>CAPITAUX</th>
+                            <th>TAUX </th>
+                            <th>PRIMES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-show="etatForm !== '2'" ng-repeat="capitaux in tabCapitauxHabitat">
+                            <td>{{capitaux.CP_LIBELLECAPITAUX}}</td>
+                            <td><input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="capitaux.CC_CAPITAUX" /></td>
+                            <td><input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="capitaux.CC_TAUX" /></td>
+                            <td><input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="capitaux.CC_PRIMES" /></td>
+                        </tr>
+                        <tr ng-show="etatForm == '2'" ng-repeat="capitaux in recupererInfo.clsCtcontratcapitauxs">
+                            <td>{{capitaux.CP_LIBELLECAPITAUX}}</td>
+                            <td><input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="capitaux.CC_CAPITAUX" /></td>
+                            <td><input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="capitaux.CC_TAUX" /></td>
+                            <td><input type="text" name="" class="form-control" placeholder=""
+                                    ng-model="capitaux.CC_PRIMES" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <h6><strong style="color: DarkSlateBlue"><u>TABLEAU DES PRIMES</u></strong></h6>
+                </div>
+                <table class="table table-bordered table-checkable" id="kt_datatable">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>LIBELLE</th>
+                            <th>PRIMES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-show="etatForm !== '2'" ng-repeat="prime in tabPrimesHabitat">
+                            <td style="max-width: 100px;">{{prime.RE_LIBELLERESUME}}</td>
+                            <td>
+                                <label ng-show="prime.RE_CODERESUME != '05'">{{prime.CG_PRIMES | currency:"":0}}
+                                    FCFA</label>
+                                <input ng-change="calculprimettc()" type="text" name="addHabitat_prime"
+                                    class="form-control" placeholder="" ng-model="prime.CG_PRIMES"
+                                    ng-pattern="/^[0-9]+$/" /></td>
+                        </tr>
+
+                        <tr ng-show="etatForm == '2'" ng-repeat="prime in recupererInfo.clsCtcontratprimes">
+                            <td style="max-width: 100px;">{{prime.RE_LIBELLERESUME}}</td>
+                            <td>
+                                <label ng-show="prime.RE_CODERESUME != '05'">{{prime.CG_PRIMES | currency:"":0}}
+                                    FCFA</label>
+                                <input ng-change="calculprimettc()" type="text" name="addHabitat_prime"
+                                    class="form-control" placeholder="" ng-model="prime.CG_PRIMES"
+                                    ng-pattern="/^[0-9]+$/" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+            ng-click="validateFormAddHabitat(FormAddHabitat.effet, FormAddHabitat.echeance)">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>{{btnEnregistrer}}</span>
+            </span>
+        </button>
+        <button type="submit" ng-show="etatForm !== '2'" class="btn btn-light-success font-weight-bold"
+            ng-click="resetFormAddHabitat()">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a ng-href="#/assurances/FormEnrgMultirisqueImmeuble" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip"
+            data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+
+
+<!--begin modal pour choix du code souscripteur-->
+<div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeSouscripteur"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - souscripteur
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                            <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                            <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixSouscripteur(lesSouscripteurs.TI_NUMTIERS, lesSouscripteurs.TI_DENOMINATION, lesSouscripteurs.TI_IDTIERS , lesSouscripteurs.TI_ADRESSEGEOGRAPHIQUE,lesSouscripteurs.TI_NOMINTERLOCUTEUR)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal pour choix du code souscripteur-->
+
+<!--begin modal pour choix du code commercial-->
+<div class="modal fade" id="modalCodeCommercial" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeCommercial" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeCommercial"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - commercial
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesCommerciaux in listeDesCommerciaux">
+                            <td>{{lesCommerciaux.TI_NUMTIERS}}</td>
+                            <td>{{lesCommerciaux.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixCommercial(lesCommerciaux.TI_NUMTIERS, lesCommerciaux.TI_DENOMINATION, lesCommerciaux.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,209 @@
+﻿<form class="mb-15" id="idList" ng-init="initFormListe()">
+    <div class="card-body">
+        <!--begin: Search Form-->
+        <div class="row mb-6">
+            <div class="col-lg-3 mb-lg-0 mb-6">
+                <label>Période*</label>
+                <div class="input-daterange input-group" id="">
+                    <!--kt_datepicker-->
+                    <input id="idPeriodeDu" type="text" class="form-control"
+                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                        name="list_PeriodeDu" placeholder="Du" ng-model="FormList.periodeDu" maxlength="10" />
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="fas fa-arrows-alt-h text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idPeriodeAu" type="text" class="form-control"
+                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                        name="list_PeriodeAu" placeholder="Au" ng-model="FormList.periodeAu" maxlength="10" />
+                </div>
+            </div>
+            <div class="col-lg-3 mb-lg-0 mb-6">
+                <label>N° police*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fab fa-orcid text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idNumPolice" type="text" class="form-control" name="list_NumPolice"
+                        placeholder="Entrer un numéro" ng-model="FormList.numPolice" maxlength="8" />
+                </div>
+            </div>
+            <div class="col-lg-3 mb-lg-0 mb-6">
+                <label>N° Souscripteur*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fab fa-orcid text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idNumSouscripteur" type="text" class="form-control" ng-pattern="/^[0-9]/"
+                        name="list_NumSouscripteur" placeholder="Entrer un n° souscripteur"
+                        ng-model="FormList.numSouscripteur" maxlength="8" />
+                </div>
+            </div>
+            <div class="col-lg-3 mb-lg-0 mb-6">
+                <label>Nom du souscripteur*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-address-card text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idNomSouscripteur" type="text" class="form-control" ng-pattern="/^[a-z-A-Z]/"
+                        name="list_NomSouscripteur" placeholder="Entrer un nom" ng-model="FormList.nomSouscripteur"
+                        maxlength="150" />
+                </div>
+            </div>
+        </div>
+        <div class="row mb-8">
+            <div class="col-lg-4">
+                <label>Exercice</label>
+                    <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                        <i class="fab fa-etsy text-info"></i>
+                                </span>
+                            </div>
+                            <select id="idExercice" class="form-control" name="addMP_Exercice"
+                            ng-model="FormList.Exercice" >
+                            <option value="">Sélectionner un exercice</option>
+                            <option   
+                                ng-repeat="lExercice in listeDesExercice"
+                                ng-selected="FormList.Exercice == lExercice.EX_EXERCICE"
+                               value="{{lExercice.EX_EXERCICE}}">{{lExercice.EX_EXERCICE}}</option>
+                           </select>
+                    </div>
+            </div>
+            <div class="col-lg-4">
+                <label>N° Commercial*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fab fa-orcid text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idNumCommercial" type="text" class="form-control" ng-pattern="/^[0-9]/"
+                        name="list_NumCommercial" placeholder="Entrer un n° commercial"
+                        ng-model="FormList.numCommercial" maxlength="8" />
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label>Nom du Commercial*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-address-card text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idNomCommercial" type="text" class="form-control" ng-pattern="/^[a-z-A-Z]/"
+                        name="list_NomCommercial" placeholder="Entrer un nom" ng-model="FormList.nomCommercial"
+                        maxlength="150" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-8">
+            <div class="col-lg-12">
+                <button class="btn btn-primary btn-primary--icon" id="kt_search"
+                    ng-click="afficheListeDemandeRenouvellement(FormList.periodeDu, FormList.periodeAu, FormList.numPolice, FormList.numSouscripteur, FormList.nomSouscripteur, FormList.numCommercial, FormList.nomCommercial,FormList.Exercice)">
+                    <span>
+                        <i class="la la-search"></i>
+                        <span>Rechercher</span>
+                    </span>
+                </button>&#160;&#160;
+                <button type="button" class="btn btn-outline-warning" id="kt_reset" ng-click="listeAnnuler()">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Annuler</span>
+                    </span>
+                </button>
+            </div>
+        </div>&#160;&#160;
+
+        <!--begin: Datatable-->
+        <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+            <thead style="text-align: center;">
+                <!--background-color: #8CB9BA; color: White-->
+                <tr>
+                    <th>DATE</th>
+                    <th>N° POLICE/N.C</th>
+                    <th>N° SOUSCRIPTEUR</th>
+                    <th>SOUSCRIPTEUR</th>
+                    <th>EFFET</th>
+                    <th>ECHEANCE</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tfoot ng-show="listeDemandeRenouvellement[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                <tr ng-repeat="laListeDemandeRenouvellement in listeDemandeRenouvellement">
+                    <td>{{laListeDemandeRenouvellement.CA_DATESAISIE}}</td>
+                    <td>{{laListeDemandeRenouvellement.CA_NUMPOLICE}}</td>
+                    <td>{{laListeDemandeRenouvellement.TI_NUMTIERS}}</td>
+                    <td>{{laListeDemandeRenouvellement.TI_DENOMINATION}}</td>
+                    <td>{{laListeDemandeRenouvellement.CA_DATEEFFET}}</td>
+                    <td>{{laListeDemandeRenouvellement.CA_DATEECHEANCE}}</td>
+                    <!--ligne des actions-->
+                    <td>
+                        <div class="example-preview" style="position: relative; right: -19px">
+                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                <div class="btn-group mr-2" role="group" aria-label="...">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="modal"
+                                        data-target="#modalAnnulationValidation"
+                                        ng-click="voirPlusDemande(laListeDemandeRenouvellement)">
+                                        <i class="fas fa-undo-alt" data-toggle="tooltip" data-theme="dark"
+                                            title="renouveller"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <!--end: Datatable-->
+    </div>
+</form>
+
+
+<!--begin modal renouvellement-->
+<div class="modal fade" id="modalAnnulationValidation" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalAnnulationValidation" aria-hidden="true">
+    <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalAnnulationValidation"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-redo-alt text-white"></i>
+                    Demande de renouvellement contrat
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align: center; font-size: 17px;">
+                Voulez-vous renouveller ce contrat ?
+            </div>
+            <!-- ng-click="AnnulationValide(idElement)" -->
+            <div class="modal-footer">
+                <button class="btn btn-light btn-shadow font-weight-bold" id="pourValider" data-dismiss="modal"
+                    ng-click="demandeDeRenouvellement()">
+                    <span>
+                        <i class="fas fa-redo-alt"></i>
+                        <span>Valider</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

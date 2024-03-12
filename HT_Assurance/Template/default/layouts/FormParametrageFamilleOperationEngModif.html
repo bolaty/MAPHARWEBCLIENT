@@ -1,0 +1,104 @@
+﻿<!--begin::Form-->
+<form class="form">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>AJOUT ET
+                            FAMILLE OPERATION</strong></h3>
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>Code*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-key text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idCode" type="text" class="form-control" name="url"
+                                    placeholder="Entrer un code" ng-disabled="verouCode"
+                                    ng-model="formParamFamilleOp.code" maxlength="8" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Nom famille*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-address-card text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idNomFamille" type="text" class="form-control" name="url"
+                                    placeholder="Entrer un nom" ng-model="formParamFamilleOp.nomFamille"
+                                    maxlength="150" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>Nature famille*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user-friends text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="idNatureFamille" class="form-control" name="option"
+                                    ng-model="formParamFamilleOp.natureFamille">
+                                    <option value="">Selectionner une nature famille</option>
+                                    <option ng-show="etatEcran == ''"
+                                        ng-repeat="comboNatureOperation in listeComboNatureFamille"
+                                        value="{{comboNatureOperation.NF_CODENATUREFAMILLEOPERATION}}">
+                                        {{comboNatureOperation.NF_LIBELLENATUREFAMILLEOPERATION1}}
+                                    </option>
+                                    <option ng-show="etatEcran  == '2'"
+                                        ng-repeat="comboNatureOperation in listeComboNatureFamille"
+                                        ng-selected="formParamFamilleOp.natureFamille == comboNatureOperation.NF_CODENATUREFAMILLEOPERATION"
+                                        value="{{comboNatureOperation.NF_CODENATUREFAMILLEOPERATION}}">
+                                        {{comboNatureOperation.NF_LIBELLENATUREFAMILLEOPERATION1}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Numéro ordre*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-orcid text-info"></i>
+                                    </span>
+                                </div>
+                                <input id="idNumeroOrdre" type="text" class="form-control" name="url"
+                                    placeholder="Entrer un numéro de section" ng-model="formParamFamilleOp.numeroOrdre"
+                                    ng-pattern="/^[0-9]+$/" maxlength="2" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" ng-click="validerParamFamilleOperation()"
+            class="btn btn-primary btn-shadow-hover font-weight-bold">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <button type="submit" ng-click="reinitialiser()" class="btn btn-light-success font-weight-bold"
+            ng-show="etatEcran != '2'">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a href="#/parametre2/parametrageOperations/parametrageFamillesOperations/liste"
+            class="btn btn-icon btn-light-dark mr-2" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+<!--end::Form-->

@@ -1,0 +1,187 @@
+﻿<!--début loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormModifTiTiers()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background-color: beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h3 class="text-dark font-weight-bold my-1 mr-5">GESTION</h3>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Prospect</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Modification</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Prospect</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #F5F500;">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="far fa-user icon-xl text-dark"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Prospect</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <div ng-include="'Template/default/layouts/FormEnrgprospect.html'"></div>
+                        <!--end::From-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Code example-->
+</div>
+<!--end::Form-->
+
+<!--begin modal pour choix du code souscripteur-->
+<div class="modal fade" id="modalNumCompte" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalNumCompte" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalNumCompte"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    N° compte
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>COMPTE</th>
+                            <th>NUMERO COMPTE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesNumCompte in listeDesNumComptes">
+                            <td>{{lesNumCompte.PL_LIBELLE}}</td>
+                            <td>{{lesNumCompte.PL_NUMCOMPTE}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir" ng-click="choixNumCompte(lesNumCompte)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalsurpp2" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalsurpp2" aria-hidden="true">
+    <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalsurpp2" style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ban text-white"></i>
+                    photo cheque
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align: center; font-size: 17px;">
+                Etes-vous sûr de vouloir supprimer cette photo ?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-shadow font-weight-bold" id="kt_reset" ng-click="suprimg2()"
+                    data-dismiss="modal">
+                    <span>
+                        <i class="fas fa-ban"></i>
+                        <span>Supprimer</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Annuler</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalsurpp" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalsurpp"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalsurpp" style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ban text-white"></i>
+                    photo cheque
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align: center; font-size: 17px;">
+                Etes-vous sûr de vouloir supprimer cette photo ?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-shadow font-weight-bold" id="kt_reset" ng-click="suprimg()"
+                    data-dismiss="modal">
+                    <span>
+                        <i class="fas fa-ban"></i>
+                        <span>Supprimer</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Annuler</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

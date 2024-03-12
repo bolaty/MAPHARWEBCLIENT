@@ -1,0 +1,134 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="afficheListNatureFamille()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Outils et Sécurités</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Utilisateur</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Liste</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Droit sur famille Opération</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <h3 style="font-size: 25px; font-family: Maiandra GD"><strong> {{collectionOperateur.OP_NOMPRENOM}}</strong>
+            </h3>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <div ng-include="'Template/default/layouts/form_info_bulle_profil_droit.html'"></div>
+            <!--end::Notice-->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header" style="background-color: #B666D2;">
+                    <!--#F5F500 jaune/-->
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="far fa-user icon-xl text-white"></i>
+                        </span>
+                        <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Droit sur
+                            famille opération</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin: Search Form-->
+                    <form class="mb-15">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label>Nature famille opération*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" id="listFamilleOperation_Nat_Famille"
+                                        name="listFamilleOperation_Nat_Famille"
+                                        ng-model="FormListFamilleOperation.Nature_Famille"
+                                        ng-change="afficheListFamilleOperation(FormListFamilleOperation.Nature_Famille)">
+                                        <option value="">Sélectionner une nature</option>
+                                        <option ng-repeat="laNatureFamille in listeNatureFamille"
+                                            value="{{laNatureFamille.NF_CODENATUREFAMILLEOPERATION}}">
+                                            {{laNatureFamille.NF_LIBELLENATUREFAMILLEOPERATION1}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+                            <thead style="text-align: center;">
+                                <!--background-color:  #8CB9BA; color: White-->
+                                <tr>
+                                    <th>OPERATION</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tfoot ng-if="statutlist">
+                                <tr ng-repeat="laListeFamilleOp in listeFamilleOperation">
+                                    <td> {{laListeFamilleOp.FO_LIBELLEFAMILLEOPERATION}}</td>
+                                    <td>
+                                        <label class="checkbox checkbox-lg checkbox-primary">
+                                            <input type="checkbox" ng-model="selectedMore"
+                                                ng-checked="existedMore(laListeFamilleOp.COCHER)"
+                                                ng-click="toggleSelectedMore(laListeFamilleOp)">
+                                            <span class="form-text text-muted"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+                        ng-click="ValiderFamilleOperation()">
+                        <span>
+                            <i class="far fa-check-circle"></i>
+                            <span>Enregistrer</span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal" ng-click="listAnnuler()">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Annuler</span>
+                        </span>
+                    </button>
+                    <a href="#/OutilsEtSecurites/liste/profils" class="btn btn-icon btn-light-dark mr-2"
+                        data-toggle="tooltip" data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+</div>
+<!--end::Content-->

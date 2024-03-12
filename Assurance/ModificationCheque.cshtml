@@ -1,0 +1,301 @@
+﻿ @{
+        ViewBag.Title = "Opération Ouverture du dossier";
+        Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+    }
+
+
+    <!--begin::Content-->
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-controller="ChequeController" ng-init="initFormModifCheque()">
+        <!--begin::Subheader-->
+        <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: beige">
+            <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-1">
+                    <!--begin::Page Heading-->
+                    <div class="d-flex align-items-baseline flex-wrap mr-5">
+                        <!--begin::Page Title-->
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">ASSURANCE</h5>
+                        <!--end::Page Title-->
+                        <!--begin::Breadcrumb-->
+                        <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                            <li class="breadcrumb-item">
+                                <a href="" class="text-muted">Opération</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="" class="text-muted">Modification</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="" class="text-muted">Chèque</a>
+                            </li>
+
+                        </ul>
+                        <!--end::Breadcrumb-->
+                    </div>
+                    <!--end::Page Heading-->
+                </div>
+                <!--end::Info-->
+            </div>
+        </div>
+        <!--end::Subheader-->
+        <!--begin::Entry-->
+        <div class="d-flex flex-column-fluid">
+            <!--begin::Container-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!--begin::Card-->
+                        <div class="card card-custom gutter-b example example-compact">
+                            <div class="card-header" style="background-color: #718E3E;">
+                                <div class="card-title">
+                                    <span class="card-icon">
+                                        <i class="far fa-credit-card text-white icon-xl"></i>
+                                    </span>
+                                    <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Chèque</h3>
+                                </div>
+                            </div>
+                            <!--begin::Form-->
+                            <form class="form" id="">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10"><strong>INFORMATIONS DU CHEQUE</strong></h3>
+                                                <div class="mb-2">
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-4">
+                                                            <label>Code client*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-key text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" class="form-control" name="addCheque_Code1" placeholder="Entrer un code" ng-model="FormAddCheque.code1" />
+                                                                <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                    <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeSouscripteur" ng-click="afficheListeTiersSouscripteur()">
+                                                                        <i class="fas fa-ellipsis-h text-info"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <label>Dénomination*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-user-alt text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" class="form-control" name="addCheque_Denomination1" placeholder="Entrer une Dénomination" ng-model="FormAddCheque.denomination1" ng-click="afficheListeTiersSouscripteur()" />
+                                                                <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                    <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial">
+                                                                        <i class="fas fa-ellipsis-h text-info"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <label>Reference*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fab fa-orcid text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" class="form-control" name="addCheque_Reference" placeholder="Entrer une reference" ng-model="FormAddCheque.reference" />
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <div class="mb-2">
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-4">
+                                                            <label>Montant*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-money-bill text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" class="form-control" name="addCheque_Montant" placeholder="Entrer un montant" ng-model="FormAddCheque.montant" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <label>Date emission*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-calendar text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="date" class="form-control" name="addCheque_dateEmission" placeholder="Entrer une date" ng-model="FormAddCheque.dateEmission" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <label>Banque du tiré*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-landmark text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select class="form-control" name="addCheque_banqueTiré" ng-model="FormAddCheque.banqueTire">
+                                                                    <option value="">Sélectionner une anque du tiré</option>
+                                                                    <option value=""></option><!--ng-repeat="laBanqueTiré in listeBanqueTiré" laBanqueTiré.TA_CODETYPEAFFAIRES}} laBanqueTiré.TA_LIBLLETYPEAFFAIRES}}-->
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <div class="mb-2">
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-4">
+                                                            <label>Ag./Bq/du tiré*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-male text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select class="form-control" name="option" ng-model="FormAddCheque.agBanqueTire">
+                                                                    <option value="">Sélectionner un Ag./Bq/du tiré</option>
+                                                                    <option>Ag./Bq/du tiré 1</option>
+                                                                    <option>Ag./Bq/du tiré 2</option>
+                                                                    <option>Ag./Bq/du tiré 3</option>
+                                                                    <option>Ag./Bq/du tiré 4</option>
+                                                                    <option>Ag./Bq/du tiré 5</option>
+                                                                </select>
+                                                            </div>
+                                                            <span class="form-text text-muted">Veuillez sélectionner le Ag./Bq/du tiré.</span>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <label>Nom du tireur*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-address-card text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" class="form-control" name="addCheque_nomTireur" placeholder="Entrer un nom" ng-model="FormAddCheque.nomTireur" />
+                                                            </div>
+                                                            <span class="form-text text-muted">Veuillez saisir le nom du tireur.</span>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <label>Nom du tiré*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-address-card text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" class="form-control" name="addCheque_nomTiré" placeholder="Entrer un nom" ng-model="FormAddCheque.nomTire" />
+                                                            </div>
+                                                            <span class="form-text text-muted">Veuillez saisir le nom du tiré.</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <div class="mb-2">
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-3">
+                                                            <label>Date de reception*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-calendar text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="date" class="form-control" name="addCheque_dateReception" placeholder="Entrer une date" ng-model="FormAddCheque.dateReception" />
+                                                            </div>
+                                                            <span class="form-text text-muted">Veuillez saisir la date de reception.</span>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <label>Nom du déposant*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-address-card text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" class="form-control" name="addCheque_nomDeposant" placeholder="Entrer un nom" ng-model="FormAddCheque.nomDeposant" />
+                                                            </div>
+                                                            <span class="form-text text-muted">Veuillez saisir le nom du déposant.</span>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <label>Téléphone du déposant*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-phone-alt text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" class="form-control" name="addCheque_telDeposant" placeholder="Entrer un téléphone" ng-model="FormAddCheque.telDeposant" />
+                                                            </div>
+                                                            <span class="form-text text-muted">Veuillez saisir le téléphone du déposant.</span>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <label>Effet*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-calendar text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" class="form-control" name="addCheque_Effet" placeholder="Entrer un effet" ng-model="FormAddCheque.effet" />
+                                                            </div>
+                                                            <span class="form-text text-muted">Veuillez saisir l'effet.</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold">
+                                        <span>
+                                            <i class="far fa-check-circle"></i>
+                                            <span>Enregistrer</span>
+                                        </span>
+                                    </button>
+                                    <button type="submit" class="btn btn-light-success font-weight-bold" ng-click="">
+                                        <span>
+                                            <i class="fas fa-undo"></i>
+                                            <span>Réinitialiser</span>
+                                        </span>
+                                    </button>
+                                    <a href="ListeCheque" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip" data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
+                            </form>
+                            <!--end::Form-->
+                        </div>
+                        <!--end::Card-->
+                    </div>
+                </div>
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::Entry-->
+    </div>
+    <!--end::Content-->
+

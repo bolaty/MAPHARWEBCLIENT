@@ -1,0 +1,547 @@
+﻿@{
+    ViewBag.Title = "ReglementsFactureGroupeEspece";
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">GESTION</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Trésorerie</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Liste</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Règlements facture groupe espece</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header" style="background-color: #F5F500">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-money-bill-alt text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Règlements facture groupe en espece</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Période*</label>
+                                                        <div class="input-daterange input-group" id="kt_datepicker">
+                                                            <input type="text" class="form-control datatable-input" name="start" placeholder="Du" data-col-index="5" />
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-arrows-alt-h text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control datatable-input" name="end" placeholder="Au" data-col-index="5" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>N° bordereau*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un n°" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le n° du bordereau.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Type client*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un type client</option>
+                                                                <option>type client 1</option>
+                                                                <option>type client 2</option>
+                                                                <option>type client 3</option>
+                                                                <option>type client 4</option>
+                                                                <option>type client 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le type client.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Groupe*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-users text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un groupe</option>
+                                                                <option>Groupe 1</option>
+                                                                <option>Groupe 2</option>
+                                                                <option>Groupe 3</option>
+                                                                <option>Groupe 4</option>
+                                                                <option>Groupe 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le groupe.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>N° client*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un n° client" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le n° client.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Nom client*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-address-card text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un nom client" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le nom client.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>N° commercial*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un n° commercial" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le n° commercial.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Nom commercial*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-address-card text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un nom commercial" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le nom commercial.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Nature article*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-shopify text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner une nature</option>
+                                                                <option>nature article 1</option>
+                                                                <option>nature article 2</option>
+                                                                <option>nature article 3</option>
+                                                                <option>nature article 4</option>
+                                                                <option>nature article 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la nature article.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Type article*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-shopify text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un type</option>
+                                                                <option>type article 1</option>
+                                                                <option>type article 2</option>
+                                                                <option>type article 3</option>
+                                                                <option>type article 4</option>
+                                                                <option>type article 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le type article.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Article*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-shopify text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un article</option>
+                                                                <option>article 1</option>
+                                                                <option>article 2</option>
+                                                                <option>article 3</option>
+                                                                <option>article 4</option>
+                                                                <option>article 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la nature article.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Opérateur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-tie  text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un opérateur</option>
+                                                                <option>opérateur 1</option>
+                                                                <option>opérateur 2</option>
+                                                                <option>opérateur 3</option>
+                                                                <option>opérateur 4</option>
+                                                                <option>opérateur 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner l'opérateur.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <button class="btn btn-primary btn-primary--icon" id="">
+                                                            <span>
+                                                                <i class=""></i>
+                                                                <span>Facture du groupe</span>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>N° bordereau*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un n°" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le n° du bordereau.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label></label>
+                                                        <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                                            <input type="checkbox" value="Due in 1 Year" />
+                                                            <span class="blue"></span><label>Cocher tout</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    &#160;&#160;<button class="btn btn-primary btn-primary--icon" id="kt_search">
+                                                        <span>
+                                                            <i class="la la-search"></i>
+                                                            <span>Rechercher</span>
+                                                        </span>
+                                                    </button>&#160;&#160;
+                                                    <button class="btn btn-outline-warning" id="kt_reset">
+                                                        <span>
+                                                            <i class="la la-close"></i>
+                                                            <span>Annuler</span>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <table class="table table-bordered table-checkable" id="kt_datatable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>N° BORDEREAU</th>
+                                                                    <th>DATE</th>
+                                                                    <th>N° CLIENT </th>
+                                                                    <th>NOM CLIENT</th>
+                                                                    <th>N° COMMERCIAL</th>
+                                                                    <th>NOM COMMERCIAL</th>
+                                                                    <th>MONTANT FACTURE</th>
+                                                                    <th>MONTANT VERSE</th>
+                                                                    <th>ACTION</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                        <div class="example-preview" style="position: relative; right: -17px">
+                                                                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                                                                <div class="btn-group mr-2" role="group" aria-label="...">
+                                                                                    <!--bouton voir plus-->
+                                                                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="modal" data-target="#modalVoirPlus">
+                                                                                        <i class="far fa-eye" data-toggle="tooltip" data-theme="dark" title="Voir plus"></i>
+                                                                                    </button>
+                                                                                    <!--bouton modifier-->
+                                                                                    <button type="button" class="btn btn-outline-secondary btn-icon">
+                                                                                        <i class="far fa-edit" data-toggle="tooltip" data-theme="dark" title="Modifier"></i>
+                                                                                    </button>
+                                                                                    <!--bouton supprimer-->
+                                                                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="pill">
+                                                                                        <i class="fas fa-ban" data-toggle="tooltip" data-theme="dark" title="Supprimer"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-8">
+                                                <div class="col-lg-12">
+                                                    <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold">
+                                                        <span>
+                                                            <i class="far fa-check-circle"></i>
+                                                            <span>Enregistrer</span>
+                                                        </span>
+                                                    </button>
+                                                    <button class="btn btn-outline-warning" id="kt_reset">
+                                                        <span>
+                                                            <i class="la la-close"></i>
+                                                            <span>Annuler</span>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="separator separator-dashed separator-success my-1"></div><br>
+                                            <div class="mb-1">
+                                                <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS GENERALES</strong></h3>
+                                                <div class="form-group row">                                                   
+                                                    <div class="col-lg-3">
+                                                        <label>Nom remettant*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-address-card text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un nom" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le nom du remettant.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Mode de règlement*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-money-bill-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un mode</option>
+                                                                <option> 1</option>
+                                                                <option> 2</option>
+                                                                <option> 3</option>
+                                                                <option> 4</option>
+                                                                <option> 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le mode de règlement.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Nature compte*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-wallet text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner une nature</option>
+                                                                <option> 1</option>
+                                                                <option> 2</option>
+                                                                <option> 3</option>
+                                                                <option> 4</option>
+                                                                <option> 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la nature du compte.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>N° compte*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un n°" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le n° compte.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1">                                                
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Banque*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-landmark text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner une banque</option>
+                                                                <option> 1</option>
+                                                                <option> 2</option>
+                                                                <option> 3</option>
+                                                                <option> 4</option>
+                                                                <option> 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la banque.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Agence*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-landmark text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner une agence</option>
+                                                                <option> 1</option>
+                                                                <option> 2</option>
+                                                                <option> 3</option>
+                                                                <option> 4</option>
+                                                                <option> 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'agence.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>N° compte*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un n°" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le n° compte.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Montant total*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-money-bill-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un montant" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le montant total.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Montant*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-money-bill-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un montant" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le montant.</span>
+                                                    </div>                                                   
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="col-lg-12">
+                                                        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold">
+                                                            <span>
+                                                                <i class="far fa-check-circle"></i>
+                                                                <span>Enregistrer</span>
+                                                            </span>
+                                                        </button>
+                                                        <button class="btn btn-outline-warning" id="kt_reset">
+                                                            <span>
+                                                                <i class="la la-close"></i>
+                                                                <span>Annuler</span>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

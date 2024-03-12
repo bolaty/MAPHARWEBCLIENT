@@ -1,0 +1,164 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Main-->
+<div class="d-flex flex-column flex-root">
+    <!--begin::Login-->
+    <div class="login login-4 login-signin-on d-flex flex-row-fluid" id="kt_login">
+        <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat"
+            style="background-image: url('/Content/assets/media/bg/bg-17.jpg'); height: 1000px">
+            <div class="login-form text-center p-7 position-relative overflow-hidden">
+                <!--begin::Login Header-->
+                <div class="d-flex flex-center mb-15">
+                    <a href="#">
+                        <img src="/Content/assets/media/logos/LOGO_MAPHAR.png" height="100px" width="110px"
+                            class="max-h-90px" alt="" />
+                    </a>
+                </div>
+                <!--end::Login Header-->
+                <!--begin::Login Sign in form-->
+                <div ng-show="formLogin">
+                    <div class="mb-20">
+                        <h3 style="font-size: 30px; font-family: Maiandra GD">Connexion à l'administration</h3>
+                        <div class="text-muted font-weight-bold" style="font-size: 17px; font-family: Maiandra GD">
+                            Entrez les accès de votre compte</div>
+                    </div>
+                    <form class="form" id="kt_login_signin_form">
+                        <div class="form-group mb-5">
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="text"
+                                placeholder="Login" name="username" autocomplete="off" ng-model="Auth.userEmail" />
+                        </div>
+                        <div class="form-group mb-5">
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="password"
+                                placeholder="Mot de passe" name="password" ng-model="Auth.userPassword" />
+                        </div>
+                        <div class="form-group d-flex flex-wrap justify-content-between align-items-center">
+                            <a href="javascript:;" id="kt_login_forgot" class="text-muted text-hover-primary"
+                                style="font-size: 14px; font-family: Maiandra GD" ng-click="selectForm()">Mot de passe oublié ?</a>
+                        </div>
+                        <button class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4" ng-click="login()"
+                            style="font-family: Maiandra GD; font-size: 15px">Se connecter</button>
+
+                    </form>
+                    <div class="mt-10">
+                    </div>
+                </div>
+                <!--end::Login Sign in form-->
+                 <!--begin::Login forgot password form-->
+                 <div ng-show="formforgotcontact">
+                    <div class="mb-20">
+                        <h3 style="font-size: 30px; font-family: Maiandra GD">Mot de passe oublié ?</h3>
+                        <div class="text-muted font-weight-bold">Entrer votre email ou votre contact pour reinitialiser votre mot de
+                            passe</div>
+                    </div>
+                    <form class="form" id="kt_login_forgot_form">
+                        <div class="form-group mb-10">
+                            <input class="form-control form-control-solid h-auto py-4 px-8" type="text"
+                                placeholder="Email ou Contact" name="username" autocomplete="off" ng-model="formForgotPassword.contact"/>
+                        </div>
+                        <div class="form-group d-flex flex-wrap justify-content-between align-items-center">
+                            <a href="javascript:;" id="kt_login_forgot" class="text-muted text-hover-primary"
+                                style="font-size: 14px; font-family: Maiandra GD" ng-click="retourlogin()">retour à la Connexion ?</a>
+                        </div>
+                        <div class="form-group d-flex flex-wrap flex-center mt-10">
+                            <Valider class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4" 
+                            style="font-family: Maiandra GD; font-size: 15px" ng-click="forgotpasswordcont()">Valider</button>
+                          
+                        </div>
+                    </form>
+                </div>
+                 <!--begin::Login forgot password form-->
+                 <div ng-show="formforgotcodeValid">
+                    <div class="mb-20">
+                        <h3 style="font-size: 30px; font-family: Maiandra GD">Code de Validation ?</h3>
+                        <div class="text-muted font-weight-bold">Entrer votre Code de Validation pour reinitialiser votre mot de
+                            passe</div>
+                    </div>
+                    <form class="form" id="kt_login_forgot_form">
+                        <div class="form-group mb-10">
+                            <input class="form-control form-control-solid h-auto py-4 px-8" type="text"
+                                placeholder="Validation..." name="username" autocomplete="off" ng-model="formForgotPassword.code"/>
+                        </div>
+                        <div class="form-group d-flex flex-wrap justify-content-between align-items-center">
+                            <a href="javascript:;" id="kt_login_forgot" class="text-muted text-hover-primary"
+                                style="font-size: 14px; font-family: Maiandra GD" ng-click="retourlogin()">retour à la Connexion ?</a>
+                        </div>
+                        <div class="form-group d-flex flex-wrap flex-center mt-10">
+                            <button class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4" 
+                            style="font-family: Maiandra GD; font-size: 15px" ng-click="CodeDeValidation()">Valider</button>
+                          
+                        </div>
+                    </form>
+                </div>
+                <div ng-show="formforgotcodenewmdp">
+                    <div class="mb-20">
+                        <h3 style="font-size: 30px; font-family: Maiandra GD">Chargement du Mot de passe</h3>
+                        <div class="text-muted font-weight-bold" style="font-size: 17px; font-family: Maiandra GD">
+                            Entrez les nouveaux accès de votre compte</div>
+                    </div>
+                    <form class="form" id="kt_login_signin_form">
+                        <div class="form-group mb-5">
+                            <h3 style="font-size: 15px; font-family: Maiandra GD">Nouveau Mot de passe</h3>
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="password"
+                            placeholder="Password" name="password" ng-model="formForgotPassword.MotDePasse"/>
+                        </div>
+                        <div class="form-group mb-5">
+                            <h3 style="font-size: 15px; font-family: Maiandra GD">Confimation Mot de passe</h3>
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="password"
+                                placeholder="Confirm Password" name="cpassword" ng-model="formForgotPassword.MotDePasseConfirme"/>
+                        </div>
+                        <div class="form-group d-flex flex-wrap justify-content-between align-items-center">
+                            <a href="javascript:;" id="kt_login_forgot" class="text-muted text-hover-primary"
+                                style="font-size: 14px; font-family: Maiandra GD" ng-click="retourlogin()">retour à la Connexion ?</a>
+                        </div>
+                        <button class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4" 
+                            style="font-family: Maiandra GD; font-size: 15px" ng-click="ReplacePassword()">Valider</button>
+
+                    </form>
+                    <div class="mt-10">
+                    </div>
+                </div>
+                <!--end::Login forgot password form-->
+                <!--begin::Login Sign up form-->
+                <div ng-show="formupdatemdp">
+                    <div class="mb-20">
+                        <h3>Changement de mot de passe</h3>
+                        <div class="text-muted font-weight-bold">Changement de mot de passe</div>
+                    </div>
+                    <form class="form" id="kt_login_signup_form">
+                        <div class="form-group mb-5">
+                            <h3 style="font-size: 15px; font-family: Maiandra GD">Login</h3>
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="text"
+                            placeholder="Login" name="username" ng-model="changePassword.Login"/>
+                        </div>
+                       <!-- <div class="form-group mb-5">
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="text"
+                                placeholder="Email" name="email" autocomplete="off" />
+                        </div>-->
+                        <div class="form-group mb-5">
+                            <h3 style="font-size: 15px; font-family: Maiandra GD">Nouveau Mot de passe</h3>
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="password"
+                                placeholder="Password" name="password" ng-model="changePassword.MotDePasse"/>
+                        </div>
+                        <div class="form-group mb-5">
+                            <h3 style="font-size: 15px; font-family: Maiandra GD">Confimation Mot de passe</h3>
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="password"
+                                placeholder="Confirm Password" name="cpassword" ng-model="changePassword.MotDePasseConfirme"/>
+                        </div>
+                        <div class="form-group d-flex flex-wrap justify-content-between align-items-center">
+                            <a href="javascript:;" id="kt_login_forgot" class="text-muted text-hover-primary"
+                                style="font-size: 14px; font-family: Maiandra GD" ng-click="retourlogin()">retour à la Connexion ?</a>
+                        </div>
+                        <button class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4" 
+                        style="font-family: Maiandra GD; font-size: 15px" ng-click="UpdatePassword()">Valider</button>
+                    </form>
+                </div>
+                <!--end::Login Sign up form-->
+               
+            </div>
+        </div>
+    </div>
+    <!--end::Login-->
+</div>
+<!--end::Main-->

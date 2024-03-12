@@ -1,0 +1,166 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormAddFermetureJrneeTravail()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">OUTILS ET SECURITES</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Fermeture Jourrnée Travail</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Enregistrement</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <div ng-include="'Template/default/layouts/form_info_bulle_fermeture_journee_travail.html'"></div>
+            <!--end::Notice-->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header" style="background-color: #B666D2;">
+                    <!--#F5F500 jaune/-->
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="far fa-user icon-xl text-white"></i>
+                        </span>
+                        <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Fermeture
+                            Jourrnée Travail</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin:   Search Form-->
+                    <form class="mb-15">
+                        <!--  <div class="col-lg-6">
+                            <label>Date journée de travail*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-calendar text-info"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" id="idDate" placeholder="Entrer une date" ng-model="FormAddFermetureJrneeTravail.Date" />
+                            </div>
+                            <span class="form-text text-muted">Veuillez saisir la date.</span>
+                        </div> -->
+                        <br />
+                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+                            <thead style="text-align: center;">
+                                <!--background-color: #8CB9BA; color: White-->
+                                <tr>
+                                    <th>DATE JOURNEE DE TRAVAIL</th>
+                                    <th>STATUT</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tfoot ng-show="listeFermetureJrneeTravail[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                                <tr ng-repeat="laListeFermetureJrneeTravail in listeFermetureJrneeTravail">
+                                    <td>{{laListeFermetureJrneeTravail.JT_DATEJOURNEETRAVAIL}}</td>
+                                    <td>{{laListeFermetureJrneeTravail.JT_STATUT}}</td>
+                                    <!--ligne des actions-->
+                                    <td>
+                                        <div class="example-preview" style="position: relative; right: -19px">
+                                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                                <div class="btn-group mr-2" role="group" aria-label="...">
+                                                    <!-- esty bouton autres options-->
+                                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                                        data-toggle="modal" data-target="#modalFermerJournee"
+                                                        ng-click="FermetureJrneeTravail($index)">
+                                                        <i class="fas fa-ban" data-toggle="tooltip" data-theme="dark"
+                                                            title="fermeture journée de travail"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+
+
+
+
+                    <!--  <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="ValiderFermetureJrneeTravail(FormAddFermetureJrneeTravail.Date)">
+                            <span>
+                                <i class="far fa-check-circle"></i>
+                                <span>Enregistrer</span>
+                            </span>
+                        </button>
+                        <button type="reset" class="btn btn-light-success font-weight-bold" ng-click="resetFormAddFermetureJrneeTravail()">
+                            <span>
+                                <i class="fas fa-undo"></i>
+                                <span>Réinitialiser</span>
+                            </span>
+                        </button> -->
+                    <!--<a href="#/operateur/liste/utilisateur" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip" data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>-->
+                    <!-- </div> -->
+                </div>
+            </div>
+            <!--end:-->
+        </div>
+        <!--end::Container-->
+    </div>
+</div>
+<!--end::Content-->
+
+<!--begin modal pour fermer journee travail-->
+<div class="modal fade" id="modalFermerJournee" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalFermerJournee" aria-hidden="true">
+    <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalFermerJournee"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ban text-white"></i>
+                    Journée de travail
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align: center; font-size: 17px;">
+                Etes-vous sûr de vouloir fermer cette journée?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-shadow font-weight-bold" id="pourSupprimer"
+                    ng-click="ValiderFermetureJrneeTravail(FormAddFermetureJrneeTravail.Date)" data-dismiss="modal">
+                    <span>
+                        <i class="fas fa-ban"></i>
+                        <span>Fermer la journée de travail</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Annuler</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

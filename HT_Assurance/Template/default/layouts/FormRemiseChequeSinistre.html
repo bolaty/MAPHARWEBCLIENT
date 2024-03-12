@@ -1,0 +1,335 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin ng-init="contrainteFormAddCheque()" loader-->
+<form class="form" ng-init="initFomrRemiseCheque()">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS CHEQUE</strong>
+                    </h3>
+                    <div class="mb-1">
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>Reference*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-barcode text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idReference" type="text" class="form-control" name="url"
+                                        placeholder="Entrer une reference" ng-model="FormAddRemiseCheque.Reference"
+                                        maxlength="8" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Montant*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-money-bill text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idMontant" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un montant" ng-model="FormAddRemiseCheque.Montant"
+                                        ng-pattern="/^([1-9]\d*)$/" maxlength="12" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Date émission*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar-day text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDateEmission" type="text" class="form-control" name="url"
+                                        placeholder="Entrer une date" ng-model="FormAddRemiseCheque.DateEmission"
+                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                        maxlength="10" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Banque du tiré*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-landmark text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idBanqueTire" class="form-control" name="option"
+                                        ng-model="FormAddRemiseCheque.BanqueTire"
+                                        ng-change="afficheListeBanqueAgence(FormAddRemiseCheque.BanqueTire)">
+                                        <option value="">Sélectionner une banque</option>
+                                        <option ng-repeat="laBanqueDuTire in listeBanqueTire"
+                                            value="{{laBanqueDuTire.BQ_CODEBANQUE}}">
+                                            {{laBanqueDuTire.BQ_SIGLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Ag./Bq/du tiré*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-landmark text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idAgBanque" class="form-control" name="option"
+                                        ng-model="FormAddRemiseCheque.AgBanque">
+                                        <option value="">Sélectionner une agence</option>
+                                        <option ng-repeat="lAgenceBanqueTire in listeBanqueAgence"
+                                            value="{{lAgenceBanqueTire.AB_CODEAGENCEBANCAIRE}}">
+                                            {{lAgenceBanqueTire.AB_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Nom du tireur*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-id-badge text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNomTireur" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un nom" ng-model="FormAddRemiseCheque.NomTireur"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Nom du tiré*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-id-card-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNomTire" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un nom" ng-model="FormAddRemiseCheque.NomTire"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Date reception*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDateReception" type="text" class="form-control" name="url"
+                                        placeholder="Entrer une date" ng-model="FormAddRemiseCheque.DateReception"
+                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                        maxlength="10" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Nom déposant*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-id-card text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNomDeposant" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un nom" ng-model="FormAddRemiseCheque.NomDeposant"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Téléphone déposant*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-phone-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idTelDeposant" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un téléphone" ng-model="FormAddRemiseCheque.TelDeposant"
+                                        ng-pattern="/^(0|[0-9]\d*)$/" maxlength="15" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>Effet*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar-day text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idEffet" type="text" class="form-control" name="url"
+                                        placeholder="Entrer une date" ng-model="FormAddRemiseCheque.Effet"
+                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                        maxlength="10" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="separator separator-dashed separator-success my-1"></div><br />
+                    <div class="mb-3">
+                        <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>PHOTO CHEQUE</strong></h3>
+                        <div class="mb-1">
+                            <div class="form-group row">
+
+                                <!-- photo -->
+                                <div class="content d-flex flex-column flex-column-fluid" id="kt_content"
+                                    ng-init="initFormAddCheque()">
+                                    <!--begin::Entry-->
+                                    <div class="d-flex flex-column-fluid">
+                                        <!--begin::Container-->
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <!--begin::Card-->
+                                                    <!--begin::Subheader-->
+
+                                                    <!--end::Subheader-->
+                                                    <!--begin::Entry-->
+                                                    <!--begin::Container-->
+                                                    <!--<input id="browse" type="file" ng-click="previewFiles()" multiple>-->
+
+                                                    <div class="modal-body"
+                                                        style="text-align: center; font-size: 17px; background-color: beige">
+                                                        <div class="col-12 text-right">
+                                                        </div>
+                                                        <div class="form-group col-lg-12">
+                                                            <input type="file" id="upload" multiple />
+                                                            <button
+                                                                class="btn btn-success btn-shadow-hover font-weight-bold"
+                                                                ng-click="process()">
+                                                                <span>
+                                                                    <i class="fas fa-long-arrow-alt-down"></i>
+                                                                    <span>Inserer</span>
+                                                                </span>
+                                                            </button>
+                                                            <!--<div  id="preview" width="300" height="300"></div>-->
+                                                            <table>
+                                                                <tbody>
+                                                                    <tr id="boucleimg"></tr>
+                                                                </tbody>
+                                                                <tfoot>
+                                                                    <tr id="boucleimgsuppr"></tr>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Card-->
+                                                    <!--end::Card-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Container-->
+                                    </div>
+                                    <!--end::Entry-->
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <label>Libellé photo*</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-image text-info"></i>
+                                            </span>
+                                        </div>
+                                        <input id="idLibellePhoto" type="text" class="form-control" name="url"
+                                            placeholder="Entrer un libellé"
+                                            ng-model="FormAddRemiseCheque.LibellePhoto" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="card-footer">
+        <!-- ng-click="validateFormAddRemiseCheque()" -->
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+            ng-click="validerFormAddRemiseCheque()">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <!-- ng-click="resetFormAddRemiseCheque()" -->
+        <button ng-show="etatForm !== '2'" type="submit" class="btn btn-light-success font-weight-bold">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <!-- bouton de retour -->
+        <a ng-click="boutonRetour()" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip" data-theme="dark"
+            title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+
+<!--begin modal pour choix du code souscripteur-->
+<div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeSouscripteur"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - patients
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                            <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                            <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixSouscrip(lesSouscripteurs.TI_NUMTIERS, lesSouscripteurs.TI_DENOMINATION, lesSouscripteurs.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

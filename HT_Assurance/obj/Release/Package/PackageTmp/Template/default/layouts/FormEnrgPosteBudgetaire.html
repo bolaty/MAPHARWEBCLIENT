@@ -1,0 +1,146 @@
+﻿<form class="form">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <div class="mb-3">
+                        <div class="mb-2">
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label>Code*</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-key text-info"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control" name="Code" id="Code" ng-disabled="verou"
+                                            placeholder="Entrer un code" ng-model="FormAddPosteBudget.Code"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Libellé*</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-quote-left text-info"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control" name="Libelle" id="Libelle"
+                                            placeholder="Entrer le libellé" ng-model="FormAddPosteBudget.Libelle"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label>Nature poste budgetaire*</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-hands-helping text-info"></i>
+                                            </span>
+                                        </div>
+                                       <!-- <select class="form-control" name="Naturepostebudgetaire" id="Naturepostebudgetaire" ng-model="FormAddPosteBudget.Naturepostebudgetaire">
+                                            <option value="">Selectionner la nature du poste budgetaire  </option>
+                                            <option ng-repeat="laListeNaturePosteBudgetaire in ListeNaturePosteBudgetaire" value="{{laListeNaturePosteBudgetaire.BN_CODENATUREPOSTEBUDGETAIRE}}">{{laListeNaturePosteBudgetaire.BN_LIBELLE}}</option>
+                                        </select>-->
+                                        <select class="form-control" name="Naturepostebudgetaire" id="Naturepostebudgetaire"
+                                        ng-model="FormAddPosteBudget.Naturepostebudgetaire">
+                                        <option value="">Selectionner la nature du poste budgetaire </option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-repeat="laListeNaturePosteBudgetaire in ListeNaturePosteBudgetaire"
+                                            value="{{laListeNaturePosteBudgetaire.BN_CODENATUREPOSTEBUDGETAIRE}}">
+                                            {{laListeNaturePosteBudgetaire.BN_LIBELLE}}</option>
+                                        <option ng-show="etatForm  == '2'"
+                                            ng-repeat="laListeNaturePosteBudgetaire in ListeNaturePosteBudgetaire"
+                                            ng-selected="FormAddPosteBudget.Naturepostebudgetaire == laListeNaturePosteBudgetaire.BN_CODENATUREPOSTEBUDGETAIRE"
+                                            value="{{laListeNaturePosteBudgetaire.BN_CODENATUREPOSTEBUDGETAIRE}}">
+                                            {{laListeNaturePosteBudgetaire.BN_LIBELLE}}</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Type budget*</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fab fa-tumblr text-info"></i>
+                                            </span>
+                                        </div>
+                                       <!--<select class="form-control" name="Typebudget" id="Typebudget" ng-model="FormAddPosteBudget.Typebudget">
+                                            <option value="">Selectionner le type budget</option>
+                                            <option ng-repeat="laListetypebudget in Listetypebudget" value="{{laListetypebudget.BT_CODETYPEBUDGET}}">{{laListetypebudget.BT_LIBELLE}}</option>
+                                           
+                                        </select>-->
+                                        <select class="form-control" name="Typebudget" id="Typebudget"
+                                        ng-model="FormAddPosteBudget.Typebudget">
+                                        <option value="">Selectionner le type budget</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-repeat="laListetypebudget in Listetypebudget"
+                                            value="{{laListetypebudget.BT_CODETYPEBUDGET}}">{{laListetypebudget.BT_LIBELLE}}</option>
+                                        <option ng-show="etatForm  == '2'"
+                                            ng-repeat="laListetypebudget in Listetypebudget"
+                                            ng-selected="FormAddPosteBudget.Typebudget == laListetypebudget.BT_CODETYPEBUDGET"
+                                            value="{{laListetypebudget.BT_CODETYPEBUDGET}}">
+                                            {{laListetypebudget.BT_LIBELLE}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12" style="margin-top:20px">
+                                    <label>Détail type de budget*</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="far fa-question-circle text-info"></i>
+                                            </span>
+                                        </div>
+                                       <!--<select class="form-control" name="option" name="Detailtypedebudget" id="Detailtypedebudget" ng-model="FormAddPosteBudget.Detailtypedebudget">
+                                            <option>Selectionner le détail du type budget</option>
+                                            <option ng-repeat="laListedetailtypebudget in Listedetailtypebudget" value="{{laListedetailtypebudget.BD_CODETYPEBUDGETDETAIL}}">{{laListedetailtypebudget.BD_LIBELLE}}</option>
+                                        </select>-->
+                                        <select class="form-control" name="Detailtypedebudget" id="Detailtypedebudget"
+                                        ng-model="FormAddPosteBudget.Detailtypedebudget">
+                                        <option value="">Selectionner le détail du type budget</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-repeat="laListedetailtypebudget in Listedetailtypebudget"
+                                            value="{{laListedetailtypebudget.BD_CODETYPEBUDGETDETAIL}}">{{laListedetailtypebudget.BD_LIBELLE}}</option>
+                                        <option ng-show="etatForm  == '2'"
+                                            ng-repeat="laListedetailtypebudget in Listedetailtypebudget"
+                                            ng-selected="FormAddPosteBudget.Detailtypedebudget == laListedetailtypebudget.BD_CODETYPEBUDGETDETAIL"
+                                            value="{{laListedetailtypebudget.BD_CODETYPEBUDGETDETAIL}}">
+                                            {{laListedetailtypebudget.BD_LIBELLE}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="col-lg-12">
+            <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="ajoutFormAddtypebudjet()">
+                <span>
+                    <i class="far fa-check-circle"></i>
+                    <span>Enregistrer</span>
+                </span>
+            </button>
+            <button ng-show="etatForm !== '2'" type="submit" class="btn btn-light-success font-weight-bold" ng-click="resetFormAddtypebudjet()">
+                <span>
+                    <i class="fas fa-undo"></i>
+                    <span>Réinitialiser</span>
+                </span>
+            </button>
+            <a href="#/parametre2/parametresBudget/posteBudgetaire/liste"
+                class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip" data-theme="dark"
+                title="Retour" style="position: absolute; right: 27px">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+    </div>
+</form>
+<!--end::Form-->

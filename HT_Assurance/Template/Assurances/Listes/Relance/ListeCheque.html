@@ -1,0 +1,595 @@
+﻿<!--début loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormListCheque()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">ASSURANCE</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Opération</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Liste</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Chèque</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <h3 style="font-size: 25px; font-family: Maiandra GD"><strong>N° {{collectionContartOp.TI_NUMTIERS}} |
+                    {{collectionContartOp.TI_DENOMINATION}}</strong></h3>
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <div ng-include="'Template/default/layouts/form_info_bulle_cheque.html'"></div>
+            <!--end::Notice-->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header" style="background-color: #718E3E;">
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="far fa-credit-card text-white icon-xl"></i>
+                        </span>
+                        <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Chèque</h3>
+                    </div>
+                    <div class="card-toolbar">
+                        <!--begin::Dropdown-->
+                        <!-- <div class="dropdown dropdown-inline mr-2">
+                            <button type="button" class="btn btn-light-primary font-weight-bolder dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="svg-icon svg-icon-md">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <path
+                                                d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z"
+                                                fill="#000000" opacity="0.3" />
+                                            <path
+                                                d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z"
+                                                fill="#000000" />
+                                        </g>
+                                    </svg>
+                                </span>Exporter
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                <ul class="navi flex-column navi-hover py-2">
+                                    <li
+                                        class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">
+                                        CHOISIR UNE OPTION:</li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-print"></i>
+                                            </span>
+                                            <span class="navi-text">Imprimer</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-copy"></i>
+                                            </span>
+                                            <span class="navi-text">Copier</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-excel-o"></i>
+                                            </span>
+                                            <span class="navi-text">Excel</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-text-o"></i>
+                                            </span>
+                                            <span class="navi-text">CSV</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-pdf-o"></i>
+                                            </span>
+                                            <span class="navi-text">PDF</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> -->
+                        <!--end::Dropdown-->
+                        <!--begin::Button-->
+                        <a ng-href="#/assurances/operation/enregistrement/cheque"
+                            class="btn btn-primary font-weight-bolder" title="Enregistrement Cheque">
+                            <span class="svg-icon svg-icon-md">
+                                <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <circle fill="#000000" cx="9" cy="15" r="6" />
+                                        <path
+                                            d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z"
+                                            fill="#000000" opacity="0.3" />
+                                    </g>
+                                </svg>
+                                <!--end::Svg Icon-->
+                            </span>Nouveau
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form class="mb-15" id="formListCheque" novalidate name="ListCheque">
+                        <div class="row mb-6">
+                            <div class="col-lg-4 mb-lg-0 mb-6">
+                                <label>Période*</label>
+                                <div class="input-daterange input-group" id="">
+                                    <input type="text" class="form-control datatable-input"
+                                        ng-class="{'is-invalid':ListCheque.listCheque_PeriodeDu.$invalid}"
+                                        ng-pattern="/^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                        required name="listCheque_PeriodeDu" placeholder="Du"
+                                        ng-model="FormListCheque.periodeDu">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-arrows-alt-h text-info"></i>
+                                        </span>
+                                    </div><input type="text" class="form-control"
+                                        ng-class="{'is-invalid':ListCheque.listCheque_PeriodeAu.$invalid}"
+                                        ng-pattern="/^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                        required name="listCheque_PeriodeAu" placeholder="Au"
+                                        ng-model="FormListCheque.periodeAu" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-lg-0 mb-6">
+                                <label>Numéro de Cheque *</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fab fa-orcid text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control datatable-input"
+                                        ng-class="{'is-invalid':ListCheque.listCheque_NumCheque.$invalid}"
+                                        ng-pattern="/^[0-9]/" name="listCheque_NumCheque" placeholder="Entrer un numéro"
+                                        ng-model="FormListCheque.numCheque">
+                                    <div class="invalid-feedback"
+                                        ng-show="ListCheque.$dirty && ListCheque.listCheque_NumCheque.$invalid">
+                                        Veuillez saisir un numéro correct.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Banque du tiré*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-landmark text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" name="listCheque_Banque"
+                                        ng-model="FormListCheque.BanqueTire" ng-change="afficheListeAgBanque()">
+                                        <option value="">Sélectionner une banque du tiré</option>
+                                        <option ng-repeat="laBanqueTire in listeBanqueTire"
+                                            value="{{laBanqueTire.BQ_CODEBANQUE}}">{{laBanqueTire.BQ_SIGLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Ag./Bq/du tiré*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-landmark text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" name="listCheque_AgBanque"
+                                        ng-model="FormListCheque.AgBanqueTire">
+                                        <option value="">Sélectionner un Ag./Bq/du tiré</option>
+                                        <option ng-repeat="laBanqueAgence in listeBanqueAgence"
+                                            value="{{laBanqueAgence.AB_CODEAGENCEBANCAIRE}}">
+                                            {{laBanqueAgence.AB_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-lg-0 mb-6">
+                                <label>Montant 1*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-money-bill-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" name="listCheque_Montant1" class="form-control datatable-input"
+                                        ng-class="{'is-invalid':ListCheque.listCheque_Montant1.$invalid}"
+                                        ng-pattern="/^[0-9]{1,15}$/" placeholder="Entrer un n°"
+                                        ng-model="FormListCheque.montant1" data-col-index="1" />
+                                    <div class="invalid-feedback"
+                                        ng-show="ListCheque.$dirty && ListCheque.listCheque_Montant1.$invalid">
+                                        Veuillez saisir un numéro correct.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-lg-0 mb-6">
+                                <label>Montant 2*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-money-bill-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" name="listCheque_Montant2" class="form-control datatable-input"
+                                        ng-class="{'is-invalid':ListCheque.listCheque_Montant2.$invalid}"
+                                        ng-pattern="/^[0-9]{1,15}$/" placeholder="Entrer un n°"
+                                        ng-model="FormListCheque.montant2" data-col-index="1" />
+                                    <div class="invalid-feedback"
+                                        ng-show="ListCheque.$dirty && ListCheque.listCheque_Montant2.$invalid">
+                                        Veuillez saisir un numéro correct.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-8">
+                            <div class="col-lg-12">
+                                <button class="btn btn-primary btn-primary--icon" id="kt_search"
+                                    ng-click="afficheListeCheque(ListCheque.$valid, FormListCheque.periodeDu, FormListCheque.periodeAu, FormListCheque.numCheque, FormListCheque.BanqueTire, FormListCheque.AgBanqueTire, FormListCheque.montant1, FormListCheque.montant2)">
+                                    <span>
+                                        <i class="la la-search"></i>
+                                        <span>Rechercher</span>
+                                    </span>
+                                </button>&#160;&#160;
+                                <button class="btn btn-outline-warning" id="kt_reset" ng-click="listeChequeAnnuler()">
+                                    <span>
+                                        <i class="la la-close"></i>
+                                        <span>Annuler</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <br />
+                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+                            <thead style="text-align: center;">
+                                <!--background-color: #8CB9BA; color: White-->
+                                <tr>
+                                    <th>REFERENCE CHEQUE</th>
+                                    <th>NOM DEPOSANT</th>
+                                    <th>TELEPHONE DEPOSANT</th>
+                                    <th>BANQUE</th>
+                                    <th>MONTANT</th>
+                                    <th>DATE VALIDATION EFFECTIVE</th>
+                                    <th>DATE D' EFFET</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tfoot ng-show="listeCheque[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                                <tr ng-repeat="laListeCheque in listeCheque">
+                                    <td>{{laListeCheque.CH_REFCHEQUE}}</td>
+                                    <td>{{laListeCheque.CH_NOMDUDEPOSANT}}</td>
+                                    <td>{{laListeCheque.CH_TELEPHONEDEPOSANT}}</td>
+                                    <td>{{laListeCheque.BQ_SIGLE}}</td>
+                                    <td>{{laListeCheque.CH_VALEURCHEQUE}}</td>
+                                    <td>{{laListeCheque.CH_DATEVALIDATIONCHEQUE}}</td>
+                                    <td>{{laListeCheque.CH_DATEEFFET}}</td>
+                                    <!--ligne des actions-->
+                                    <td>
+                                        <div class="example-preview" style="position: relative; left: -0px">
+                                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                                <div class="btn-group mr-2" role="group" aria-label="...">
+                                                    <!--bouton voir plus-->
+                                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                                        data-toggle="modal" data-target="#modalVoirPlus"
+                                                        ng-click="voirPlusCheque(laListeCheque)">
+                                                        <i class="far fa-eye" data-toggle="tooltip" data-theme="dark"
+                                                            title="Voir plus"></i>
+                                                    </button>
+                                                    <!--bouton modifier-->
+                                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                                        ng-click="voirModifCheque(laListeCheque)">
+                                                        <i class="far fa-edit" data-toggle="tooltip" data-theme="dark"
+                                                            title="Modifier"></i>
+                                                    </button>
+                                                    <!--bouton validation-->
+                                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                                        data-toggle="modal" data-target="#modalValidation"
+                                                        ng-click="validateChq(laListeCheque.CA_CODECONTRAT, laListeCheque.AG_CODEAGENCE, laListeCheque.CH_DATESAISIECHEQUE, laListeCheque.CH_REFCHEQUE, laListeCheque.CH_IDEXCHEQUE, laListeCheque.CH_DATEVALIDATIONCHEQUE)">
+                                                        <i class="fas fa-thumbs-up" data-toggle="tooltip"
+                                                            data-theme="dark" title="validation"></i>
+                                                    </button>
+                                                    <!--bouton  supprimer-->
+                                                    <button id="swalSupprimer" type="button"
+                                                        class="btn btn-outline-secondary btn-icon" data-toggle="modal"
+                                                        data-target="#modalSupprimer"
+                                                        ng-click="supprRecupererIdCheque(laListeCheque.AG_CODEAGENCE, laListeCheque.CH_DATESAISIECHEQUE, laListeCheque.CH_IDEXCHEQUE, laListeCheque.EN_CODEENTREPOT,  laListeCheque.CH_DATEVALIDATIONCHEQUE)">
+                                                        <i class="fas fa-ban" data-toggle="tooltip" data-theme="dark"
+                                                            title="Supprimer"></i>
+                                                    </button>
+                                                    <!--bouton  document-->
+                                                    <button id="swalDocument" type="button"
+                                                        class="btn btn-outline-secondary btn-icon"
+                                                        ng-click="optionDocument(laListeCheque)">
+                                                        <i class="fas fa-camera" data-toggle="modal"
+                                                            data-target="#modalChoixDocument" data-theme="dark"
+                                                            title="Photo du chèque"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+                <div class="card-footer" style="height: 90px;">
+                    <a ng-href="" ng-click="clicRetourListeOp()" class="btn btn-icon btn-light-dark mr-2" title="Retour"
+                        style="position: absolute; right: 27px">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+    <div class="modal fade" id="modalVoirPlus" tabindex="-1" role="dialog" aria-labelledby="modalVoirPlus"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalVoirPlus"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="far fa-eye text-white"></i>
+                        Plus d'informations
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="height: 300px;">
+                    <div class="row col-lg-12">
+                        <div class="col-lg-6">
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">REFERENCE CHEQUE</strong> :
+                            {{recuperer.CH_REFCHEQUE}} <br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">MONTANT</strong> :
+                            {{recuperer.CH_VALEURCHEQUE}} <br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">DATE EMISSION</strong> :
+                            {{recuperer.CH_DATEEMISSIONCHEQUE}}<br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">BANQUE DU TIRE</strong> :
+                            {{recuperer.BQ_RAISONSOCIAL}} <br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">AGENCE BANQUE DU TIRE</strong>
+                            {{recuperer.AB_LIBELLE}}<br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">NOM DU TIREUR</strong> :
+                            {{recuperer.CH_NOMTIREUR}}
+                        </div>
+                        <div class="col-lg-6">
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">NOM DU TIRE</strong> :
+                            {{recuperer.CH_NOMTIRE}} <br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">DATE DE RECEPTION</strong> :
+                            {{recuperer.CH_DATERECEPTIONCHEQUE}}<br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">NOM DEPOSANT</strong> :
+                            {{recuperer.CH_NOMDUDEPOSANT}} <br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">TELEPHONE DEPOSANT</strong>
+                            :{{recuperer.CH_TELEPHONEDEPOSANT}} <br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">DATE D'EFFET</strong> :
+                            {{recuperer.CH_DATEEFFET}}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+    <!--begin modal pour suppression-->
+    <div class="modal fade" id="modalSupprimer" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalSupprimer" aria-hidden="true">
+        <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalSupprimer"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ban text-white"></i>
+                        Contrat Chèque
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center; font-size: 17px;">
+                    Etes-vous sûr de vouloir supprimer ce chèque ?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger btn-shadow font-weight-bold" id="kt_reset"
+                        ng-click="supprimerCheque(idCheque, idCheque1, idCheque2, idCheque3, idElement2)"
+                        data-dismiss="modal">
+                        <span>
+                            <i class="fas fa-ban"></i>
+                            <span>Supprimer</span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Annuler</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+    <div class="modal fade" id="modalValidation" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalValidation" aria-hidden="true">
+        <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalValidation"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-thumbs-up text-white"></i>
+                        Contrat Chèque
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center; font-size: 17px;">
+                    Confirmez-vous la comptabilisation de ce chèque ?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-dark btn-shadow font-weight-bold" id="pourValider"
+                        ng-click="validationCheque(idElement, idElement0, idElement1, id01, id02, idElement2)"
+                        data-dismiss="modal">
+                        <span>
+                            <i class="fas fa-thumbs-up"></i>
+                            <span>Valider</span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Annuler</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Entry-->
+    <!--begin modal choix image-->
+    <div class="modal fade" id="modalChoixDocument" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalChoixDocument" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalChoixDocument"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-camera text-white"></i>
+                        Ajout de photo
+                    </h5>
+                </div>
+                <div class="modal-body"
+                    style="text-align: center; font-size: 17px; background-color: rgb(223, 248, 245)">
+                    <!--begin::Container-->
+                    <!-- <input type="file" accept="image/*" id="upload" multiple /> -->
+
+                    <input id="upload" type="file" class="form-control" name="photoCheque_ChampImage"
+                        placeholder="Choisir une image" multiple accept="image/*" /><br>
+
+                    <button class="btn btn-hover-light-info font-weight-bold" id="pourChargerImage"
+                        ng-click="chargerLeFichier()">
+                        <span>
+                            <i class="fas fa-arrow-down"></i>
+                            <span>Charger le fichier</span>
+                        </span>
+                    </button>
+                    <table>
+                        <tbody>
+                            <tr id="boucleimg"></tr>
+                        </tbody>
+                        <tfoot>
+                            <tr id="boucleimgsuppr"></tr>
+                        </tfoot>
+                    </table>
+                    <!--end::Card-->
+                </div>
+                <div class="modal-footer" style="height:60px">
+                    <button class="btn btn-success btn-shadow-hover font-weight-bold" data-dismiss='modal'
+                        id="pourChoixDoc" ng-click=" enregistrerPhotoCheque()" style="position:absolute; left:15px">
+                        <span>
+                            <i class="far fa-check-circle"></i>
+                            <span>Enregistrer</span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal"
+                        style="position:absolute; left:147px">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Annuler</span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-light-primary" data-dismiss="modal"
+                        style="position:absolute; left:950px" ng-click="docCheque()">
+                        <span>
+                            <i class="far fa-file-image"></i>
+                            <span>Voir la photo</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+
+    <!--begin modal suppression image-->
+    <div class="modal fade" id="modalsurpp" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalsurpp" aria-hidden="true">
+        <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalsurpp"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ban text-white"></i>
+                        photo cheque
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center; font-size: 17px;">
+                    Etes-vous sûr de vouloir supprimer cette photo ?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger btn-shadow font-weight-bold" id="kt_reset" ng-click="suprimg()"
+                        data-dismiss="modal">
+                        <span>
+                            <i class="fas fa-ban"></i>
+                            <span>Supprimer</span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Annuler</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+
+</div>
+<!--end::Content-->

@@ -1,0 +1,697 @@
+﻿<!--début loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initEditionAssurance()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">ASSURANCE</h5>&nbsp;&nbsp;
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Assurance</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Edition</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid" >
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #718E3E;">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="far fa-bookmark text-white icon-xl"></i>
+                                </span>
+                                <h3 class="card-title"
+                                    style="font-size: 30px; color: white; font-family: 'Maiandra GD'">Edition assurance
+                                </h3>
+                            </div>
+                            <div class="card-toolbar">
+                                <button ng-if="veroubtnapercu" type="button" class="btn btn-light-primary font-weight-bolder"
+                                    aria-haspopup="true" aria-expanded="false" ng-click="apercuEtat()">
+                                    Aperçu <i class="far fa-eye text-info"></i>
+                                </button>&#160;&#160;
+                                <button ng-if="!veroubtnapercu" type="button" class="btn btn-light-primary font-weight-bolder"
+                                aria-haspopup="true" aria-expanded="false"  data-toggle="modal" data-target="#modalCodeSouscripteur" ng-click="afficheClientEtat()">
+                                Client <i class="fas fa-user-alt text-info"></i>
+                                </button>&#160;&#160;
+                                <!-- <button class="btn btn-outline-white" id="kt_reset">
+                                    <span>
+                                        <i class="la la-close"></i>
+                                        <span>Annuler</span>
+                                    </span>
+                                </button> -->
+                            </div>
+                           
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form" > 
+                            <div class="card-body">
+                                <h3 class="card-title" ng-if="!statutPage"
+                                style="font-size: 30px; color: rgb(24, 22, 22); font-family: 'Maiandra GD';text-align: center;">{{FormAddEditionAssurance.infoChargement}}
+                               </h3>
+                                <div class="row" ng-if="statutPage">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <!-- colonne de gauche -->
+                                                     <!-- colonne de gauche -->
+                                                    <!-- colonne de gauche -->
+                                                    <div class="col-lg-6" ng-if="verouGrille">
+                                                        <h3 class="font-size-lg text-white-75 font-weight-bold mb-7">
+                                                            <strong>CRITERES</strong></h3>
+                                                        <div class="row">
+                                                            <div class="col" >
+                                                                <div class="mb-6">
+                                                                <label>Zone commercial</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-sitemap text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idZoneCommercial" class="form-control"
+                                                                        name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.ZoneCommercial"
+                                                                        
+                                                                        ng-change="afficheListeSuccursales()">
+                                                                        <option value="">Sélectionner une zone
+                                                                            commercial</option>
+                                                                        <option
+                                                                            ng-repeat="LalisteDesZoneCombo in listeDesZoneCombo"
+                                                                            value="{{LalisteDesZoneCombo.ZN_CODEZONE}}">
+                                                                            {{LalisteDesZoneCombo.ZN_NOMZONE}}</option>
+                                                                    </select>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                            <div class="col" >
+                                                                <div class="mb-6">
+                                                                <label>Succursales</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-landmark text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idSuccursales" class="form-control"
+                                                                        name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.Succursales"
+                                                                        
+                                                                        ng-pattern="/^[a-z-A-Z]/">
+                                                                        <option value="">Sélectionner une succursale
+                                                                        </option>
+                                                                        <option
+                                                                            ng-selected="FormAddEditionAssurance.Succursales == LalisteDesSuccursales.AG_CODEAGENCE"
+                                                                            ng-repeat="LalisteDesSuccursales in listeDesSuccursales"
+                                                                            value="{{LalisteDesSuccursales.AG_CODEAGENCE}}">
+                                                                            {{LalisteDesSuccursales.AG_RAISONSOCIAL}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <div class="row">
+                                                            <div class="col" >
+                                                                <div class="mb-6">
+                                                                <label>Entrepot</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-warehouse text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idEntrepot" class="form-control"
+                                                                        name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.Entrepot"
+                                                                        >
+                                                                        <option value="">Sélectionner un entrepot
+                                                                        </option>
+                                                                        <option ng-repeat="lEntrepot in listeEntrepot"
+                                                                            ng-selected="FormAddEditionAssurance.Entrepot == lEntrepot.EN_CODEENTREPOT"
+                                                                            value="{{lEntrepot.EN_CODEENTREPOT}}">
+                                                                            {{lEntrepot.EN_DENOMINATION}}</option>
+                                                                    </select>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                            <div class="col" >
+                                                                <div class="mb-6">
+                                                                    <label>Exercice</label>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">
+                                                                                <i class="fab fa-etsy text-info"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <select id="idExercice" class="form-control"
+                                                                            name="addMP_Intermediaire"
+                                                                            ng-model="FormAddEditionAssurance.Exercice"
+                                                                            ng-change="afficheListeDateDebutFin()">
+                                                                            <option value="">Sélectionner un exercice
+                                                                            </option>
+                                                                            <option
+                                                                                ng-selected="FormAddEditionAssurance.Exercice == lExercice.EX_EXERCICE"
+                                                                                ng-repeat="lExercice in listeDesExercice"
+                                                                                value="{{lExercice.EX_EXERCICE}}">
+                                                                                {{lExercice.EX_EXERCICE}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                               </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <div class="row">
+                                                            <div class="col" >
+                                                                <div class="mb-6" ng-if="verouPeriodicit">
+                                                                    <label>Périodicité</label>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">
+                                                                                <i
+                                                                                    class="fas fa-hourglass-half text-info"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <select id="idPeriodicite" class="form-control"
+                                                                            name="addMP_Intermediaire"
+                                                                            ng-model="FormAddEditionAssurance.Periodicite"
+                                                                            ng-change="afficheListePeriode()"
+                                                                            >
+                                                                            <option value="">Sélectionner une périodicité
+                                                                            </option>
+                                                                            <option
+                                                                                ng-selected="FormAddEditionAssurance.Periodicite == laPeriodicite.PE_CODEPERIODICITE"
+                                                                                ng-repeat="laPeriodicite in listeDesPeriodicite"
+                                                                                value="{{laPeriodicite.PE_CODEPERIODICITE}}">
+                                                                                {{laPeriodicite.PE_LIBELLE}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="col" >
+                                                                <div class="mb-6" ng-if="verouPeriod">
+                                                                <label>Période</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i
+                                                                                class="fas fa-arrows-alt-h text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idPeriode" class="form-control"
+                                                                        name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.Periode"
+                                                                        
+                                                                        ng-change="afficheListeDateDebutFin()">
+                                                                        <option value="">Sélectionner une période
+                                                                        </option>
+                                                                        <option ng-repeat="laPeriode in listeDesPeriode"
+                                                                            ng-selected="laPeriode.MO_CODEMOIS == FormAddEditionAssurance.Periode"
+                                                                            value="{{laPeriode.MO_CODEMOIS}}">
+                                                                            {{laPeriode.MO_LIBELLE}}</option>
+                                                                    </select>
+                                                                </div>
+                                                               </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <div class="row">
+                                                            <div class="col" >
+                                                                <div class="mb-6">
+                                                                <label>Date début</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i
+                                                                                class="far fa-calendar-alt text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input id="idDateDebut" type="text"
+                                                                        class="form-control" name=""
+                                                                        placeholder="Entrer une date de début"
+                                                                        ng-disabled="verouDateDebut"
+                                                                        ng-model="FormAddEditionAssurance.dateDebut"
+                                                                         />
+                                                                </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="col" >
+                                                                <div class="mb-6">
+                                                                    <label>Date fin</label>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">
+                                                                                <i
+                                                                                    class="far fa-calendar-alt text-info"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <input id="idDateFin" type="text"
+                                                                            class="form-control" name=""
+                                                                            ng-pattern="/^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                                                            placeholder="Entrer une date de fin"
+                                                                            ng-disabled="verouDateFin"
+                                                                            ng-model="FormAddEditionAssurance.dateFin"
+                                                                            />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <!-- <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <label>Date effet</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i
+                                                                                class="far fa-calendar-alt text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input id="idDateEffet" type="text"
+                                                                        class="form-control" name=""
+                                                                        placeholder="Entrer une date d'effet"
+                                                                        ng-model="FormAddEditionAssurance.dateEffet"
+                                                                        ng-if="veroudateEffet" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <label>Date echéance</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i
+                                                                                class="far fa-calendar-alt text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input id="idDateEcheance" type="text"
+                                                                        class="form-control" name=""
+                                                                        placeholder="Entrer une date echéance"
+                                                                        ng-model="FormAddEditionAssurance.dateEcheance"
+                                                                        ng-if="veroudateEcheance" />
+                                                                </div>
+                                                            </div>
+                                                        </div> <br>-->
+                                                        <div class="row">
+                                                            <div class="col" ng-if="verouCommercial">
+                                                                <div class="mb-6">
+                                                                    <label>Commercial</label>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">
+                                                                                <i class="fas fa-user-tie text-info"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <select id="idCommercial" class="form-control"
+                                                                            name="addMP_Intermediaire"
+                                                                            ng-model="FormAddEditionAssurance.Commercial"
+                                                                            >
+                                                                            <option value="">Sélectionner un commercial
+                                                                            </option>
+                                                                            <option
+                                                                                ng-repeat="leCommercial in listeDesCommerciaux"
+                                                                                value="{{leCommercial.TI_NUMTIERS}}">
+                                                                                {{leCommercial.TI_DENOMINATION}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                              </div>
+                                                            </div>
+                                                            <div class="col" ng-if="verouCompagnieAssurance">
+                                                                <div class="mb-6">
+                                                                <label>Compagnie d'assurance</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="far fa-handshake text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idCompagnieAssurance"
+                                                                        class="form-control" name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.CompagnieAssurance"
+                                                                        >
+                                                                        <option value="">Sélectionner une compagnie
+                                                                            d'assurance</option>
+                                                                        <option
+                                                                        ng-repeat="lAssureur in listeDesAssureurs" 
+                                                                        value="{{lAssureur.TI_IDTIERS}}">
+                                                                        {{lAssureur.TI_DENOMINATION}}</option>
+                                                                    </select>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <div class="row">
+                                                            <div class="col" ng-if="verouNatureSinistre">
+                                                                <div class="mb-6">
+                                                                <label>Nature sinistre</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-sad-tear text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idNatureSinistre" class="form-control"
+                                                                        name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.NatureSinistre"
+                                                                        >
+                                                                        <option value="">Sélectionner une Nature
+                                                                            sinistre</option>
+                                                                        <option
+                                                                            ng-repeat="laNatureSinistre in listeNatureSinistre"
+                                                                            value="{{laNatureSinistre.NS_CODENATURESINISTRE}}">
+                                                                            {{laNatureSinistre.NS_LIBELLENATURESINISTRE}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="col"  ng-if="verouPays">
+                                                                <div class="mb-6">
+                                                                <label>Pays</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i
+                                                                                class="fas fa-globe-africa text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idPays" class="form-control"
+                                                                        name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.Pays"
+                                                                        ng-change="afficheListeVille(FormAddEditionAssurance.Pays)"
+                                                                       >
+                                                                        <option value="">Sélectionner un Pays</option>
+                                                                        <option ng-repeat="lePays in listePays"
+                                                                            value="{{lePays.PY_CODEPAYS}}"
+                                                                            ng-selected="lePays.PY_CODEPAYS == FormAddEditionAssurance.Pays">
+                                                                            {{lePays.PY_LIBELLE}}</option>
+                                                                    </select>
+                                                                </div>
+                                                               </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <div class="row">
+                                                            <div class="col" ng-if="verouVille">
+                                                                <div class="mb-6">
+                                                                <label>Ville</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i
+                                                                                class="fas fa-map-marker-alt text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idVille" class="form-control"
+                                                                        name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.Ville"
+                                                                        ng-change="afficheListeCommune(FormAddEditionAssurance.Ville)"
+                                                                        >
+                                                                        <option value="">Sélectionner une Ville</option>
+                                                                        <option ng-repeat="laVille in listeVilles"
+                                                                            ng-selected="laVille.VL_CODEVILLE == FormAddEditionAssurance.Ville"
+                                                                            value="{{laVille.VL_CODEVILLE}}">
+                                                                            {{laVille.VL_LIBELLE}}</option>
+                                                                    </select>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col"  ng-if="verouCommune">
+                                                                <div class="mb-6">
+                                                                <label>Commune</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-map-pin text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idCommune" class="form-control"
+                                                                        name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.Commune"
+                                                                       >
+                                                                        <option value="">Sélectionner une Commune
+                                                                        </option>
+                                                                        <option ng-repeat="laCommune in listeCommunes"
+                                                                            value="{{laCommune.CO_CODECOMMUNE}}">
+                                                                            {{laCommune.CO_LIBELLE}}</option>
+                                                                    </select>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <!--  <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <label>Zone maladie</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-sitemap text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idZoneMaladie" class="form-control"
+                                                                        name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.ZoneMaladie"
+                                                                        ng-if="verouZoneMaladie">
+                                                                        <option value="">Sélectionner une zone de
+                                                                            maladie</option>
+                                                                        <option
+                                                                            ng-repeat="lalisteDesZoneMaladie in listeDesZoneMaladie"
+                                                                            value="{{lalisteDesZoneMaladie.ZM_CODEZONEMALADIE}}">
+                                                                            {{lalisteDesZoneMaladie.ZM_NOMZONEMALADIE}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <label>Zone auto</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-sitemap text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idZoneAuto" class="form-control"
+                                                                        name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.ZoneAuto"
+                                                                        ng-if="verouZoneAuto">
+                                                                        <option value="">Sélectionner une zone auto
+                                                                        </option>
+                                                                        <option
+                                                                            ng-repeat="lAlisteDesZoneAuto in listeDesZoneAuto"
+                                                                            value="{{lAlisteDesZoneAuto.ZA_CODEZONEAUTO}}">
+                                                                            {{lAlisteDesZoneAuto.ZA_NOMZONEAUTO}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div><br> -->
+                                                        <div class="row">
+                                                            <div class="col" ng-if="verouRisque">
+                                                                <div class="mb-6">
+                                                                <label>Risque</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-street-view text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idRisque" class="form-control"
+                                                                        name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.Risque"
+                                                                        >
+                                                                        <option value="">Sélectionner un risque</option>
+                                                                        <option ng-repeat="lalisteRisque in listeRisque"
+                                                                            value="{{lalisteRisque.RQ_CODERISQUE}}">
+                                                                            {{lalisteRisque.RQ_LIBELLERISQUE}}</option>
+                                                                    </select>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col" ng-if="verouTypeAffaire">
+                                                                <div class="mb-6">
+                                                                <label>Type d'affaire</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-file text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idTypeAffaire" class="form-control"
+                                                                        name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.TypeAffaire"
+                                                                        >
+                                                                        <option value="">Sélectionner un type d'affaire
+                                                                        </option>
+                                                                        <option
+                                                                            ng-repeat="leTypeAffaire in listeTypeAffaire"
+                                                                            value="{{leTypeAffaire.TA_CODETYPEAFFAIRES}}">
+                                                                            {{leTypeAffaire.TA_LIBLLETYPEAFFAIRES}}
+                                                                    </select>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><br>
+                                                        <div class="row">
+                                                            <div class="col"  ng-if="verouStatutContrat">
+                                                                <div class="mb-6">
+                                                                <label>Statut contrat</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-file-alt text-info"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select id="idStatutContrat" class="form-control"
+                                                                        name="addMP_Intermediaire"
+                                                                        ng-model="FormAddEditionAssurance.StatutContrat"
+                                                                        ng-init="statutContrat()"
+                                                                       >
+                                                                        <option value="">Sélectionner un statut contrat
+                                                                        </option>
+                                                                        <option
+                                                                            ng-repeat="lalisteStatutContrat in listeStatutContrat"
+                                                                            value="{{lalisteStatutContrat.CT_CODESTAUT}}">
+                                                                            {{lalisteStatutContrat.CT_LIBELLESTATUT}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                        </div><br>
+
+                                                    </div>
+                                                    <!-- colonne de droite -->
+                                                    <div class="col-lg-6">
+                                                        <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                            <strong>ETATS</strong></h3>
+                                                        <table class="table table-bordered table-checkable"
+                                                            id="kt_datatable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <!-- colspan="2" -->
+                                                                    <th>LIBELLE ETAT</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <!--  <tr ng-repeat="laListe in listeEditionAssurance">
+                                                                    <td ng-click="recupnom(laListe.ET_TYPEETAT)">{{laListe.ET_LIBELLEETAT}}</td>
+                                                                </tr>-->
+                                                                <!-- height: 45px; -->
+                                                                <tr style="cursor: pointer; "
+                                                                    ng-repeat="laListe in listeEditionAssurance"
+                                                                    ng-click="choixEtat($index, laListe.ET_TYPEETAT, laListe.ET_NOMETAT, laListe.ET_LIBELLEETAT, laListe.ET_INDEX)">
+                                                                    <td id="idEtat{{$index}}"
+                                                                        style="border-right: none;">
+                                                                        {{laListe.ET_LIBELLEETAT}}
+                                                                        
+                                                                    </td>
+                                                                    <!-- ng-dblclick="apercuEtat($index)" <td id="idBtnEtat{{$index}}"
+                                                                        style="border-left: none;"> <i  class="fas fa-map-pin text-info" style="margin-left: 100px;"></i>
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-secondary btn-icon btn-xs"
+                                                                            ng-if="afficheBouton[$index] == true"
+                                                                            ng-click="apercuEtat($index)">
+                                                                            <i class="far fa-eye" title="Aperçu"></i>
+                                                                        </button>
+                                                                    </td> -->
+                                                                </tr>
+                                                                <!-- <tr style="cursor: pointer;"
+                                                                    ng-repeat="laListe in listeEditionAssurance"
+                                                                    ng-click="choixEtat($index, laListe.ET_TYPEETAT, laListe.ET_NOMETAT, laListe.ET_LIBELLEETAT)">
+                                                                    <td id="idEtat{{$index}}">{{laListe.ET_LIBELLEETAT}}
+                                                                    </td>
+                                                                </tr> -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+    <!--begin modal pour choix du code souscripteur-->
+<div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog"
+aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header" style="background-color: #718E3E;">
+            <h5 class="modal-title text-white" id="modalCodeSouscripteur"
+                style="font-size: 23px; font-family: Maiandra GD">
+                <i class="fas fa-ellipsis-h text-white"></i>
+                Liste des tiers - souscripteur
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i aria-hidden="true" class="ki ki-close text-white"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                <thead style="text-align: center">
+                    <tr>
+                        <th>N° TIERS</th>
+                        <th>DENOMINATION</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="lesClients in RetourInserteditionListe">
+                        <td>{{lesClients.TI_NUMTIERS}}</td>
+                        <td>{{lesClients.TI_DENOMINATION}}</td>
+                        <td style="text-align: center">
+                            <!--bouton voir plus-->
+                            <button  type="button" class="btn btn-light-primary font-weight-bolder" data-dismiss="modal"
+                            aria-haspopup="true" aria-expanded="false" ng-click="afficheApercuClientEtat(lesClients.TI_IDTIERS)">
+                            Aperçu <i class="far fa-eye text-info"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                <span>
+                    <i class="la la-close"></i>
+                    <span>Fermer</span>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+<!--end::Content-->

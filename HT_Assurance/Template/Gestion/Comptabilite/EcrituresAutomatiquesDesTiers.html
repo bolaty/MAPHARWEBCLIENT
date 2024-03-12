@@ -1,0 +1,539 @@
+﻿<!--début loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormListeEcritAutoTiers()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">GESTION</h5>&nbsp;&nbsp;
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Comptabilité</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Liste</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Ecritures automatiques des tiers</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #F5F500">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-pen-alt text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Ecritures
+                                    automatiques des tiers</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <label>Type*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select id="idTypeTiers" class="form-control" name="option"
+                                                                ng-model="formEnrgEcritAutoTiers.typeTiers">
+                                                                <option value="" ng-click="degriserChampTiers()">
+                                                                    Sélectionner un type</option>
+                                                                <option ng-click="degriserChampTiers()"
+                                                                    ng-repeat="leTypeClient in listeTypeClient"
+                                                                    value="{{leTypeClient.TP_CODETYPETIERS}}">
+                                                                    {{leTypeClient.TP_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-5">
+                                                        <label>Code tiers*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input id="idCodeTiers" ng-disabled="isDisabled1"
+                                                                ng-pattern="/^[0-9]+$/"
+                                                                ng-model="formEnrgEcritAutoTiers.codeTiers" type="text"
+                                                                class="form-control datatable-input"
+                                                                placeholder="Entrer un code tiers" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Nom & prénom(s)*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-address-card text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input id="idNomTiers" ng-disabled="isDisabled1"
+                                                                ng-model="formEnrgEcritAutoTiers.denominationTiers"
+                                                                type="text" class="form-control" name="url"
+                                                                placeholder="Entrer un nom et vos prénoms" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-1 mb-lg-0 mb-6"
+                                                        style="position: relative; top: 25px">
+                                                        <button class="btn btn-secondary btn-secondary--icon"
+                                                            id="kt_reset" title="Rchercher un tiers"
+                                                            ng-click="rechercherUnTiers()"
+                                                            data-toggle="{{afficheModal}}"
+                                                            data-target="{{atteindreModal}}">
+                                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>&#160;
+
+                                <!--begin: Datatable-->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h6><strong style="color: DarkSlateBlue"><u>FAMILLE DES OPERATIONS</u></strong>
+                                        </h6>
+                                        <table class="table table-bordered table-checkable" id="kt_datatable">
+                                            <thead style="text-align: center;">
+                                                <tr>
+                                                    <th>LIBELLE</th>
+                                                    <th>CHOIX</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot
+                                                ng-show="listeFamilleOperation[0].clsObjetRetour.SL_CODEMESSAGE !== '99'">
+                                                <tr ng-repeat="laFamilleOp in listeFamilleOperation">
+                                                    <td style="max-width: 100px;">
+                                                        {{laFamilleOp.FO_LIBELLEFAMILLEOPERATION}}</td>
+                                                    <td style="text-align: center;">
+                                                        <!-- <label class="checkbox checkbox-lg checkbox-success flex-shrink-0 m-0 mr-4" ng-click="afficheListeOperation()">
+                                                            <input type="checkbox" value="Due in 1 Year" />
+                                                            <span class="blue"></span>
+                                                        </label> -->
+                                                        <button type="button" class="btn btn-outline-secondary btn-icon"
+                                                            title="Choisir" ng-click="afficheListeOperation()">
+                                                            <i class="fas fa-check {{cocher}}"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h6><strong style="color: DarkSlateBlue"><u>OPERATIONS</u></strong></h6>
+                                        <table class="table table-bordered table-checkable" id="kt_datatable">
+                                            <thead style="text-align: center;">
+                                                <tr>
+                                                    <th>OPERATIONS</th>
+                                                    <th>CHOIX</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot ng-show="listeOperation[0].clsObjetRetour.SL_CODEMESSAGE !== '99'">
+                                                <tr ng-repeat="laOperation in listeOperation">
+                                                    <td>{{laOperation.NO_LIBELLE}}</td>
+                                                    <td style="text-align: center;">
+                                                        <!-- <label class="checkbox checkbox-lg checkbox-success flex-shrink-0 m-0 mr-4">
+                                                            <input type="checkbox" value="Due in 1 Year" />
+                                                            <span class="blue"></span>
+                                                        </label>
+                                                        <button type="button" id="laCoche{{$index}}" class="btn btn-outline-secondary btn-icon" title="Choisir" ng-click="testTemoinOp('laCoche{{$index}}')">
+                                                            <i class="fas fa-check {{cocherOp}}"></i>
+                                                        </button>
+                                                    -->
+                                                        <div class="radio-inline" style="margin-left: 33px;">
+                                                            <label class="radio">
+                                                                <input id="idRadio{{$index}}" type="radio" name="radios"
+                                                                    ng-click="cocherDansTabOperation($index)" />
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!--end: Datatable-->
+                                <div class="separator separator-dashed separator-success my-7"></div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>DETAIL
+                                                    DES OPERATIONS</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <label>Libellé opération*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-quote-left text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input id="idLibelleOp"
+                                                                ng-model="formEnrgEcritAutoTiers.libelleOperation"
+                                                                type="text" class="form-control" name="url"
+                                                                placeholder="Entrer un libellé opération" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>N° pièce*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input id="idNumeroPiece" ng-pattern="/^[0-9]+$/"
+                                                                ng-model="formEnrgEcritAutoTiers.numPiece" type="text"
+                                                                class="form-control" name="url"
+                                                                placeholder="Entrer un n° pièce" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Montant*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-money-bill-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input id="idMontant" ng-pattern="/^[0-9]+$/" maxlength="12"
+                                                                ng-model="formEnrgEcritAutoTiers.montant" type="text"
+                                                                class="form-control" name="url"
+                                                                placeholder="Entrer un montant" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>ECRITURE
+                                                    COMPTABLE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>N° compte 1*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input id="idNumCpte1" ng-disabled="isDisabledNumCpte1"
+                                                                ng-pattern="/^[0-9]+$/"
+                                                                ng-model="formEnrgEcritAutoTiers.numCompte1" type="text"
+                                                                class="form-control" name="addMP_Denomination1"
+                                                                placeholder="Entrer un n°"
+                                                                ng-model="FormAddMultirisquePro.denomination1" />
+                                                            <div class="input-group-append" title="Choix du code">
+                                                                <button ng-disabled="isDisabledNumCpte1"
+                                                                    class="btn btn-secondary btn-secondary--icon"
+                                                                    id="kt_reset" data-toggle="modal"
+                                                                    data-target="#modalCodeCompte"
+                                                                    ng-click="afficheListeNumCompte(1)">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Libellé du compte*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-quote-left text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input ng-model="formEnrgEcritAutoTiers.libelle1"
+                                                                ng-disabled="isDisabledLibCpte" type="text"
+                                                                class="form-control" name="url"
+                                                                placeholder="Le libellé du compte" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Sens*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-exchange-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select id="idSens1" ng-model="formEnrgEcritAutoTiers.sens1"
+                                                                class="form-control" name="option">
+                                                                <option value="">Sélectionner un sens</option>
+                                                                <option ng-repeat="leSens in listeSens"
+                                                                    value="{{leSens.NO_SENS}}"
+                                                                    ng-selected="formEnrgEcritAutoTiers.sens1 == leSens.NO_SENS">
+                                                                    {{leSens.NO_SENSLIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>N° compte 2*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input id="idNumCpte2" ng-disabled="isDisabledNumCpte2"
+                                                                ng-pattern="/^[0-9]+$/"
+                                                                ng-model="formEnrgEcritAutoTiers.numCompte2" type="text"
+                                                                class="form-control" name="addMP_Denomination1"
+                                                                placeholder="Entrer un n°"
+                                                                ng-model="FormAddMultirisquePro.denomination1" />
+                                                            <div class="input-group-append" title="Choix du code">
+                                                                <button ng-disabled="isDisabledNumCpte2"
+                                                                    class="btn btn-secondary btn-secondary--icon"
+                                                                    id="kt_reset" data-toggle="modal"
+                                                                    data-target="#modalCodeCompte"
+                                                                    ng-click="afficheListeNumCompte(2)">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Libellé du compte*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-quote-left text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input ng-model="formEnrgEcritAutoTiers.libelle2"
+                                                                ng-disabled="isDisabledLibCpte" type="text"
+                                                                class="form-control" name="url"
+                                                                placeholder="Le libellé du compte" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Sens*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-exchange-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select id="idSens2" ng-model="formEnrgEcritAutoTiers.sens2"
+                                                                class="form-control" name="option">
+                                                                <option value="">Sélectionner un sens</option>
+                                                                <option ng-repeat="leSens in listeSens"
+                                                                    value="{{leSens.NO_SENS}}">{{leSens.NO_SENSLIBELLE}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="validerEcritureAutoTiers(
+                        formEnrgEcritAutoTiers.typeTiers, formEnrgEcritAutoTiers.codeTiers, formEnrgEcritAutoTiers.denominationTiers,
+                        formEnrgEcritAutoTiers.libelleOperation, formEnrgEcritAutoTiers.numPiece, formEnrgEcritAutoTiers.montant,
+                        formEnrgEcritAutoTiers.numCompte1, formEnrgEcritAutoTiers.numCompte2, formEnrgEcritAutoTiers.libelle1,
+                        formEnrgEcritAutoTiers.libelle2, formEnrgEcritAutoTiers.sens1, formEnrgEcritAutoTiers.sens2)">
+                                <span>
+                                    <i class="far fa-check-circle"></i>
+                                    <span>Enregistrer</span>
+                                </span>
+                            </button>&#160;
+                            <button type="submit" class="btn btn-light-success font-weight-bold"
+                                ng-click="listeAnnuler()">
+                                <span>
+                                    <i class="fas fa-undo"></i>
+                                    <span>Réinitialiser</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+
+<!--begin modal pour choix du code tiers-->
+<div class="modal fade" id="modalChercherTiers" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalChercherTiers" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #F5F500;">
+                <h5 class="modal-title text-dark" id="modalChercherTiers"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-dark"></i>
+                    Liste des tiers
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tfoot ng-show="listeDuTiers[0].clsObjetRetour.SL_CODEMESSAGE !== '99'">
+                        <tr ng-repeat="leTiers in listeDuTiers">
+                            <td>{{leTiers.TI_NUMTIERS}}</td>
+                            <td>{{leTiers.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" title="Choisir"
+                                    ng-click="choixDuTiers(leTiers.TI_NUMTIERS, leTiers.TI_DENOMINATION, leTiers.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+<!--begin modal pour choix du compte-->
+<div class="modal fade" id="modalCodeCompte" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeCompte" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #F5F500;">
+                <h5 class="modal-title text-dark" id="modalCodeCompte"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-dark"></i>
+                    N° compte
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>COMPTE</th>
+                            <th>NUMERO COMPTE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesNumCompte in listeDesNumComptes">
+                            <td>{{lesNumCompte.PL_LIBELLE}}</td>
+                            <td>{{lesNumCompte.PL_NUMCOMPTE}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" title="Choisir"
+                                    ng-click="choixNumCompte(lesNumCompte)" data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

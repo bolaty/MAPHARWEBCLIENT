@@ -1,0 +1,584 @@
+﻿@{
+    ViewBag.Title = "Santé";
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-controller="SantePharmacienController" ng-init="initFormAddModifSante()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background-color: beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">ASSURANCE</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Enregistrement</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Modification</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Santé Pharmacien</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header" style="background-color: #718E3E;">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-clinic-medical text-white icon-xl"></i>
+                                </span>
+                                <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Santé Pharmacien</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form" id="formAddSantef" ng-init="contrainteFormAddSante()">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATION SUR LE SOUSCRIPTEUR</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Code*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_Code1" placeholder="Entrer un code" ng-model="recuperer.TI_NUMTIERS" ng-disabled="true" />
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeSouscripteur" ng-click="afficheListeTiersSouscripteur()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Dénomination*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_Denomination1" placeholder="Entrer une Dénomination" required ng-model="recuperer.TI_DENOMINATION" ng-disabled="true" />
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeSouscripteur" ng-click="afficheListeTiersSouscripteur()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS SUR LE COMMERCIAL</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Code*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_Code02" placeholder="Entrer un code" required ng-model="recuperer.TI_NUMTIERSCOMMERCIAL" ng-disabled="true" />
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial" ng-click="afficheListeTiersCommercial()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Dénomination*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_Denomination02" placeholder="Entrer une Dénomination" required ng-model="recuperer.TI_DENOMINATIONCOMMERCIAL" ng-disabled="true" />
+                                                            <div class="input-group-append" data-toggle="tooltip" data-theme="dark" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial" ng-click="afficheListeTiersCommercial()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                   <!-- <div class="col-lg-4">
+                                                        <label>Commission*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-money-bill-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_Commission" placeholder="Entrer une commission" required ng-model="FormAddSante.Commission" />
+                                                        </div>
+                                                    </div>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="separator separator-dashed separator-success my-1"></div><br>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>AUXILIAIRE</strong></h3>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Avenant*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-edit text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_Avenant" placeholder="Entrer un avenant" required ng-model="recuperer.CA_AVENANT" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Code branche*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_CodeBranche" placeholder="Entrer un code" required ng-model="recuperer.CB_IDBRANCHE" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Adresse*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-periscope text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_Adresse" placeholder="Entrer une adresse" required ng-model="FormAddSante.Adresse" />
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>N° police/ N.C*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_NumPolice" placeholder="Entrer un n°" required ng-model="recuperer.CA_NUMPOLICE"" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Effet*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-calendar-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_Effet" placeholder="Entrer un effet" required ng-model="recuperer.CA_DATEEFFET" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Echéance*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-calendar-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_Echeance" placeholder="Entrer une écheance" required ng-model="recuperer.CA_DATEECHEANCE" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Durée*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-clock text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_Durée" placeholder="Entrer une durée" required ng-model="FormAddSante.Duree" />
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Pays*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-globe-africa text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" id="modPays" name="addSante_Pays" ng-model="FormAddSante.pays">
+                                                                <option value="">Sélectionner un pays</option>
+                                                                <option ng-repeat="lePays in listeDesPaysSante" ng-selected="recuperer.PY_CODEPAYS == lePays.PY_CODEPAYS" value="{{lePays.PY_CODEPAYS}}">{{lePays.PY_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Ville*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-city text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" id="modVille" name="addSante_Ville" ng-model="FormAddSante.ville" >
+                                                                <option value="">Sélectionner une ville</option>
+                                                                <option ng-repeat="laVille in modifListeVille" ng-selected="recuperer.VL_CODEVILLE == laVille.VL_CODEVILLE" value="{{laVille.VL_CODEVILLE}}">{{laVille.VL_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Commune*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-city text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addSante_Commune" ng-model="FormAddSante.commune">
+                                                                <option value="">Sélectionner une commune</option>
+                                                                <option ng-repeat="laCommune in modifListeCommune" ng-selected="recuperer.CO_CODECOMMUNE == laCommune.CO_CODECOMMUNE" value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Situation géographique*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control datatable-input" name="addSante_SituationGeo" placeholder="Entrer une situation géographique" data-col-index="4" required ng-model="recuperer.CA_SITUATIONGEOGRAPHIQUE" />
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Assureur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-cog text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addSante_Assureur" ng-model="recuperer.TI_IDTIERSASSUREUR">
+                                                                <option value="">Sélectionner un assureur</option>
+                                                                <option ng-repeat="lAssureur in listeDesAssureursSante" ng-selected="recuperer.TI_IDTIERSASSUREUR == lAssureur.TI_IDTIERS" value="{{lAssureur.TI_IDTIERS}}">{{lAssureur.TI_DENOMINATION}}</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Interlocuteur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-assistive-listening-systems text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_Interlocuteur" placeholder="Entrer un interlocuteur" required ng-model="recuperer.CA_NOMINTERLOCUTEUR" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Téléphone interlocuteur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-phone-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="addSante_TelInterlocuteur" placeholder="Entrer un n° de téléphone" required ng-model="recuperer.CA_CONTACTINTERLOCUTEUR" />
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                 <!--<div class="form-group row">
+                                                   <div class="col-lg-12">
+                                                        <label>Type contrat*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-clipboard-list text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addSante_TypeContrat" ng-model="FormAddSante.typeContrat">
+                                                                <option value="">Sélectionner un type</option>
+                                                                <option ng-repeat="leTypeContrat in listeTypeContratSante" value="{{leTypeContrat.TA_CODETYPECONTRATSANTE}}">{{leTypeContrat.TA_LIBELLETYPECONTRATSANTE}}</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>-->
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <label>Type d'affaire*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-clipboard-list text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="addSante_TypeAffaire" ng-model="recuperer.TA_CODETYPEAFFAIRES">
+                                                                <option value="">Sélectionner un type</option>
+                                                                <option ng-repeat="leTypeAffaire in listeTypeAffaireSante" ng-selected="recuperer.TA_CODETYPEAFFAIRES == leTypeAffaire.TA_CODETYPEAFFAIRES" value="{{leTypeAffaire.TA_CODETYPEAFFAIRES}}">{{leTypeAffaire.TA_LIBLLETYPEAFFAIRES}}</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <div class="form-group row">
+
+                                                   
+                                                    <div class="col-lg-3" style="position: relative; top: 25px; left: 93px;">
+                                                        <button type="submit" class="btn btn-success font-weight-bold mr-2">
+                                                            <span>
+                                                                <i class="fas fa-clipboard-list"></i>
+                                                                <span>Liste des contrats</span>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-12 ">
+                                                        <div class="separator separator-dashed separator-success my-1"></div><br>
+                                                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+                                                            <!--tableau garenties-->
+                                                            <thead style="text-align: center">
+                                                                <tr>
+                                                                    <th>LIBELLE SOUS CATEGORIE</th>
+                                                                    <th>EVENEMENTS ASSURES</th>
+                                                                    <th>CAPITAUX ASSURES</th>
+                                                                    <th>PRIMES</th>
+                                                                    <th>APRES REDUCTION</th>
+                                                                    <th>PRORATA</th>
+                                                                    <th>FRANCHISES</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr ng-repeat="garentie in tabGarenties">
+                                                                    <td>{{garentie.SC_LIBELLESOUSCATEGORIE}}</td>
+                                                                    <td>{{garentie.GA_LIBELLEGARANTIE}}</td>
+                                                                    <td>
+                                                                        <input type="text" name="" class="form-control" placeholder="" ng-model="garentie.CG_CAPITAUXASSURES" />
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="text" name="" class="form-control" placeholder="" ng-model="garentie.CG_PRIMES" />
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="text" name="" class="form-control" placeholder="" ng-model="garentie.CG_APRESREDUCTION" />
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="text" name="" class="form-control" placeholder="" ng-model="garentie.CG_PRORATA" />
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="text" name="" class="form-control" placeholder="" ng-model="garentie.CG_FRANCHISES" />
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-lg-12 ">
+                                                        <div class="separator separator-dashed separator-success my-1"></div><br>
+                                                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+                                                            <!--tableau primes-->
+                                                            <thead style="text-align: center">
+                                                                <tr>
+                                                                    <th>LIBELLE</th>
+                                                                    <th>PRIMES</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr ng-repeat="prime in tabPrimes">
+                                                                    <td>{{prime.RE_LIBELLERESUME}}</td>
+                                                                    <td>
+                                                                        <input type="text" name="" class="form-control" placeholder="" ng-model="prime.CG_PRIMES" />
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="modifSantePhar()">
+                                        <span>
+                                            <i class="far fa-check-circle"></i>
+                                            <span>Enregistrer</span>
+                                        </span>
+                                    </button>&#160;
+                                    <a href="ListeSante" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip" data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+    <!--begin modal pour choix du code souscripteur-->
+    <div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalCodeSouscripteur" style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-white"></i>
+                        Liste des tiers - souscripteur
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-checkable" id="kt_datatable">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th>N° TIERS</th>
+                                <th>DENOMINATION</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                                <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                                <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                                <td style="text-align: center">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip" data-theme="dark" title="Choisir" ng-click="choixSouscripteur(lesSouscripteurs.TI_NUMTIERS, lesSouscripteurs.TI_DENOMINATION, lesSouscripteurs.TI_IDTIERS)" data-dismiss="modal">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+    <!--begin modal pour choix du code commercial-->
+    <div class="modal fade" id="modalCodeCommercial" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalCodeCommercial" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalCodeCommercial" style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-white"></i>
+                        Liste des tiers - commercial
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-checkable" id="kt_datatable">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th>N° TIERS</th>
+                                <th>DENOMINATION</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lesCommerciaux in listeDesCommerciaux">
+                                <td>{{lesCommerciaux.TI_NUMTIERS}}</td>
+                                <td>{{lesCommerciaux.TI_DENOMINATION}}</td>
+                                <td style="text-align: center">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip" data-theme="dark" title="Choisir" ng-click="choixCommercial(lesCommerciaux.TI_NUMTIERS, lesCommerciaux.TI_DENOMINATION, lesCommerciaux.TI_IDTIERS)" data-dismiss="modal">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+</div>
+<!--end::Content-->

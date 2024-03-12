@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B5B34FE9-97C1-48B5-8545-86E351D14FCC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Assurance.Outils</RootNamespace>
+    <AssemblyName>Assurance.Outils</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Downloads\CrystalDecisions.Web\CrystalDecisions.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="HT_Stock.BOJ, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HT_Assurance\bin\DLL\DLL MAPHAR\HT_Stock.BOJ.dll</HintPath>
+    </Reference>
+    <Reference Include="Stock.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HT_Assurance\bin\DLL\DLL MAPHAR\Stock.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReferencesWeb\ReferenceExercice.cs" />
+    <Compile Include="ReferencesWeb\ReferenceMotDePasse.cs" />
+    <Compile Include="ReferencesWeb\ReferenceRelance.cs" />
+    <Compile Include="ReferencesWeb\ReferenceFamilleBienImmobilise.cs" />
+    <Compile Include="ReferencesWeb\ReferenceNaturePosteBudgetaire.cs" />
+    <Compile Include="ReferencesWeb\ReferenceParametrageComptesProduit.cs" />
+    <Compile Include="ReferencesWeb\ReferenceParametragedesautresEcritures.cs" />
+    <Compile Include="ReferencesWeb\ReferenceParametrageOperationsTresoreries.cs" />
+    <Compile Include="ReferencesWeb\ReferenceParametrageFamilledOperation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceAnnulationTransmission.cs" />
+    <Compile Include="ReferencesWeb\ReferenceAnnulationValidation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceCompteAdditionel.cs" />
+    <Compile Include="ReferencesWeb\ReferenceCompteAmortissement.cs" />
+    <Compile Include="ReferencesWeb\ReferenceAfficherReglementCheque.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDroitSurCompte.cs" />
+    <Compile Include="ReferencesWeb\ReferenceEditionOutilsEtSecurites.cs" />
+    <Compile Include="ReferencesWeb\ReferenceExpertNomme.cs" />
+    <Compile Include="ReferencesWeb\ReferenceGarantie.cs" />
+    <Compile Include="ReferencesWeb\ReferenceNumCompteGeneral.cs" />
+    <Compile Include="ReferencesWeb\ReferenceNumDebut.cs" />
+    <Compile Include="ReferencesWeb\ReferenceNumDebutPlanComptable.cs" />
+    <Compile Include="ReferencesWeb\ReferenceOption.cs" />
+    <Compile Include="ReferencesWeb\ReferenceParametragePlancomptable.cs" />
+    <Compile Include="ReferencesWeb\ReferenceParametreI.cs" />
+    <Compile Include="ReferencesWeb\ReferencePosteBudgetaire.cs" />
+    <Compile Include="ReferencesWeb\ReferenceProspectPhoto.cs" />
+    <Compile Include="ReferencesWeb\ReferenceRecuImpression.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSatatutGrandLivre.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSection.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSinistreSituation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeBalance.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeBudget.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeBudgetdetaille.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeBulget.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeListe.cs" />
+    <Compile Include="ReferencesWeb\ReferenceEditionEtatAssurance.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDateExpiration.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeEtat.cs" />
+    <Compile Include="ReferencesWeb\ReferenceNumLot.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeJourFacturation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceNatureOperation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceRisque.cs" />
+    <Compile Include="ReferencesWeb\ReferenceComboZoneEdition.cs" />
+    <Compile Include="ReferencesWeb\ReferenceConsultation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceEditionAssurance.cs" />
+    <Compile Include="ReferencesWeb\ReferenceEditionComptabilite.cs" />
+    <Compile Include="ReferencesWeb\ReferenceEditionParametreII.cs" />
+    <Compile Include="ReferencesWeb\ReferenceEditionTiers.cs" />
+    <Compile Include="ReferencesWeb\ReferenceEditionTresorerie.cs" />
+    <Compile Include="ReferencesWeb\ReferenceModeAdmission.cs" />
+    <Compile Include="ReferencesWeb\ReferenceNatureSinistre.cs" />
+    <Compile Include="ReferencesWeb\ReferenceLieuFacturation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceStatutContrat.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeConsultation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypePrestation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceZoneEdition.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeFournisseur.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDroitSurMenu.cs" />
+    <Compile Include="ReferencesWeb\ReferenceEcran.cs" />
+    <Compile Include="ReferencesWeb\ReferenceEditionListe.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDroitSurAutreOperationTiers.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDroitSurFamilleOperation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDroitSurOperationTresorerie.cs" />
+    <Compile Include="ReferencesWeb\ReferenceExtourne.cs" />
+    <Compile Include="ReferencesWeb\ReferenceFamilleOperationliste.cs" />
+    <Compile Include="ReferencesWeb\ReferenceFamilleOperationTresorerie.cs" />
+    <Compile Include="ReferencesWeb\ReferenceJourneeTravail.cs" />
+    <Compile Include="ReferencesWeb\ReferenceLogiciel.cs" />
+    <Compile Include="ReferencesWeb\ReferenceMenuPrincipal.cs" />
+    <Compile Include="ReferencesWeb\ReferenceOperation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceProfils.cs" />
+    <Compile Include="ReferencesWeb\ReferenceReglementTresorerie.cs" />
+    <Compile Include="ReferencesWeb\ReferenceRemiseDeChequePhoto.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSens.cs" />
+    <Compile Include="ReferencesWeb\ReferenceListeFamilleOperation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceListeOperation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDroitFamilleOperation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDroitTransfertStock.cs" />
+    <Compile Include="ReferencesWeb\ReferenceJournal.cs" />
+    <Compile Include="ReferencesWeb\ReferenceNatureFamille.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSaisieEcritureComptable.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSoldeCompte.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeClient.cs" />
+    <Compile Include="ReferencesWeb\ReferenceArcticle.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeArcticle.cs" />
+    <Compile Include="ReferencesWeb\ReferenceNatureArcticle.cs" />
+    <Compile Include="ReferencesWeb\ReferenceChargerCommission.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDroitAgence.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDroitEntrepot.cs" />
+    <Compile Include="ReferencesWeb\ReferenceApproVente.cs" />
+    <Compile Include="ReferencesWeb\ReferenceReglementCommiAssurance.cs" />
+    <Compile Include="ReferencesWeb\ReferenceNatureCompte.cs" />
+    <Compile Include="ReferencesWeb\ReferenceModeReglement.cs" />
+    <Compile Include="ReferencesWeb\ReferenceAssureur.cs" />
+    <Compile Include="ReferencesWeb\ReferenceBanque.cs" />
+    <Compile Include="ReferencesWeb\ReferenceBanqueAgence.cs" />
+    <Compile Include="ReferencesWeb\ReferenceBranche.cs" />
+    <Compile Include="ReferencesWeb\ReferenceCapitaux.cs" />
+    <Compile Include="ReferencesWeb\ReferenceCategorie.cs" />
+    <Compile Include="ReferencesWeb\ReferenceCheque.cs" />
+    <Compile Include="ReferencesWeb\ReferenceChequePhoto.cs" />
+    <Compile Include="ReferencesWeb\ReferenceClientExonere.cs" />
+    <Compile Include="ReferencesWeb\ReferenceCommicionCommercial.cs" />
+    <Compile Include="ReferencesWeb\ReferenceConditionPermis.cs" />
+    <Compile Include="ReferencesWeb\ReferenceConsultationReglement.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDocument.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDocumentsOuvertureDossier.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDuree.cs" />
+    <Compile Include="ReferencesWeb\ReferenceEnergie.cs" />
+    <Compile Include="ReferencesWeb\ReferenceEntrepot.cs" />
+    <Compile Include="ReferencesWeb\ReferenceGarenties.cs" />
+    <Compile Include="ReferencesWeb\ReferenceGenre.cs" />
+    <Compile Include="ReferencesWeb\ReferenceMontantfacture.cs" />
+    <Compile Include="ReferencesWeb\ReferenceEscompte.cs" />
+    <Compile Include="ReferencesWeb\ReferenceNumCompte.cs" />
+    <Compile Include="ReferencesWeb\ReferenceProfession.cs" />
+    <Compile Include="ReferencesWeb\ReferenceNatureTiers.cs" />
+    <Compile Include="ReferencesWeb\ReferenceLesTiers.cs" />
+    <Compile Include="ReferencesWeb\ReferenceProfil.cs" />
+    <Compile Include="ReferencesWeb\ReferenceQuestionnaires.cs" />
+    <Compile Include="ReferencesWeb\ReferenceReglementCommissionAssurance.cs" />
+    <Compile Include="ReferencesWeb\ReferenceReglementCommissionsCommerciaux.cs" />
+    <Compile Include="ReferencesWeb\ReferenceReglementFactureClient.cs" />
+    <Compile Include="ReferencesWeb\ReferenceReleveClient.cs" />
+    <Compile Include="ReferencesWeb\ReferenceReleveCommission.cs" />
+    <Compile Include="ReferencesWeb\ReferenceReleveCompagnieAssurance.cs" />
+    <Compile Include="ReferencesWeb\ReferenceRemiseDeCheque.cs" />
+    <Compile Include="ReferencesWeb\ReferenceResumeReglementCommissionsCommerciaux.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSaisieRDVClient.cs" />
+    <Compile Include="ReferencesWeb\ReferenceService.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSituationVersementJour.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTarifselonBranches.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTauxseloneffet.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeAuto.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeCompteAdd.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSecteurActivite.cs" />
+    <Compile Include="ReferencesWeb\ReferenceCasUtilisation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceRegimeImposition.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSpecialite.cs" />
+    <Compile Include="ReferencesWeb\ReferenceGroupeDesTiers.cs" />
+    <Compile Include="ReferencesWeb\ReferenceAsdi.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTva.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeOperateur.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeTiers.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSexe.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSaisieEcheancier.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSinistre.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSuiviClient.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTitreBeneficiaire.cs" />
+    <Compile Include="ReferencesWeb\ReferenceOperateur.cs" />
+    <Compile Include="ReferencesWeb\ReferenceContrat.cs" />
+    <Compile Include="ReferencesWeb\ReferenceIntermediaire.cs" />
+    <Compile Include="ReferencesWeb\ReferenceDesignation.cs" />
+    <Compile Include="ReferencesWeb\ReferenceMainForte.cs" />
+    <Compile Include="ReferencesWeb\ReferenceReduction.cs" />
+    <Compile Include="ReferencesWeb\ReferenceStatutSocio.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTarif.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeAffaire.cs" />
+    <Compile Include="ReferencesWeb\ReferencePrimes.cs" />
+    <Compile Include="ReferencesWeb\ReferenceSouscripteurCommercial.cs" />
+    <Compile Include="ReferencesWeb\ReferencePays.cs" />
+    <Compile Include="ReferencesWeb\ReferenceCommune.cs" />
+    <Compile Include="ReferencesWeb\ReferencesGenerales.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeAppartement.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeContrat.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeDeTarification.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeOccupant.cs" />
+    <Compile Include="ReferencesWeb\ReferenceTypeVehicule.cs" />
+    <Compile Include="ReferencesWeb\ReferenceUsage.cs" />
+    <Compile Include="ReferencesWeb\ReferenceVille.cs" />
+    <Compile Include="ReferencesWeb\ReferenceZone.cs" />
+    <Compile Include="ReferencesWeb\ReferenceZoneAuto.cs" />
+    <Compile Include="ReferencesWeb\ReferenceZoneVoyage.cs" />
+    <Compile Include="Variables\clsDeclaration.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{41556dd9-2ab6-4fd0-9217-c8da69d08a66}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

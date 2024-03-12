@@ -1,0 +1,446 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin ng-init="contrainteFormAddCheque()" loader-->
+<form class="form">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS DU PATIENT</strong>
+                    </h3>
+                    <div class="mb-1">
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Code patient*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idcodePatient" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un code" ng-pattern="/^(0|[0-9]\d*)$/"
+                                        ng-model="FormAddConsultation.codePatient" maxlength="8" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button ng-show="etatForm !== '2'" class="btn btn-secondary btn-secondary--icon"
+                                            id="kt_reset" type="button" data-toggle="modal"
+                                            data-target="#modalCodeSouscripteur"
+                                            ng-click="afficheListeTiersSouscrip(FormAddConsultation.codePatient, FormAddConsultation.NomPrenomPatient)">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Nom et prénom(s) patient*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-address-card text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNomPrenomPatient" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un nom et prénom(s)"
+                                        ng-model="FormAddConsultation.NomPrenomPatient" maxlength="150" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button ng-show="etatForm !== '2'" class="btn btn-secondary btn-secondary--icon"
+                                            type="button" data-toggle="modal" data-target="#modalCodeSouscripteur"
+                                            ng-click="afficheListeTiersSouscrip(FormAddConsultation.codePatient, FormAddConsultation.NomPrenomPatient)">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Téléphone du patient*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-phone-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idTelephonePatient" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un téléphone"
+                                        ng-model="FormAddConsultation.TelephonePatient" ng-pattern="/^(0|[0-9]\d*)$/"
+                                        maxlength="15" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator separator-dashed separator-success my-1"></div><br />
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS DE
+                            CONSULTATION</strong></h3>
+                    <div class="mb-1">
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>N° dossier*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fab fa-orcid text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idnumDossier" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un numéro" ng-model="FormAddConsultation.numDossier"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Type de consultation*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-hospital-user text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idtypeConsultation" class="form-control" name="option"
+                                        ng-model="FormAddConsultation.typeConsultation">
+                                        <option value="">Sélectionner un type de consultation</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-repeat="letypeConsultation in listetypeConsultation"
+                                            value="{{letypeConsultation.TY_CODETYPECONSULTATION}}">
+                                            {{letypeConsultation.TY_LIBELLETYPECONSULTATION}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-repeat="letypeConsultation in listetypeConsultation"
+                                            ng-selected="FormAddConsultation.typeConsultation == letypeConsultation.TY_CODETYPECONSULTATION"
+                                            value="{{letypeConsultation.TY_CODETYPECONSULTATION}}">
+                                            {{letypeConsultation.TY_LIBELLETYPECONSULTATION}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Date consultation*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDateConsultation" type="text" class="form-control" name="url"
+                                        placeholder="Entrer une date consultation"
+                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                        ng-model="FormAddConsultation.dateConsultation" maxlength="10" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Représentant*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user-tie text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idRepresentant" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un représentant" ng-model="FormAddConsultation.Representant"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Motif*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-thumbtack text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idMotif" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un motif" ng-model="FormAddConsultation.Motif"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Mode admission*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-id-card-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idModeAdmission" class="form-control" name="option"
+                                        ng-model="FormAddConsultation.ModeAdmission">
+                                        <option value="">Sélectionner un mode admission</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-repeat="leModeAdmission in listeModeAdmission"
+                                            value="{{leModeAdmission.MD_CODEMODEADMISSION}}">
+                                            {{leModeAdmission.MD_LIBELLEMODEADMISSION}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-repeat="leModeAdmission in listeModeAdmission"
+                                            ng-selected="FormAddConsultation.ModeAdmission == leModeAdmission.MD_CODEMODEADMISSION"
+                                            value="{{leModeAdmission.MD_CODEMODEADMISSION}}">
+                                            {{leModeAdmission.MD_LIBELLEMODEADMISSION}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-5">
+                                <label>Service*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-tools text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idService" class="form-control" name="option"
+                                        ng-model="FormAddConsultation.Service">
+                                        <option value="">Sélectionner un service</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="leService in listeService"
+                                            value="{{leService.SR_CODESERVICE}}">{{leService.SR_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddConsultation.Service == leService.SR_CODESERVICE"
+                                            ng-repeat="leService in listeService" value="{{leService.SR_CODESERVICE}}">
+                                            {{leService.SR_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <label>Autres informations*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-address-card text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idAutreInfo" type="text" class="form-control" name="url"
+                                        placeholder="Entrer autres informations"
+                                        ng-model="FormAddConsultation.AutreInfo" maxlength="500" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator separator-dashed separator-success my-1"></div><br />
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS DU MEDECIN</strong>
+                    </h3>
+                    <div class="mb-1">
+                        <div class="form-group row">
+                            <div class="col-lg-5">
+                                <label>Code medecin*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idcodeMedecin" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un code" ng-pattern="/^(0|[0-9]\d*)$/"
+                                        ng-model="FormAddConsultation.codeMedecin" maxlength="8" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button ng-show="etatForm !== '2'" class="btn btn-secondary btn-secondary--icon"
+                                            id="kt_reset" type="button" data-toggle="modal"
+                                            data-target="#modalCodeSouscripteurMedecin"
+                                            ng-click="afficheListeTiersMedecin(FormAddConsultation.codeMedecin, FormAddConsultation.NomPrenomMedecin)">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <label>Nom et prénom(s)*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-address-card text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNomPrenomMedecin" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un nom et prénom(s)"
+                                        ng-model="FormAddConsultation.NomPrenomMedecin" maxlength="150" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button ng-show="etatForm !== '2'" class="btn btn-secondary btn-secondary--icon"
+                                            type="button" data-toggle="modal"
+                                            data-target="#modalCodeSouscripteurMedecin"
+                                            ng-click="afficheListeTiersMedecin(FormAddConsultation.codeMedecin, FormAddConsultation.NomPrenomMedecin)">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Téléphone du medecin*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-phone-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idTelephoneMedecin" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un téléphone"
+                                        ng-model="FormAddConsultation.TelephoneMedecin" ng-pattern="/^(0|[0-9]\d*)$/"
+                                        maxlength="15" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Taux commission*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-percent text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idTauxCommission" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un taux" ng-pattern="/^[0-9]\d*(,\d+)?$/"
+                                        ng-model="FormAddConsultation.TauxCommission" maxlength="5" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Montant commission*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-money-bill-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idMontantCommission" type="text" class="form-control" name="url"
+                                        placeholder="Entrer un montant" ng-model="FormAddConsultation.MontantCommission"
+                                        maxlength="12" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+            ng-click="validateFormAddConsultation()">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <button ng-show="etatForm !== '2'" type="submit" class="btn btn-light-success font-weight-bold"
+            ng-click="resetFormAddConsultation()">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a ng-href="#/assurances-gestion/CaisseTresorerie/liste/Consultation" class="btn btn-icon btn-light-dark mr-2"
+            data-toggle="tooltip" data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+
+
+<!--begin modal pour choix du code souscripteur-->
+<div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeSouscripteur"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - patients
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                            <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                            <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixSouscrip(lesSouscripteurs.TI_NUMTIERS, lesSouscripteurs.TI_DENOMINATION, lesSouscripteurs.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+<!--begin modal pour choix du code souscripteur-->
+<div class="modal fade" id="modalCodeSouscripteurMedecin" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeSouscripteurMedecin" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeSouscripteurMedecin"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - Medecin
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesSouscripteursMedecin in listeSouscripteursMedecinEnreg">
+                            <td>{{lesSouscripteursMedecin.TI_NUMTIERS}}</td>
+                            <td>{{lesSouscripteursMedecin.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="ChoisirMedecin"
+                                    ng-click="choixMedecin(lesSouscripteursMedecin.TI_NUMTIERS, lesSouscripteursMedecin.TI_DENOMINATION, lesSouscripteursMedecin.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

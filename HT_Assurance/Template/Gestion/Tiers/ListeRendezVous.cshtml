@@ -1,0 +1,197 @@
+﻿@{
+    ViewBag.Title = "Liste des Rendez-vous";
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background-color: beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h3 class="text-dark  font-weight-bold my-1 mr-5">GESTION</h3>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">                      
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Tiers</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Liste</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Rendez-vous</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+           
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+           
+            <div class="card card-custom">
+                <div class="card-header" style="background-color: #F5F500;">
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="fas fa-user-md icon-xl text-dark"></i>
+                        </span>
+                        <h3 class="card-label" style="font-size: 30px; font-family: 'Maiandra GD'">Rendez-vous</h3>
+                    </div>
+                    <div class="card-toolbar">
+                        <!--begin::Dropdown-->
+                        <div class="dropdown dropdown-inline mr-2">                          
+                            <!--begin::Dropdown Menu-->
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                <!--begin::Navigation-->
+                                <ul class="navi flex-column navi-hover py-2">
+                                    <li class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">Choose an option:</li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-print"></i>
+                                            </span>
+                                            <span class="navi-text">Print</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-copy"></i>
+                                            </span>
+                                            <span class="navi-text">Copy</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-excel-o"></i>
+                                            </span>
+                                            <span class="navi-text">Excel</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-text-o"></i>
+                                            </span>
+                                            <span class="navi-text">CSV</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-pdf-o"></i>
+                                            </span>
+                                            <span class="navi-text">PDF</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!--end::Navigation-->
+                            </div>
+                            <!--end::Dropdown Menu-->
+                        </div>
+                        <!--end::Dropdown-->
+                        <!--begin::Button-->                        
+                        <!--end::Button-->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="mb-1">
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>Libéllé*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="flaticon2-quotation-mark text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="url" placeholder="Entrer un libéllé" />
+                                </div>
+                                <span class="form-text text-muted">Veuillez saisir le libéllé.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-8">
+                        <div class="col-lg-12">
+                            <button class="btn btn-primary btn-primary--icon" id="kt_search">
+                                <span>
+                                    <i class="la la-search"></i>
+                                    <span>Rechercher</span>
+                                </span>
+                            </button>
+                            <button class="btn btn-outline-warning" id="kt_reset">
+                                <span>
+                                    <i class="la la-close"></i>
+                                    <span>Annuler</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <br />
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10">CRITERES:</h3>
+                    <!--begin: Search Form-->
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Date de début</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" name="Date de début" class="form-control datatable-input" placeholder="Date au format JJ/MM/AAAA" data-col-index="4" />
+                                </div>
+                                <span class="form-text text-muted">Veuillez saisir la date de début.</span>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Date de fin</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" name="Date de fin" class="form-control datatable-input" placeholder="Date au format JJ/MM/AAAA" data-col-index="4" />
+                                </div>
+                                <span class="form-text text-muted">Veuillez saisir la date de fin.</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class=" text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" name="" class="form-control datatable-input" placeholder="..." data-col-index="4" />
+                                </div>
+                                <span class="form-text text-muted">Veuillez saisir.</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+</div>
+<!--end::Content-->

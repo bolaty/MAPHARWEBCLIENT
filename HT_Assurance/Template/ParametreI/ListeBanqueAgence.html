@@ -1,0 +1,484 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormAddListe()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">PARAMETRE 1</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Banque</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Liste</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+           
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+           
+            <div class="card card-custom" ng-if="statutAgenceBanque">
+                <div class="card-header" style="background-color: #90CCC8;">
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="fas fa-paperclip text-dark icon-xl"></i>
+                        </span>
+                        <h3 class="card-title text-dark" style="font-size: 30px; font-family: Maiandra GD">
+                            Banque
+                        </h3>
+                    </div>
+                    <div class="card-toolbar">
+                        <!--begin::Dropdown-->
+                        <div class="dropdown dropdown-inline mr-2">
+                           
+                            <a ng-click="initFormBanque('1')" 
+                               class="btn btn-primary font-weight-bolder" data-toggle="tooltip" data-theme="dark"
+                               title="">
+                                <span class="svg-icon svg-icon-md">
+                                    <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <circle fill="#000000" cx="9" cy="15" r="6" />
+                                            <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z"
+                                                  fill="#000000" opacity="0.3" />
+                                        </g>
+                                    </svg>
+                                    <!--end::Svg Icon-->
+                                </span>Nouveau
+                            </a>
+                            <!--begin::Dropdown Menu-->
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                <!--begin::Navigation-->
+                                <ul class="navi flex-column navi-hover py-2">
+                                    <li class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">
+                                        Choose an option:
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-print"></i>
+                                            </span>
+                                            <span class="navi-text">Print</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-copy"></i>
+                                            </span>
+                                            <span class="navi-text">Copy</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-excel-o"></i>
+                                            </span>
+                                            <span class="navi-text">Excel</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-text-o"></i>
+                                            </span>
+                                            <span class="navi-text">CSV</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-pdf-o"></i>
+                                            </span>
+                                            <span class="navi-text">PDF</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!--end::Navigation-->
+                            </div>
+                            <!--end::Dropdown Menu-->
+                        </div>
+                        <!--end::Dropdown-->
+
+                    </div>
+                </div>
+                <form class="mb-15" id="FormListOuvertureDSP">
+                    <div class="card-body">
+                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+                            <thead style="text-align: center;">
+                                <!--background-color: #8CB9BA; color: White-->
+                                <tr>
+                                    <th>RAISON SOCIALE </th>
+                                    <th>SIGLE </th>
+                                    <th style="width: 170px;">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tfoot ng-show="listeBanque[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                                <tr ng-repeat="laListe in listeBanque" ng-dblclick="SelectBanque(laListe)">
+                                    <td>{{laListe.BQ_RAISONSOCIAL}}</td>
+                                    <td>{{laListe.BQ_SIGLE}}</td>
+                                    <!--ligne des actions-->
+                                    <td>
+                                        <div class="example-preview" style="position: relative; right: -19px">
+                                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                                <div class="btn-group mr-2" role="group" aria-label="...">
+                                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                                            data-toggle="modal" data-target="#modalVoirPlus"
+                                                            ng-click="voirPlus(laListe)" title="Voir plus">
+                                                        <i class="far fa-eye"></i>
+                                                    </button>
+                                                    <!--bouton modifier-->
+                                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                                            ng-click="voirmodifexpert(laListe,'1')">
+                                                        <i class="far fa-edit" data-toggle="tooltip" data-theme="dark"
+                                                           title="Modifier"></i></a>
+                                                    </button>
+                                                    <!--bouton supprimer-->
+                                                    <button id="swalSupprimer" type="button"
+                                                            class="btn btn-outline-secondary btn-icon" data-toggle="modal"
+                                                            data-target="#modalSupprimer"
+                                                            ng-click="supprRecupererIdElement(laListe.BQ_CODEBANQUE)"
+                                                            title="Supprimer">
+                                                        <i class="fas fa-ban"></i>
+                                                    </button>
+                                                    <!--bouton modifier-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                </form>
+            </div>
+            <!--end::Card-->
+             <!--begin::Card-->
+             <div class="card card-custom" ng-if="!statutAgenceBanque">
+                <div class="card-header" style="background-color: #90CCC8;">
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="fas fa-paperclip text-dark icon-xl"></i>
+                        </span>
+                        <h3 class="card-title text-dark" style="font-size: 30px; font-family: Maiandra GD">
+                            Agence - {{libellebanq}}
+                        </h3>
+                    </div>
+                    <div class="card-toolbar">
+                        <!--begin::Dropdown-->
+                        <div class="dropdown dropdown-inline mr-2">
+                            <button type="button" class="btn btn-outline-secondary btn-icon"  
+                             ng-click="RetourBanque()">
+                             <i class="fas fa-circle-notch" data-toggle="tooltip" data-theme="dark"
+                                title="Retour sur banque"></i>
+                            </button>&nbsp;&nbsp;
+                            <a ng-click="initFormBanque('0')" 
+                               class="btn btn-primary font-weight-bolder" data-toggle="tooltip" data-theme="dark"
+                               title="">
+                                <span class="svg-icon svg-icon-md">
+                                    <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <circle fill="#000000" cx="9" cy="15" r="6" />
+                                            <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z"
+                                                  fill="#000000" opacity="0.3" />
+                                        </g>
+                                    </svg>
+                                    <!--end::Svg Icon-->
+                                </span>Nouveau
+                            </a>
+                            <!--begin::Dropdown Menu-->
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                <!--begin::Navigation-->
+                                <ul class="navi flex-column navi-hover py-2">
+                                    <li class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">
+                                        Choose an option:
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-print"></i>
+                                            </span>
+                                            <span class="navi-text">Print</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-copy"></i>
+                                            </span>
+                                            <span class="navi-text">Copy</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-excel-o"></i>
+                                            </span>
+                                            <span class="navi-text">Excel</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-text-o"></i>
+                                            </span>
+                                            <span class="navi-text">CSV</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-pdf-o"></i>
+                                            </span>
+                                            <span class="navi-text">PDF</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!--end::Navigation-->
+                            </div>
+                            <!--end::Dropdown Menu-->
+                        </div>
+                        <!--end::Dropdown-->
+
+                    </div>
+                </div>
+                <form class="mb-15" id="FormListOuvertureDSP">
+                    <div class="card-body">
+                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+                            <thead style="text-align: center;">
+                                <!--background-color: #8CB9BA; color: White-->
+                                <tr>
+                                    <th>RAISON SOCIALE </th>
+                                    <th>SIGLE </th>
+                                    <th style="width: 170px;">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tfoot ng-show="listeBanqueAG[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                                <tr ng-repeat="laListe in listeBanqueAG" >
+                                    <td>{{laListe.AB_LIBELLE}}</td>
+                                    <td>{{laListe.BQ_ABREGE}}</td>
+                                    <!--ligne des actions-->
+                                    <td>
+                                        <div class="example-preview" style="position: relative; right: -19px">
+                                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                                <div class="btn-group mr-2" role="group" aria-label="...">
+                                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                                            data-toggle="modal" data-target="#modalVoirPlus2"
+                                                            ng-click="voirPlus2(laListe)" title="Voir plus">
+                                                        <i class="far fa-eye"></i>
+                                                    </button>
+                                                    <!--bouton modifier-->
+                                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                                            ng-click="voirmodifexpert2(laListe,'0')">
+                                                        <i class="far fa-edit" data-toggle="tooltip" data-theme="dark"
+                                                           title="Modifier"></i></a>
+                                                    </button>
+                                                    <!--bouton supprimer-->
+                                                    <button id="swalSupprimer" type="button"
+                                                            class="btn btn-outline-secondary btn-icon" data-toggle="modal"
+                                                            data-target="#modalSupprimer2"
+                                                            ng-click="supprRecupererIdElement2(laListe.AB_CODEAGENCEBANCAIRE, laListe.BQ_CODEBANQUE)"
+                                                            title="Supprimer">
+                                                        <i class="fas fa-ban"></i>
+                                                    </button>
+                                                    <!--bouton modifier-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                </form>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+    <!--begin modal pour voir plus-->
+    <div class="modal fade" id="modalVoirPlus" tabindex="-1" role="dialog" aria-labelledby="modalVoirPlus"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalVoirPlus"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="far fa-eye text-white"></i>
+                        Plus d'informations
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="height: 100px;">
+                    <div class="row col-lg-12">
+                        <div class="col-lg-6">
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">Code</strong> :
+                            {{recuperer.BQ_CODEBANQUE}} <br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">RAISON SOCIALE</strong> :
+                            {{recuperer.BQ_RAISONSOCIAL}} <br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">SIGLE</strong> :
+                            {{recuperer.BQ_SIGLE}} <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+    <!--begin modal pour transmission-->
+    <div class="modal fade" id="modalSupprimer" data-backdrop="static" tabindex="-1" role="dialog"
+         aria-labelledby="modalSupprimer" aria-hidden="true">
+        <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalSupprimer"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-thumbs-up text-white"></i>
+                        Banque
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center; font-size: 17px;">
+                    Etes-vous sûr de vouloir supprimer cette Banque ?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-dark btn-shadow font-weight-bold" id="pourValider"
+                            ng-click="supprimeMarque()" data-dismiss="modal">
+                        <span>
+                            <i class="fas fa-thumbs-up"></i>
+                            <span>Supprimer</span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Annuler</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+
+      <!--begin modal pour voir plus-->
+    <div class="modal fade" id="modalVoirPlus2" tabindex="-1" role="dialog" aria-labelledby="modalVoirPlus2"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalVoirPlus"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="far fa-eye text-white"></i>
+                        Plus d'informations
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="height: 100px;">
+                    <div class="row col-lg-12">
+                        <div class="col-lg-6">
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">Code</strong> :
+                            {{recuperer2.AB_CODEAGENCEBANCAIRE}} <br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">Code</strong> :
+                            {{recuperer2.AB_LIBELLE}} <br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">Libelle</strong> :
+                            {{recuperer2.BQ_ABREGE}} <br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">Email</strong> :
+                            {{recuperer2.AB_EMAIL}} <br>
+                            <strong style="font-size: 13px; font-family: 'Maiandra GD'">Telephone</strong> :
+                            {{recuperer2.AB_TELEPHONE}} <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+     </div>
+     <!--end modal-->
+     <!--begin modal pour transmission-->
+     <div class="modal fade" id="modalSupprimer2" data-backdrop="static" tabindex="-1" role="dialog"
+            aria-labelledby="modalSupprimer2" aria-hidden="true">
+            <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #718E3E;">
+                        <h5 class="modal-title text-white" id="modalSupprimer"
+                            style="font-size: 23px; font-family: Maiandra GD">
+                            <i class="fas fa-thumbs-up text-white"></i>
+                            Agence
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i aria-hidden="true" class="ki ki-close text-white"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: center; font-size: 17px;">
+                        Etes-vous sûr de vouloir supprimer cette Agence ?
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-dark btn-shadow font-weight-bold" id="pourValider"
+                                ng-click="supprimeMarque2()" data-dismiss="modal">
+                            <span>
+                                <i class="fas fa-thumbs-up"></i>
+                                <span>Supprimer</span>
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                            <span>
+                                <i class="la la-close"></i>
+                                <span>Annuler</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+     </div>
+    <!--end modal-->
+
+</div>
+<!--end::Content-->

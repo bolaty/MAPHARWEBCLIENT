@@ -1,0 +1,86 @@
+﻿ <!--begin: Search Form-->
+ <form class="mb-15">
+     <div class="row mb-6">
+         <div class="col-lg-12 mb-lg-0 mb-6">
+             <label>Période*</label>
+             <div class="input-daterange input-group" id="">
+                 <!--kt_datepicker-->
+                 <input id="idPeriodeDu" type="text" class="form-control"
+                     ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                     name="list_PeriodeDu" placeholder="Du" ng-model="FormList.periodeDu" required maxlength="10" />
+                 <div class="input-group-append">
+                     <span class="input-group-text">
+                         <i class="fas fa-arrows-alt-h text-info"></i>
+                     </span>
+                 </div>
+                 <input id="idPeriodeAu" type="text" class="form-control"
+                     ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                     name="list_PeriodeAu" placeholder="Au" ng-model="FormList.periodeAu" required maxlength="10" />
+             </div>
+         </div>
+     </div>
+
+     <div class="row mt-8">
+         <div class="col-lg-12">
+             <button class="btn btn-primary btn-primary--icon" id="kt_search"
+                 ng-click="afficheListeContrat(FormList.periodeDu, FormList.periodeAu)">
+                 <span>
+                     <i class="la la-search"></i>
+                     <span>Rechercher</span>
+                 </span>
+             </button>
+             <button class="btn btn-outline-warning" id="kt_reset" ng-click="listeAnnuler()">
+                 <span>
+                     <i class="la la-close"></i>
+                     <span>Annuler</span>
+                 </span>
+             </button>
+             <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10" style="margin-left:700px">
+                 <strong>Solde précédent :{{listeContrat[0].SOLDEPRECEDENT}}</strong></h3>
+         </div>
+     </div>
+
+ </form>
+ <!--begin: Datatable-->
+ <!--begin: Datatable-->
+ <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+     <thead style="text-align: center">
+         <tr>
+             <th>DATE</th>
+             <th>N° PIECE</th>
+             <th>REF PIECE</th>
+             <th>OPERATION</th>
+             <th>DEBIT</th>
+             <th>CREDIT</th>
+             <th>SOLDE</th>
+         </tr>
+     </thead>
+     <tfoot ng-show="listeContrat[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+         <tr ng-repeat="laListe in listeContrat">
+             <td>
+                 {{laListe.MV_DATEPIECE}}
+             </td>
+             <td>
+                 {{laListe.NUMEROBORDEREAU}}
+             </td>
+             <td>
+                 {{laListe.MV_REFERENCEPIECE}}
+             </td>
+             <td>
+                 {{laListe.MV_LIBELLEOPERATION}}
+             </td>
+
+             <td>
+                 {{laListe.MV_MONTANTDEBIT}}
+             </td>
+             <td>
+                 {{laListe.MV_MONTANTCREDIT}}
+             </td>
+             <td>
+                 {{laListe.MV_SOLDE}}
+             </td>
+
+         </tr>
+     </tfoot>
+ </table>
+ <!--end: Datatable-->

@@ -1,0 +1,7 @@
+C:\Users\User\Downloads\Compressed\Ephaco-17-11-2020\Ephaco-Projet 17-11-2020\Ephaco.Outils\bin\Debug\Ephaco.Outils.exe.config
+C:\Users\User\Downloads\Compressed\Ephaco-17-11-2020\Ephaco-Projet 17-11-2020\Ephaco.Outils\bin\Debug\Ephaco.Outils.exe
+C:\Users\User\Downloads\Compressed\Ephaco-17-11-2020\Ephaco-Projet 17-11-2020\Ephaco.Outils\bin\Debug\Ephaco.Outils.pdb
+C:\Users\User\Downloads\Compressed\Ephaco-17-11-2020\Ephaco-Projet 17-11-2020\Ephaco.Outils\obj\Debug\Ephaco.Outils.exe
+C:\Users\User\Downloads\Compressed\Ephaco-17-11-2020\Ephaco-Projet 17-11-2020\Ephaco.Outils\obj\Debug\Ephaco.Outils.pdb
+C:\Users\User\Downloads\Compressed\Ephaco-17-11-2020\Ephaco-Projet 17-11-2020\Ephaco.Outils\bin\Debug\HT_Stock.BOJ.dll
+C:\Users\User\Downloads\Compressed\Ephaco-17-11-2020\Ephaco-Projet 17-11-2020\Ephaco.Outils\bin\Debug\Stock.Common.dll

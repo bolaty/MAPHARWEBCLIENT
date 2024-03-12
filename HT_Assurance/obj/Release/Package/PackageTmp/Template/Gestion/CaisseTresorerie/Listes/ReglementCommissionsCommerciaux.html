@@ -1,0 +1,584 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormAddRegCommCommerciaux()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">GESTION</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Trésorerie</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Listes</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Règlement des commissions des commerciaux</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted"></a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <h3 style="font-size: 25px; font-family: Maiandra GD"><strong>N° {{collectionContartOp.TI_NUMTIERS}} |
+                    {{collectionContartOp.TI_DENOMINATION}}</strong></h3>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header" style="background-color: #F5F500">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="far fa-money-bill-alt text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Règlement des
+                                    commissions des commerciaux</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <div class="card-body">
+                            <form class="form">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>N° commercial*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" maxlength="8" class="form-control"
+                                                                name="addRegCommCommerciaux_NumCommercial"
+                                                                placeholder="Entrez un n° commercial"
+                                                                ng-model="FormAddRegCommCommerciaux.NumCommercial"
+                                                                ng-disabled="anincreded"
+                                                                id="addRegCommCommerciaux_NumCommercial" />
+                                                            <div class="input-group-append" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon"
+                                                                    id="kt_reset" type="button" data-toggle="modal"
+                                                                    data-target="#modalCodeCommercial"
+                                                                    ng-click="afficheListeTiersCommercial()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Nom commercial*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-address-card text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" maxlength="150" class="form-control"
+                                                                name="addRegCommCommerciaux_NomCommercial"
+                                                                placeholder="Entrez un nom commercial"
+                                                                ng-model="FormAddRegCommCommerciaux.NomCommercial"
+                                                                ng-disabled="anincreded"
+                                                                id="addRegCommCommerciaux_NomCommercial" />
+                                                            <div class="input-group-append" title="Choix du code">
+                                                                <button class="btn btn-secondary btn-secondary--icon"
+                                                                    type="button" id="kt_reset" data-toggle="modal"
+                                                                    data-target="#modalCodeCommercial"
+                                                                    ng-click="afficheListeTiersCommercial()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-5">
+                                                        <label>Date début*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-calendar-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" maxlength="10" class="form-control"
+                                                                name="addRegCommCommerciaux_DateDebut"
+                                                                ng-model="FormAddRegCommCommerciaux.DateDebut"
+                                                                placeholder="Entrer une date début"
+                                                                id="addRegCommCommerciaux_DateDebut" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-5">
+                                                        <label>Date fin*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-calendar-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" maxlength="10" class="form-control"
+                                                                name="addRegCommCommerciaux_DateFin"
+                                                                ng-model="FormAddRegCommCommerciaux.DateFin"
+                                                                placeholder="Entrer une date fin"
+                                                                id="addRegCommCommerciaux_DateFin" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-8">
+                                                        <div class="col-lg-12">
+                                                            <button type="submit"
+                                                                class="btn btn-primary btn-shadow-hover font-weight-bold"
+                                                                ng-click="ajoutChargerCommission(FormAddRegCommCommerciaux.NumCommercial, FormAddRegCommCommerciaux.NomCommercial, FormAddRegCommCommerciaux.DateDebut, FormAddRegCommCommerciaux.DateFin)">
+                                                                <span>
+                                                                    <i class="fas fa-plus"></i>
+                                                                    <span>Charger commission</span>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="separator separator-dashed separator-success my-1"></div>
+                                                <br>
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="mb-3">
+                                                                <h3
+                                                                    class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                                    <strong>SITUATION DES COMMISSIONS A CE JOUR</strong>
+                                                                </h3>
+                                                                <div class="mb-2">
+                                                                    <table class="table table-bordered table-checkable"
+                                                                        id="kt_datatable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>LIBELLE</th>
+                                                                                <th> MONTANT COMMISSION</th>
+                                                                                <th>MONTANT VERSE</th>
+                                                                                <th>RESTE A VERSER</th>
+                                                                                <th>VERSEMENT DU JOUR</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                            <tr
+                                                                                ng-repeat="leversement in testEnregistrement">
+                                                                                <td style="max-width: 100px;">
+                                                                                    {{leversement.MC_LIBELLEOPERATION}}
+                                                                                </td>
+                                                                                <td>{{leversement.CO_MONTANTCOMMISSION}}
+                                                                                </td>
+                                                                                <td>{{leversement.MONTANTREGLER}}</td>
+                                                                                <td>{{leversement.RESTEAREGLER}}</td>
+                                                                                <td>
+                                                                                    <input type="text" name=""
+                                                                                        id="idVersementJour"
+                                                                                        class="form-control"
+                                                                                        placeholder=""
+                                                                                        ng-model="FormAddRegCommCommerciaux.SR_MONTANTCREDIT" />
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                <strong>INFORMATIONS GENERALES</strong></h3>
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Nom remettant*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-address-card text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" maxlength="150" class="form-control"
+                                                                name="addRegCommCommerciaux_NomRemettant"
+                                                                ng-model="FormAddRegCommCommerciaux.NomRemettant"
+                                                                placeholder="Entrer un nom remettant"
+                                                                id="addRegCommCommerciaux_NomRemettant" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Mode de règlement*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-money-bill-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control"
+                                                                name="addRegCommCommerciaux_ModeReglement"
+                                                                ng-model="FormAddRegCommCommerciaux.ModeReglement"
+                                                                id="addRegCommCommerciaux_ModeReglement">
+                                                                <option value="">Sélectionner un mode de règlement
+                                                                </option>
+                                                                <option
+                                                                    ng-repeat="leModeReglement in listeModeReglement"
+                                                                    value="{{leModeReglement.MR_CODEMODEREGLEMENT}}"
+                                                                    ng-click="afficheListeNatureCompte(FormAddRegCommCommerciaux.ModeReglement)">
+                                                                    {{leModeReglement.MR_LIBELLE}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Nature compte*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-wallet text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control"
+                                                                name="addRegCommCommerciaux_NatureCompte"
+                                                                ng-model="FormAddRegCommCommerciaux.NatureCompte"
+                                                                id="addRegCommCommerciaux_NatureCompte">
+                                                                <option value="">Sélectionner une nature compte
+                                                                </option>
+                                                                <option ng-repeat="laNatureCompte in listeNatureCompte"
+                                                                    value="{{laNatureCompte.NC_CODENATURECOMPTE}}">
+                                                                    {{laNatureCompte.NC_LIBELLENATURECOMPTE}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>N° compte*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" maxlength="8" class="form-control"
+                                                                name="addRegCommCommerciaux_NumCompte"
+                                                                placeholder="Entrer un n°"
+                                                                ng-model="FormAddRegCommCommerciaux.NumCompte"
+                                                                id="addRegCommCommerciaux_NumCompte" />
+                                                            <div class="input-group-append" title="Choix du n° compte">
+                                                                <button type="button"
+                                                                    class="btn btn-secondary btn-secondary--icon"
+                                                                    id="kt_reset" data-toggle="modal"
+                                                                    data-target="#modalNumCompte"
+                                                                    ng-click="afficheListeNumCompte()">
+                                                                    <i class="fas fa-ellipsis-h text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="separator separator-dashed separator-success my-1"></div>
+                                                <br>
+                                                <div class="mb-1">
+                                                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                        <strong>INFORMATIONS SUR CHEQUE</strong></h3>
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-6">
+                                                            <label>Banque*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-landmark text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select class="form-control"
+                                                                    name="addRegCommCommerciaux_Banque"
+                                                                    ng-model="FormAddRegCommCommerciaux.Banque"
+                                                                    id="addRegCommCommerciaux_Banque">
+                                                                    <option value="">Sélectionner une banque</option>
+                                                                    <option ng-repeat="laBanque in listeBanque"
+                                                                        value="{{laBanque.BQ_CODEBANQUE}}"
+                                                                        ng-click="afficheListeAgence(FormAddRegCommCommerciaux.Banque)">
+                                                                        {{laBanque.BQ_SIGLE}}</option>
+                                                                    <option ng-repeat="laBanque in listeBanque"
+                                                                        ng-selected="FormAddRegCommCommerciaux.Banque == laBanque.BQ_CODEBANQUE"
+                                                                        value="{{laBanque.BQ_CODEBANQUE}}"
+                                                                        ng-click="afficheListeAgence(FormAddRegCommCommerciaux.Banque)">
+                                                                        {{laBanque.BQ_SIGLE}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <label>Agence*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-landmark text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select class="form-control"
+                                                                    name="addRegCommCommerciaux_Agence"
+                                                                    ng-model="FormAddRegCommCommerciaux.Agence"
+                                                                    id="addRegCommCommerciaux_Agence">
+                                                                    <option value="">Sélectionner une agence</option>
+                                                                    <option ng-repeat="lAgence in listeAgence"
+                                                                        value="{{lAgence.AB_CODEAGENCEBANCAIRE}}">
+                                                                        {{lAgence.AB_LIBELLE}}</option>
+                                                                    <option
+                                                                        ng-selected="FormAddRegCommCommerciaux.Agence == lAgence.AB_CODEAGENCEBANCAIRE"
+                                                                        ng-repeat="lAgence in listeAgence"
+                                                                        value="{{lAgence.AB_CODEAGENCEBANCAIRE}}">
+                                                                        {{lAgence.AB_LIBELLE}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-1">
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-5">
+                                                            <label>N° chèque*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fab fa-orcid text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" maxlength="8" class="form-control"
+                                                                    name="addRegCommCommerciaux_NumCheque"
+                                                                    ng-model="FormAddRegCommCommerciaux.NumCheque"
+                                                                    placeholder="Entrer un n° chèque"
+                                                                    id="addRegCommCommerciaux_NumCheque" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-5">
+                                                            <label>Montant*</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="far fa-money-bill-alt text-info"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" maxlength="15" class="form-control"
+                                                                    name="addRegCommCommerciaux_Montant"
+                                                                    ng-model="FormAddRegCommCommerciaux.Montant"
+                                                                    placeholder="Entrer un montant" ng-pattern="/^\d+$/"
+                                                                    id="addRegCommCommerciaux_Montant" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-8">
+                                                            <div class="col-lg-12">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary btn-shadow-hover font-weight-bold"
+                                                                    ng-click="ajoutinfocheque()">
+                                                                    <span>
+                                                                        <i class="fas fa-plus"></i>
+                                                                        <span>Ajouter</span>
+                                                                    </span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- le tableau -->
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="mb-3">
+                                                                <h3
+                                                                    class="font-size-lg text-dark-75 font-weight-bold mb-10">
+                                                                </h3>
+                                                                <div class="mb-2">
+                                                                    <table class="table table-bordered table-checkable"
+                                                                        id="kt_datatable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>BANQUE</th>
+                                                                                <th> AGENCE</th>
+                                                                                <th>N° CHEQUE</th>
+                                                                                <th>VALEUR</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr ng-repeat="listsituationregl in tabsituationactuelleversement"
+                                                                                ng-show="tabsituationactuelleversement.length !== 1">
+                                                                                <td>{{listsituationregl.libbanq}}</td>
+                                                                                <td>{{listsituationregl.libbagence}}
+                                                                                </td>
+                                                                                <td>{{listsituationregl.refcheq}}</td>
+                                                                                <td>{{listsituationregl.valeur}}</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+                                ng-click="ajoutFormAddRegCommCommerciaux()">
+                                <span>
+                                    <i class="far fa-check-circle"></i>
+                                    <span>Enregistrer</span>
+                                </span>
+                            </button>&#160;
+                            <button class="btn btn-outline-warning" id="kt_reset" ng-click="AnnulerEcran()">
+                                <span>
+                                    <i class="la la-close"></i>
+                                    <span>Annuler</span>
+                                </span>
+                            </button>
+                            <a href="#/gestion/ReglementAssurance/liste/multirisque-professionnel"
+                                class="btn btn-icon btn-light-dark mr-2" title="Retour"
+                                style="position: absolute; right: 27px">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+    <div class="modal fade" id="modalNumCompte" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalNumCompte" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #F5F500;">
+                    <h5 class="modal-title text-dark" id="modalNumCompte"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-dark"></i>
+                        N° compte
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-checkable" id="kt_datatable">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th>COMPTE</th>
+                                <th>NUMERO COMPTE</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lesNumCompte in listeDesNumComptes">
+                                <td>{{lesNumCompte.PL_LIBELLE}}</td>
+                                <td>{{lesNumCompte.PL_NUMCOMPTE}}</td>
+                                <td style="text-align: center">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                        data-toggle="tooltip" data-theme="dark" title="Choisir"
+                                        ng-click="choixNumCompte(lesNumCompte)" data-dismiss="modal">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--begin modal pour choix du code commercial-->
+    <div class="modal fade" id="modalCodeCommercial" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalCodeCommercial" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #F5F500;">
+                    <h5 class="modal-title text-dark" id="modalCodeCommercial"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ellipsis-h text-dark"></i>
+                        Liste des tiers - commercial
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-checkable" id="kt_datatable">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th>N° TIERS</th>
+                                <th>DENOMINATION</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lesCommerciaux in listeDesCommerciaux">
+                                <td>{{lesCommerciaux.TI_NUMTIERS}}</td>
+                                <td>{{lesCommerciaux.TI_DENOMINATION}}</td>
+                                <td style="text-align: center">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                        data-toggle="tooltip" data-theme="dark" title="Choisir"
+                                        ng-click="choixCommercial(lesCommerciaux.TI_NUMTIERS, lesCommerciaux.TI_DENOMINATION, lesCommerciaux.TI_IDTIERS)"
+                                        data-dismiss="modal">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+</div>
+<!--end::Content-->

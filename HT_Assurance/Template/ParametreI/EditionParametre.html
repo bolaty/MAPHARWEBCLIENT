@@ -1,0 +1,288 @@
+﻿<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormListEditionParametre()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">PARAMETRE 1</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Etats</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Edition</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <div class="d-flex align-items-center"></div>
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header" style="background-color: #90CCC8">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="far fa-bookmark text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Edition
+                                    paramètre 1</h3>
+                            </div>
+                            <div class="card-toolbar">
+                                <button type="button" class="btn btn-light-primary font-weight-bolder"
+                                    aria-haspopup="true" aria-expanded="false" data-toggle="modal"
+                                    data-target="#modal_TypeFichierGlobale">
+                                    Aperçu <i class="far fa-eye text-info"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-1">
+                                                <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="separator separator-dashed separator-success my-1">
+                                                        </div><br>
+                                                        <div class="col-lg-4" style="margin-right:105px">
+                                                            <div class="row">
+                                                                <div class="mb-3">
+                                                                    <h3
+                                                                        class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                                        <strong>CRITERES</strong></h3>
+                                                                    <div class="mb-1">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12"
+                                                                                style="margin-top:20px">
+                                                                                <label>Zone ou coodination*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="flaticon2-map text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select id="idZoneOuCoordination"
+                                                                                        class="form-control"
+                                                                                        name="listEditionParametre_ZoneOuCoordination"
+                                                                                        ng-model="FormListEditionParametre.ZoneOuCoordination"
+                                                                                        ng-disabled="GriseZoneOuCoordination"
+                                                                                        ng-change="afficheListeSuccursales()">
+                                                                                        <option value="">Sélectionnez
+                                                                                            une zone ou coordination
+                                                                                        </option>
+                                                                                        <option
+                                                                                            ng-repeat="LalisteDesZoneCombo in listeDesZoneCombo"
+                                                                                            value="{{LalisteDesZoneCombo.ZN_CODEZONE}}">
+                                                                                            {{LalisteDesZoneCombo.ZN_NOMZONE}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-12"
+                                                                                style="margin-top:20px">
+                                                                                <label>Succursales*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-landmark text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select id="idSuccursales"
+                                                                                        class="form-control"
+                                                                                        name="listEditionParametre_Succursales"
+                                                                                        ng-model="FormListEditionParametre.Succursales"
+                                                                                        ng-disabled="GriseSuccursales">
+                                                                                        <option value="">Sélectionnez
+                                                                                            une succursale</option>
+                                                                                        <option
+                                                                                            ng-repeat="LalisteDesSuccursales in listeDesSuccursales"
+                                                                                            ng-selected="FormListEditionParametre.Succursales == LalisteDesSuccursales.AG_CODEAGENCE"
+                                                                                            value="{{LalisteDesSuccursales.AG_CODEAGENCE}}">
+                                                                                            {{LalisteDesSuccursales.AG_RAISONSOCIAL}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-12"
+                                                                                style="margin-top:20px">
+                                                                                <label>Type fournisseur*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-truck text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select id="idTypeFournisseur"
+                                                                                        class="form-control"
+                                                                                        name="listEditionParametre_TypeFournisseur"
+                                                                                        ng-model="FormListEditionParametre.TypeFournisseur"
+                                                                                        ng-disabled="GriseTypeFournisseur">
+                                                                                        <option value="">Sélectionnez un
+                                                                                            type fournisseur</option>
+                                                                                        <option
+                                                                                            ng-repeat="LalisteDestypefournisseur in listeDestypefournisseur"
+                                                                                            value="{{LalisteDestypefournisseur.TP_CODETYPETIERS}}">
+                                                                                            {{LalisteDestypefournisseur.TP_LIBELLE}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6"
+                                                                                style="margin-top:20px">
+                                                                                <label>Date début*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="far fa-calendar-alt text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="text" id="idDateDebut"
+                                                                                        class="form-control"
+                                                                                        name="listEditionParametre_DateDebut"
+                                                                                        placeholder="Entrez une date de début"
+                                                                                        ng-model="FormListEditionParametre.DateDebut"
+                                                                                        ng-disabled="GriseDateDebut" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6"
+                                                                                style="margin-top:20px">
+                                                                                <label>Date fin*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="far fa-calendar-alt text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="text" id="idDateFin"
+                                                                                        class="form-control"
+                                                                                        name="listEditionParametre_DateFin"
+                                                                                        placeholder="Entrez une date de fin"
+                                                                                        ng-model="FormListEditionParametre.Datefin"
+                                                                                        ng-disabled="GriseDatefin" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="separator separator-dashed separator-success my-1">
+                                                        </div><br>
+
+                                                        <div class="col-lg-6" style="margin-top:25px">
+                                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                                <strong>ETATS</strong></h3>
+                                                            <table
+                                                                class="table table-bordered table-hover table-checkable"
+                                                                id="kt_datatable">
+                                                                <thead style="text-align: center;">
+                                                                    <!--background-color: #8CB9BA; color: White-->
+                                                                    <tr>
+                                                                        <th>LIBELLE</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tfoot
+                                                                    ng-show="listeEditionParametre[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                                                                    <tr ng-repeat="laListeEditionParametre in listeEditionParametre"
+                                                                        style="cursor: pointer;"
+                                                                        ng-click="choixEtat($index, laListeEditionParametre.ET_INDEX, laListeEditionParametre.ET_NOMETAT)"
+                                                                        style="max-width: 100px;">
+                                                                        <td id="idEtat{{$index}}">
+                                                                            {{laListeEditionParametre.ET_LIBELLEETAT}}
+                                                                        </td>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+
+<!-- modal type fichier -->
+<div class="modal fade" id="modal_TypeFichierGlobale">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="background-color: #F5F7FB; border-radius: 15px;">
+  
+        <div class="modal-body">
+          <div class=" product-box row" style="background-color: #F5F7FB;">
+            <div class="rox">
+              <div class="card-header" style="background-color: #F5F7FB; justify-content: center; text-align: center;">
+                <h5 data-bs-dismiss="modal" style="margin-bottom: 0; color: #1b12e0;"><i class="icofont icofont-external"></i>&#160;Exporter en
+                </h5>
+              </div>
+            </div>
+            <div class="rox">
+              &#160;
+              <div class="row">
+                <div class="col" style="justify-content: center; text-align: center;">
+                  <img class="image" style="cursor: pointer;"
+                    src="/Content/assets/media/logos/Microsoft-Word-Logo.png" height="100px" width="200px" alt=""
+                    ng-click="apercuEtat('doc')" >
+                </div>
+                <div class="col" style="justify-content: center; text-align: center;">
+                  <img class="image" style="cursor: pointer;"
+                    src="/Content/assets/media/logos/1200px-PDF_file_icon.svg.png" height="100px" width="100px" alt=""
+                    ng-click="apercuEtat('PDF')">
+                </div>
+                <div class="col" style="justify-content: center; text-align: center;">
+                  <img class="image" style="cursor: pointer;"
+                    src="/Content/assets/media/logos/Microsoft_Office_Excel_(2019–present).svg.png" height="100px"
+                    width="120px" alt=""
+                    ng-click="apercuEtat('xls')">
+                </div>
+                <div class="col" style="justify-content: center; text-align: center;">
+                  <img class="image" style="cursor: pointer;" src="/Content/assets/media/logos/xlsx-icon-7.jpg"
+                    height="100px" width="120px" alt=""
+                    ng-click="apercuEtat('xlsx')">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

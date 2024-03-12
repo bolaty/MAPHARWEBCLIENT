@@ -1,0 +1,199 @@
+﻿@{
+    ViewBag.Title = "Saisie Du budget Automatique";
+    Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background-color: beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    @*<h5 class="text-dark font-weight-bold my-1 mr-5">Cloture d'exercice</h5>*@
+                    <h3 class="text-dark font-weight-bold my-1 mr-5">GESTION</h3>
+
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Analyse</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Liste</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Saisie du Budget automatique</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #F5F500">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fas fa-laptop text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Saisie du Budget automatique</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label>Libéllé*</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-address-card text-info"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" name="url" placeholder="TEST" />
+                                        </div>
+                                        <span class="form-text text-muted">Veuillez saisir un libéllé.</span>
+                                    </div>
+                                </div>
+                                <div class="row mt-8">
+                                    <div class="col-lg-12">
+                                        <button class="btn btn-primary btn-primary--icon" id="kt_search">
+                                            <span>
+                                                <i class="la la-search"></i>
+                                                <span>Rechercher</span>
+                                            </span>
+                                        </button>
+                                        <button class="btn btn-outline-warning" id="kt_reset">
+                                            <span>
+                                                <i class="la la-close"></i>
+                                                <span>Annuler</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="mb-2">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label>Budget</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-money-bill-alt text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <select class="form-control" name="option">
+                                                    <option value="">Sélectionnez le bulget</option>
+                                                    <option>ABC</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                            <span class="form-text text-muted">Veuillez sélectionnez un bulget.</span>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label>Service</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-industry text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <select class="form-control" name="option">
+                                                    <option value="">Sélectionnez le service</option>
+                                                    <option>ABC</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                            <span class="form-text text-muted">Veuillez sélectionnez un service.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-6">
+                                            <label>Périodicité*</label>
+                                            <div class="input-daterange input-group" id="kt_datepicker">
+                                                <input type="text" class="form-control datatable-input" name="start" placeholder="Du" data-col-index="5" />
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-hourglass text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control datatable-input" name="end" placeholder="Au" data-col-index="5" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label>Période*</label>
+                                            <div class="input-daterange input-group" id="kt_datepicker">
+                                                <input type="text" class="form-control datatable-input" name="start" placeholder="Du" data-col-index="5" />
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-arrows-alt-h text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control datatable-input" name="end" placeholder="Au" data-col-index="5" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label>Date de début</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" name="Date de début" class="form-control datatable-input" placeholder="Date au format JJ/MM/AAAA" data-col-index="4" />
+                                            </div>
+                                            <span class="form-text text-muted">Veuillez saisir la date de début.</span>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label>Date de fin</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" name="Date de fin" class="form-control datatable-input" placeholder="Date au format JJ/MM/AAAA" data-col-index="4" />
+                                            </div>
+                                            <span class="form-text text-muted">Veuillez saisir la date de fin.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

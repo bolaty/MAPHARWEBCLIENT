@@ -1,0 +1,807 @@
+﻿@{
+ViewBag.Title = "Modele des enregistrements";
+Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">NOM DU MODULE</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Nom du menu</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Enregistrement</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Nom de la page</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header" style="background-color: #718E3E;">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fab fa-500px text-white icon-xl"></i>
+                                </span>
+                                <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Nom de la page</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>SOUS TITRE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Code*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-key text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un code" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le code.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Nom*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-address-card text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="texte" placeholder="Entrer un nom" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le nom.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Adresse*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-periscope text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="texte" placeholder="Entrer une adresse" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'adresse.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>SOUS TITRE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Dénomination*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer une Dénomination" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la Dénomination.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Commission*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-money-bill-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer une commission" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la commission.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>N° police/ N.C*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-orcid text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un n°" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le n° de la Police.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>SOUS TITRE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Intermédiaire*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-people-arrows text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un nom d'intermédiaire" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le nom de l'intermédiaire.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Effet*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-calendar text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="date" class="form-control" name="url" placeholder="Entrer un effet" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'effet.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Echéance*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-calendar text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="date" class="form-control" name="url" placeholder="Entrer une écheance" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'écheance.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>SOUS TITRE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Durée en mois*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-clock text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer une durée" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la durée en mois.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Pays*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-globe-africa text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un pays</option>
+                                                                <option>pays 1</option>
+                                                                <option>pays 2</option>
+                                                                <option>pays 3</option>
+                                                                <option>pays 4</option>
+                                                                <option>pays 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le pays.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Ville*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map-marker-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner une ville</option>
+                                                                <option>ville 1</option>
+                                                                <option>ville 2</option>
+                                                                <option>ville 3</option>
+                                                                <option>ville 4</option>
+                                                                <option>ville 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez séléctionner la ville.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>SOUS TITRE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Commune*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map-pin text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner une commune</option>
+                                                                <option>commune 1</option>
+                                                                <option>commune 2</option>
+                                                                <option>commune 3</option>
+                                                                <option>commune 4</option>
+                                                                <option>commune 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la commune.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Situation géographique*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner une situation géographique</option>
+                                                                <option>situation géo 1</option>
+                                                                <option>situation géo 2</option>
+                                                                <option>situation géo 3</option>
+                                                                <option>situation géo 4</option>
+                                                                <option>situation géo 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la situation géograpgique.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Type d'appartement*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-hotel text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un type</option>
+                                                                <option>appartement 1</option>
+                                                                <option>appartement 2</option>
+                                                                <option>appartement 3</option>
+                                                                <option>appartement 4</option>
+                                                                <option>appartement 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le type d'appartement.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>SOUS TITRE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <label>Nombre de pièce*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-sort-numeric-down text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un nombre de pièce" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le nombre de pièce.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Superficie*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-ruler-combined text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer une superficie" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la superficie.</span>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label>Loyer mensuel*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-wallet text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un loyer" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le loyer mensuel.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>SOUS TITRE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Occupant*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-house-user text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un occupant</option>
+                                                                <option>occupant 1</option>
+                                                                <option>occupant 2</option>
+                                                                <option>occupant 3</option>
+                                                                <option>occupant 4</option>
+                                                                <option>occupant 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner l'occupant.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Assureur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-cog text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un assureur</option>
+                                                                <option>assureur 1</option>
+                                                                <option>assureur 2</option>
+                                                                <option>assureur 3</option>
+                                                                <option>assureur 4</option>
+                                                                <option>assureur 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner l'assureur.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Interlocuteur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-assistive-listening-systems text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un interlocuteur" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'interlocuteur.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Téléphone interlocuteur*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-phone-alt text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer un n° de téléphone" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le téléphone interlocuteur.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>SOUS TITRE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Date*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-calendar text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="date" class="form-control" name="url" placeholder="Entrer une date" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la date.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Heure*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-clock text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="time" class="form-control" name="url" placeholder="Entrer la Dénomination" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'heure.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Nature du sinistre*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-question-circle text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner nature sinistre</option>
+                                                                <option>nature 1</option>
+                                                                <option>nature 2</option>
+                                                                <option>nature 3</option>
+                                                                <option>nature 4</option>
+                                                                <option>nature 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le code du sinistre.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Montant préjudice*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-money-bill text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer le montant préjudice" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le montant préjudice.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>SOUS TITRE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Expert nommé*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user-tie text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner expert nommé</option>
+                                                                <option>expert nommé 1</option>
+                                                                <option>expert nommé 2</option>
+                                                                <option>expert nommé 3</option>
+                                                                <option>expert nommé 4</option>
+                                                                <option>expert nommé 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'expert nommé.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Description du sinistre*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-marker text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <textarea class="form-control" placeholder="Entrer une description"></textarea>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir la description.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Document transmis*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-file-export text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <textarea class="form-control" placeholder="Entrer un document transmis"></textarea>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir le document transmis.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Adresse géographique*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-map text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="url" placeholder="Entrer une adresse géographique" />
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez saisir l'adresse géograpgique.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>SOUS TITRE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Document*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-book text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un document</option>
+                                                                <option>document 1</option>
+                                                                <option>document 2</option>
+                                                                <option>document 3</option>
+                                                                <option>document 4</option>
+                                                                <option>document 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le document.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Période*</label>
+                                                        <div class="input-daterange input-group" id="kt_datepicker">
+                                                            <input type="text" class="form-control datatable-input" name="start" placeholder="Du" data-col-index="5" />
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-arrows-alt-h text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control datatable-input" name="end" placeholder="Au" data-col-index="5" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Exercice*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-etsy text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un exercice</option>
+                                                                <option>exercice 1</option>
+                                                                <option>exercice 2</option>
+                                                                <option>exercice 3</option>
+                                                                <option>exercice 4</option>
+                                                                <option>exercice 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner l'exercice.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Periodicité*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="far fa-hourglass text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner une periodicité</option>
+                                                                <option>periodicité 1</option>
+                                                                <option>periodicité 2</option>
+                                                                <option>periodicité 3</option>
+                                                                <option>periodicité 4</option>
+                                                                <option>periodicité 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner la periodicité.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed separator-success my-1"></div><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>SOUS TITRE</strong></h3>
+                                            <div class="mb-2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <label>Compte général*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-landmark text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un compte</option>
+                                                                <option>compte général 1</option>
+                                                                <option>compte général 2</option>
+                                                                <option>compte général 3</option>
+                                                                <option>compte général 4</option>
+                                                                <option>compte général 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner le compte général.</span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Compte tiers*</label>
+                                                        <div class="input-daterange input-group" id="kt_datepicker">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-landmark text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control datatable-input" name="end" placeholder="Compte tiers" data-col-index="5" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Lettre*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fab fa-etsy text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control" name="option">
+                                                                <option value="">Sélectionner un exercice</option>
+                                                                <option>exercice 1</option>
+                                                                <option>exercice 2</option>
+                                                                <option>exercice 3</option>
+                                                                <option>exercice 4</option>
+                                                                <option>exercice 5</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="form-text text-muted">Veuillez sélectionner l'exercice.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold">
+                                    <span>
+                                        <i class="far fa-check-circle"></i>
+                                        <span>Enregistrer</span>
+                                    </span>
+                                </button>
+                                <button class="btn btn-primary btn-primary--icon" id="kt_search">
+                                    <span>
+                                        <i class="la la-search"></i>
+                                        <span>Rechercher</span>
+                                    </span>
+                                </button>
+                                <button class="btn btn-outline-warning" id="kt_reset">
+                                    <span>
+                                        <i class="la la-close"></i>
+                                        <span>Annuler</span>
+                                    </span>
+                                </button>
+                                <button class="btn btn-danger btn-shadow font-weight-bold" id="kt_reset">
+                                    <span>
+                                        <i class="fas fa-ban"></i>
+                                        <span>Supprimer</span>
+                                    </span>
+                                </button>
+                                <button class="btn btn-outline-success" id="kt_reset">
+                                    <span>
+                                        <i class="fas fa-circle"></i>
+                                        <span>Ok</span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-outline-info">
+                                    <span>
+                                        <i class="la la-close"></i>
+                                        <span>Fermer</span>
+                                    </span>
+                                </button>
+                                <button class="btn btn-primary btn-primary--icon" id="kt_search">
+                                    <span>
+                                        <i class="fas fa-binoculars"></i>
+                                        <span>Aperçu</span>
+                                    </span>
+                                </button>
+                                <button type="submit" class="btn btn-light-success font-weight-bold">
+                                    <span>
+                                        <i class="fas fa-undo"></i>
+                                        <span>Réinitialiser</span>
+                                    </span>
+                                </button>
+                                <button class="btn btn-light-warning font-weight-bold">
+                                    <span>
+                                        <i class="fas fa-trash-restore"></i>
+                                        <span>Restaurer</span>
+                                    </span>
+                                </button>
+                                <a href="#" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip" data-theme="dark" title="Retour">
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                                <button class="btn btn-hover-bg-success btn-text-dark btn-hover-text-white border-0 font-weight-bold">
+                                    <span>
+                                        <i class="fas fa-arrow-down text-dark"></i>
+                                        <span>Ajouter</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

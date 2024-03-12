@@ -1,0 +1,20 @@
+﻿@{
+    String vlpMODEGESTION = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    vlpMODEGESTION=HT_Assurance.Models.clsWebConfig.ReadSetting("MODEGESTION");
+    switch (vlpMODEGESTION)
+    {
+        case "01":
+            Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+            break;
+        case "02":
+            Layout = "~/Views/Shared/_LayoutMenuGestion.cshtml";
+            break;
+        case "03":
+            Layout = "~/Views/Shared/_Layout.cshtml";
+            break;
+        default:
+            Layout = "~/Views/Shared/_Layout_Defaut.cshtml";
+            break;
+    }
+}

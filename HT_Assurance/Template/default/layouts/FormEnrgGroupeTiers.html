@@ -1,0 +1,63 @@
+﻿<!--begin::Form-->
+<form class="form" ng-init="contrainteFormAddGroupeTiers()">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Code*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="addGroupeTiers_Code" type="text" maxlength="8" class="form-control"
+                                        name="addGroupeTiers_Code" placeholder="Entrez un code"
+                                        ng-model="FormAddGroupeTiers.Code" ng-disabled="isdisabled" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Libellé*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-quote-right text-info"></i>
+                                        </span>
+                                    </div>
+                                    <textarea id="addGroupeTiers_Libelle" class="form-control" maxlength="500"
+                                        name="addGroupeTiers_Libelle" placeholder="Entrez un libellé"
+                                        ng-model="FormAddGroupeTiers.Libelle"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="ajoutGroupeTiers()">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>&#160;
+        <button type="reset" ng-show="etatForm !== '2'" class="btn btn-light-success font-weight-bold"
+            ng-click="reinitialise()">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a ng-href="#/Tiers/GroupeTiers" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip"
+            data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+<!--end::Form-->

@@ -1,0 +1,427 @@
+﻿<!--début loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initLISTEParametreI()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">PARAMETRE 1</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Configuration des paramètres</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Paramètre</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header" style="background-color: #90CCC8">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fab fa-whmcs text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD';"
+                                    data-toggle="modal" data-target="#modalModifParametre">Paramètre
+                                </h3>
+                            </div>
+                            <div class="card-toolbar">
+                                <!--begin::Dropdown-->
+                                <div class="dropdown dropdown-inline mr-2">
+                                    <button type="button"
+                                        class="btn btn-light-primary font-weight-bolder dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="svg-icon svg-icon-md">
+                                            <!--begin::Svg Icon | path:assets/media/svg/icons/Design/PenAndRuller.svg-->
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path
+                                                        d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z"
+                                                        fill="#000000" opacity="0.3" />
+                                                    <path
+                                                        d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z"
+                                                        fill="#000000" />
+                                                </g>
+                                            </svg>
+                                            <!--end::Svg Icon-->
+                                        </span>Exporter
+                                    </button>
+                                    <!--begin::Dropdown Menu-->
+                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                        <!--begin::Navigation-->
+                                        <ul class="navi flex-column navi-hover py-2">
+                                            <li
+                                                class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">
+                                                Choisir une option:</li>
+                                            <li class="navi-item">
+                                                <a href="#" class="navi-link">
+                                                    <span class="navi-icon">
+                                                        <i class="la la-print"></i>
+                                                    </span>
+                                                    <span class="navi-text">Print</span>
+                                                </a>
+                                            </li>
+                                            <li class="navi-item">
+                                                <a href="#" class="navi-link">
+                                                    <span class="navi-icon">
+                                                        <i class="la la-copy"></i>
+                                                    </span>
+                                                    <span class="navi-text">Copy</span>
+                                                </a>
+                                            </li>
+                                            <li class="navi-item">
+                                                <a href="#" class="navi-link">
+                                                    <span class="navi-icon">
+                                                        <i class="la la-file-excel-o"></i>
+                                                    </span>
+                                                    <span class="navi-text">Excel</span>
+                                                </a>
+                                            </li>
+                                            <li class="navi-item">
+                                                <a href="#" class="navi-link">
+                                                    <span class="navi-icon">
+                                                        <i class="la la-file-text-o"></i>
+                                                    </span>
+                                                    <span class="navi-text">CSV</span>
+                                                </a>
+                                            </li>
+                                            <li class="navi-item">
+                                                <a href="#" class="navi-link">
+                                                    <span class="navi-icon">
+                                                        <i class="la la-file-pdf-o"></i>
+                                                    </span>
+                                                    <span class="navi-text">PDF</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <!--end::Navigation-->
+                                    </div>
+                                    <!--end::Dropdown Menu-->
+                                </div>
+                                <!--end::Dropdown-->
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <!--begin: Datatable-->
+                                            <table class="table table-bordered table-hover table-checkable"
+                                                id="kt_datatable">
+                                                <thead style="text-align: center;">
+                                                    <!--background-color: #8CB9BA; color: White-->
+                                                    <tr>
+                                                        <th>LIBELLE</th>
+                                                        <th>MONTANT MINI</th>
+                                                        <th>MONTANT MAXI</th>
+                                                        <th>TAUX</th>
+                                                        <th>MONTANT</th>
+                                                        <th>VALEUR</th>
+                                                        <th>NUMERO COMPTE</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot
+                                                    ng-show="listeParametreI[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                                                    <tr ng-repeat="lalisteParametreI in listeParametreI"
+                                                        id="idEtat{{$index}}" data-toggle="modal"
+                                                        data-target="#modalModifParametre"
+                                                        ng-click="choixDeLigne($index, lalisteParametreI)">
+                                                        <td style="max-width: 100px;">{{lalisteParametreI.PP_LIBELLE}}
+                                                        </td>
+                                                        <td>{{lalisteParametreI.PP_MONTANTMINI}}</td>
+                                                        <td>{{lalisteParametreI.PP_MONTANTMAXI}}</td>
+                                                        <td>{{lalisteParametreI.PP_TAUX}}</td>
+                                                        <td>{{lalisteParametreI.PP_MONTANT}}</td>
+                                                        <td>{{lalisteParametreI.PP_VALEUR}}</td>
+                                                        <td>{{lalisteParametreI.PL_NUMCOMPTE}}</td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                            <!--end: Datatable-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+<!--begin modal pour choix du code souscripteur-->
+<div class="modal fade" id="modalModifParametre" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalModifParametre" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #90CCC8;">
+                <h5 class="modal-title text-dark" id="modalModifParametre"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fab fa-whmcs text-dark"></i>
+                    Ajout paramètres
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--begin::Form-->
+                <form class="form" id="FormModifParametre" ng-if="etatForm == '2'">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <div class="mb-2">
+                                    <div class="form-group row">
+                                        <div class="col-lg-4">
+                                            <label>Code*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-key text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input id="idCode" maxlength="8" type="text" class="form-control"
+                                                    name="modifParam_Code" placeholder="Entrer un code"
+                                                    ng-model="FormModifParametre.code" ng-disabled="true"
+                                                    ng-pattern="/^[0-9]+$/" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <label>Libellé*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-quote-right text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input id="idLibelle" type="text" class="form-control"
+                                                    name="modifParam_Libelle" placeholder="Entrer un libellé"
+                                                    ng-model="FormModifParametre.libelle" ng-disabled="true"
+                                                    maxlength="150" ng-pattern="/^([a-z-A-Z])([a-z-A-Z0-9 ]+)/" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <div class="mb-1">
+                                    <div class="form-group row">
+                                        <div class="col-lg-3">
+                                            <label>Montant min*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-money-bill-alt text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" maxlength="15" class="form-control"
+                                                    name="modifParam_MontantMin" id="modifParam_MontantMin"
+                                                    ng-model="FormModifParametre.MontantMin"
+                                                    placeholder="Entrer un montant" ng-disabled="verouMontantMin" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label>Montant max*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-money-bill-alt text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" maxlength="15" class="form-control"
+                                                    name="modifParam_MontantMax" id="modifParam_MontantMax"
+                                                    ng-model="FormModifParametre.MontantMax"
+                                                    placeholder="Entrer un montant" ng-disabled="verouMontantMax" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label>Taux*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-percent text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" maxlength="5" class="form-control"
+                                                    name="modifParam_Taux" id="modifParam_Taux"
+                                                    ng-model="FormModifParametre.Taux" placeholder="Entrer un taux"
+                                                    maxlength="5" ng-disabled="verouTaux" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label>Montant*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-money-bill-alt text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" maxlength="15" class="form-control"
+                                                    id="modifParam_Montant" name="modifParam_Montant"
+                                                    ng-model="FormModifParametre.Montant"
+                                                    placeholder="Entrer un montant" ng-disabled="verouMontant" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <div class="mb-2">
+                                    <div class="form-group row">
+                                        <div class="col-lg-4">
+                                            <label>Valeur*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-key text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input id="idValeur" maxlength="150" type="text" class="form-control"
+                                                    name="modifParam_Valeur" placeholder="Entrer une valeur"
+                                                    ng-model="FormModifParametre.valeur" ng-disabled="verouValeur" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <label>N° compte*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-key text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <input id="idNumCompte" type="text" class="form-control"
+                                                    name="modifParam_Num_Compte"
+                                                    placeholder="Entrer un numero de compte"
+                                                    ng-model="FormModifParametre.numCompte" ng-disabled="verouNumCompte"
+                                                    maxlength="15" />
+                                                <div class="input-group-append" data-toggle="tooltip" data-theme="dark">
+                                                    <button type="button" class="btn btn-secondary btn-secondary--icon"
+                                                        id="kt_reset"
+                                                        ng-click="afficheListeNumCompte(FormModifParametre.numCompte)">
+                                                        <i class="fas fa-ellipsis-h text-info"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div ng-if="etatForm != '2'">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #F5F500;">
+                                <h5 class="modal-title text-dark" id="modalNumCompte"
+                                    style="font-size: 23px; font-family: Maiandra GD">
+                                    <i class="fas fa-ellipsis-h text-dark"></i>
+                                    N° compte
+                                </h5>
+                                <button type="button" class="close" ng-click="reset()" aria-label="Close">
+                                    <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-bordered table-checkable" id="kt_datatable"
+                                    ng-show="leChargement == false">
+                                    <thead style="text-align: center">
+                                        <tr>
+                                            <th>COMPTE</th>
+                                            <th>NUMERO COMPTE</th>
+                                            <th>ACTION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="lesNumCompte in listeDesNumComptes">
+                                            <td>{{lesNumCompte.PL_LIBELLE}}</td>
+                                            <td>{{lesNumCompte.PL_NUMCOMPTE}}</td>
+                                            <td style="text-align: center">
+                                                <!--bouton voir plus-->
+                                                <button type="button" class="btn btn-outline-secondary btn-icon"
+                                                    data-toggle="tooltip" data-theme="dark" title="Choisir"
+                                                    ng-click="choixNumCompte(lesNumCompte.PL_NUMCOMPTE)">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...
+                                </h5>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-info" ng-click="reset()">
+                                    <span>
+                                        <i class="la la-close"></i>
+                                        <span>Fermer</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Form-->
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="saveparm()">
+                    <span>
+                        <i class="far fa-check-circle"></i>
+                        <span>Enregistrer</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--end modal-->

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Chaîne de connexion utilisée dans web.config par l’application pour accéder à la base de données." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-HT_Assurance-20201002113135.mdf;Initial Catalog=aspnet-HT_Assurance-20201002113135;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\MAPHARPROJETDU28022022\\Maphar_web\\HT_Assurance\\obj\\Release\\Package\\PackageTmp\\obj\\Release\\TransformWebConfig\\original\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\MAPHARPROJETDU28022022\\Maphar_web\\HT_Assurance\\obj\\Release\\Package\\PackageTmp\\obj\\Release\\TransformWebConfig\\transformed\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\MAPHARPROJETDU28022022\\Maphar_web\\HT_Assurance\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

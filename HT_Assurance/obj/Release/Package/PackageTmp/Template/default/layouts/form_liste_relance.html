@@ -1,0 +1,379 @@
+﻿<form class="mb-15" id="idList">
+    <div class="card-body">
+        <!--begin: Search Form-->
+        <div class="row mb-6">
+            <div class="col-lg-3 mb-lg-0 mb-6">
+                <label>Période*</label>
+                <div class="input-daterange input-group" id="">
+                    <!--kt_datepicker-->
+                    <input id="idPeriodeDu" type="text" class="form-control"
+                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                        name="list_PeriodeDu" placeholder="Du" ng-model="FormList.periodeDu" maxlength="10" />
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="fas fa-arrows-alt-h text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idPeriodeAu" type="text" class="form-control"
+                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                        name="list_PeriodeAu" placeholder="Au" ng-model="FormList.periodeAu" maxlength="10" />
+                </div>
+            </div>
+            <div class="col-lg-3 mb-lg-0 mb-6">
+                <label>N° police*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fab fa-orcid text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idNumPolice" type="text" class="form-control" name="list_NumPolice"
+                        placeholder="Entrer un numéro" ng-model="FormList.numPolice" maxlength="8" />
+                </div>
+            </div>
+            <div class="col-lg-3 mb-lg-0 mb-6">
+                <label>N° Souscripteur*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fab fa-orcid text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idNumSouscripteur" type="text" class="form-control" ng-pattern="/^[0-9]/"
+                        name="list_NumSouscripteur" placeholder="Entrer un n° souscripteur"
+                        ng-model="FormList.numSouscripteur" maxlength="8" />
+                </div>
+            </div>
+            <div class="col-lg-3 mb-lg-0 mb-6">
+                <label>Nom du souscripteur*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-address-card text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idNomSouscripteur" type="text" class="form-control" ng-pattern="/^[a-z-A-Z]/"
+                        name="list_NomSouscripteur" placeholder="Entrer un nom" ng-model="FormList.nomSouscripteur"
+                        maxlength="150" />
+                </div>
+            </div>
+        </div>
+        <div class="row mb-8">
+            <div class="col-lg-6">
+                <label>N° Commercial*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fab fa-orcid text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idNumCommercial" type="text" class="form-control" ng-pattern="/^[0-9]/"
+                        name="list_NumCommercial" placeholder="Entrer un n° commercial"
+                        ng-model="FormList.numCommercial" maxlength="8" />
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <label>Nom du Commercial*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-address-card text-info"></i>
+                        </span>
+                    </div>
+                    <input id="idNomCommercial" type="text" class="form-control" ng-pattern="/^[a-z-A-Z]/"
+                        name="list_NomCommercial" placeholder="Entrer un nom" ng-model="FormList.nomCommercial"
+                        maxlength="150" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-8">
+            <div class="col-lg-8">
+                <button class="btn btn-primary btn-primary--icon" id="kt_search"
+                    ng-click="afficheListeRelance(FormList.periodeDu, FormList.periodeAu, FormList.numPolice, FormList.numSouscripteur, FormList.nomSouscripteur, FormList.numCommercial, FormList.nomCommercial)">
+                    <span>
+                        <i class="la la-search"></i>
+                        <span>Rechercher</span>
+                    </span>
+                </button>&#160;&#160;
+                <button type="button" class="btn btn-outline-warning" id="kt_reset" ng-click="listeAnnuler()">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Annuler</span>
+                    </span>
+                </button>
+            </div>
+            <div class="col-lg-4" style="left: 265px;">
+                <!-- <label class="checkbox checkbox-lg checkbox-primary"
+                    style="position: relative; left: 20px; bottom: -30px; width: 5px;">
+                    <input type="checkbox" ng-click="testValRelanceToutCocher()"
+                        ng-checked="cocheRelanceToutCocher(FormListRelanceTC.ToutCocher)"
+                        ng-model="FormListRelanceTC.ToutCocher" id="ToutCocher" />
+                    <span class="form-text text-muted"></span>
+                </label> -->
+
+                <a href="" ng-click="testValRelanceToutCocher()" class="btn btn-icon btn-light-success">
+                    <i class="fas fa-check-double"></i>
+                </a>
+                <label style="position: relative; top: 2px; left: 16px;">Tout cocher</label>
+            </div>
+        </div>&#160;&#160;
+        <!--  -->
+
+        <!--begin: Datatable-->
+        <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+            <thead style="text-align: center;">
+                <!--background-color: #8CB9BA; color: White-->
+                <tr>
+                    <th>DATE</th>
+                    <th>N° POLICE/N.C</th>
+                    <th>N° SOUSCRIPTEUR</th>
+                    <th>SOUSCRIPTEUR</th>
+                    <th>EFFET</th>
+                    <th>ECHEANCE</th>
+                    <th>OBSERVATION</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tfoot ng-show="listeRelance[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                <tr ng-repeat="laListeRelance in listeRelance">
+                    <td>{{laListeRelance.CA_DATESAISIE}}</td>
+                    <td>{{laListeRelance.CA_NUMPOLICE}}</td>
+                    <td>{{laListeRelance.TI_NUMTIERS}}</td>
+                    <td>{{laListeRelance.TI_DENOMINATION}}</td>
+                    <td>{{laListeRelance.CA_DATEEFFET}}</td>
+                    <td>{{laListeRelance.CA_DATEECHEANCE}}</td>
+                    <td>{{laListeRelance.CA_OBSERVATION}}</td>
+                    <!--ligne des actions-->
+                    <td>
+                        <div class="example-preview" style="position: relative; right: -19px">
+                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                <div class="btn-group mr-2" role="group" aria-label="...">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="modal"
+                                        data-target="#modalVoirPlus" ng-click="voirPlus(laListeRelance)">
+                                        <i class="far fa-eye" title="Voir plus"></i>
+                                    </button>
+                                    <!--bouton autres options-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="modal"
+                                        data-target="#modalOption"
+                                        ng-click="autreOption(laListeRelance, laListeRelance.CA_CODECONTRAT, 'relanceOn')">
+                                        <i class="fas fa-ellipsis-v" title="Autres options"></i>
+                                    </button>
+                                    <!-- bouton case a cocher -->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon"
+                                        title="Relancer le contrat">
+                                        <label class="checkbox checkbox-lg checkbox-primary">
+                                            <input type="checkbox" ng-click="testValRelance($index)"
+                                                ng-checked="cocheRelance(FormListRelance[$index])"
+                                                id="Actions{{$index}}" />
+                                            <span class="form-text text-muted"></span>
+                                            <!-- ng-model="FormListRelance[$index]" -->
+                                        </label>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <!--end: Datatable-->
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold" ng-click="AjoutRelance()"
+            style="margin-left: 1120px;" ng-disabled="verouBtnRelance">
+            <span>
+                <i class="fas fa-circle-notch"></i>
+                <span>Relancer</span>
+            </span>
+        </button>
+    </div>
+</form>
+
+<!--begin modal pour voir plus-->
+<div class="modal fade" id="modalVoirPlus" tabindex="-1" role="dialog" aria-labelledby="modalVoirPlus"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalVoirPlus" style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="far fa-eye text-white"></i>
+                    Plus d'informations
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body" style="height: 300px;">
+                <div class="row col-lg-12">
+                    <div class="col-lg-6">
+                        <h6><strong style="color: DarkSlateBlue">INFORMATION SOUSCRIPTEUR</strong></h6>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">SOUSCRIPTEUR</strong> :
+                        {{recuperer.TI_DENOMINATION}} <br>
+                    </div>
+                    <div class="col-lg-6">
+                        <h6><strong style="color: DarkSlateBlue">INFORMATION COMMERCIAL</strong></h6>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">NOM DU COMMERCIAL</strong> :
+                        {{recuperer.TI_DENOMINATIONCOMMERCIAL}} <br>
+                    </div>
+                </div>&#160;&#160;
+                <div class="row col-lg-12">
+                    <div class="col-lg-6">
+                        <h6><strong style="color: DarkSlateBlue">INFORMATION GENERALE</strong></h6>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">DATE</strong> :
+                        {{recuperer.CA_DATESAISIE}} <br>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">N° POLICE/N.C</strong> :
+                        {{recuperer.CA_NUMPOLICE}} <br>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">INTERMEDIAIRE</strong> :
+                        {{recuperer.IT_DENOMMINATION}} <br>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">PAYS</strong> :
+                        {{recuperer.PY_LIBELLE}} <br>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">VILLE</strong> :
+                        {{recuperer.VL_LIBELLE}} <br>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">COMMUNE</strong> :
+                        {{recuperer.CO_LIBELLE}} <br>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">SITUATION GEO.</strong> :
+                        {{recuperer.CA_SITUATIONGEOGRAPHIQUE}} <br>
+                    </div>
+                    <div class="col-lg-6">
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">EFFET</strong> :
+                        {{recuperer.CA_DATEEFFET}} <br>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">ECHEANCE</strong> :
+                        {{recuperer.CA_DATEECHEANCE}} <br>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">ASSUREUR</strong> :
+                        {{recuperer.TI_DENOMINATIONASSUREUR}} <br>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">INTERLOCUTEUR</strong> :
+                        {{recuperer.CA_NOMINTERLOCUTEUR}} <br>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">TELEPHONE INTERLOCUTEUR</strong>
+                        : {{recuperer.CA_CONTACTINTERLOCUTEUR}} <br>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">DESIGNATION</strong> :
+                        {{recuperer.DI_LIBELLEDESIGNATION}} <br>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">TYPE D'AFFAIRE</strong> :
+                        {{recuperer.TA_LIBLLETYPEAFFAIRES}} <br>
+                        <strong style="font-size: 13px; font-family: 'Maiandra GD'">GARANTIE</strong> :
+                        {{recuperer.GR_LIBELLEGARENTIEPRIME}} <br>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+
+<!--begin modal pour autres options-->
+<div class="modal fade" id="modalOption" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalOption" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalOption" style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-v text-white"></i>
+                    Autres options
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card card-custom gutter-b">
+                    <div class="card-header card-header-tabs-line">
+                        <div class="card-toolbar">
+                            <ul class="nav nav-tabs nav-bold nav-tabs-line">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <span class="nav-icon"><i class="far fa-sad-tear"></i></span>
+                                        <span class="nav-text">Consultation des sinistres</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" ng-click="redirectOuvertureDossier()"
+                                            data-dismiss="modal" style="cursor: pointer">Consultation des dossiers</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectSaisieEcheancier()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-pen-alt"></i></span>
+                                        <span class="nav-text">Consultation echéancier</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectConsultReglement()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-id-card"></i></span>
+                                        <span class="nav-text">Relevé client</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectReleveCommission()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-file-invoice"></i></span>
+                                        <span class="nav-text">Relevé commission</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+<!--begin modal-->
+<div class="modal fade" id="modalAnnulationValidation" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalAnnulationValidation" aria-hidden="true">
+    <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalAnnulationValidation"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-thumbs-down text-white"></i>
+                    Contrat
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align: center; font-size: 17px;">
+                Êtes-vous sûr de vouloir annuler cette validation ?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-dark btn-shadow font-weight-bold" id="pourValider"
+                    ng-click="AnnulationValide(idElement)" data-dismiss="modal">
+                    <span>
+                        <i class="fas fa-thumbs-down"></i>
+                        <span>Annulation validation</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--end modal-->

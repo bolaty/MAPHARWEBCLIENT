@@ -1,0 +1,250 @@
+﻿<div ng-include="'Template/default/layouts/loading.html'"></div>
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormAddEditionTiers()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">OUTILS ET SECURITES</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Edition</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Edition</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <div class="d-flex align-items-center"></div>
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header" style="background-color: #B666D2">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="far fa-bookmark  text-white icon-xl"></i>
+                                </span>
+                                <h3 class="card-title"
+                                    style="font-size: 30px; font-family: 'Maiandra GD'; color: white;">Edition
+                                    outils et securités
+                                </h3>
+                            </div>
+
+                            <div class="card-toolbar">
+                                <button type="button" class="btn btn-light-primary font-weight-bolder"
+                                    aria-haspopup="true" aria-expanded="false" ng-click="apercuEtat()">
+                                    Aperçu <i class="far fa-eye text-info"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-1">
+                                                <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="separator separator-dashed separator-success my-1">
+                                                        </div><br>
+                                                        <div class="col-lg-4" style="margin-right:105px">
+                                                            <div class="row">
+                                                                <div class="mb-3">
+                                                                    <h3
+                                                                        class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                                        <strong>CRITERES</strong></h3>
+                                                                    <div class="mb-1">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>Zone ou coodination*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-sitemap text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control"
+                                                                                        id="idZone" name=""
+                                                                                        ng-model="FormListOutilsSecurite.Zone"
+                                                                                        ng-disabled="Zone">
+                                                                                        <option value=""
+                                                                                            ng-click="initialiserChamp()">
+                                                                                            Sélectionner
+                                                                                            une zone ou coodination
+                                                                                        </option>
+                                                                                        <option
+                                                                                            ng-repeat="LalisteDesZoneCombo in listeDesZoneCombo"
+                                                                                            value="{{LalisteDesZoneCombo.ZN_CODEZONE}}"
+                                                                                            ng-click="afficheListeSuccursales()">
+                                                                                            {{LalisteDesZoneCombo.ZN_NOMZONE}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>Succursales</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-landmark text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select id="idSuccursales"
+                                                                                        class="form-control"
+                                                                                        name="addMP_Intermediaire"
+                                                                                        ng-model="FormListOutilsSecurite.Succursales"
+                                                                                        ng-disabled="verouSuccursales"
+                                                                                        ng-pattern="/^[a-z-A-Z]/">
+                                                                                        <option value="">Sélectionner
+                                                                                            une
+                                                                                            succursale
+                                                                                        </option>
+                                                                                        <option
+                                                                                            ng-selected="FormListOutilsSecurite.Succursales == LalisteDesSuccursales.AG_CODEAGENCE"
+                                                                                            ng-repeat="LalisteDesSuccursales in listeDesSuccursales"
+                                                                                            value="{{LalisteDesSuccursales.AG_CODEAGENCE}}">
+                                                                                            {{LalisteDesSuccursales.AG_RAISONSOCIAL}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>Entrepot*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-user-tie  text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control"
+                                                                                        id="idEntrepot" name=""
+                                                                                        ng-model="FormListOutilsSecurite.Entrepot"
+                                                                                        ng-disabled="Entrepot"
+                                                                                        ng-pattern="/^[a-z-A-Z]/">
+                                                                                        <option value="">Sélectionner un
+                                                                                            entrepot</option>
+                                                                                        <option
+                                                                                            ng-repeat="lEntrepot in listeEntrepot"
+                                                                                            ng-selected="FormListOutilsSecurite.Entrepot == lEntrepot.EN_CODEENTREPOT"
+                                                                                            value="{{lEntrepot.EN_CODEENTREPOT}}">
+                                                                                            {{lEntrepot.EN_DENOMINATION}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-6"
+                                                                                style="margin-top:10px">
+                                                                                <label>Date Début*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="far fa-calendar-alt text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="text" id="idDateDebut"
+                                                                                        class="form-control" name=""
+                                                                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                                                                        ng-model="FormListOutilsSecurite.DateDebut"
+                                                                                        placeholder="Entrer une date début"
+                                                                                        ng-disabled="verouDateDebut">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6"
+                                                                                style="margin-top:10px">
+                                                                                <label>Date Fin*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="far fa-calendar-alt text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="text" id="idDateFin"
+                                                                                        class="form-control" name=""
+                                                                                        ng-patteng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                                                                        ng-model="FormListOutilsSecurite.DateFin"
+                                                                                        placeholder="Entrer une date fin"
+                                                                                        ng-disabled="verouDateFin">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="separator separator-dashed separator-success my-1">
+                                                        </div><br>
+
+                                                        <div class="col-lg-6" style="margin-top:25px">
+                                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                                <strong>ETATS</strong></h3>
+                                                            <table class="table table-bordered table-checkable"
+                                                                id="kt_datatable">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>LIBELLE ETATS</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tfoot
+                                                                    ng-show="listeEdition[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                                                                    <tr ng-repeat="laListeEdition in listeEdition"
+                                                                        style="cursor: pointer;"
+                                                                        ng-click="choixEtat($index, laListeEdition.ET_TYPEETAT, laListeEdition.ET_NOMETAT, laListeEdition.ET_LIBELLEETAT, laListeEdition.ET_INDEX)">
+                                                                        <td id="idEtat{{$index}}">
+                                                                            {{laListeEdition.ET_LIBELLEETAT}}</td>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

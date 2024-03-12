@@ -1,0 +1,631 @@
+﻿<!--début loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormAddEditionTiers()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h3 class="text-dark font-weight-bold my-1 mr-5">GESTION</h3>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Tiers</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Edition</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <div class="d-flex align-items-center">
+                <!--begin::Actions-->
+                <!--end::Actions-->
+                <!--begin::Dropdown-->
+                <!--end::Dropdown-->
+            </div>
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header" style="background-color: #F5F500">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="far fa-bookmark  text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Edition tiers
+                                </h3>
+                            </div>
+
+                            <div class="card-toolbar">
+                                <button ng-disabled="fermerBtnGenerer" ng-show="btnGenerer" type="button"
+                                    class="btn btn-success font-weight-bolder" aria-haspopup="true"
+                                    aria-expanded="false" ng-click="genererEtat()">
+                                    Generer <i class="far fa-share-square text-white"></i>
+                                </button>&#160;&#160;&#160;
+                                <button ng-disabled="fermerBtnApercu" type="button"
+                                    class="btn btn-light-primary font-weight-bolder" aria-haspopup="true" data-toggle="modal"
+                                    data-target="#modal_TypeFichierGlobale"
+                                    aria-expanded="false" >
+                                    Aperçu <i class="far fa-eye text-info"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-1">
+                                                <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="separator separator-dashed separator-success my-1">
+                                                        </div><br>
+                                                        <div class="col-lg-4" style="margin-right:105px">
+                                                            <div class="row">
+                                                                <div class="mb-3">
+                                                                    <h3
+                                                                        class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                                        <strong>CRITERES</strong></h3>
+                                                                    <div class="mb-1">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>Zone ou coodination*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-sitemap text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control" id=""
+                                                                                        name=""
+                                                                                        ng-model="FormListTiers.Zone"
+                                                                                        ng-disabled="Zone"
+                                                                                        ng-change="afficheListeSuccursales()">
+                                                                                        <option value="">Sélectionner
+                                                                                            une zone ou coodination
+                                                                                        </option>
+                                                                                        <option
+                                                                                            ng-repeat="LalisteDesZoneCombo in listeDesZoneCombo"
+                                                                                            value="{{LalisteDesZoneCombo.ZN_CODEZONE}}">
+                                                                                            {{LalisteDesZoneCombo.ZN_NOMZONE}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>Succursales*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-landmark text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control"
+                                                                                        id="idSuccursales" name=""
+                                                                                        ng-model="FormListTiers.Succursales"
+                                                                                        ng-disabled="Succursales"
+                                                                                        ng-pattern="/^[a-z-A-Z]/">
+                                                                                        <option value="">Sélectionner
+                                                                                            une succursale</option>
+                                                                                        <option
+                                                                                            ng-repeat="LalisteDesSuccursales in listeDesSuccursales"
+                                                                                            ng-selected="FormListTiers.Succursales == LalisteDesSuccursales.AG_CODEAGENCE"
+                                                                                            value="{{LalisteDesSuccursales.AG_CODEAGENCE}}">
+                                                                                            {{LalisteDesSuccursales.AG_RAISONSOCIAL}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>Entrepot*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-user-tie  text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control"
+                                                                                        id="idEntrepot" name=""
+                                                                                        ng-model="FormListTiers.Entrepot"
+                                                                                        ng-disabled="Entrepot"
+                                                                                        ng-pattern="/^[a-z-A-Z]/">
+                                                                                        <option value="">Sélectionner un
+                                                                                            entrepot</option>
+                                                                                        <option
+                                                                                            ng-repeat="lEntrepot in listeEntrepot"
+                                                                                            ng-selected="FormListTiers.Entrepot == lEntrepot.EN_CODEENTREPOT"
+                                                                                            value="{{lEntrepot.EN_CODEENTREPOT}}">
+                                                                                            {{lEntrepot.EN_DENOMINATION}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>Type Tiers*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fab fa-etsy text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control"
+                                                                                        id="idTypeTiers" name=""
+                                                                                        ng-model="FormListTiers.TypeTiers"
+                                                                                        ng-change="afficheListeNatureTiers()"
+                                                                                        ng-disabled="TypeTiers"
+                                                                                        ng-pattern="/^[a-z-A-Z]/">
+                                                                                        <option value="">Sélectionner un
+                                                                                            type Tiers</option>
+                                                                                        <option
+                                                                                            ng-repeat="LalisteDesTypeTiers in listeDesTypeTiers"
+                                                                                            ng-selected="FormListTiers.TypeTiers == LalisteDesTypeTiers.TP_CODETYPETIERS"
+                                                                                            value="{{LalisteDesTypeTiers.TP_CODETYPETIERS}}">
+                                                                                            {{LalisteDesTypeTiers.TP_LIBELLE}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>Nature Tiers</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-money-bill-alt text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control" name=""
+                                                                                        ng-model="FormListTiers.NatureTiers"
+                                                                                        ng-disabled="NatureTiers">
+                                                                                        <option value="">Sélectionner
+                                                                                            une Nature Tiers</option>
+                                                                                        <option
+                                                                                            ng-selected="LalisteDesNatureTiers.NT_CODENATURETIERS == FormListTiers.NatureTiers"
+                                                                                            ng-repeat="LalisteDesNatureTiers in listeNatureTiers"
+                                                                                            value="{{LalisteDesNatureTiers.NT_CODENATURETIERS}}">
+                                                                                            {{LalisteDesNatureTiers.NT_LIBELLE}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>Pays</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="far fa-money-bill-alt text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control" id=""
+                                                                                        name=""
+                                                                                        ng-model="FormListTiers.Pays"
+                                                                                        ng-disabled="Pays">
+                                                                                        <option value="">Sélectionner un
+                                                                                            pays</option>
+                                                                                        <option
+                                                                                            ng-repeat="lePays in listePays"
+                                                                                            ng-selected="FormListTiers.Pays === lePays.PY_CODEPAYS"
+                                                                                            value="{{lePays.PY_CODEPAYS}}">
+                                                                                            {{lePays.PY_LIBELLE}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>Groupe des tièrs</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-users text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control"
+                                                                                        id="groupeTiers" name=""
+                                                                                        ng-model="FormListTiers.GroupeTiers"
+                                                                                        ng-disabled="GroupeTiers">
+                                                                                        <option value="">Sélectionner un
+                                                                                            groupe des tièrs</option>
+                                                                                        <option
+                                                                                            ng-repeat="leGroupeTiers in listeGroupeTiers"
+                                                                                            value="{{leGroupeTiers.GP_CODEGROUPE}}">
+                                                                                            {{leGroupeTiers.GP_LIBELLE}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>Compte Additionnel</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-industry text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control"
+                                                                                        id="compteAdd" name=""
+                                                                                        ng-model="FormListTiers.CompteAdditinnel"
+                                                                                        ng-disabled="CompteAdditinnel">
+                                                                                        <option value="">Sélectionner un
+                                                                                            compte additionnel</option>
+                                                                                        <option
+                                                                                            ng-repeat="LalisteCompteAdditionel in listeCompteAdditionel"
+                                                                                            value="{{LalisteCompteAdditionel.TC_CODECOMPTETYPETIERS}}">
+                                                                                            {{LalisteCompteAdditionel.TC_LIBELLE}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>TVA</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-percent text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="text" id="TVA"
+                                                                                        class="form-control datatable-input"
+                                                                                        ng-model="FormListTiers.TVA"
+                                                                                        placeholder="Entrer le TVA"
+                                                                                        ng-disabled="TVA">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>AIRSI</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-genderless text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="text" id="AIRSI"
+                                                                                        class="form-control" name=""
+                                                                                        ng-model="FormListTiers.AIRSI"
+                                                                                        placeholder="Entrer l' AIRSI"
+                                                                                        ng-disabled="AIRSI">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-6"
+                                                                                style="margin-top:10px">
+                                                                                <label>Date Début*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="far fa-calendar-alt text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="text" id="idDateDebut"
+                                                                                        class="form-control" name=""
+                                                                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                                                                        ng-model="FormListTiers.DateDebut"
+                                                                                        placeholder="Entrer une date début"
+                                                                                        ng-disabled="DateDebut">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6"
+                                                                                style="margin-top:10px">
+                                                                                <label>Date Fin*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="far fa-calendar-alt text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="text" id="idDateFin"
+                                                                                        class="form-control" name=""
+                                                                                        ng-patteng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                                                                        ng-model="FormListTiers.DateFin"
+                                                                                        placeholder="Entrer une date fin"
+                                                                                        ng-disabled="DateFin">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--  <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>Groupe des tièrs</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-users text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control"
+                                                                                        id="groupeTiers" name=""
+                                                                                        ng-model="FormListTiers.GroupeTiers"
+                                                                                        ng-disabled="GroupeTiers">
+                                                                                        <option value="">Sélectionner un
+                                                                                            groupe des tièrs</option>
+                                                                                        <option
+                                                                                            ng-repeat="leGroupeTiers in listeGroupeTiers"
+                                                                                            value="{{leGroupeTiers.GP_CODEGROUPE}}">
+                                                                                            {{leGroupeTiers.GP_LIBELLE}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <label>Compte Additionnel</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-industry text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control"
+                                                                                        id="compteAdd" name=""
+                                                                                        ng-model="FormListTiers.CompteAdditinnel"
+                                                                                        ng-disabled="CompteAdditinnel">
+                                                                                        <option value="">Sélectionner un
+                                                                                            compte additionnel</option>
+                                                                                        <option
+                                                                                            ng-repeat="LalisteCompteAdditionel in listeCompteAdditionel"
+                                                                                            value="{{LalisteCompteAdditionel.TC_CODECOMPTETYPETIERS}}">
+                                                                                            {{LalisteCompteAdditionel.TC_LIBELLE}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <label>TVA</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-percent text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="text" id="TVA"
+                                                                                        class="form-control datatable-input"
+                                                                                        ng-model="FormListTiers.TVA"
+                                                                                        placeholder="Entrer le TVA"
+                                                                                        ng-disabled="TVA">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <label>AIRSI</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-genderless text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="text" id="AIRSI"
+                                                                                        class="form-control" name=""
+                                                                                        ng-model="FormListTiers.AIRSI"
+                                                                                        placeholder="Entrer l' AIRSI"
+                                                                                        ng-disabled="AIRSI">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6"
+                                                                                style="margin-top:10px">
+                                                                                <label>Date Début*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="far fa-calendar-alt text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="text" id="idDateDebut"
+                                                                                        class="form-control" name=""
+                                                                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                                                                        ng-model="FormListTiers.DateDebut"
+                                                                                        placeholder="Entrer une date début"
+                                                                                        ng-disabled="DateDebut">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6"
+                                                                                style="margin-top:10px">
+                                                                                <label>Date Fin*</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="far fa-calendar-alt text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="text" id="idDateFin"
+                                                                                        class="form-control" name=""
+                                                                                        ng-patteng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                                                                        ng-model="FormListTiers.DateFin"
+                                                                                        placeholder="Entrer une date fin"
+                                                                                        ng-disabled="DateFin">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <label>Section</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-industry text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control"
+                                                                                        id="section" name=""
+                                                                                        ng-model="FormListTiers.Section"
+                                                                                        ng-disabled="Section">
+                                                                                        <option value="">Sélectionner
+                                                                                            une section</option>
+                                                                                        <option
+                                                                                            ng-repeat="laSection in listeSection"
+                                                                                            value="{{laSection.SC_CODESECTION}}">
+                                                                                            {{laSection.SC_DENOMINATION}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div> -->
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-12">
+                                                                                <label>Section</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <i
+                                                                                                class="fas fa-industry text-info"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <select class="form-control"
+                                                                                        id="section" name=""
+                                                                                        ng-model="FormListTiers.Section"
+                                                                                        ng-disabled="Section">
+                                                                                        <option value="">Sélectionner
+                                                                                            une section</option>
+                                                                                        <option
+                                                                                            ng-repeat="laSection in listeSection"
+                                                                                            value="{{laSection.SC_CODESECTION}}">
+                                                                                            {{laSection.SC_DENOMINATION}}
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="separator separator-dashed separator-success my-1">
+                                                        </div><br>
+
+                                                        <div class="col-lg-6" style="margin-top:25px">
+                                                            <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7">
+                                                                <strong>ETATS</strong></h3>
+                                                            <table class="table table-bordered table-checkable"
+                                                                id="kt_datatable">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>LIBELLE ETATS</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tfoot
+                                                                    ng-show="listeEdition[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                                                                    <tr ng-repeat="laListeEdition in listeEdition"
+                                                                        style="cursor: pointer;"
+                                                                        ng-click="choixEtat($index, laListeEdition.ET_TYPEETAT, laListeEdition.ET_NOMETAT, laListeEdition.ET_LIBELLEETAT, laListeEdition.ET_INDEX)">
+                                                                        <td id="idEtat{{$index}}">
+                                                                            {{laListeEdition.ET_LIBELLEETAT}}</td>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+<!-- modal type fichier -->
+<div class="modal fade" id="modal_TypeFichierGlobale">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="background-color: #F5F7FB; border-radius: 15px;">
+  
+        <div class="modal-body">
+          <div class=" product-box row" style="background-color: #F5F7FB;">
+            <div class="rox">
+              <div class="card-header" style="background-color: #F5F7FB; justify-content: center; text-align: center;">
+                <h5 data-bs-dismiss="modal" style="margin-bottom: 0; color: #1b12e0;"><i class="icofont icofont-external"></i>&#160;Exporter en
+                </h5>
+              </div>
+            </div>
+            <div class="rox">
+              &#160;
+              <div class="row">
+                <div class="col" style="justify-content: center; text-align: center;">
+                  <img class="image" style="cursor: pointer;"
+                    src="/Content/assets/media/logos/Microsoft-Word-Logo.png" height="100px" width="200px" alt=""
+                    ng-click="apercuEtat('doc')" >
+                </div>
+                <div class="col" style="justify-content: center; text-align: center;">
+                  <img class="image" style="cursor: pointer;"
+                    src="/Content/assets/media/logos/1200px-PDF_file_icon.svg.png" height="100px" width="100px" alt=""
+                    ng-click="apercuEtat('PDF')">
+                </div>
+                <div class="col" style="justify-content: center; text-align: center;">
+                  <img class="image" style="cursor: pointer;"
+                    src="/Content/assets/media/logos/Microsoft_Office_Excel_(2019–present).svg.png" height="100px"
+                    width="120px" alt=""
+                    ng-click="apercuEtat('xls')">
+                </div>
+                <div class="col" style="justify-content: center; text-align: center;">
+                  <img class="image" style="cursor: pointer;" src="/Content/assets/media/logos/xlsx-icon-7.jpg"
+                    height="100px" width="120px" alt=""
+                    ng-click="apercuEtat('xlsx')">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

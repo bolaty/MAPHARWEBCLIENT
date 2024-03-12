@@ -1,0 +1,490 @@
+﻿<!--begin::Content-->
+<!--begin: Search Form-->
+<form class="form">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10">INFORMATION SUR
+                        LE CLIENT:</h3>
+                    <div class="mb-2">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>N° du tiers*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" maxlength="8" class="form-control" name="addSituationTiers_Code"
+                                        placeholder="Entrer un code" ng-model="FormListConsultation.Code"
+                                        ng-disabled="isdisabled" id="addSituationTiers_Code" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button class="btn btn-secondary btn-secondary--icon" id="kt_reset"
+                                            type="button" data-toggle="modal" data-target="#modalCodeSouscripteur"
+                                            ng-click="afficheListeTiersSouscripteur()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Dénomination*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-address-card text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" maxlength="150" class="form-control"
+                                        name="addSituationTiers_Denomination" placeholder="Entrer une dénomination"
+                                        ng-model="FormListConsultation.Denomination" ng-disabled="isdisabled"
+                                        id="addSituationTiers_Denomination" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button class="btn btn-secondary btn-secondary--icon" id="kt_reset"
+                                            type="button" data-toggle="modal" data-target="#modalCodeSouscripteur"
+                                            ng-click="afficheListeTiersSouscripteur()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separator separator-dashed separator-success"></div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10">IDENTITE:</h3>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label>Gérant</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="flaticon2-user-outline-symbol text-info"></i>
+                                    </span>
+                                </div>
+                                <input type="text" name="addSituationTiers_Gerant" class="form-control datatable-input"
+                                    placeholder="Gérant" data-col-index="4" id="addSituationTiers_Gerant"
+                                    ng-model="FormListConsultation.Gerant" maxlength="150" />
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label>Secteur d'activité</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="flaticon2-shelter text-info"></i>
+                                    </span>
+                                </div>
+                                <input type="text" name="addSituationTiers_SecteurActivite"
+                                    class="form-control datatable-input" placeholder="Secteur d'activité"
+                                    data-col-index="4" id="addSituationTiers_SecteurActivite"
+                                    ng-model="FormListConsultation.SecteurActivite" maxlength="150" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Description</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-marker text-info"></i>
+                                    </span>
+                                </div>
+                                <input class="form-control" name="addSituationTiers_Description"
+                                    placeholder="Description" ng-model="FormListConsultation.Description"
+                                    id="addSituationTiers_Description" maxlength="150">
+                            </div>
+                        </div>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label>Sexe</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-restroom text-info"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="addSituationTiers_Sexe" class="form-control datatable-input"
+                                placeholder="Sexe" ng-model="FormListConsultation.Sexe" id="addSituationTiers_Sexe"
+                                maxlength="150">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Date de naissance</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-calendar text-info"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="addSituationTiers_DateNaiss" class="form-control datatable-input"
+                                placeholder="Date de naissance" ng-model="FormListConsultation.DateNaiss"
+                                id="addSituationTiers_DateNaiss" maxlength="10">
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label>Profession</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-industry text-info"></i>
+                                </span>
+                            </div>
+                            <input type="text" id="addSituationTiers_Profession" name="addSituationTiers_Profession"
+                                class="form-control datatable-input" placeholder="Profession"
+                                ng-model="FormListConsultation.Profession" id="addSituationTiers_DateNaiss"
+                                maxlength="150">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Type du tiers</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-user text-info"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="addSituationTiers_TypeTiers" class="form-control datatable-input"
+                                placeholder="Type du tiers" ng-model="FormListConsultation.TypeTiers"
+                                id="addSituationTiers_TypeTiers" maxlength="150">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label>TVA</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-percent text-info"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="addSituationTiers_Tva" class="form-control datatable-input"
+                                placeholder="TVA" ng-model="FormListConsultation.Tva" id="addSituationTiers_Tva"
+                                maxlength="5">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Plafond crédit</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="flaticon flaticon2-chart text-info"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="addSituationTiers_PlafondCredit"
+                                class="form-control datatable-input" placeholder="Plafond crédit" data-col-index="0"
+                                ng-model="FormListConsultation.PlafondCredit" id="addSituationTiers_PlafondCredit"
+                                maxlength="12" />
+                        </div>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label>ASDI</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-percent text-info"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="addSituationTiers_Asdi" class="form-control datatable-input"
+                                placeholder="ASDI" ng-model="FormListConsultation.Asdi" id="addSituationTiers_Asdi"
+                                maxlength="150">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <label>N° CC</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fab fa-orcid text-info"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="addSituationTiers_NumCc" class="form-control datatable-input"
+                                placeholder="N°CC" ng-model="FormListConsultation.NumCc" id="addSituationTiers_NumCc"
+                                maxlength="8">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separator separator-dashed separator-success"></div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10">ADRESSE ET
+                        CONTACTS:</h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Téléphone</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-phone-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addSituationTiers_Telephone"
+                                        placeholder="Téléphone" ng-model="FormListConsultation.Telephone"
+                                        id="addSituationTiers_Telephone" maxlength="15">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Site web</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-globe text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addSituationTiers_SiteWeb"
+                                        placeholder="Site web" ng-model="FormListConsultation.SiteWeb"
+                                        id="addSituationTiers_SiteWeb" maxlength="150">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Fax</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-tty text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addSituationTiers_Fax"
+                                        placeholder="Fax" ng-model="FormListConsultation.Fax" id="addSituationTiers_Fax"
+                                        maxlength="15">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>E-mail</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="flaticon2-email text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" name="addSituationTiers_Email"
+                                        class="form-control datatable-input" placeholder="E-mail"
+                                        ng-model="FormListConsultation.Email" id="addSituationTiers_Email"
+                                        maxlength="150">
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Adresse géographique</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-map text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="addSituationTiers_AdresseGeo"
+                                        placeholder="Adresse géographique" ng-model="FormListConsultation.AdresseGeo"
+                                        id="addSituationTiers_AdresseGeo" maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6" style="text-align:right" >
+                                <br />
+                                <button ng-click="infoGardee()" ng-disabled="OptionClic" type="submit" data-toggle="modal"
+                                    data-target="#modalOption" class="btn btn-success font-weight-bold">Option</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Container-->
+    <!--end::Entry-->
+</form>
+
+<!--begin modal pour choix du code souscripteur-->
+<div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #F5F500;">
+                <h5 class="modal-title text-dark" id="modalCodeSouscripteur"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-dark"></i>
+                    {{titreDeLaModal}}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                            <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                            <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir" ng-click="choixSouscripteur(lesSouscripteurs)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">{{Chargement}}</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+
+<div class="modal fade" id="modalOption" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalOption" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="font-size: 30px; font-family: 'Maiandra GD'; background-color: #F5F500;">
+                <h5 class="modal-title" id="modalOption">
+                    <span class="svg-icon svg-icon-primary svg-icon-2x">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                            height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24" />
+                                <polygon fill="#000000" opacity="0.3" points="5 15 3 21.5 9.5 19.5" />
+                                <path
+                                    d="M13.5,21 C8.25329488,21 4,16.7467051 4,11.5 C4,6.25329488 8.25329488,2 13.5,2 C18.7467051,2 23,6.25329488 23,11.5 C23,16.7467051 18.7467051,21 13.5,21 Z M9,8 C8.44771525,8 8,8.44771525 8,9 C8,9.55228475 8.44771525,10 9,10 L18,10 C18.5522847,10 19,9.55228475 19,9 C19,8.44771525 18.5522847,8 18,8 L9,8 Z M9,12 C8.44771525,12 8,12.4477153 8,13 C8,13.5522847 8.44771525,14 9,14 L14,14 C14.5522847,14 15,13.5522847 15,13 C15,12.4477153 14.5522847,12 14,12 L9,12 Z"
+                                    fill="#000000" />
+                            </g>
+                        </svg>
+                    </span>
+                    Option
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card card-custom gutter-b">
+                    <div class="card-header card-header-tabs-line">
+                        <div class="card-toolbar">
+                            <ul class="nav nav-tabs nav-bold nav-tabs-line">
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectListeConsultation()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fab fa-weixin"></i></span>
+                                        <span class="nav-text">Liste des commandes</span>
+                                    </a>
+                                </li> 
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectListeVentes()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fab fa-weixin"></i></span>
+                                        <span class="nav-text">Liste des factures</span>
+                                    </a>
+                                </li> ng-if="valeurTest == false"-->
+                                <li class="nav-item" >
+                                    <a class="nav-link" ng-click="redirectReleveCommission()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fab fa-weixin"></i></span>
+                                        <span class="nav-text">Relevé</span>
+                                    </a>
+                                </li>
+                                <!--  <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectFacturesCumulees()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fab fa-weixin"></i></span>
+                                        <span class="nav-text">Factures cumulées</span>
+                                    </a>
+                                </li> 
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectListeConsultation()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fab fa-weixin"></i></span>
+                                        <span class="nav-text">Liste des consulations</span>
+                                    </a>
+                                </li> -->
+                                <li class="nav-item dropdown" ng-if="juge == false">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <span class="nav-icon"><i class="far fa-sad-tear"></i></span>
+                                        <span class="nav-text">Contrat d'assurance</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" ng-click="redirectMultiRisquePro()"
+                                            data-dismiss="modal" style="cursor: pointer;">Multirisque-professionnel</a>
+                                        <a class="dropdown-item" ng-click="redirectHabitat()" data-dismiss="modal"
+                                            style="cursor: pointer;">Habitat</a>
+                                        <a class="dropdown-item" ng-click="redirectIndividuelAccident()"
+                                            data-dismiss="modal" style="cursor: pointer;">Individuel accident</a>
+                                        <a class="dropdown-item" ng-click="redirectAuto()" data-dismiss="modal"
+                                            style="cursor: pointer;">Auto</a>
+                                        <a class="dropdown-item" ng-click="redirectSantePharmacien()"
+                                            data-dismiss="modal" style="cursor: pointer;">Santé pharmacien</a>
+                                        <a class="dropdown-item" ng-click="redirecSanteAuxilliaire()"
+                                            data-dismiss="modal" style="cursor: pointer;">Santé auxilliaire</a>
+                                        <a class="dropdown-item" ng-click="redirectSanteGSA()" data-dismiss="modal"
+                                            style="cursor: pointer;">Santé GESA</a>
+                                        <a class="dropdown-item" ng-click="redirectVoyage()" data-dismiss="modal"
+                                            style="cursor: pointer;">Voyage</a>
+                                        <a class="dropdown-item" ng-click="redirectResponsabiliteCivile()"
+                                            data-dismiss="modal" style="cursor: pointer;">Responsabilité civile</a>
+                                        <a class="dropdown-item" ng-click="redirectTransportEtMarchandise()"
+                                            data-dismiss="modal" style="cursor: pointer;">Transport et marchandise</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+</div>
+<!--end::Content-->

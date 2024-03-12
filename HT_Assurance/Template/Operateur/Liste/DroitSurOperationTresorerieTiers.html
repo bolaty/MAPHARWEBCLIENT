@@ -1,0 +1,175 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content"
+    ng-init="initFormAddDroitSurOperationTresorerieTiers()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Outils et Sécurités</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Utilisateur</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Liste</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Droit sur Opérations de trésoreries des tiers</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <h3 style="font-size: 25px; font-family: Maiandra GD"><strong> {{collectionOperateur.OP_NOMPRENOM}}</strong>
+            </h3>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <div class="alert alert-custom alert-white alert-shadow gutter-b" role="alert">
+                <div class="alert-icon">
+                    <span class="svg-icon svg-icon-primary svg-icon-xl">
+                        <!--begin::Svg Icon | path:assets/media/svg/icons/Tools/Compass.svg-->
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                            height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24" />
+                                <path
+                                    d="M7.07744993,12.3040451 C7.72444571,13.0716094 8.54044565,13.6920474 9.46808594,14.1079953 L5,23 L4.5,18 L7.07744993,12.3040451 Z M14.5865511,14.2597864 C15.5319561,13.9019016 16.375416,13.3366121 17.0614026,12.6194459 L19.5,18 L19,23 L14.5865511,14.2597864 Z M12,3.55271368e-14 C12.8284271,3.53749572e-14 13.5,0.671572875 13.5,1.5 L13.5,4 L10.5,4 L10.5,1.5 C10.5,0.671572875 11.1715729,3.56793164e-14 12,3.55271368e-14 Z"
+                                    fill="#000000" opacity="0.3" />
+                                <path
+                                    d="M12,10 C13.1045695,10 14,9.1045695 14,8 C14,6.8954305 13.1045695,6 12,6 C10.8954305,6 10,6.8954305 10,8 C10,9.1045695 10.8954305,10 12,10 Z M12,13 C9.23857625,13 7,10.7614237 7,8 C7,5.23857625 9.23857625,3 12,3 C14.7614237,3 17,5.23857625 17,8 C17,10.7614237 14.7614237,13 12,13 Z"
+                                    fill="#000000" fill-rule="nonzero" />
+                            </g>
+                        </svg>
+                        <!--end::Svg Icon-->
+                    </span>
+                </div>
+                <div class="alert-text">
+                    page de connexion de l'utilisation
+                </div>
+            </div>
+            <!--end::Notice-->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header" style="background-color: #B666D2;">
+                    <!--#F5F500 jaune/-->
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="far fa-user icon-xl text-white"></i>
+                        </span>
+                        <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Droit sur
+                            Opérations de trésoreries des tiers</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin: Search Form-->
+                    <form class="mb-15">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Nature famille opération*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" id="" name=""
+                                        ng-model="FormListDroitSurOperationTresorerieTiers.Nature_Famille">
+                                        <option value="">Sélectionner une nature</option>
+                                        <option ng-repeat="laNatureFamille in listeNatureFamille"
+                                            ng-click="afficheListeFamilleOperation()"
+                                            value="{{laNatureFamille.NF_CODENATUREFAMILLEOPERATION}}">
+                                            {{laNatureFamille.NF_LIBELLENATUREFAMILLEOPERATION1}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Opérations*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" id="" name=""
+                                        ng-model="FormListDroitSurOperationTresorerieTiers.FamilleOperation">
+                                        <option value="">Sélectionner une opération</option>
+                                        <option ng-repeat="laFamilleOperation in listeFamilleOperation"
+                                            value="{{laFamilleOperation.FO_CODEFAMILLEOPERATION}}"
+                                            ng-click="afficheListDroitSurOperationTresorerieTiers()">
+                                            {{laFamilleOperation.FO_LIBELLEFAMILLEOPERATION}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+                            <thead style="text-align: center;">
+                                <!--background-color: #8CB9BA; color: White-->
+                                <tr>
+                                    <th>OPERATION DE TRESORERIES DE TIERS</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tfoot
+                                ng-show="listeDroitSurOperationTresorerieTiers[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                                <tr
+                                    ng-repeat="laListeDroitSurOperationTresorerieTiers in listeDroitSurOperationTresorerieTiers">
+                                    <td>{{laListeDroitSurOperationTresorerieTiers.NO_LIBELLE}}</td>
+                                    <td>
+                                        <label class="checkbox checkbox-lg checkbox-primary">
+                                            <input type="checkbox" ng-model="selectedMore"
+                                                ng-checked="existedMore(laListeDroitSurOperationTresorerieTiers.COCHER)"
+                                                ng-click="toggleSelectedMore(laListeDroitSurOperationTresorerieTiers)">
+                                            <span class="form-text text-muted"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+                                ng-click="ValiderDroitSurOperationTresorerieTiers()">
+                                <span>
+                                    <i class="far fa-check-circle"></i>
+                                    <span>Enregistrer</span>
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-outline-info" data-dismiss="modal"
+                                ng-click="listAnnuler()">
+                                <span>
+                                    <i class="la la-close"></i>
+                                    <span>Annuler</span>
+                                </span>
+                            </button>
+                            <a href="#/operateur/liste/utilisateur" class="btn btn-icon btn-light-dark mr-2"
+                                data-toggle="tooltip" data-theme="dark" title="Retour"
+                                style="position: absolute; right: 27px">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+</div>
+<!--end::Content-->

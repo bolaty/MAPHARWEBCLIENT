@@ -1,0 +1,398 @@
+﻿<!--begin::Form-->
+<form class="form">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <div class="form-group row">
+                        <div class="col-lg-4">
+                            <label>Code*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-key text-info"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" ng-disabled="true"
+                                    ng-model="FormEnrgPlancomptable.Code" id="Code" name="url"
+                                    placeholder="Entrer un code" maxlength="8" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Intitulé compte*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-italic text-info"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" maxlength="500"
+                                    ng-model="FormEnrgPlancomptable.IntituleCompte" id="IntituleCompte" name="url"
+                                    placeholder="Entrer un intitulé" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Nature compte*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-hands-helping text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="Naturecompte" class="form-control" name="Naturecompte"
+                                    ng-model="FormEnrgPlancomptable.Naturecompte">
+                                    <option value="">Sélectionner une nature de compte</option>
+                                    <option ng-show="etatFormPlancomptable !== '2'"
+                                        ng-repeat="lIListenaturecompte in Listenaturecompte"
+                                        value="{{lIListenaturecompte.NC_CODENATURECOMPTE}}">
+                                        {{lIListenaturecompte.NC_LIBELLENATURECOMPTE}}</option>
+                                    <option ng-show="etatFormPlancomptable == '2'"
+                                        ng-selected="FormEnrgPlancomptable.Naturecompte == lIListenaturecompte.NC_CODENATURECOMPTE"
+                                        ng-repeat="lIListenaturecompte in Listenaturecompte"
+                                        value="{{lIListenaturecompte.NC_CODENATURECOMPTE}}">
+                                        {{lIListenaturecompte.NC_LIBELLENATURECOMPTE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-4">
+                            <label>N° compte*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-orcid text-info"></i>
+                                    </span>
+                                </div>
+                                <input type="text" ng-model="FormEnrgPlancomptable.NCompte" id="NCompte"
+                                    class="form-control" name="url" placeholder="Entrer un n°" maxlength="8" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Sens*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-exchange-alt text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="Sens" class="form-control" name="Sens"
+                                    ng-model="FormEnrgPlancomptable.Sens">
+                                    <option value="">Sélectionner une nature de compte</option>
+                                    <option ng-show="etatFormPlancomptable !== '2'" ng-repeat="lIListesens in Listesens"
+                                        value="{{lIListesens.COMPTAPAR_SENS_CODE}}">
+                                        {{lIListesens.COMPTAPAR_SENS_LIBELLE}}</option>
+                                    <option ng-show="etatFormPlancomptable == '2'"
+                                        ng-selected="FormEnrgPlancomptable.Sens == lIListesens.COMPTAPAR_SENS_CODE"
+                                        ng-repeat="lIListesens in Listesens"
+                                        value="{{lIListesens.COMPTAPAR_SENS_CODE}}">
+                                        {{lIListesens.COMPTAPAR_SENS_LIBELLE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Type de compte*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-file-invoice-dollar text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="Typedecompte" class="form-control" name="Typedecompte"
+                                    ng-model="FormEnrgPlancomptable.Typedecompte">
+                                    <option value="">Sélectionner un type de compte</option>
+                                    <option ng-show="etatFormPlancomptable !== '2'"
+                                        ng-repeat="lIListetypecompte in Listetypecompte"
+                                        value="{{lIListetypecompte.PL_TYPECOMPTE}}">
+                                        {{lIListetypecompte.PL_TYPECOMPTELIBELLE}}</option>
+                                    <option ng-show="etatFormPlancomptable == '2'"
+                                        ng-selected="FormEnrgPlancomptable.Typedecompte == lIListetypecompte.PL_TYPECOMPTE"
+                                        ng-repeat="lIListetypecompte in Listetypecompte"
+                                        value="{{lIListetypecompte.PL_TYPECOMPTE}}">
+                                        {{lIListetypecompte.PL_TYPECOMPTELIBELLE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-4">
+                            <label>Statut compte*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-ellipsis-h text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="Statutcompte" class="form-control" name="Statutcompte"
+                                    ng-model="FormEnrgPlancomptable.Statutcompte">
+                                    <option value="">Sélectionner un statut de compte</option>
+                                    <option ng-show="etatFormPlancomptable !== '2'"
+                                        ng-repeat="lIretourListestatutcompte in retourListestatutcompte"
+                                        value="{{lIretourListestatutcompte.PL_ACTIF}}">
+                                        {{lIretourListestatutcompte.PL_ACTIFLIBELLE}}</option>
+                                    <option ng-show="etatFormPlancomptable == '2'"
+                                        ng-selected="FormEnrgPlancomptable.Statutcompte == lIretourListestatutcompte.PL_ACTIF"
+                                        ng-repeat="lIretourListestatutcompte in retourListestatutcompte"
+                                        value="{{lIretourListestatutcompte.PL_ACTIF}}">
+                                        {{lIretourListestatutcompte.PL_ACTIFLIBELLE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Saut de ligne*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-chevron-down  text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="Sautdeligne" class="form-control" name="Sautdeligne"
+                                    ng-model="FormEnrgPlancomptable.Sautdeligne">
+                                    <option value="">Sélectionner un saut de ligne</option>
+                                    <option ng-show="etatFormPlancomptable !== '2'"
+                                        ng-repeat="lIretourListetypesaut in retourListetypesaut"
+                                        value="{{lIretourListetypesaut.TS_CODE}}">
+                                        {{lIretourListetypesaut.TS_LIBELLE}}</option>
+                                    <option ng-show="etatFormPlancomptable == '2'"
+                                        ng-selected="FormEnrgPlancomptable.Sautdeligne == lIretourListetypesaut.TS_CODE"
+                                        ng-repeat="lIretourListetypesaut in retourListetypesaut"
+                                        value="{{lIretourListetypesaut.TS_CODE}}">
+                                        {{lIretourListetypesaut.TS_LIBELLE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Nombre de ligne*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-question text-info"></i>
+                                    </span>
+                                </div>
+                                <input type="text" ng-model="FormEnrgPlancomptable.Nombredeligne" maxlength="2"
+                                    id="Nombredeligne" class="form-control" name="url"
+                                    placeholder="Entrer un nombre ligne" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Plan reporting*</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-video text-info"></i>
+                                    </span>
+                                </div>
+                                <select id="Planreporting" class="form-control" name="Planreporting"
+                                    ng-model="FormEnrgPlancomptable.Planreporting">
+                                    <option value="">Sélectionner un plan reporting</option>
+                                    <option ng-show="etatFormPlancomptable !== '2'"
+                                        ng-repeat="lIretourListePlanRerporting in retourListePlanRerporting"
+                                        value="{{lIretourListePlanRerporting.PLAN_REPORTING_NUMERO}}">
+                                        {{lIretourListePlanRerporting.PLAN_RERPORTING_INTITULE}}</option>
+                                    <option ng-show="etatFormPlancomptable == '2'"
+                                        ng-selected="FormEnrgPlancomptable.Planreporting == lIretourListePlanRerporting.PLAN_REPORTING_NUMERO"
+                                        ng-repeat="lIretourListePlanRerporting in retourListePlanRerporting"
+                                        value="{{lIretourListePlanRerporting.PLAN_REPORTING_NUMERO}}">
+                                        {{lIretourListePlanRerporting.PLAN_RERPORTING_INTITULE}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" style="padding-left: 150px;">
+                        <div class="col-lg-2">
+                            <label class="checkbox checkbox-lg checkbox-primary"
+                                style="position: relative; left: 20px; bottom: -30px">
+                                <input type="checkbox" ng-click="testval(FormEnrgPlancomptable.Saisieanalytique)"
+                                    ng-checked="COCHE(FormEnrgPlancomptable.Saisieanalytique)"
+                                    ng-model="FormEnrgPlancomptable.Saisieanalytique" />
+                                <span class="form-text text-muted"></span>
+                            </label>
+                            <label style="position: relative; top: 10px; left: 53px;">Saisie
+                                analytique</label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="checkbox checkbox-lg checkbox-primary"
+                                style="position: relative; left: 20px; bottom: -30px">
+                                <input type="checkbox" ng-click="testval1(FormEnrgPlancomptable.Compteexcedent)"
+                                    ng-checked="COCHE1(FormEnrgPlancomptable.Compteexcedent)"
+                                    ng-model="FormEnrgPlancomptable.Compteexcedent" />
+                                <span class="form-text text-muted"></span>
+                            </label>
+                            <label style="position: relative; top: 10px; left: 53px;">Compte
+                                excedent</label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="checkbox checkbox-lg checkbox-primary"
+                                style="position: relative; left: 20px; bottom: -30px">
+                                <input type="checkbox" ng-click="testval2(FormEnrgPlancomptable.Comptedeficit)"
+                                    ng-checked="COCHE2(FormEnrgPlancomptable.Comptedeficit)"
+                                    ng-model="FormEnrgPlancomptable.Comptedeficit" />
+                                <span class="form-text text-muted"></span>
+                            </label>
+                            <label style="position: relative; top: 10px; left: 53px;">Compte
+                                déficit</label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="checkbox checkbox-lg checkbox-primary"
+                                style="position: relative; left: 20px; bottom: -30px">
+                                <input type="checkbox" ng-click="testval3(FormEnrgPlancomptable.Affichersurdroite)"
+                                    ng-checked="COCHE3(FormEnrgPlancomptable.Affichersurdroite)"
+                                    ng-model="FormEnrgPlancomptable.Affichersurdroite" />
+                                <span class="form-text text-muted"></span>
+                            </label>
+                            <label style="position: relative; top: 10px; left: 53px;">Afficher
+                                sur droite</label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="checkbox checkbox-lg checkbox-primary"
+                                style="position: relative; left: 20px; bottom: -30px">
+                                <input type="checkbox" ng-click="testval4(FormEnrgPlancomptable.FocussurTiers)"
+                                    ng-checked="COCHE4(FormEnrgPlancomptable.FocussurTiers)"
+                                    ng-model="FormEnrgPlancomptable.FocussurTiers" />
+                                <span class="form-text text-muted"></span>
+                            </label>
+                            <label style="position: relative; top: 10px; left: 53px;">Focus sur
+                                Tiers</label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button ng-click="afficheListeCompteCollectif(FormEnrgPlancomptable.Typedecompte)"
+            class="btn btn-primary btn-shadow-hover font-weight-bold">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>
+        <button ng-click="reloadpage()" class="btn btn-light-success font-weight-bold"
+            ng-show="etatFormPlancomptable !== '2'">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a href="#/parametre2/planComptable/liste" class="btn btn-icon btn-light-dark mr-2" data-toggle="tooltip"
+            data-theme="dark" title="Retour" style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</form>
+<!--end::Form-->
+
+<!--begin modal pour choix du code souscripteur-->
+<div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeSouscripteur"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - souscripteur
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                            <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                            <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixSouscripteur(lesSouscripteurs.TI_NUMTIERS, lesSouscripteurs.TI_DENOMINATION, lesSouscripteurs.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+<!--begin modal pour choix du code commercial-->
+<div class="modal fade" id="modalCodeCommercial" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeCommercial" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeCommercial"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - commercial
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesCommerciaux in listeDesCommerciaux">
+                            <td>{{lesCommerciaux.TI_NUMTIERS}}</td>
+                            <td>{{lesCommerciaux.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixCommercial(lesCommerciaux.TI_NUMTIERS, lesCommerciaux.TI_DENOMINATION, lesCommerciaux.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

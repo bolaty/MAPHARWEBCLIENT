@@ -1,0 +1,229 @@
+﻿<!--début loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="listeDesDocuments()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">ASSURANCE</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Opération</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Ouverture du dossier</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Document</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <h3 style="font-size: 25px; font-family: Maiandra GD"><strong>N° {{collectionContartOp.TI_NUMTIERS}} |
+                    {{collectionContartOp.TI_DENOMINATION}}</strong></h3>
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <div ng-include="'Template/default/layouts/form_info_bulle_photo.html'"></div>
+            <!--end::Notice-->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header" style="background-color: #718E3E;">
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="fas fa-camera text-white icon-xl"></i>
+                        </span>
+                        <h3 class="card-title text-white" style="font-size: 30px; font-family: Maiandra GD">Photo
+                        </h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="row" style="text-align: center; left: 170px; position: relative;"
+                            ng-if="listeAffichePhotoSinistre[0].clsObjetRetour.SL_CODEMESSAGE == '99'">
+                            <div class="col-lg-12">
+                                <img src="/Content/assets/media/illustration/illustr1.jpg" width="450" height="400"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-12">
+                                <label style="font-family: Maiandra GD; font-size: 20px"><strong>Aucune photo n'a été
+                                        enregistrée sur ce dossier</strong></label>
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: center; margin-right: 5px; margin-bottom: 30px;"
+                            ng-if="listeAffichePhotoSinistre[0].clsObjetRetour.SL_CODEMESSAGE == 00"
+                            ng-repeat="lImage in listeAffichePhotoSinistre">
+                            <div class="col-lg-2" style="position: relative; left: 90px;">
+                                <div class="image-input image-input-outline" id="kt_user_edit_avatar">
+                                    <div class="image-input-wrapper-image"
+                                        style="background-image: url(/Content/assets/media/illustration/undraw_profile_pic_ic5t.svg)">
+                                    </div>
+                                    <div class="image-input-wrapper-image"
+                                        style="position: absolute; top: 0; left: 0; cursor: pointer;"
+                                        ng-click="agrandirPhoto($index)" data-toggle="modal"
+                                        data-target="#modalVoirPhoto">
+                                        <img ng-src='{{"data:image/jpeg;base64," + lImage.SI_CHEMINPHOTO}}'
+                                            style="object-position: cover;" width="100%" height="100%" /></div>
+                                    <a href="" class="btn btn-danger btn-shadow font-weight-bold" data-toggle="modal"
+                                        data-target="#modalSupprimer" style="position: relative; width: -1px"
+                                        ng-click="supprRecupererIdPhoto(lImage.SI_CODESINISTRE, lImage.SI_NUMSEQUENCEPHOTO)">Supprimer</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer" style="height: 90px">
+                    <a href="#/assurances/operation/multirisque-pro/liste/ouverture-dossier"
+                        class="btn btn-icon btn-light-dark mr-2" title="Retour" style="position: absolute; right: 27px">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+
+    <!--begin modal choix document-->
+    <div class="modal fade" id="modalChoixDocument" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalChoixDocument" aria-hidden="true">
+        <div class="modal-dialog modal-xs modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalChoixDocument"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-book text-white"></i>
+                        Ajout de document
+                    </h5>
+                </div>
+                <div class="modal-body" style="text-align: center; font-size: 17px; background-color: beige">
+                    <div class="col-12 text-right">
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label style="position: relative; left: -150px">Télécharger le fichier</label>
+                        <input id="idUploadFichier" type="file" ng-model="sinistreDoc[0].fichier" class="form-control"
+                            required>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label style="position: relative; left: -155px">Nommer le fichier</label>
+                        <input type="text" name="nomFile" maxlength="150" class="form-control"
+                            placeholder="Nom du fichier" required ng-model="sinistreDoc[0].libelleFichier">
+                    </div>
+                </div>
+                <div class="modal-footer" style="background-color: beige">
+                    <button class="btn btn-success btn-shadow-hover font-weight-bold" id="pourChoixDoc"
+                        ng-click="engDocument()" data-dismiss="modal">
+                        <span>
+                            <i class="far fa-check-circle"></i>
+                            <span>Enregistrer</span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Annuler</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+
+    <!--begin modal pour suppression-->
+    <div class="modal fade" id="modalSupprimer" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="modalSupprimer" aria-hidden="true">
+        <div class="modal-dialog modal-xs modal-dialog-top" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalSupprimer"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-ban text-white"></i>
+                        Ouverture de dossier
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center; font-size: 17px;">
+                    Etes-vous sûr de vouloir supprimer cette photo ?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger btn-shadow font-weight-bold" id="kt_reset"
+                        ng-click="supprimerDocument(sinistreId, numsequence)" data-dismiss="modal">
+                        <span>
+                            <i class="fas fa-ban"></i>
+                            <span>Supprimer</span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Annuler</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+
+    <!--begin modal voir image-->
+    <div class="modal fade" id="modalVoirPhoto" tabindex="-1" role="dialog" aria-labelledby="modalVoirPhoto"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #718E3E;">
+                    <h5 class="modal-title text-white" id="modalVoirPhoto"
+                        style="font-size: 23px; font-family: Maiandra GD">
+                        <i class="fas fa-camera text-white"></i>
+                        Photo
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="height: 600px;">
+                    <div class="card-body p-0">
+                        <div class="overlay-wrapper">
+                            <img src="/Content/assets/media/illustration/undraw_profile_pic_ic5t.svg" height="550px"
+                                width="400px" alt="" class="w-100 rounded" />
+                            <div class="image-input-wrapper-image" style="position: absolute; top: 23px; left: 33px">
+                                <img ng-src='{{"data:image/jpeg;base64," + listeAffichePhotoSinistre[indexPhotoSelect].SI_CHEMINPHOTO}}'
+                                    style="object-position: cover;" width="735px" height="550px" /></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>Fermer</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+
+</div>
+<!--end modal-->
+<!--end::Content-->

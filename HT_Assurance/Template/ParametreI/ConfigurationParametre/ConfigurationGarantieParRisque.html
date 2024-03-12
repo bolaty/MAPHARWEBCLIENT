@@ -1,0 +1,225 @@
+﻿<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-init="initFormListEditionParametre()">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader" style="background: Beige">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">PARAMETRE 1</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Configuration des paramètres</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Configuration de garantie par risque</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <div class="d-flex align-items-center">
+
+            </div>
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header" style="background-color: #90CCC8">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <i class="fab fa-whmcs text-dark icon-xl"></i>
+                                </span>
+                                <h3 class="card-title" style="font-size: 30px; font-family: 'Maiandra GD'">Configuration
+                                    de garantie par risque</h3>
+                            </div>
+                            <div class="card-toolbar">
+                                <!--begin::Dropdown-->
+                                <div class="dropdown dropdown-inline mr-2">
+
+                                    <!--begin::Dropdown Menu-->
+                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                        <!--begin::Navigation-->
+                                        <ul class="navi flex-column navi-hover py-2">
+                                            <li
+                                                class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">
+                                                Choose an option:</li>
+                                            <li class="navi-item">
+                                                <a href="#" class="navi-link">
+                                                    <span class="navi-icon">
+                                                        <i class="la la-print"></i>
+                                                    </span>
+                                                    <span class="navi-text">Print</span>
+                                                </a>
+                                            </li>
+                                            <li class="navi-item">
+                                                <a href="#" class="navi-link">
+                                                    <span class="navi-icon">
+                                                        <i class="la la-copy"></i>
+                                                    </span>
+                                                    <span class="navi-text">Copy</span>
+                                                </a>
+                                            </li>
+                                            <li class="navi-item">
+                                                <a href="#" class="navi-link">
+                                                    <span class="navi-icon">
+                                                        <i class="la la-file-excel-o"></i>
+                                                    </span>
+                                                    <span class="navi-text">Excel</span>
+                                                </a>
+                                            </li>
+                                            <li class="navi-item">
+                                                <a href="#" class="navi-link">
+                                                    <span class="navi-icon">
+                                                        <i class="la la-file-text-o"></i>
+                                                    </span>
+                                                    <span class="navi-text">CSV</span>
+                                                </a>
+                                            </li>
+                                            <li class="navi-item">
+                                                <a href="#" class="navi-link">
+                                                    <span class="navi-icon">
+                                                        <i class="la la-file-pdf-o"></i>
+                                                    </span>
+                                                    <span class="navi-text">PDF</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <!--end::Navigation-->
+                                    </div>
+                                    <!--end::Dropdown Menu-->
+                                </div>
+                                <!--end::Dropdown-->
+                                <!--begin::Button-->
+                                <!--end::Button-->
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="form" id="formAddMultirisquePro">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="mb-1">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <label>Nature famille opération*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="fas fa-user text-info"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select id="idNatureFamOp" class="form-control"
+                                                                name="NatureFamOp"
+                                                                ng-model="ConfigGarantieRisque.NatureFamOp">
+                                                                <option value="">Sélectionner une nature</option>
+                                                                <option>Nature famille opération 1</option>
+                                                                <option>Nature famille opération 2</option>
+                                                                <option>Nature famille opération 3</option>
+                                                                <option>Nature famille opération 4</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><br>
+                                            <div class="mb-1">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <table class="table table-bordered table-checkable"
+                                                            id="kt_datatable">
+                                                            <!--tableau garenties-->
+                                                            <thead style="text-align: center">
+                                                                <tr>
+                                                                    <th>GARANTIE</th>
+                                                                    <th style="width: 90px;">ACTION</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Garantie 1</td>
+                                                                    <td>
+                                                                        <label
+                                                                            class="checkbox checkbox-lg checkbox-success"
+                                                                            style="margin-left: 22px;">
+                                                                            <input type="checkbox" value="" />
+                                                                            <span class="form-text text-muted"></span>
+                                                                        </label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Garantie 2</td>
+                                                                    <td>
+                                                                        <label
+                                                                            class="checkbox checkbox-lg checkbox-success"
+                                                                            style="margin-left: 22px;">
+                                                                            <input type="checkbox" value="" />
+                                                                            <span class="form-text text-muted"></span>
+                                                                        </label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Garantie 3</td>
+                                                                    <td>
+                                                                        <label
+                                                                            class="checkbox checkbox-lg checkbox-success"
+                                                                            style="margin-left: 22px;">
+                                                                            <input type="checkbox" value="bon" />
+                                                                            <span class="form-text text-muted"></span>
+                                                                        </label>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+                                    ng-click="validerFormMultirisquePro(FormAddMultirisquePro.effet, FormAddMultirisquePro.echeance)">
+                                    <span>
+                                        <i class="far fa-check-circle"></i>
+                                        <span>Enregistrer</span>
+                                    </span>
+                                </button>&#160;&#160;
+                                <button type="reset" ng-show="etatForm !== '2'"
+                                    class="btn btn-light-success font-weight-bold"
+                                    ng-click="resetFormAddMultirisquePro()">
+                                    <span>
+                                        <i class="fas fa-undo"></i>
+                                        <span>Réinitialiser</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->

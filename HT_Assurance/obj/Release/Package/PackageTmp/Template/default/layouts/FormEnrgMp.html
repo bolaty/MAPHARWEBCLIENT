@@ -1,0 +1,659 @@
+﻿<!--debut loader-->
+<div ng-include="'Template/default/layouts/loading.html'"></div>
+<!--fin loader-->
+
+<!--begin::Form-->
+<form class="form" id="formAddMultirisquePro">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATION SUR LE
+                            SOUSCRIPTEUR</strong></h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>N° souscripteur*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idCode1" maxlength="8" type="text" class="form-control"
+                                        name="addMP_Code1" placeholder="Entrer un n°"
+                                        ng-model="FormAddMultirisquePro.code1" ng-disabled="isDisabled1" />
+                                    <div class="input-group-append" title="Choix du code">
+                                        <button ng-show="etatForm !== '2'" type="button"
+                                            class="btn btn-secondary btn-secondary--icon" id="kt_reset"
+                                            data-toggle="modal" data-target="#modalCodeSouscripteur"
+                                            ng-click="afficheListeTiersSouscripteur()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <label>Dénomination*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDenomination1" type="text" class="form-control"
+                                        name="addMP_Denomination1" placeholder="Entrer une Dénomination"
+                                        ng-model="FormAddMultirisquePro.denomination1" ng-disabled="isDisabled1"
+                                        maxlength="150" ng-pattern="/^([a-z-A-Z])([a-z-A-Z0-9 ]+)/" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix de la dénomination">
+                                        <button ng-show="etatForm !== '2'" type="button"
+                                            class="btn btn-secondary btn-secondary--icon" id="kt_reset"
+                                            data-toggle="modal" data-target="#modalCodeSouscripteur"
+                                            ng-click="afficheListeTiersSouscripteur()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator separator-dashed separator-success my-1"></div><br>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS SUR LE
+                            COMMERCIAL</strong></h3>
+                    <div class="mb-2">
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>N° commercial*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idCode2" maxlength="8" type="text" class="form-control"
+                                        name="addMP_Code2" placeholder="Entrer un n°"
+                                        ng-model="FormAddMultirisquePro.code2" ng-disabled="isDisabled2"
+                                        ng-pattern="/^[0-9]+$/" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix du code">
+                                        <button type="button" class="btn btn-secondary btn-secondary--icon"
+                                            id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial"
+                                            ng-click="afficheListeTiersCommercial()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <label>Dénomination*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idDenomination2" type="text" class="form-control"
+                                        name="addMP_Denomination2" placeholder="Entrer une Dénomination"
+                                        ng-model="FormAddMultirisquePro.denomination2" ng-disabled="isDisabled2"
+                                        maxlength="150" ng-pattern="/^([a-z-A-Z])([a-z-A-Z0-9 ]+)/" />
+                                    <div class="input-group-append" data-toggle="tooltip" data-theme="dark"
+                                        title="Choix de la dénomination">
+                                        <button type="button" class="btn btn-secondary btn-secondary--icon"
+                                            id="kt_reset" data-toggle="modal" data-target="#modalCodeCommercial"
+                                            ng-click="afficheListeTiersCommercial()">
+                                            <i class="fas fa-ellipsis-h text-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator separator-dashed separator-success my-1"></div><br>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h3 class="font-size-lg text-dark-75 font-weight-bold mb-7"><strong>INFORMATIONS GENERALES</strong>
+                    </h3>
+                    <div class="mb-1">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>N° police/ N.C*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fab fa-orcid text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idNumPolice" type="text" class="form-control" name="addMP_NumPolice"
+                                        placeholder="Entrer un n°" ng-model="FormAddMultirisquePro.numPolice"
+                                        maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Intermédiaire*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-people-arrows text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idIntermediaire" class="form-control" name="addMP_Intermediaire"
+                                        ng-model="FormAddMultirisquePro.intermediaire">
+                                        <option value="">Sélectionner un intermédiaire</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-repeat="lIntermediaire in listeIntermediaire"
+                                            value="{{lIntermediaire.IT_CODEINTERMEDIAIRE}}">
+                                            {{lIntermediaire.IT_DENOMMINATION}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddMultirisquePro.intermediaire == lIntermediaire.IT_CODEINTERMEDIAIRE"
+                                            ng-repeat="lIntermediaire in listeIntermediaire"
+                                            value="{{lIntermediaire.IT_CODEINTERMEDIAIRE}}">
+                                            {{lIntermediaire.IT_DENOMMINATION}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="form-group row">
+                            <div class="col-lg-3">
+                                <label>Pays*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-globe-africa text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" id="idPays" name="addMP_Pays"
+                                        ng-model="FormAddMultirisquePro.pays">
+                                        <option value="">Sélectionner un pays</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="lePays in listeDesPays"
+                                            ng-selected="FormAddMultirisquePro.pays == lePays.PY_CODEPAYS"
+                                            value="{{lePays.PY_CODEPAYS}}"
+                                            ng-click="afficheListeVille(FormAddMultirisquePro.pays)">
+                                            {{lePays.PY_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddMultirisquePro.pays == lePays.PY_CODEPAYS"
+                                            ng-repeat="lePays in listeDesPays" value="{{lePays.PY_CODEPAYS}}"
+                                            ng-click="afficheListeVille(FormAddMultirisquePro.pays)">
+                                            {{lePays.PY_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Ville*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-map-marker-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control" id="idVille" name="addMP_Ville"
+                                        ng-model="FormAddMultirisquePro.ville" ng-disabled="verouVille">
+                                        <option value="">Sélectionner une ville</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="laVille in listeDesVilles"
+                                            ng-selected="FormAddMultirisquePro.ville == laVille.VL_CODEVILLE"
+                                            value="{{laVille.VL_CODEVILLE}}"
+                                            ng-click="afficheListeCommune(FormAddMultirisquePro.ville)">
+                                            {{laVille.VL_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddMultirisquePro.ville == laVille.VL_CODEVILLE"
+                                            ng-repeat="laVille in listeDesVilles" value="{{laVille.VL_CODEVILLE}}"
+                                            ng-click="afficheListeCommune(FormAddMultirisquePro.ville)">
+                                            {{laVille.VL_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Commune*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-map-pin text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idCommune" class="form-control" name="addMP_Commune"
+                                        ng-model="FormAddMultirisquePro.commune" ng-disabled="verouCommune">
+                                        <option value="">Sélectionner une commune</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="laCommune in listeDesCommunes"
+                                            value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddMultirisquePro.commune == laCommune.CO_CODECOMMUNE"
+                                            ng-repeat="laCommune in listeDesCommunes"
+                                            value="{{laCommune.CO_CODECOMMUNE}}">{{laCommune.CO_LIBELLE}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Situation géographique*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-map text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idSituationGeo" type="text" class="form-control"
+                                        name="addMP_SituationGeo" placeholder="Entrer une situation géograpgique"
+                                        ng-model="FormAddMultirisquePro.situationGeo" maxlength="150" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="form-group row">
+                            <div class="col-lg-3">
+                                <label>Effet*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idEffet" maxlength="10" type="text" class="form-control"
+                                        name="addMP_Effet" placeholder="Entrer une date"
+                                        ng-model="FormAddMultirisquePro.effet"
+                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/" />
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Echéance*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idEcheance" maxlength="10" type="text" class="form-control"
+                                        name="addMP_Echeance" placeholder="Entrer une date"
+                                        ng-model="FormAddMultirisquePro.echeance"
+                                        ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/" />
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Assureur*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user-cog text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idAssureur" class="form-control" name="addMP_Assureur"
+                                        ng-model="FormAddMultirisquePro.assureur">
+                                        <option value="">Sélectionner un assureur</option>
+                                        <option ng-show="etatForm !== '2'"
+                                            ng-selected="FormAddMultirisquePro.assureur == lAssureur.TI_IDTIERS"
+                                            ng-repeat="lAssureur in listeDesAssureurs" value="{{lAssureur.TI_IDTIERS}}">
+                                            {{lAssureur.TI_DENOMINATION}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddMultirisquePro.assureur == lAssureur.TI_IDTIERS"
+                                            ng-repeat="lAssureur in listeDesAssureurs" value="{{lAssureur.TI_IDTIERS}}">
+                                            {{lAssureur.TI_DENOMINATION}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Garantie*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-map-pin text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idgarantie" class="form-control" name="addgarantie"
+                                        ng-model="FormAddMultirisquePro.valgarantie">
+                                        <option value="">Sélectionner une garantie</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="lAgarantie in listeDesGarantie"
+                                            value="{{lAgarantie.GR_CODEGARENTIEPRIME}}">
+                                            {{lAgarantie.GR_LIBELLEGARENTIEPRIME}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddMultirisquePro.valgarantie == lAgarantie.GR_CODEGARENTIEPRIME"
+                                            ng-repeat="lAgarantie in listeDesGarantie"
+                                            value="{{lAgarantie.GR_CODEGARENTIEPRIME}}">
+                                            {{lAgarantie.GR_LIBELLEGARENTIEPRIME}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Interlocuteur*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-assistive-listening-systems text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idInterlocuteur" type="text" class="form-control"
+                                        name="addMP_Interlocuteur" placeholder="Entrer un nom"
+                                        ng-model="FormAddMultirisquePro.interlocuteur" maxlength="150"
+                                        ng-pattern="/^([a-z-A-Z])([a-z-A-Z0-9 ]+)/" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Téléphone interlocuteur*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-phone-alt text-info"></i>
+                                        </span>
+                                    </div>
+                                    <input id="idTel" maxlength="15" type="text" class="form-control"
+                                        name="addMP_TelInterlocuteur" placeholder="Entrer un n° de téléphone"
+                                        ng-model="FormAddMultirisquePro.telInterlocuteur" ng-pattern="/^\d+$/" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Désignation*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-address-card text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idDesignation" class="form-control" name="addMP_Designation"
+                                        ng-model="FormAddMultirisquePro.designation">
+                                        <option value="">Sélectionner une désignation</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="laDesignation in listeDesignation"
+                                            value="{{laDesignation.DI_CODEDESIGNATION}}">
+                                            {{laDesignation.DI_LIBELLEDESIGNATION}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddMultirisquePro.designation == laDesignation.DI_CODEDESIGNATION"
+                                            ng-repeat="laDesignation in listeDesignation"
+                                            value="{{laDesignation.DI_CODEDESIGNATION}}">
+                                            {{laDesignation.DI_LIBELLEDESIGNATION}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Type d'affaire*</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-briefcase text-info"></i>
+                                        </span>
+                                    </div>
+                                    <select id="idTypeAff" class="form-control" name="addMP_TypeAffaire"
+                                        ng-model="FormAddMultirisquePro.typeAffaire">
+                                        <option value="">Sélectionner un type</option>
+                                        <option ng-show="etatForm !== '2'" ng-repeat="leTypeAffaire in listeTypeAffaire"
+                                            value="{{leTypeAffaire.TA_CODETYPEAFFAIRES}}">
+                                            {{leTypeAffaire.TA_LIBLLETYPEAFFAIRES}}</option>
+                                        <option ng-show="etatForm == '2'"
+                                            ng-selected="FormAddMultirisquePro.typeAffaire == leTypeAffaire.TA_CODETYPEAFFAIRES"
+                                            ng-repeat="leTypeAffaire in listeTypeAffaire"
+                                            value="{{leTypeAffaire.TA_CODETYPEAFFAIRES}}">
+                                            {{leTypeAffaire.TA_LIBLLETYPEAFFAIRES}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="separator separator-dashed separator-success my-1"></div><br>
+                    <div class="mb-1">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6><strong style="color: DarkSlateBlue"><u>TABLEAU DES GARANTIES</u></strong></h6>
+                                <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+                                    <!--tableau garenties-->
+                                    <thead style="text-align: center">
+                                        <tr>
+                                            <th>LIBELLE SOUS CATEGORIE</th>
+                                            <th>EVENEMENTS ASSURES</th>
+                                            <th>CAPITAUX ASSURES</th>
+                                            <th>PRIMES</th>
+                                            <th>APRES REDUCTION</th>
+                                            <th>PRORATA</th>
+                                            <th>FRANCHISES</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-if="etatForm !== '2'" ng-repeat="garentie in tabGarenties">
+                                            <td>{{garentie.SC_LIBELLESOUSCATEGORIE}}</td>
+                                            <td>{{garentie.GA_LIBELLEGARANTIE}}</td>
+                                            <td>
+                                                <input type="text" name="" class="form-control" placeholder=""
+                                                    ng-model="garentie.CG_CAPITAUXASSURES"
+                                                    id="idGarantieCapitaux{{$index}}" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="" class="form-control" placeholder=""
+                                                    ng-model="garentie.CG_PRIMES" id="idGarantiePrime{{$index}}" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="" class="form-control" placeholder=""
+                                                    ng-model="garentie.CG_APRESREDUCTION"
+                                                    id="idGarantieApres{{$index}}" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="" class="form-control" placeholder=""
+                                                    ng-model="garentie.CG_PRORATA" id="idGarantieProrata{{$index}}" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="" class="form-control" placeholder=""
+                                                    ng-model="garentie.CG_FRANCHISES" />
+                                            </td>
+                                        </tr>
+                                        <tr ng-if="etatForm == '2'"
+                                            ng-repeat="garentie in recupererInfo.clsCtcontratgaranties">
+                                            <td>{{garentie.SC_LIBELLESOUSCATEGORIE}}</td>
+                                            <td>{{garentie.GA_LIBELLEGARANTIE}}</td>
+                                            <td>
+                                                <input type="text" name="" class="form-control" placeholder=""
+                                                    ng-model="garentie.CG_CAPITAUXASSURES"
+                                                    id="idGarantieCapitaux{{$index}}" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="" class="form-control" placeholder=""
+                                                    ng-model="garentie.CG_PRIMES" id="idGarantiePrime{{$index}}" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="" class="form-control" placeholder=""
+                                                    ng-model="garentie.CG_APRESREDUCTION"
+                                                    id="idGarantieApres{{$index}}" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="" class="form-control" placeholder=""
+                                                    ng-model="garentie.CG_PRORATA" id="idGarantieProrata{{$index}}" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="" class="form-control" placeholder=""
+                                                    ng-model="garentie.CG_FRANCHISES" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>&#160;&#160;
+                    <div class="mb-1">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6><strong style="color: DarkSlateBlue"><u>TABLEAU DES PRIMES</u></strong></h6>
+                                <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+                                    <!--tableau primes-->
+                                    <thead style="text-align: center">
+                                        <tr>
+                                            <th>LIBELLE</th>
+                                            <th>PRIMES</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr ng-if="etatForm !== '2'" ng-repeat="prime in tabPrimes">
+                                            <td style="max-width: 100px;">{{prime.RE_LIBELLERESUME}}</td>
+                                            <td>
+                                                <label
+                                                    ng-show="prime.RE_CODERESUME != '05'">{{prime.CG_PRIMES | currency:"":0}}
+                                                    FCFA</label>
+                                                <input ng-change="calculprimettc()" id="idPrime{{$index}}" type="text"
+                                                    name="adMP_prime" class="form-control" placeholder=""
+                                                    ng-model="prime.CG_PRIMES" ng-pattern="/^[0-9]+$/" />
+                                            </td>
+                                        </tr>
+                                        <tr ng-if="etatForm == '2'"
+                                            ng-repeat="prime in recupererInfo.clsCtcontratprimes">
+                                            <td style="max-width: 100px;">{{prime.RE_LIBELLERESUME}}</td>
+                                            <td>
+                                                <label
+                                                    ng-show="prime.RE_CODERESUME != '05'">{{prime.CG_PRIMES | currency:"":0}}
+                                                    FCFA</label>
+                                                <input ng-change="calculprimettc()" id="idPrime{{$index}}" type="text"
+                                                    name="adMP_prime" class="form-control" placeholder=""
+                                                    ng-model="prime.CG_PRIMES" ng-pattern="/^[0-9]+$/" />
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-shadow-hover font-weight-bold"
+            ng-click="validerFormMultirisquePro(FormAddMultirisquePro.effet, FormAddMultirisquePro.echeance)">
+            <span>
+                <i class="far fa-check-circle"></i>
+                <span>Enregistrer</span>
+            </span>
+        </button>&#160;&#160;
+        <button type="reset" ng-show="etatForm !== '2'" class="btn btn-light-success font-weight-bold"
+            ng-click="resetFormAddMultirisquePro()">
+            <span>
+                <i class="fas fa-undo"></i>
+                <span>Réinitialiser</span>
+            </span>
+        </button>
+        <a ng-href="#/assurances/multirisque-professionnel" class="btn btn-icon btn-light-dark mr-2" title="Retour"
+            style="position: absolute; right: 27px">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+</form>
+<!--end::Form-->
+
+<!--begin modal pour choix du code souscripteur-->
+<div class="modal fade" id="modalCodeSouscripteur" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeSouscripteur" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeSouscripteur"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - souscripteur
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesSouscripteurs in listeDesSouscripteurs">
+                            <td>{{lesSouscripteurs.TI_NUMTIERS}}</td>
+                            <td>{{lesSouscripteurs.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixSouscripteur(lesSouscripteurs.TI_NUMTIERS, lesSouscripteurs.TI_DENOMINATION, lesSouscripteurs.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+<!--begin modal pour choix du code commercial-->
+<div class="modal fade" id="modalCodeCommercial" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalCodeCommercial" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #718E3E;">
+                <h5 class="modal-title text-white" id="modalCodeCommercial"
+                    style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                    Liste des tiers - commercial
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-checkable" id="kt_datatable" ng-show="leChargement == false">
+                    <thead style="text-align: center">
+                        <tr>
+                            <th>N° TIERS</th>
+                            <th>DENOMINATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lesCommerciaux in listeDesCommerciaux">
+                            <td>{{lesCommerciaux.TI_NUMTIERS}}</td>
+                            <td>{{lesCommerciaux.TI_DENOMINATION}}</td>
+                            <td style="text-align: center">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="tooltip"
+                                    data-theme="dark" title="Choisir"
+                                    ng-click="choixCommercial(lesCommerciaux.TI_NUMTIERS, lesCommerciaux.TI_DENOMINATION, lesCommerciaux.TI_IDTIERS)"
+                                    data-dismiss="modal">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 ng-show="leChargement == true" style="text-align: center;">Chargement en cours...</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

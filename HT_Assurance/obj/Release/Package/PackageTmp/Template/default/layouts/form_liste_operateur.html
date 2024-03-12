@@ -1,0 +1,191 @@
+﻿<form class="mb-15">
+    <div class="row">
+        <div class="col-lg-12">
+            <label>Entrepot*</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-key text-info"></i>
+                    </span>
+                </div>
+                <select class="form-control" name="listOperateur_Entrepot" ng-model="FormListOperateur.Entrepot"
+                    ng-change="afficheListeOperateur(FormListOperateur.Entrepot)">
+                    <option value="">Sélectionner un entrepôt</option>
+                    <option ng-repeat="lEntrepot in listeEntrepot" value="{{lEntrepot.EN_CODEENTREPOT}}">
+                        {{lEntrepot.EN_DENOMINATION}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+        <thead style="text-align: center;">
+            <!--background-color: #8CB9BA; color: White-->
+            <tr>
+                <th>NOMS ET PRENOMS</th>
+                <th>LOGIN</th>
+                <th>TELEPHONE</th>
+                <th>EMAIL</th>
+                <th>ACTIF</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tfoot ng-show="listeOperateur[0].clsObjetRetour.SL_RESULTAT !== 'FALSE' && FormListOperateur.Entrepot !== ''">
+            <tr ng-repeat="laListeOperateur in listeOperateur">
+                <td>{{laListeOperateur.OP_NOMPRENOM}}</td>
+                <td>{{laListeOperateur.OP_LOGIN}}</td>
+                <td>{{laListeOperateur.OP_TELEPHONE}}</td>
+                <td>{{laListeOperateur.OP_EMAIL}}</td>
+                <td>
+                    <label class="checkbox checkbox-lg checkbox-primary">
+                        <input type="checkbox" ng-model="selectedMore"
+                            ng-checked="existedMore(laListeOperateur.OP_ACTIF)"
+                            ng-click="toggleSelectedMore(laListeOperateur)">
+                        <span class="form-text text-muted"></span>
+                    </label>
+                </td>
+                <!--ligne des actions-->
+                <td>
+                    <div class="example-preview" style="position: relative; right: -17px">
+                        <div class="btn-toolbar" role="toolbar" aria-label="...">
+                            <div class="btn-group mr-2" role="group" aria-label="...">
+                                <!--bouton voir plus-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="modal"
+                                    data-target="#modalVoirPlus" ng-click="voirPlusOperateur(laListeOperateur)">
+                                    <i class="far fa-eye" data-toggle="tooltip" data-theme="dark" title="Voir plus"></i>
+                                </button>
+                                <!--bouton modifier-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon"
+                                    ng-click="voirModifOperateur(laListeOperateur)">
+                                    <i class="far fa-edit" data-toggle="tooltip" data-theme="dark" title="Modifier"></i>
+                                </button>
+                                <!--bouton supprimer-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="modal"
+                                    data-target="#modalSupprimer"
+                                    ng-click="supprRecupererIdElement(laListeOperateur.OP_CODEOPERATEUR)">
+                                    <i class="fas fa-ban" data-toggle="tooltip" data-theme="dark" title="Supprimer"></i>
+                                </button>
+                                <!--bouton autres options-->
+                                <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="modal"
+                                    data-target="#modalOption"
+                                    ng-click="autreOption(laListeOperateur, laListeOperateur.OP_CODEOPERATEUR, 'operateurOn')">
+                                    <i class="fas fa-ellipsis-v" data-toggle="tooltip" data-theme="dark"
+                                        title="Autres options"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</form>
+<!--begin modal pour autres options-->
+<div class="modal fade" id="modalOption" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="modalOption" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #B666D2;">
+                <h5 class="modal-title text-white" id="modalOption" style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-v text-white"></i>
+                    Autres options
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card card-custom gutter-b">
+                    <div class="card-header card-header-tabs-line">
+                        <div class="card-toolbar">
+                            <ul class="nav nav-tabs nav-bold nav-tabs-line">
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectDroitMenuPrincipal()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas  fa-desktop"></i></span>
+                                        <span class="nav-text">Droit sur menu/écran/état</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" ng-click="redirectDroitAgence()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-home"></i></span>
+                                        <span class="nav-text">Droit sur agence</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectDroitEntrepot()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-warehouse"></i></span>
+                                        <span class="nav-text">Droit sur entrepot</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectDroitTransfertStock()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-location-arrow"></i></span>
+                                        <span class="nav-text">Droit de transfert de stock</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectDroitFamilleOperation()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-users"></i></span>
+                                        <span class="nav-text">Droit sur famille opérations</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectDroitOperationTresorerieEtAutreEcritures()"
+                                        data-dismiss="modal" style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-landmark"></i></span>
+                                        <span class="nav-text">Droit sur opérations de trésorerie et autres
+                                            écritures</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" ng-click="redirectOperationTresorerie()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-landmark"></i></span>
+                                        <span class="nav-text">Droit sur opérations de trésorerie des tiers</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectDroitAutreOperation()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-id-card"></i></span>
+                                        <span class="nav-text">Droit sur autres opérations de tiers</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectModificationEntrepot()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-pen-alt"></i></span>
+                                        <span class="nav-text">Modification de l'entrepot</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" ng-click="redirectDroitCompte()" data-dismiss="modal"
+                                        style="cursor: pointer">
+                                        <span class="nav-icon"><i class="fas fa-money-check-alt"></i></span>
+                                        <span class="nav-text">Droit sur Compte</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+<!--begin: Datatable-->

@@ -1,0 +1,12 @@
+CODE RISQUE
+
+01 mp
+02 pharmacien
+03 indiv accident
+04 voyage
+05 habitat
+06 auto
+07 auxiliaire
+08 gesa
+09 respo civile
+10 transp marchand
