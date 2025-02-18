@@ -14,6 +14,7 @@ namespace Assurance.Outils
 
         public static string URL_MISE_A_JOUR_CHEQUE = URL_CHEQUE + "pvgAjouter";
         public static string URL_SELECT_CHEQUE = URL_CHEQUE + "pvgChargerDansDataSet";
+        public static string URL_SELECT_CHEQUEREGLE = URL_CHEQUE + "pvgChargerDansDataSetChequeRegler";
         public static string URL_DELETE_CHEQUE = URL_CHEQUE + "pvgSupprimer";
         public static string URL_MODIFICATION_CHEQUE = URL_CHEQUE + "pvgModifier";
         public static string URL_VALIDATION_CHEQUE = URL_CHEQUE + "pvgModifier";

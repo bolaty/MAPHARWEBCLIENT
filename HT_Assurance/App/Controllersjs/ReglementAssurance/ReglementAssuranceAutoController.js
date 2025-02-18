@@ -235,13 +235,18 @@
       }
     };
     //fin afficher liste individuel accident
-
-    //debut voir plus
+     //debut voir plus
     $scope.voirPlus = function (info) {
-      sessionStorage.setItem("vpOpMultirisquePro", JSON.stringify(info));
-      $scope.recuperer = JSON.parse(
-        sessionStorage.getItem("vpOpMultirisquePro")
-      );
+        sessionStorage.setItem("vpOpMultirisquePro", JSON.stringify(info));
+        $scope.recuperer = JSON.parse(
+          sessionStorage.getItem("vpOpMultirisquePro")
+        );
+    };
+    //debut voir plus
+    $scope.voirchequeregler = function (info) {
+      sessionStorage.setItem("vpOpcontratRegler", JSON.stringify(info));
+      window.location.href =
+       "#/gestion/ReglementAssurance/liste/cheque-regle";
     };
     //fin voir plus
 

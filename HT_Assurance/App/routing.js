@@ -1209,6 +1209,15 @@
       controller: "ReglementAssuranceMPController",
       // controller: "ReglementAssuranceAutoController",
     });
+
+     //MODIFICATION CHEQUE REGLER 
+     $routeProvider.when("/gestion/ReglementAssurance/liste/cheque-regle", {
+      templateUrl:
+        "Template/Gestion/CaisseTresorerie/Listes/ListeChequeRegler.html",
+      controller: "ReglementChequeReglerController",
+      // controller: "ReglementAssuranceAutoController",
+    });
+    
     //Relevé client
     $routeProvider.when(
       "/gestion/ReglementAssurance/auto/liste/releve-client",

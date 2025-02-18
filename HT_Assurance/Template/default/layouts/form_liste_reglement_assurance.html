@@ -186,6 +186,12 @@
                                         <i class="fas fa-ellipsis-v" data-toggle="tooltip" data-theme="dark"
                                             title="Autres options"></i>
                                     </button>
+
+                                    <!--bouton voir cheque regle-->
+                                    <button type="button" ng-if="MODIFICATION_DATE_EMISSION == true" class="btn btn-outline-secondary btn-icon" ng-click="voirchequeregler(laListeOperation)">
+                                        <i class="fab fa-orcid text-info" data-toggle="tooltip" data-theme="dark"
+                                           title="Voir cheque reglé"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>

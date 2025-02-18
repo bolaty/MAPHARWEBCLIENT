@@ -1067,6 +1067,18 @@
       <DependentUpon>Tiers.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\TIERS\Tiers2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tiers2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TIERS\Tiers3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tiers3.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\TIERS\TiersAvecSolde.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1083,6 +1095,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TiersPointPharmacie.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TIERS\TiersSimple.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TiersSimple.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\TIERS\TYPECLIENT.cs">
@@ -1803,6 +1821,7 @@
     <Content Include="App\Controllersjs\OutilsEtSecurites\DroitAgenceProfilsController.js" />
     <Content Include="App\Controllersjs\ParametreI\BanqueAgenceController.js" />
     <Content Include="App\Controllersjs\ParametreI\MarqueController.js" />
+    <Content Include="App\Controllersjs\ReglementAssurance\ReglementChequeReglerController.js" />
     <Content Include="App\Controllersjs\Relance\RelanceController.js" />
     <Content Include="App\Controllersjs\OutilsEtSecurites\EditionOutilsSecuriteController.js" />
     <Content Include="App\Controllersjs\OutilsEtSecurites\CreationJrneeTravailController.js" />
@@ -5924,6 +5943,7 @@
     <Content Include="Template\default\layouts\form_liste_releve_commission.html" />
     <Content Include="Template\default\layouts\form_liste_operateur.html" />
     <Content Include="Template\default\layouts\form_liste_reglement_assurance.html" />
+    <Content Include="Template\default\layouts\form_liste_reglement_cheque.html" />
     <Content Include="Template\default\layouts\loading.html" />
     <Content Include="Template\default\layouts\form_liste_validation.html" />
     <Content Include="Template\default\layouts\form_liste_transmission.html" />
@@ -5947,6 +5967,7 @@
     <Content Include="Template\Gestion\CaisseTresorerie\Enregistrements\OperationsCaisse.html" />
     <Content Include="Template\Gestion\CaisseTresorerie\Enregistrements\ReglementCompagniesAssurancesMultiRisqueProfessionnel.html" />
     <Content Include="Template\Gestion\CaisseTresorerie\Listes\EnregistrementDeCheque.html" />
+    <Content Include="Template\Gestion\CaisseTresorerie\Listes\ListeChequeRegler.html" />
     <Content Include="Template\Gestion\CaisseTresorerie\Listes\ListeConsultation.html" />
     <Content Include="Template\Gestion\CaisseTresorerie\Listes\ListeReglementCommissionAssurance.html" />
     <Content Include="Template\Gestion\CaisseTresorerie\Listes\ListeReleveClient.html" />
@@ -7222,6 +7243,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Tiers.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TIERS\Tiers2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Tiers2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TIERS\Tiers3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Tiers3.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\TIERS\TiersAvecSolde.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>TiersAvecSolde.cs</LastGenOutput>
@@ -7233,6 +7262,10 @@
     <EmbeddedResource Include="Reports\TIERS\TiersPointPharmacie.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>TiersPointPharmacie.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TIERS\TiersSimple.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TiersSimple.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\TIERS\TYPECLIENT.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -7691,7 +7724,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>4787</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4784/</IISUrl>
+          <IISUrl>http://localhost:3200/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

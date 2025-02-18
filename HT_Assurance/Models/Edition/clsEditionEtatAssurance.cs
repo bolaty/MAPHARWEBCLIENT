@@ -138,6 +138,14 @@ namespace HT_Assurance
         private string _URL_ETAT = "";
         private string _FORMATETAT = "";
 
+        private double _TOTALFACTURE = 0;
+        private double _TOTALFACTUREREGLE = 0;
+
+        private double _TOTALFACTURERESTANTAREGLE = 0;
+        private double _TOTALPRIMESPOLICE = 0;
+        private double _TOTALPRIMEREGLES = 0;
+        private double _TOTALRESTAPAYER = 0;
+
         string[] _vappNomFormule;
         string[] _vappValeurFormule;
 
@@ -597,6 +605,46 @@ namespace HT_Assurance
         }
 
 
+        public double TOTALFACTURE
+        {
+            get { return _TOTALFACTURE; }
+            set { _TOTALFACTURE = value; }
+        }
+        public double TOTALFACTUREREGLE
+        {
+            get { return _TOTALFACTUREREGLE; }
+            set { _TOTALFACTUREREGLE = value; }
+        }
+        public double TOTALFACTURERESTANTAREGLE
+        {
+            get { return _TOTALFACTURERESTANTAREGLE; }
+            set { _TOTALFACTURERESTANTAREGLE = value; }
+        }
+
+
+
+
+
+
+        public double TOTALPRIMESPOLICE
+        {
+            get { return _TOTALPRIMESPOLICE; }
+            set { _TOTALPRIMESPOLICE = value; }
+        }
+        public double TOTALPRIMEREGLES
+        {
+            get { return _TOTALPRIMEREGLES; }
+            set { _TOTALPRIMEREGLES = value; }
+        }
+
+        public double TOTALRESTAPAYER
+        {
+            get { return _TOTALRESTAPAYER; }
+            set { _TOTALRESTAPAYER = value; }
+        }
+
+
+
         public clsEditionEtatAssurance() {} 
 
 		
@@ -688,6 +736,15 @@ namespace HT_Assurance
             TI_IDTIERSCLIENT = clsEditionEtatAssurance.TI_IDTIERSCLIENT;
             EX_EXERCICE = clsEditionEtatAssurance.EX_EXERCICE;
             URL_ETAT = clsEditionEtatAssurance.URL_ETAT;
+
+
+            TOTALFACTURE = clsEditionEtatAssurance.TOTALFACTURE;
+            TOTALFACTUREREGLE = clsEditionEtatAssurance.TOTALFACTUREREGLE;
+            TOTALFACTURERESTANTAREGLE = clsEditionEtatAssurance.TOTALFACTURERESTANTAREGLE;
+            TOTALPRIMESPOLICE = clsEditionEtatAssurance.TOTALPRIMESPOLICE;
+            TOTALPRIMEREGLES = clsEditionEtatAssurance.TOTALPRIMEREGLES;
+            TOTALRESTAPAYER = clsEditionEtatAssurance.TOTALRESTAPAYER;
+
             this.vappNomFormule = clsEditionEtatAssurance.vappNomFormule;
             this.vappValeurFormule = clsEditionEtatAssurance.vappValeurFormule;
             FORMATETAT = clsEditionEtatAssurance.FORMATETAT;

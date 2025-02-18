@@ -32,6 +32,10 @@
     /*FIN ZONE DE DECLARATION*/
 
     /*DEBUT FONCTION GENERALE*/
+    
+    $scope.DroitOperateurEnCours = JSON.parse(
+      sessionStorage.getItem("DroitOperateurEnCours")
+    );
 
     $rootScope.collectionDeLaConnexion = JSON.parse(
       localStorage.getItem("userCurrent")
@@ -47,7 +51,12 @@
       $scope.loading = false;
     });
     //fin loader
-
+     $scope.voirchequeregler = function (info) {
+      sessionStorage.setItem("vpOpcontratRegler", JSON.stringify(info));
+      window.location.href =
+       "#/gestion/ReglementAssurance/liste/cheque-regle";
+    };
+    //fin voir plus
     //debut recharge page
     $scope.rechargePage = function () {
       $window.location.reload();
@@ -503,6 +512,15 @@
     //fin aller afficher règlement chèque
 
     $scope.initFormListOpMultirisquePro = function (item) {
+      
+      $rootScope.STMODIFICATION_DATE_EMISSION = $scope.DroitOperateurEnCours.find(//@ts-ignore
+        (element) => element.OB_LIBELLE == 'MODIFICATION DATE EMISSION'
+      )?.OD_AUTORISER
+
+      if($rootScope.STMODIFICATION_DATE_EMISSION == 'O'){
+        $rootScope.MODIFICATION_DATE_EMISSION = true;
+      }
+
       $rootScope.maPosition = item;
     };
 

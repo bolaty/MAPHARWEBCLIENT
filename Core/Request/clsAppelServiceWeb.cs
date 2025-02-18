@@ -17,8 +17,8 @@ namespace Core
     /// </summary>
     public class clsAppelServiceWeb
     {
-      // static ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        
+        // static ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         /// Methode d'excution d'un service web
         /// </summary>
@@ -30,20 +30,84 @@ namespace Core
         /// <param name="url">L'Url du service web</param>
         /// <returns></returns>
         /// 
-        public static IList<K> ExecuteServiceWeb<K, T>(K data, T Objet, string method, int timeOut ,string url, string Tokken)
+        //public static IList<K> ExecuteServiceWeb<K, T>(K data, T Objet, string method, int timeOut ,string url, string Tokken)
+        //{
+
+        //    List<K> objList = new List<K>();
+
+        //    var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+        //    httpWebRequest.ContentType = "application/json";
+        //    httpWebRequest.Method = method;
+        //    httpWebRequest.Headers.Add("Authorization", Tokken);
+        //    // GESTION DE TIMOUT
+
+        //    if (timeOut == 0)
+        //    {
+        //        httpWebRequest.Timeout = clsDeclaration.TIMEOUT;
+        //    }
+        //    else
+        //    {
+        //        httpWebRequest.Timeout = timeOut;
+        //    }
+
+        //    httpWebRequest.KeepAlive = true;
+        //    try
+        //    {
+        //        using (var streamWriterConsultation = new StreamWriter(httpWebRequest.GetRequestStream()))
+        //        {
+        //            string jsonConsultation = new JavaScriptSerializer().Serialize(new
+        //            {
+        //                Objet
+        //            });
+        //             streamWriterConsultation.Write(jsonConsultation);
+        //        }
+        //        if (IsNetworkConnected())
+        //        {
+        //            ServicePointManager.CertificatePolicy = new TrustAllCertificatePolicy();
+        //            var httpResponseConsultation = (HttpWebResponse)httpWebRequest.GetResponse();
+        //            using (var streamReaderConsultation = new StreamReader(httpResponseConsultation.GetResponseStream()))
+        //            {
+        //                string resultConsultation = streamReaderConsultation.ReadToEnd();
+        //                objList = JsonConvert.DeserializeObject<List<K>>(resultConsultation);
+        //            }
+        //        }
+        //        else
+        //            objList = null;
+
+
+        //    }
+        //    catch (WebException e)
+        //    {
+        //        //+++++Log                                                                                                          
+        //        Core.clsLog.EcrireDansFichierLog("Error clsAppelServiceWeb :" + e.Message);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //+++++Log                                                                                                          
+        //        Core.clsLog.EcrireDansFichierLog("Error clsAppelServiceWeb :" + ex.Message);
+        //    }
+
+        //    return objList;            
+        //}
+
+        public static IList<K> ExecuteServiceWeb<K, T>(K data, T Objet, string method, int timeOut, string url, string Tokken)
         {
-            
             List<K> objList = new List<K>();
 
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = method;
             httpWebRequest.Headers.Add("Authorization", Tokken);
-            // GESTION DE TIMOUT
 
+            // GESTION DE TIMEOUT
             if (timeOut == 0)
             {
-                httpWebRequest.Timeout = clsDeclaration.TIMEOUT;
+                httpWebRequest.Timeout = System.Threading.Timeout.Infinite; //clsDeclaration.TIMEOUT;
+            }
+            else if (timeOut < 0)
+            {
+                // Si timeOut est négatif, attendre indéfiniment
+                httpWebRequest.Timeout = System.Threading.Timeout.Infinite;
             }
             else
             {
@@ -51,6 +115,7 @@ namespace Core
             }
 
             httpWebRequest.KeepAlive = true;
+
             try
             {
                 using (var streamWriterConsultation = new StreamWriter(httpWebRequest.GetRequestStream()))
@@ -59,8 +124,9 @@ namespace Core
                     {
                         Objet
                     });
-                     streamWriterConsultation.Write(jsonConsultation);
+                    streamWriterConsultation.Write(jsonConsultation);
                 }
+
                 if (IsNetworkConnected())
                 {
                     ServicePointManager.CertificatePolicy = new TrustAllCertificatePolicy();
@@ -72,9 +138,9 @@ namespace Core
                     }
                 }
                 else
+                {
                     objList = null;
-
-                
+                }
             }
             catch (WebException e)
             {
@@ -87,8 +153,9 @@ namespace Core
                 Core.clsLog.EcrireDansFichierLog("Error clsAppelServiceWeb :" + ex.Message);
             }
 
-            return objList;            
+            return objList;
         }
+
 
         public static bool IsNetworkConnected()
         {

@@ -220,6 +220,312 @@ namespace HT_Assurance.Controllers
             return Json(clsEditionEtatAssurances, JsonRequestBehavior.AllowGet);
         }
 
+
+        public JsonResult pvgInsertIntoDatasetEtatAssuranceAnnuler(List<HT_Assurance.clsEditionEtatAssurance> ObjetEnvoie)
+        {
+            string Tokken = "";//Request.Headers.Authorization.ToString();  //Tokken du client qui demande le service web
+            HT_Assurance.clsEditionEtatAssurance clsEditionEtatAssurance = new HT_Assurance.clsEditionEtatAssurance();  //Déclaration d'une instance de l'objet equipe_operateurs
+            HT_Assurance.clsEditionEtatAssurance ObjetRetour = new HT_Assurance.clsEditionEtatAssurance(); //Conteneur de la réponse de l'appel du service web
+            clsEditionEtatAssurance.clsObjetRetour = new Stock.Common.clsObjetRetour(); //Déclaration d'une instance de l'objet de retour
+            Stock.Common.clsObjetRetour clsObjetRetour = new Stock.Common.clsObjetRetour(); //Déclaration d'une instance de l'objet de retour
+            List<HT_Assurance.clsEditionEtatAssurance> clsEditionEtatAssurances = new List<HT_Assurance.clsEditionEtatAssurance>(); //Déclaration d'une liste d'instance de l'objet equipe_operateurs
+            Core.clsDate.ClasseDate.pvgFormatDateCultureInfo(); //Format de la date fr-FR
+            Assurance.Outils.clsDeclaration.NOM_ETAT_EN_COURS = ObjetEnvoie[0].NOMETAT;
+
+            try
+            {
+
+
+
+
+
+                for (int Idx = 0; Idx < ObjetEnvoie.Count; Idx++)
+                {
+
+                    //debut traitement des criteres de recherche non obligatoire
+
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TYPEOPERATION))
+                        ObjetEnvoie[Idx].TYPEOPERATION = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].CA_CODECONTRAT))
+                        ObjetEnvoie[Idx].CA_CODECONTRAT = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].CT_CODESTAUT))
+                        ObjetEnvoie[Idx].CT_CODESTAUT = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TI_IDTIERS))
+                        ObjetEnvoie[Idx].TI_IDTIERS = "";
+
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].CO_CODECOMMUNE))
+                        ObjetEnvoie[Idx].CO_CODECOMMUNE = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].NS_CODENATURESINISTRE))
+                        ObjetEnvoie[Idx].NS_CODENATURESINISTRE = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].PY_CODEPAYS))
+                        ObjetEnvoie[Idx].PY_CODEPAYS = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].RQ_CODERISQUE))
+                        ObjetEnvoie[Idx].RQ_CODERISQUE = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TA_CODETYPEAFFAIRES))
+                        ObjetEnvoie[Idx].TA_CODETYPEAFFAIRES = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TI_IDTIERSCOMMERCIAL))
+                        ObjetEnvoie[Idx].TI_IDTIERSCOMMERCIAL = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].VL_CODEVILLE))
+                        ObjetEnvoie[Idx].VL_CODEVILLE = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].ZA_CODEZONEAUTO))
+                        ObjetEnvoie[Idx].ZA_CODEZONEAUTO = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].ZN_CODEZONECOMMERCIAL))
+                        ObjetEnvoie[Idx].ZN_CODEZONECOMMERCIAL = "";
+
+                    //fin traitement des criteres de recherche non obligatoire
+                }
+
+
+
+                Assurance.Outils.clsDeclaration.TestConnexionServeur = Core.clsAppelServiceWeb.IsNetworkConnected(); //Vérification de la connexion avec la partie serveur
+                if (Assurance.Outils.clsDeclaration.TestConnexionServeur == true) //Opération a realiser si la connnexion est établie
+                {
+                    //appelle du service web de generation de la liste des equipe_operateurs personnels et affectation a la variable retour
+                    clsEditionEtatAssurances = Core.clsAppelServiceWeb.ExecuteServiceWeb(ObjetRetour, ObjetEnvoie, Core.clsDeclaration.METHOD, 0, Assurance.Outils.ReferencesWebComboZoneEdition.URL_ETATASSURANCEANNULER, Tokken).ToList();
+                    if ((clsEditionEtatAssurances == null) || (clsEditionEtatAssurances.Count == 0))
+                    {
+                        clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR;  //RESULTAT = FALSE
+                        clsObjetRetour.SL_MESSAGE = Core.clsDeclaration.ERR_MSG_CONN;  //MSG = ERREUR DE CONNEXION
+                        clsEditionEtatAssurance.clsObjetRetour = clsObjetRetour;
+                        clsEditionEtatAssurances.Add(clsEditionEtatAssurance);  //Ajout d'une nouvelle instance de la classe a la liste
+                    }
+
+                    // Assurance.Outils.clsDeclaration.vappNomFormule = new string[] { "Entete1", "Entete2", "Entete3", "Entete4", "LibelleEtat", "Date1", "Date2" };
+                    //  Assurance.Outils.clsDeclaration.vappValeurFormule = new string[] { Assurance.Outils.clsDeclaration.ENTETE1_VALEUR, Assurance.Outils.clsDeclaration.ENTETE2_VALEUR, Assurance.Outils.clsDeclaration.ENTETE3_VALEUR, Assurance.Outils.clsDeclaration.ENTETE4_VALEUR, ObjetEnvoie[0].ET_LIBELLEETAT, ObjetEnvoie[0].DATEDEBUT, ObjetEnvoie[0].DATEFIN };
+                }
+                else
+                {
+                    clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR;  //RESULTAT = FALSE
+                    clsObjetRetour.SL_MESSAGE = Core.clsDeclaration.ERR_MSG_CONN;  //MSG = ERREUR DE CONNEXION
+                    clsEditionEtatAssurance.clsObjetRetour = clsObjetRetour;
+                    clsEditionEtatAssurances.Add(clsEditionEtatAssurance);  //Ajout d'une nouvelle instance de la classe a la liste
+                }
+            }
+            catch (System.Net.WebException e)  //Exeptions liées au serveur
+            {
+                clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR; //RESULTAT = FALSE
+                clsObjetRetour.SL_MESSAGE = Core.ErreursMessages.msgErr(e.GetHashCode().ToString(), e.Message);  //MSG = ERREUR DE SERVEUR
+                clsEditionEtatAssurance.clsObjetRetour = clsObjetRetour;
+                clsEditionEtatAssurances.Add(clsEditionEtatAssurance);  //Ajout d'une nouvelle instance de la classe a la liste
+                Core.clsLog.EcrireDansFichierLog("Error EditionEtatAssuranceController :" + e.Message);
+
+            }
+            catch (Exception ex)  //Exeptions liées au code
+            {
+                clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR; //RESULTAT = FALSE
+                clsObjetRetour.SL_MESSAGE = Core.ErreursMessages.msgErr(ex.GetHashCode().ToString(), ex.Message);  //MSG = ERREUR DE CODE
+                clsEditionEtatAssurance.clsObjetRetour = clsObjetRetour;
+                clsEditionEtatAssurances.Add(clsEditionEtatAssurance); // Ajout d'une nouvelle instance de la classe a la liste
+                Core.clsLog.EcrireDansFichierLog("Error EditionEtatAssuranceController :" + ex.Message);
+            }
+            HT_Assurance.clsDeclaration.SOURCE_DE_DONNEEASSURANCE = clsEditionEtatAssurances;
+            return Json(clsEditionEtatAssurances, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult pvgInsertIntoDatasetEtatAssuranceTableauGestionCommission(List<HT_Assurance.clsEditionEtatAssurance> ObjetEnvoie)
+        {
+            string Tokken = "";//Request.Headers.Authorization.ToString();  //Tokken du client qui demande le service web
+            HT_Assurance.clsEditionEtatAssurance clsEditionEtatAssurance = new HT_Assurance.clsEditionEtatAssurance();  //Déclaration d'une instance de l'objet equipe_operateurs
+            HT_Assurance.clsEditionEtatAssurance ObjetRetour = new HT_Assurance.clsEditionEtatAssurance(); //Conteneur de la réponse de l'appel du service web
+            clsEditionEtatAssurance.clsObjetRetour = new Stock.Common.clsObjetRetour(); //Déclaration d'une instance de l'objet de retour
+            Stock.Common.clsObjetRetour clsObjetRetour = new Stock.Common.clsObjetRetour(); //Déclaration d'une instance de l'objet de retour
+            List<HT_Assurance.clsEditionEtatAssurance> clsEditionEtatAssurances = new List<HT_Assurance.clsEditionEtatAssurance>(); //Déclaration d'une liste d'instance de l'objet equipe_operateurs
+            Core.clsDate.ClasseDate.pvgFormatDateCultureInfo(); //Format de la date fr-FR
+            Assurance.Outils.clsDeclaration.NOM_ETAT_EN_COURS = ObjetEnvoie[0].NOMETAT;
+
+            try
+            {
+
+
+
+
+
+                for (int Idx = 0; Idx < ObjetEnvoie.Count; Idx++)
+                {
+
+                    //debut traitement des criteres de recherche non obligatoire
+
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TYPEOPERATION))
+                        ObjetEnvoie[Idx].TYPEOPERATION = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].CA_CODECONTRAT))
+                        ObjetEnvoie[Idx].CA_CODECONTRAT = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].CT_CODESTAUT))
+                        ObjetEnvoie[Idx].CT_CODESTAUT = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TI_IDTIERS))
+                        ObjetEnvoie[Idx].TI_IDTIERS = "";
+
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].CO_CODECOMMUNE))
+                        ObjetEnvoie[Idx].CO_CODECOMMUNE = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].NS_CODENATURESINISTRE))
+                        ObjetEnvoie[Idx].NS_CODENATURESINISTRE = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].PY_CODEPAYS))
+                        ObjetEnvoie[Idx].PY_CODEPAYS = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].RQ_CODERISQUE))
+                        ObjetEnvoie[Idx].RQ_CODERISQUE = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TA_CODETYPEAFFAIRES))
+                        ObjetEnvoie[Idx].TA_CODETYPEAFFAIRES = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TI_IDTIERSCOMMERCIAL))
+                        ObjetEnvoie[Idx].TI_IDTIERSCOMMERCIAL = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].VL_CODEVILLE))
+                        ObjetEnvoie[Idx].VL_CODEVILLE = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].ZA_CODEZONEAUTO))
+                        ObjetEnvoie[Idx].ZA_CODEZONEAUTO = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].ZN_CODEZONECOMMERCIAL))
+                        ObjetEnvoie[Idx].ZN_CODEZONECOMMERCIAL = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TI_IDTIERSCLIENT))
+                        ObjetEnvoie[Idx].TI_IDTIERSCLIENT = "";
+                    //fin traitement des criteres de recherche non obligatoire
+                }
+
+
+
+                Assurance.Outils.clsDeclaration.TestConnexionServeur = Core.clsAppelServiceWeb.IsNetworkConnected(); //Vérification de la connexion avec la partie serveur
+                if (Assurance.Outils.clsDeclaration.TestConnexionServeur == true) //Opération a realiser si la connnexion est établie
+                {
+                    //appelle du service web de generation de la liste des equipe_operateurs personnels et affectation a la variable retour
+                    clsEditionEtatAssurances = Core.clsAppelServiceWeb.ExecuteServiceWeb(ObjetRetour, ObjetEnvoie, Core.clsDeclaration.METHOD, 0, Assurance.Outils.ReferencesWebComboZoneEdition.URL_ETATASSURANCETableauGestionCommission, Tokken).ToList();
+                    if ((clsEditionEtatAssurances == null) || (clsEditionEtatAssurances.Count == 0))
+                    {
+                        clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR;  //RESULTAT = FALSE
+                        clsObjetRetour.SL_MESSAGE = Core.clsDeclaration.ERR_MSG_CONN;  //MSG = ERREUR DE CONNEXION
+                        clsEditionEtatAssurance.clsObjetRetour = clsObjetRetour;
+                        clsEditionEtatAssurances.Add(clsEditionEtatAssurance);  //Ajout d'une nouvelle instance de la classe a la liste
+                    }
+
+                    // Assurance.Outils.clsDeclaration.vappNomFormule = new string[] { "Entete1", "Entete2", "Entete3", "Entete4", "LibelleEtat", "Date1", "Date2" };
+                    //  Assurance.Outils.clsDeclaration.vappValeurFormule = new string[] { Assurance.Outils.clsDeclaration.ENTETE1_VALEUR, Assurance.Outils.clsDeclaration.ENTETE2_VALEUR, Assurance.Outils.clsDeclaration.ENTETE3_VALEUR, Assurance.Outils.clsDeclaration.ENTETE4_VALEUR, ObjetEnvoie[0].ET_LIBELLEETAT, ObjetEnvoie[0].DATEDEBUT, ObjetEnvoie[0].DATEFIN };
+                }
+                else
+                {
+                    clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR;  //RESULTAT = FALSE
+                    clsObjetRetour.SL_MESSAGE = Core.clsDeclaration.ERR_MSG_CONN;  //MSG = ERREUR DE CONNEXION
+                    clsEditionEtatAssurance.clsObjetRetour = clsObjetRetour;
+                    clsEditionEtatAssurances.Add(clsEditionEtatAssurance);  //Ajout d'une nouvelle instance de la classe a la liste
+                }
+            }
+            catch (System.Net.WebException e)  //Exeptions liées au serveur
+            {
+                clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR; //RESULTAT = FALSE
+                clsObjetRetour.SL_MESSAGE = Core.ErreursMessages.msgErr(e.GetHashCode().ToString(), e.Message);  //MSG = ERREUR DE SERVEUR
+                clsEditionEtatAssurance.clsObjetRetour = clsObjetRetour;
+                clsEditionEtatAssurances.Add(clsEditionEtatAssurance);  //Ajout d'une nouvelle instance de la classe a la liste
+                Core.clsLog.EcrireDansFichierLog("Error EditionEtatAssuranceController :" + e.Message);
+
+            }
+            catch (Exception ex)  //Exeptions liées au code
+            {
+                clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR; //RESULTAT = FALSE
+                clsObjetRetour.SL_MESSAGE = Core.ErreursMessages.msgErr(ex.GetHashCode().ToString(), ex.Message);  //MSG = ERREUR DE CODE
+                clsEditionEtatAssurance.clsObjetRetour = clsObjetRetour;
+                clsEditionEtatAssurances.Add(clsEditionEtatAssurance); // Ajout d'une nouvelle instance de la classe a la liste
+                Core.clsLog.EcrireDansFichierLog("Error EditionEtatAssuranceController :" + ex.Message);
+            }
+            HT_Assurance.clsDeclaration.SOURCE_DE_DONNEEASSURANCE = clsEditionEtatAssurances;
+            return Json(clsEditionEtatAssurances, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult pvgInsertIntoDatasetEtatAssuranceReglementAnnuler(List<HT_Assurance.clsEditionEtatAssurance> ObjetEnvoie)
+        {
+            string Tokken = "";//Request.Headers.Authorization.ToString();  //Tokken du client qui demande le service web
+            HT_Assurance.clsEditionEtatAssurance clsEditionEtatAssurance = new HT_Assurance.clsEditionEtatAssurance();  //Déclaration d'une instance de l'objet equipe_operateurs
+            HT_Assurance.clsEditionEtatAssurance ObjetRetour = new HT_Assurance.clsEditionEtatAssurance(); //Conteneur de la réponse de l'appel du service web
+            clsEditionEtatAssurance.clsObjetRetour = new Stock.Common.clsObjetRetour(); //Déclaration d'une instance de l'objet de retour
+            Stock.Common.clsObjetRetour clsObjetRetour = new Stock.Common.clsObjetRetour(); //Déclaration d'une instance de l'objet de retour
+            List<HT_Assurance.clsEditionEtatAssurance> clsEditionEtatAssurances = new List<HT_Assurance.clsEditionEtatAssurance>(); //Déclaration d'une liste d'instance de l'objet equipe_operateurs
+            Core.clsDate.ClasseDate.pvgFormatDateCultureInfo(); //Format de la date fr-FR
+            Assurance.Outils.clsDeclaration.NOM_ETAT_EN_COURS = ObjetEnvoie[0].NOMETAT;
+
+            try
+            {
+
+
+
+
+
+                for (int Idx = 0; Idx < ObjetEnvoie.Count; Idx++)
+                {
+
+                    //debut traitement des criteres de recherche non obligatoire
+
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TYPEOPERATION))
+                        ObjetEnvoie[Idx].TYPEOPERATION = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].CA_CODECONTRAT))
+                        ObjetEnvoie[Idx].CA_CODECONTRAT = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].CT_CODESTAUT))
+                        ObjetEnvoie[Idx].CT_CODESTAUT = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TI_IDTIERS))
+                        ObjetEnvoie[Idx].TI_IDTIERS = "";
+
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].CO_CODECOMMUNE))
+                        ObjetEnvoie[Idx].CO_CODECOMMUNE = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].NS_CODENATURESINISTRE))
+                        ObjetEnvoie[Idx].NS_CODENATURESINISTRE = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].PY_CODEPAYS))
+                        ObjetEnvoie[Idx].PY_CODEPAYS = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].RQ_CODERISQUE))
+                        ObjetEnvoie[Idx].RQ_CODERISQUE = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TA_CODETYPEAFFAIRES))
+                        ObjetEnvoie[Idx].TA_CODETYPEAFFAIRES = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TI_IDTIERSCOMMERCIAL))
+                        ObjetEnvoie[Idx].TI_IDTIERSCOMMERCIAL = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].VL_CODEVILLE))
+                        ObjetEnvoie[Idx].VL_CODEVILLE = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].ZA_CODEZONEAUTO))
+                        ObjetEnvoie[Idx].ZA_CODEZONEAUTO = "";
+                    if (string.IsNullOrEmpty(ObjetEnvoie[Idx].ZN_CODEZONECOMMERCIAL))
+                        ObjetEnvoie[Idx].ZN_CODEZONECOMMERCIAL = "";
+
+                    //fin traitement des criteres de recherche non obligatoire
+                }
+
+
+
+                Assurance.Outils.clsDeclaration.TestConnexionServeur = Core.clsAppelServiceWeb.IsNetworkConnected(); //Vérification de la connexion avec la partie serveur
+                if (Assurance.Outils.clsDeclaration.TestConnexionServeur == true) //Opération a realiser si la connnexion est établie
+                {
+                    //appelle du service web de generation de la liste des equipe_operateurs personnels et affectation a la variable retour
+                    clsEditionEtatAssurances = Core.clsAppelServiceWeb.ExecuteServiceWeb(ObjetRetour, ObjetEnvoie, Core.clsDeclaration.METHOD, 0, Assurance.Outils.ReferencesWebComboZoneEdition.URL_ETATASSURANCEREGLEMENTANNULER, Tokken).ToList();
+                    if ((clsEditionEtatAssurances == null) || (clsEditionEtatAssurances.Count == 0))
+                    {
+                        clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR;  //RESULTAT = FALSE
+                        clsObjetRetour.SL_MESSAGE = Core.clsDeclaration.ERR_MSG_CONN;  //MSG = ERREUR DE CONNEXION
+                        clsEditionEtatAssurance.clsObjetRetour = clsObjetRetour;
+                        clsEditionEtatAssurances.Add(clsEditionEtatAssurance);  //Ajout d'une nouvelle instance de la classe a la liste
+                    }
+
+                    // Assurance.Outils.clsDeclaration.vappNomFormule = new string[] { "Entete1", "Entete2", "Entete3", "Entete4", "LibelleEtat", "Date1", "Date2" };
+                    //  Assurance.Outils.clsDeclaration.vappValeurFormule = new string[] { Assurance.Outils.clsDeclaration.ENTETE1_VALEUR, Assurance.Outils.clsDeclaration.ENTETE2_VALEUR, Assurance.Outils.clsDeclaration.ENTETE3_VALEUR, Assurance.Outils.clsDeclaration.ENTETE4_VALEUR, ObjetEnvoie[0].ET_LIBELLEETAT, ObjetEnvoie[0].DATEDEBUT, ObjetEnvoie[0].DATEFIN };
+                }
+                else
+                {
+                    clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR;  //RESULTAT = FALSE
+                    clsObjetRetour.SL_MESSAGE = Core.clsDeclaration.ERR_MSG_CONN;  //MSG = ERREUR DE CONNEXION
+                    clsEditionEtatAssurance.clsObjetRetour = clsObjetRetour;
+                    clsEditionEtatAssurances.Add(clsEditionEtatAssurance);  //Ajout d'une nouvelle instance de la classe a la liste
+                }
+            }
+            catch (System.Net.WebException e)  //Exeptions liées au serveur
+            {
+                clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR; //RESULTAT = FALSE
+                clsObjetRetour.SL_MESSAGE = Core.ErreursMessages.msgErr(e.GetHashCode().ToString(), e.Message);  //MSG = ERREUR DE SERVEUR
+                clsEditionEtatAssurance.clsObjetRetour = clsObjetRetour;
+                clsEditionEtatAssurances.Add(clsEditionEtatAssurance);  //Ajout d'une nouvelle instance de la classe a la liste
+                Core.clsLog.EcrireDansFichierLog("Error EditionEtatAssuranceController :" + e.Message);
+
+            }
+            catch (Exception ex)  //Exeptions liées au code
+            {
+                clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR; //RESULTAT = FALSE
+                clsObjetRetour.SL_MESSAGE = Core.ErreursMessages.msgErr(ex.GetHashCode().ToString(), ex.Message);  //MSG = ERREUR DE CODE
+                clsEditionEtatAssurance.clsObjetRetour = clsObjetRetour;
+                clsEditionEtatAssurances.Add(clsEditionEtatAssurance); // Ajout d'une nouvelle instance de la classe a la liste
+                Core.clsLog.EcrireDansFichierLog("Error EditionEtatAssuranceController :" + ex.Message);
+            }
+            HT_Assurance.clsDeclaration.SOURCE_DE_DONNEEASSURANCE = clsEditionEtatAssurances;
+            return Json(clsEditionEtatAssurances, JsonRequestBehavior.AllowGet);
+        }
+
+
         public JsonResult ListetatdesPrimeEncaissement(List<HT_Assurance.clsEditionEtatAssurance> ObjetEnvoie)
         {
             string Tokken = "";//Request.Headers.Authorization.ToString();  //Tokken du client qui demande le service web
@@ -726,8 +1032,10 @@ namespace HT_Assurance.Controllers
             return Json(clsEditionEtatAssurances, JsonRequestBehavior.AllowGet);
         }
 
+
         public JsonResult Insertedition3(List<HT_Assurance.clsCtcontratchequephoto> ObjetEnvoie)
         {
+            string NatureCt = "";
             string Tokken = "";//Request.Headers.Authorization.ToString();  //Tokken du client qui demande le service web
             HT_Assurance.clsCtcontratchequephoto clsCtcontratchequephoto = new HT_Assurance.clsCtcontratchequephoto();  //Déclaration d'une instance de l'objet equipe_operateurs
             HT_Assurance.clsCtcontratchequephoto ObjetRetour = new HT_Assurance.clsCtcontratchequephoto(); //Conteneur de la réponse de l'appel du service web
@@ -756,12 +1064,17 @@ namespace HT_Assurance.Controllers
                         ObjetEnvoie[Idx].TYPEOPERATION = "2";
                     if (string.IsNullOrEmpty(ObjetEnvoie[Idx].CA_CODECONTRAT))
                         ObjetEnvoie[Idx].CA_CODECONTRAT = "0";
-                    
+                    if (ObjetEnvoie[Idx].TA_CODETYPEAFFAIRES == "01")
+                        NatureCt = "AFFAIRES NOUVELLES";
+
+                    if (ObjetEnvoie[Idx].TA_CODETYPEAFFAIRES == "02")
+                        NatureCt = "RENOUVELLEMENT";
+
 
                     //fin traitement des criteres de recherche non obligatoire
                 }
 
-                
+
 
                 Assurance.Outils.clsDeclaration.TestConnexionServeur = Core.clsAppelServiceWeb.IsNetworkConnected(); //Vérification de la connexion avec la partie serveur
                 if (Assurance.Outils.clsDeclaration.TestConnexionServeur == true) //Opération a realiser si la connnexion est établie
@@ -776,8 +1089,8 @@ namespace HT_Assurance.Controllers
                         clsCtcontratchequephotos.Add(clsCtcontratchequephoto);  //Ajout d'une nouvelle instance de la classe a la liste
                     }
 
-                    Assurance.Outils.clsDeclaration.vappNomFormule = new string[] { "Entete1", "Entete2", "Entete3", "Entete4", "LibelleEtat", "Date1", "Date2" };
-                    Assurance.Outils.clsDeclaration.vappValeurFormule = new string[] { Assurance.Outils.clsDeclaration.ENTETE1_VALEUR, Assurance.Outils.clsDeclaration.ENTETE2_VALEUR, Assurance.Outils.clsDeclaration.ENTETE3_VALEUR, Assurance.Outils.clsDeclaration.ENTETE4_VALEUR, ObjetEnvoie[0].ET_LIBELLEETAT, ObjetEnvoie[0].DATEDEBUT, ObjetEnvoie[0].DATEFIN };
+                    Assurance.Outils.clsDeclaration.vappNomFormule = new string[] { "Entete1", "Entete2", "Entete3", "Entete4", "LibelleEtat", "Date1", "Date2", "NatureCt" };
+                    Assurance.Outils.clsDeclaration.vappValeurFormule = new string[] { Assurance.Outils.clsDeclaration.ENTETE1_VALEUR, Assurance.Outils.clsDeclaration.ENTETE2_VALEUR, Assurance.Outils.clsDeclaration.ENTETE3_VALEUR, Assurance.Outils.clsDeclaration.ENTETE4_VALEUR, ObjetEnvoie[0].ET_LIBELLEETAT, ObjetEnvoie[0].DATEDEBUT, ObjetEnvoie[0].DATEFIN, NatureCt };
                 }
                 else
                 {
@@ -807,6 +1120,88 @@ namespace HT_Assurance.Controllers
             HT_Assurance.clsDeclaration.SOURCE_DE_DONNEEREMISEDECHECQUE = clsCtcontratchequephotos;
             return Json(clsCtcontratchequephotos, JsonRequestBehavior.AllowGet);
         }
+
+        //public JsonResult Insertedition3(List<HT_Assurance.clsCtcontratchequephoto> ObjetEnvoie)
+        //{
+        //    string Tokken = "";//Request.Headers.Authorization.ToString();  //Tokken du client qui demande le service web
+        //    HT_Assurance.clsCtcontratchequephoto clsCtcontratchequephoto = new HT_Assurance.clsCtcontratchequephoto();  //Déclaration d'une instance de l'objet equipe_operateurs
+        //    HT_Assurance.clsCtcontratchequephoto ObjetRetour = new HT_Assurance.clsCtcontratchequephoto(); //Conteneur de la réponse de l'appel du service web
+        //    clsCtcontratchequephoto.clsObjetRetour = new Stock.Common.clsObjetRetour(); //Déclaration d'une instance de l'objet de retour
+        //    Stock.Common.clsObjetRetour clsObjetRetour = new Stock.Common.clsObjetRetour(); //Déclaration d'une instance de l'objet de retour
+        //    List<HT_Assurance.clsCtcontratchequephoto> clsCtcontratchequephotos = new List<HT_Assurance.clsCtcontratchequephoto>(); //Déclaration d'une liste d'instance de l'objet equipe_operateurs
+        //    Core.clsDate.ClasseDate.pvgFormatDateCultureInfo(); //Format de la date fr-FR
+        //    Assurance.Outils.clsDeclaration.NOM_ETAT_EN_COURS = ObjetEnvoie[0].NOMETAT;
+        //    HT_Assurance.clsDeclaration.FORMATETAT = ObjetEnvoie[0].FORMATETAT;
+        //    try
+        //    {
+
+
+
+
+
+        //        for (int Idx = 0; Idx < ObjetEnvoie.Count; Idx++)
+        //        {
+
+        //            //debut traitement des criteres de recherche non obligatoire
+        //            if (string.IsNullOrEmpty(ObjetEnvoie[Idx].RQ_CODERISQUE))
+        //                ObjetEnvoie[Idx].RQ_CODERISQUE = "";
+        //            if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TA_CODETYPEAFFAIRES))
+        //                ObjetEnvoie[Idx].TA_CODETYPEAFFAIRES = "";
+        //            if (string.IsNullOrEmpty(ObjetEnvoie[Idx].TYPEOPERATION))
+        //                ObjetEnvoie[Idx].TYPEOPERATION = "2";
+        //            if (string.IsNullOrEmpty(ObjetEnvoie[Idx].CA_CODECONTRAT))
+        //                ObjetEnvoie[Idx].CA_CODECONTRAT = "0";
+
+
+        //            //fin traitement des criteres de recherche non obligatoire
+        //        }
+
+
+
+        //        Assurance.Outils.clsDeclaration.TestConnexionServeur = Core.clsAppelServiceWeb.IsNetworkConnected(); //Vérification de la connexion avec la partie serveur
+        //        if (Assurance.Outils.clsDeclaration.TestConnexionServeur == true) //Opération a realiser si la connnexion est établie
+        //        {
+        //            //appelle du service web de generation de la liste des equipe_operateurs personnels et affectation a la variable retour
+        //            clsCtcontratchequephotos = Core.clsAppelServiceWeb.ExecuteServiceWeb(ObjetRetour, ObjetEnvoie, Core.clsDeclaration.METHOD, 0, Assurance.Outils.ReferenceAfficherReglementCheque.URL_SELECT_REMISE_CHEQUE, Tokken).ToList();
+        //            if ((clsCtcontratchequephotos == null) || (clsCtcontratchequephotos.Count == 0))
+        //            {
+        //                clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR;  //RESULTAT = FALSE
+        //                clsObjetRetour.SL_MESSAGE = Core.clsDeclaration.ERR_MSG_CONN;  //MSG = ERREUR DE CONNEXION
+        //                clsCtcontratchequephoto.clsObjetRetour = clsObjetRetour;
+        //                clsCtcontratchequephotos.Add(clsCtcontratchequephoto);  //Ajout d'une nouvelle instance de la classe a la liste
+        //            }
+
+        //            Assurance.Outils.clsDeclaration.vappNomFormule = new string[] { "Entete1", "Entete2", "Entete3", "Entete4", "LibelleEtat", "Date1", "Date2" };
+        //            Assurance.Outils.clsDeclaration.vappValeurFormule = new string[] { Assurance.Outils.clsDeclaration.ENTETE1_VALEUR, Assurance.Outils.clsDeclaration.ENTETE2_VALEUR, Assurance.Outils.clsDeclaration.ENTETE3_VALEUR, Assurance.Outils.clsDeclaration.ENTETE4_VALEUR, ObjetEnvoie[0].ET_LIBELLEETAT, ObjetEnvoie[0].DATEDEBUT, ObjetEnvoie[0].DATEFIN };
+        //        }
+        //        else
+        //        {
+        //            clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR;  //RESULTAT = FALSE
+        //            clsObjetRetour.SL_MESSAGE = Core.clsDeclaration.ERR_MSG_CONN;  //MSG = ERREUR DE CONNEXION
+        //            clsCtcontratchequephoto.clsObjetRetour = clsObjetRetour;
+        //            clsCtcontratchequephotos.Add(clsCtcontratchequephoto);  //Ajout d'une nouvelle instance de la classe a la liste
+        //        }
+        //    }
+        //    catch (System.Net.WebException e)  //Exeptions liées au serveur
+        //    {
+        //        clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR; //RESULTAT = FALSE
+        //        clsObjetRetour.SL_MESSAGE = Core.ErreursMessages.msgErr(e.GetHashCode().ToString(), e.Message);  //MSG = ERREUR DE SERVEUR
+        //        clsCtcontratchequephoto.clsObjetRetour = clsObjetRetour;
+        //        clsCtcontratchequephotos.Add(clsCtcontratchequephoto);  //Ajout d'une nouvelle instance de la classe a la liste
+        //        Core.clsLog.EcrireDansFichierLog("Error EditionEtatAssuranceController :" + e.Message);
+
+        //    }
+        //    catch (Exception ex)  //Exeptions liées au code
+        //    {
+        //        clsObjetRetour.SL_RESULTAT = Core.clsDeclaration.SL_RESULTAT_ERROR; //RESULTAT = FALSE
+        //        clsObjetRetour.SL_MESSAGE = Core.ErreursMessages.msgErr(ex.GetHashCode().ToString(), ex.Message);  //MSG = ERREUR DE CODE
+        //        clsCtcontratchequephoto.clsObjetRetour = clsObjetRetour;
+        //        clsCtcontratchequephotos.Add(clsCtcontratchequephoto); // Ajout d'une nouvelle instance de la classe a la liste
+        //        Core.clsLog.EcrireDansFichierLog("Error EditionEtatAssuranceController :" + ex.Message);
+        //    }
+        //    HT_Assurance.clsDeclaration.SOURCE_DE_DONNEEREMISEDECHECQUE = clsCtcontratchequephotos;
+        //    return Json(clsCtcontratchequephotos, JsonRequestBehavior.AllowGet);
+        //}
 
         public JsonResult pvgAfficherEtat2()
         {

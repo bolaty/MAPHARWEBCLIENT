@@ -1917,7 +1917,7 @@
                     $scope.FormListEditionComptabilite.ModeReglement,
                   NO_CODENATUREOPERATION:
                     $scope.FormListEditionComptabilite.NatureOperation,
-                  OP_CODEOPERATEUR: $rootScope.CODE_OPERATEUR,
+                  OP_CODEOPERATEUR: "",// $rootScope.CODE_OPERATEUR,
                   TI_IDTIERSMEDECIN: formaEtat,
                   MV_STATUTGLVRE: $scope.FormListEditionComptabilite.Statut,
                   GP_CODEGROUPE: $scope.FormListEditionComptabilite.groupeTiers,
@@ -2006,7 +2006,7 @@
                     $scope.FormListEditionComptabilite.ModeReglement,
                   NO_CODENATUREOPERATION:
                     $scope.FormListEditionComptabilite.NatureOperation,
-                  OP_CODEOPERATEUR: $rootScope.CODE_OPERATEUR,
+                  OP_CODEOPERATEUR: "",// $rootScope.CODE_OPERATEUR,
                   TI_IDTIERSMEDECIN: formaEtat,
                   MV_STATUTGLVRE: $scope.FormListEditionComptabilite.Statut,
                   GP_CODEGROUPE: $scope.FormListEditionComptabilite.groupeTiers,
@@ -2136,7 +2136,7 @@
                   $scope.FormListEditionComptabilite.ModeReglement,
                 NO_CODENATUREOPERATION:
                   $scope.FormListEditionComptabilite.NatureOperation,
-                OP_CODEOPERATEUR: $rootScope.CODE_OPERATEUR,
+                OP_CODEOPERATEUR: "",// $rootScope.CODE_OPERATEUR,
                 TI_IDTIERSMEDECIN: formaEtat,
                 MV_STATUTGLVRE: $scope.FormListEditionComptabilite.Statut,
                 GP_CODEGROUPE: $scope.FormListEditionComptabilite.groupeTiers,
@@ -2330,7 +2330,7 @@
                   $scope.FormListEditionComptabilite.ModeReglement,
                 NO_CODENATUREOPERATION:
                   $scope.FormListEditionComptabilite.NatureOperation,
-                OP_CODEOPERATEUR: $rootScope.CODE_OPERATEUR,
+                OP_CODEOPERATEUR: "",// $rootScope.CODE_OPERATEUR,
                 TI_IDTIERSMEDECIN: formaEtat,
                 MV_STATUTGLVRE: $scope.FormListEditionComptabilite.Statut,
                 GP_CODEGROUPE: $scope.FormListEditionComptabilite.groupeTiers,
@@ -2742,7 +2742,7 @@
                     $scope.FormListEditionComptabilite.ModeReglement,
                   NO_CODENATUREOPERATION:
                     $scope.FormListEditionComptabilite.NatureOperation,
-                  OP_CODEOPERATEUR: $rootScope.CODE_OPERATEUR,
+                  OP_CODEOPERATEUR:"",// $rootScope.CODE_OPERATEUR,
                   TI_IDTIERSMEDECIN: formaEtat,
                   TB_CODETYPEBALANCE:
                     $scope.FormListEditionComptabilite.TypeBalance,

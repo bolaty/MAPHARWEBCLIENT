@@ -421,6 +421,8 @@
         $rootScope.AUXILIAIRE_ETRSO = false;//S
         $rootScope.REEDITION_ETRSO = false;//P
         $rootScope.EDITION_ETRSO = false;//P
+        $rootScope.MODIFICATION_DATE_EMISSION = false;//P
+        $rootScope.STMODIFICATION_DATE_EMISSION = '';//P
         //NOUVEAU
         $rootScope.YAFOLO_ETRSO = false;//P
         
@@ -455,6 +457,15 @@
            if($rootScope.OperateurEnCoursEcran[i].OB_CODEOBJET == '216' && $rootScope.OperateurEnCoursEcran[i].OD_AUTORISER == 'O'){
             $rootScope.MULTIRISQUE_PROFFESSIONELLE_ETRSO = true;
           }
+
+          $rootScope.STMODIFICATION_DATE_EMISSION = this.OperateurEnCoursEcran.find(//@ts-ignore
+            (element) => element.OB_LIBELLE == 'MODIFICATION DATE EMISSION'
+          )?.OB_CODEOBJET
+
+          if($rootScope.OperateurEnCoursEcran[i].OB_CODEOBJET == $rootScope.STMODIFICATION_DATE_EMISSION  && $rootScope.OperateurEnCoursEcran[i].OD_AUTORISER == 'O'){
+            $rootScope.MODIFICATION_DATE_EMISSION = true;
+          }
+          
           if($rootScope.OperateurEnCoursEcran[i].OB_CODEOBJET == '217' && $rootScope.OperateurEnCoursEcran[i].OD_AUTORISER == 'O'){
             $rootScope.HABITAT_ETRSO = true;
           }
@@ -1096,7 +1107,7 @@
       {
             "AG_CODEAGENCE": $scope.OperateurEnCours[0].AG_CODEAGENCE,
             "OP_CODEOPERATEUR": $scope.OperateurEnCours[0].OP_CODEOPERATEUR,
-            "OB_CODEOBJET":"1",
+            "OB_CODEOBJET":"",
             "LO_CODELOGICIEL": "1",
             "SL_LIBELLEECRAN": "Saisie de Continent",
             "SL_LIBELLEMOUCHARD": "INSERTIONS",
@@ -1119,6 +1130,7 @@
         if (
           $rootScope.OperateurEnCoursEcran[0].clsObjetRetour.SL_RESULTAT == "TRUE"
         ) {
+          sessionStorage.setItem("DroitOperateurEnCours", JSON.stringify($rootScope.OperateurEnCoursEcran))
           $scope.chargementDesEcrans()
          
         } else {

@@ -1,0 +1,95 @@
+﻿<form class="mb-15" id="idList" novalidate name="nameList" ng-init="initFormListe()">
+    <div class="card-body">
+        <!--begin: Datatable-->
+        <table class="table table-bordered table-hover table-checkable" id="kt_datatable">
+            <thead style="text-align: center;">
+                <!--background-color: #8CB9BA; color: White-->
+                <tr>
+                    <th>REFERENCE CHEQUE</th>
+                    <th>MONTANT</th>
+                    <th>DATE D' EFFET</th>
+                    <th>DATE D' EMISSION</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tfoot ng-show="listeCheques[0].clsObjetRetour.SL_RESULTAT !== 'FALSE'">
+                <tr ng-repeat="laListeCheques in listeCheques" id="idligne{{$index}}">
+                    <td>{{laListeCheques.CH_REFCHEQUE}}</td>
+                    <td>{{laListeCheques.CH_VALEURCHEQUE}}</td>
+                    <td>{{laListeCheques.CA_DATEEFFET}}</td>
+                    <td>{{laListeCheques.CH_DATEEMISSIONCHEQUE}}</td>
+                    <!--ligne des actions-->
+                    <td>
+                        <div class="example-preview" style="position: relative; right: -19px">
+                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                <div class="btn-group mr-2" role="group" aria-label="...">
+                                    <!--bouton voir plus-->
+                                    <button type="button" class="btn btn-outline-secondary btn-icon" data-toggle="modal"
+                                            data-target="#modalDatemission" ng-click="voirModif(laListeCheques)">
+                                        <i class="far fa-eye" data-toggle="tooltip" data-theme="dark"
+                                           title="Voir plus"></i>
+                                    </button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <!--end: Datatable-->
+    </div>
+</form>
+
+<!--begin modal pour autres options-->
+<div class="modal fade" id="modalDatemission" data-backdrop="static" tabindex="-1" role="dialog"
+     aria-labelledby="modalOption" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #F5F500;">
+                <h5 class="modal-title text-dark" id="modalOption" style="font-size: 23px; font-family: Maiandra GD">
+                    <i class="fas fa-ellipsis-v text-dark"></i>
+                    Modification Date Emission du Cheque
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close text-dark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-toolbar">
+                    <div class="col-lg-12">
+                        <label>Date Emission*</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-calendar text-info"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" name="addform_dtEmission"
+                                placeholder="Entrer une Date Emission" ng-model="FormListReglAssur.DateEmission"
+                                ng-pattern="/^([0][1-9]|[1|2][0-9]|[3][0|1])[./-]([0][1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/"
+                                maxlength="10"
+                                id="addform_dtEmission" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-shadow-hover font-weight-bold"
+                    ng-click="ajoutFormAddCheque()">
+                    <span>
+                        <i class="far fa-check-circle"></i>
+                        <span>Enregistrer</span>
+                    </span>
+                </button>&#160;
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                    <span>
+                        <i class="la la-close"></i>
+                        <span>Fermer</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->

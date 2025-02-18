@@ -20,6 +20,9 @@ namespace Assurance.Outils
 
         ///URL TEMPLATE
         public static string URL_AVISDEREGLEMENTPRIME = URL_AVISREGLEMENTPRIME + "pvgInsertIntoDatasetEtatAssuranceAvisReglementPrime";
+        public static string URL_ETATASSURANCEANNULER = URL_AVISREGLEMENTPRIME + "pvgInsertIntoDatasetEtatAssuranceAnnuler";
+        public static string URL_ETATASSURANCETableauGestionCommission = URL_AVISREGLEMENTPRIME + "pvgInsertIntoDatasetEtatAssuranceTableauGestionCommission";
+        public static string URL_ETATASSURANCEREGLEMENTANNULER = URL_AVISREGLEMENTPRIME + "pvgInsertIntoDatasetEtatAssuranceReglementAnnuler";
         public static string URL_ETATVENTILLEAFFAIRENOUVELLES = URL_AVISREGLEMENTPRIME + "pvgInsertIntoDatasetEtatAssuranceAppercu";
         public static string URL_SELECT_COMBOZONEEDITION = URL_COMBOZONEEDITION + "pvgInsertIntoDatasetZone";
         public static string URL_SELECT_COMBOSUCCURSALES = URL_COMBOZONEEDITION + "pvgChargerDansDataSetPourComboAgenceEdition";

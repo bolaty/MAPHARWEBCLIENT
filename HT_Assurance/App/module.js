@@ -886,6 +886,8 @@ MapharApp.run([
     $rootScope.AUXILIAIRE_ETRSO = true;
     $rootScope.REEDITION_ETRSO = true;
     $rootScope.EDITION_ETRSO = true;
+    $rootScope.MODIFICATION_DATE_EMISSION = false;//P
+    $rootScope.STMODIFICATION_DATE_EMISSION = '';//P
     //NOUVEAU
     $rootScope.YAFOLO_ETRSO = true;
     //ECRAN PARAMETTRE I

@@ -35,6 +35,7 @@
       TypeAffaire: "",
       StatutContrat: "",
       StatutPERIODE: "",
+      Risques : []
     };
 
     $scope.listeEditionAssurance = [];
@@ -91,6 +92,7 @@
     $scope.verouZoneAuto = true;
     $scope.verouTypeAffaire = false;
     $scope.verouRisque = false;
+    $scope.verouRisques = false;
     $scope.verouStatutContrat = false;
 
     $scope.verouPeriod = true;
@@ -604,7 +606,16 @@
         });
     };
     //fin avoir les dates de debut et de fin
-
+    $scope.toggleRisqueSelection = function(risqueCode) {
+      const index = $scope.FormAddEditionAssurance.Risques.indexOf(risqueCode);
+      if (index === -1) {
+          // Ajouter le risque si non présent
+          $scope.FormAddEditionAssurance.Risques.push(risqueCode);
+      } else {
+          // Retirer le risque si déjà présent
+          $scope.FormAddEditionAssurance.Risques.splice(index, 1);
+      }
+  };
     //debut liste des pays
     $scope.afficheListePays = function () {
       $scope.objet_envoie = [
@@ -1143,10 +1154,11 @@
       $scope.verouPeriodicit = true;
       $scope.veroubtnapercu = true;
       $scope.verouRisque = true;
+      $scope.verouRisques = false;
       $scope.FormAddEditionAssurance.Risque = ""
       $scope.FormAddEditionAssurance.Commercial = ""
-      
-      if($scope.recuperationEtIndex == "AS_AVI_RENOUVELLEMENTPOLICE"){
+      $scope.FormAddEditionAssurance.Risques = []
+      if($scope.recuperationEtIndex == "AS_AVI_RENOUVELLEMENTPOLICE" || $scope.recuperationEtIndex == "AS_AVI_LISTECTANNULER" || $scope.recuperationEtIndex == "AS_AVI_LISTEREGANNULER"){
         $scope.veroubtnapercu = false;
       }
       if($scope.recuperationEtIndex == "AS_AVI_REG_PRIME"){
@@ -1187,6 +1199,19 @@
               $rootScope.infoDeLoperateur[0].clsExercices[0].JT_DATEDEBUTPREMIEREXERCICE;
               $scope.FormAddEditionAssurance.dateFin =
               $rootScope.DATE_JOURNEE_DE_TRAVAIL;
+
+
+
+                  
+             if($scope.listeEditionAssurance[j].ET_INDEX == "AS_TAB_GESTION"){
+              $scope.verouRisques = true;
+              $scope.verouRisque = false;
+             }else{
+              $scope.verouRisques = false;
+             }
+
+
+
             /*  if ($scope.listeDesPeriodicite[0].PE_CODEPERIODICITE != undefined) {
               if ($scope.listeDesPeriodicite[0].PE_CODEPERIODICITE == 03) {
                 $scope.FormAddEditionAssurance.Periode = "01";
@@ -1217,7 +1242,7 @@
               $scope.verouCommune = true;
               $scope.verouZoneMaladie = true;
               $scope.verouZoneAuto = true;
-            //  $scope.verouRisque = true;
+              //  $scope.verouRisque = true;
               $scope.verouZoneCommercial = false;
               $scope.verouSuccursales = false;
               $scope.verouEntrepot = false;
@@ -1228,7 +1253,7 @@
               $scope.verouStatutContrat = false;
               $scope.FormAddEditionAssurance.dateDebut =
               $rootScope.DATE_JOURNEE_DE_TRAVAIL;
-            $scope.FormAddEditionAssurance.dateFin =
+              $scope.FormAddEditionAssurance.dateFin =
               $rootScope.DATE_JOURNEE_DE_TRAVAIL;
               if (
                 $scope.listeEditionAssurance[j].ET_INDEX ==
@@ -1281,7 +1306,7 @@
               $scope.verouPeriode = false;
               $scope.FormAddEditionAssurance.dateDebut =
               $rootScope.infoDeLoperateur[0].clsExercices[0].JT_DATEDEBUTPREMIEREXERCICE;
-            $scope.FormAddEditionAssurance.dateFin =
+              $scope.FormAddEditionAssurance.dateFin =
               $rootScope.DATE_JOURNEE_DE_TRAVAIL;
             }
 
@@ -1296,6 +1321,45 @@
 
           //  $scope.afficheListePeriode();
             break;
+          }else if($scope.listeEditionAssurance[j].ET_INDEX == "AS_TAB_GESTIONCOMMISSION"){
+            $scope.FormAddEditionAssurance.ZoneCommercial =
+              $scope.listeDesZoneCombo[2].ZN_CODEZONE;
+            $scope.afficheListeSuccursales();
+            $scope.FormAddEditionAssurance.Entrepot =
+              $scope.listeEntrepot[0].EN_CODEENTREPOT;
+            $scope.FormAddEditionAssurance.Exercice =
+               $rootScope.DATE_EXERCICE;
+            $scope.FormAddEditionAssurance.Periodicite =
+              $scope.listeDesPeriodicite[0].PE_CODEPERIODICITE;
+            $scope.verouDateDebut = false;
+            $scope.verouDateFin = false;
+            $scope.verouCommercial = false;//
+            $scope.verouCompagnieAssurance = false;//
+            $scope.verouNatureSinistre = false;//
+            $scope.verouRisque = false;//
+            $scope.FormAddEditionAssurance.dateDebut =
+            $rootScope.infoDeLoperateur[0].clsExercices[0].JT_DATEDEBUTPREMIEREXERCICE;
+            $scope.FormAddEditionAssurance.dateFin =
+            $rootScope.DATE_JOURNEE_DE_TRAVAIL;
+            //   $scope.afficheListePeriode();
+           
+            $scope.veroudateEffet = false;
+            $scope.veroudateEcheance = false;
+            
+            $scope.verouPays = false;
+            $scope.verouVille = false;
+            $scope.verouCommune = false;
+            $scope.verouZoneMaladie = false;
+            $scope.verouZoneAuto = false;
+            $scope.verouRisques = false;
+            $scope.verouZoneCommercial = false;
+            $scope.verouSuccursales = false;
+            $scope.verouEntrepot = false;
+            $scope.verouExercice = false;
+            $scope.verouPeriodicite = false;
+            $scope.verouPeriode = false;
+            $scope.verouTypeAffaire = false;
+            $scope.verouStatutContrat = false;
           }else if($scope.listeEditionAssurance[j].ET_INDEX == "AS_REM_CHEQUE"){
             $scope.FormAddEditionAssurance.ZoneCommercial =
               $scope.listeDesZoneCombo[2].ZN_CODEZONE;
@@ -1318,6 +1382,8 @@
             $scope.verouCommune = true;
             $scope.verouZoneMaladie = true;
             $scope.verouZoneAuto = true;
+            $scope.verouRisque = false;
+            $scope.verouRisques = true;
            // $scope.verouRisque = true;
             $scope.verouZoneCommercial = false;
             $scope.verouSuccursales = false;
@@ -1393,7 +1459,9 @@
             $scope.listeEditionAssurance[j].ET_INDEX ==
               "AS_LISTECONTRATSNONRENOUVELLE" ||
             $scope.listeEditionAssurance[j].ET_INDEX ==
-              "AS_AVI_RENOUVELLEMENTPOLICE" ||
+              "AS_AVI_RENOUVELLEMENTPOLICE" || $scope.listeEditionAssurance[j].ET_INDEX ==
+              "AS_AVI_LISTECTANNULER" || $scope.listeEditionAssurance[j].ET_INDEX ==
+              "AS_AVI_LISTEREGANNULER" ||
             $scope.listeEditionAssurance[j].ET_INDEX == "AS_BORDEREAUP"
           ) {
             $scope.verouDateDebut = false;
@@ -1479,7 +1547,9 @@
             // avis de renouvellement de police
             if (
               $scope.listeEditionAssurance[j].ET_INDEX ==
-                "AS_AVI_RENOUVELLEMENTPOLICE" ||
+                "AS_AVI_RENOUVELLEMENTPOLICE" || $scope.listeEditionAssurance[j].ET_INDEX ==
+                "AS_AVI_LISTECTANNULER" || $scope.listeEditionAssurance[j].ET_INDEX ==
+                "AS_AVI_LISTEREGANNULER" ||
               $scope.listeEditionAssurance[j].ET_INDEX ==
                 "AS_ETATCLIENTENPORTEFEUIL" ||
               $scope.listeEditionAssurance[j].ET_INDEX == "AS_AVI_REG_PRIME"
@@ -2074,7 +2144,9 @@
       }
   
   }*/
+  $scope.afficherisque = function (info) {
 
+  }
   $scope.afficheApercuClientEtat = function (info) {
     $scope.$emit("LOAD");
     $scope.Chargement = "Chargement en cours...";
@@ -2156,100 +2228,274 @@
       if($scope.selectFormats == ""){
         $scope.selectFormats = "PDF"
       }
-      $scope.objet_envoie = [
-        {
-          
-          AG_CODEAGENCE: $scope.FormAddEditionAssurance.Succursales,
-          EN_CODEENTREPOT: $scope.FormAddEditionAssurance.Entrepot,
-          CA_CODECONTRAT: "",
-          DATEDEBUT: $scope.FormAddEditionAssurance.dateDebut,//$rootScope.DATE_PREMIER_EXERCICE
-          DATEFIN: $scope.FormAddEditionAssurance.dateFin,
-          OP_CODEOPERATEUREDITION: $rootScope.CODE_OPERATEUR,
-          RQ_CODERISQUE: $scope.FormAddEditionAssurance.Risque,
-          TI_IDTIERS: $scope.FormAddEditionAssurance.CompagnieAssurance,
-          TI_IDTIERSCOMMERCIAL: $scope.FormAddEditionAssurance.Commercial,
-          TI_IDTIERSCLIENT: info,
-          EX_EXERCICE:  $scope.FormAddEditionAssurance.Exercice,
-          "PY_CODEPAYS": "",
-          "VL_CODEVILLE": "",
-          "CO_CODECOMMUNE": "",
-          "ZA_CODEZONEAUTO": "",
-          "NS_CODENATURESINISTRE": "",
-          TA_CODETYPEAFFAIRES: $scope.FormAddEditionAssurance.TypeAffaire,
-          CT_CODESTAUT: $scope.FormAddEditionAssurance.StatutContrat,
-          ET_TYPEETAT: "ASAVIEGRIME",
-          //ENTETE1: $scope.selectFormats,
-          "ZN_CODEZONECOMMERCIAL": "",
-          "SL_LIBELLEECRAN": "Saisie de Continent",
-          "SL_LIBELLEMOUCHARD": "INSERTIONS",
-          "TYPEOPERATION": "",
-          "LG_CODELANGUE": "fr",
-          "vappNomFormule": [
-                "Entete1",
-                "Entete2",
-                "Entete3",
-                "Entete4",
-                "LibelleEtat",
-                "Date1",
-                  "Date2"
-          ],
-          "vappValeurFormule": [
-            $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE1,
-            $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE2,
-            $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE3,
-            $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE4,
-            "AVIS DE REGLEMENT DES PRIMES D'ASSURANCES",
-            $scope.FormAddEditionAssurance.dateDebut,
-            $scope.FormAddEditionAssurance.dateFin,
-            $scope.selectFormats
+
+
+      if($scope.recuperationEtIndex == "AS_AVI_LISTECTANNULER"){
+        $scope.objet_envoie = [
+          {
+            
+            AG_CODEAGENCE: $scope.FormAddEditionAssurance.Succursales,
+            EN_CODEENTREPOT: $scope.FormAddEditionAssurance.Entrepot,
+            "CA_CODECONTRAT": "",
+            DATEDEBUT: $scope.FormAddEditionAssurance.dateDebut,//$rootScope.DATE_PREMIER_EXERCICE
+            DATEFIN: $scope.FormAddEditionAssurance.dateFin,
+            OP_CODEOPERATEUREDITION: $rootScope.CODE_OPERATEUR,
+            "ET_LIBELLEETAT": "TABLEAU DE GESTION",
+            "RQ_CODERISQUE": "",
+            "TI_IDTIERS": "",
+            TI_IDTIERSCLIENT: info,
+            "TA_CODETYPEAFFAIRES": "",
+            "CT_CODESTAUT": "",
+            EX_EXERCICE:  $scope.FormAddEditionAssurance.Exercice,
+            "ET_NOMETAT": "SituationCompteClientAnnuler.rpt",
+            "ET_TYPEETAT": "ASAVIEGRIME",
+            "SL_LIBELLEECRAN": "Saisie de Continent",
+            "SL_LIBELLEMOUCHARD": "INSERTIONS",
+            "TYPEOPERATION": "",
+            "LG_CODELANGUE": "fr",
+            "vappNomFormule": [
+                  "Entete1",
+                  "Entete2",
+                  "Entete3",
+                  "Entete4",
+                  "Date1",
+                  "Date2",
+                  "LibelleEtat"
             ],
-            "ET_DOSSIER": "ASSURANCE",
-            "ET_NOMETAT": "SituationCompteClient.rpt",
-          clsObjetEnvoi: {
-            OE_A: $rootScope.CODE_AGENCE,
-            OE_Y: $rootScope.CODE_OPERATEUR,
-            OE_J: $rootScope.DATE_JOURNEE_DE_TRAVAIL,
-            OE_E: $rootScope.CODE_ENTREPOT,
+            "vappValeurFormule": [
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE1,
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE2,
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE3,
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE4,
+              $scope.FormAddEditionAssurance.dateDebut,
+              $scope.FormAddEditionAssurance.dateFin,
+              "LISTE DES CONTRATS ANNULES",
+              $scope.selectFormats
+              ],
+              "ET_DOSSIER": "ASSURANCE",
+              "ET_NOMETAT": "SituationCompteClientAnnuler.rpt",
+            clsObjetEnvoi: {
+              OE_A: $rootScope.CODE_AGENCE,
+              OE_Y: $rootScope.CODE_OPERATEUR,
+              OE_J: $rootScope.DATE_JOURNEE_DE_TRAVAIL,
+              OE_E: $rootScope.CODE_ENTREPOT,
+            },
           },
-        },
-      ]
-        
-    /*  $scope.Adresse = $scope.appelServiceWeb.split('/')
-      $scope.Adresse = $scope.Adresse[0] + '//' + $scope.Adresse[2]
-      $http
-        .post($scope.Adresse +
-          "/ServiceEdition/wsEditionEtatAssurance.svc/pvgInsertIntoDatasetEtatAssuranceAvisReglementPrime", $scope.objet_envoie, {
-          //headers: $scope.headers
-        })*/
+        ]
+          $http
+          .post(
+            "/EditionEtatAssurance/pvgInsertIntoDatasetEtatAssuranceAnnuler/", $scope.objet_envoie, {
+            //headers: $scope.headers
+          })
+          .then(function (reponse) {
+              $scope.RetourInserteditionApercuListe = reponse.data;
+              $scope.RetourInserteditionApercuListe = $scope.RetourInserteditionApercuListe;
+             // $scope.RetourInserteditionListe = $scope.listeDemande.TABLE;
+              if ($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_RESULTAT === "TRUE") {
+                $scope.$emit("UNLOAD");
+                toastr["success"]($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE); // Affichage de la notification de succes
+                $window.open($scope.RetourInserteditionApercuListe[0].URL_ETAT, "_blank"); // Redirection sur l'etat dans une nouvelle fenetre
+                $scope.loading = false; 
+              } else {
+                $scope.Chargement = $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE;
+               $scope.$emit("UNLOAD");
+                $rootScope.MessageDesListes($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE);
+              }
+          })
+          .catch(function () {
+            $scope.$emit("UNLOAD");
+            $scope.Chargement = $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE;
+            $rootScope.ProblemeServeur(
+              $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE
+            );
+          });
+      }
+      else if($scope.recuperationEtIndex == "AS_AVI_LISTEREGANNULER"){
+        $scope.objet_envoie = [
+          {
+            
+            AG_CODEAGENCE: $scope.FormAddEditionAssurance.Succursales,
+            EN_CODEENTREPOT: $scope.FormAddEditionAssurance.Entrepot,
+            "CA_CODECONTRAT": "",
+            DATEDEBUT: $scope.FormAddEditionAssurance.dateDebut,//$rootScope.DATE_PREMIER_EXERCICE
+            DATEFIN: $scope.FormAddEditionAssurance.dateFin,
+            OP_CODEOPERATEUREDITION: $rootScope.CODE_OPERATEUR,
+            "ET_LIBELLEETAT": "TABLEAU DE GESTION",
+            "RQ_CODERISQUE": "",
+            "TI_IDTIERS": "",
+            TI_IDTIERSCLIENT: info,
+            "TA_CODETYPEAFFAIRES": "",
+            "CT_CODESTAUT": "",
+            EX_EXERCICE:  $scope.FormAddEditionAssurance.Exercice,
+            "ET_NOMETAT": "EtatReglementPrimeAnnuler.rpt",
+            "ET_TYPEETAT": "ASAVIEGRIME",
+            "SL_LIBELLEECRAN": "Saisie de Continent",
+            "SL_LIBELLEMOUCHARD": "INSERTIONS",
+            "TYPEOPERATION": "",
+            "LG_CODELANGUE": "fr",
+            "vappNomFormule": [
+                  "Entete1",
+                  "Entete2",
+                  "Entete3",
+                  "Entete4",
+                  "Date1",
+                  "Date2",
+                  "LibelleEtat"
+            ],
+            "vappValeurFormule": [
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE1,
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE2,
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE3,
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE4,
+              $scope.FormAddEditionAssurance.dateDebut,
+              $scope.FormAddEditionAssurance.dateFin,
+              "LISTE DES REGLEMENTS ANNULES",
+              $scope.selectFormats
+              ],
+              "ET_DOSSIER": "ASSURANCE",
+              "ET_NOMETAT": "EtatReglementPrimeAnnuler.rpt",
+            clsObjetEnvoi: {
+              OE_A: $rootScope.CODE_AGENCE,
+              OE_Y: $rootScope.CODE_OPERATEUR,
+              OE_J: $rootScope.DATE_JOURNEE_DE_TRAVAIL,
+              OE_E: $rootScope.CODE_ENTREPOT,
+            },
+          },
+        ]
+          
+      /*  $scope.Adresse = $scope.appelServiceWeb.split('/')
+        $scope.Adresse = $scope.Adresse[0] + '//' + $scope.Adresse[2]
         $http
-        .post(
-          "/EditionEtatAssurance/ListeAvisdeReglement/", $scope.objet_envoie, {
-          //headers: $scope.headers
-        })
-        .then(function (reponse) {
-            $scope.RetourInserteditionApercuListe = reponse.data;
-            $scope.RetourInserteditionApercuListe = $scope.RetourInserteditionApercuListe;
-           // $scope.RetourInserteditionListe = $scope.listeDemande.TABLE;
-            if ($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_RESULTAT === "TRUE") {
-              $scope.$emit("UNLOAD");
-              toastr["success"]($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE); // Affichage de la notification de succes
-              $window.open($scope.RetourInserteditionApercuListe[0].URL_ETAT, "_blank"); // Redirection sur l'etat dans une nouvelle fenetre
-              $scope.loading = false; 
-            } else {
-              $scope.Chargement = $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE;
-             $scope.$emit("UNLOAD");
-              $rootScope.MessageDesListes($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE);
-            }
-        })
-        .catch(function () {
-          $scope.$emit("UNLOAD");
-          $scope.Chargement = $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE;
-          $rootScope.ProblemeServeur(
-            $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE
-          );
-        });
+          .post($scope.Adresse +
+            "/ServiceEdition/wsEditionEtatAssurance.svc/pvgInsertIntoDatasetEtatAssuranceAvisReglementPrime", $scope.objet_envoie, {
+            //headers: $scope.headers
+          })*/
+          $http
+          .post(
+            "/EditionEtatAssurance/pvgInsertIntoDatasetEtatAssuranceReglementAnnuler/", $scope.objet_envoie, {
+            //headers: $scope.headers
+          })
+          .then(function (reponse) {
+              $scope.RetourInserteditionApercuListe = reponse.data;
+              $scope.RetourInserteditionApercuListe = $scope.RetourInserteditionApercuListe;
+             // $scope.RetourInserteditionListe = $scope.listeDemande.TABLE;
+              if ($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_RESULTAT === "TRUE") {
+                $scope.$emit("UNLOAD");
+                toastr["success"]($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE); // Affichage de la notification de succes
+                $window.open($scope.RetourInserteditionApercuListe[0].URL_ETAT, "_blank"); // Redirection sur l'etat dans une nouvelle fenetre
+                $scope.loading = false; 
+              } else {
+                $scope.Chargement = $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE;
+               $scope.$emit("UNLOAD");
+                $rootScope.MessageDesListes($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE);
+              }
+          })
+          .catch(function () {
+            $scope.$emit("UNLOAD");
+            $scope.Chargement = $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE;
+            $rootScope.ProblemeServeur(
+              $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE
+            );
+          });
+      }else{
+        $scope.objet_envoie = [
+          {
+            
+            AG_CODEAGENCE: $scope.FormAddEditionAssurance.Succursales,
+            EN_CODEENTREPOT: $scope.FormAddEditionAssurance.Entrepot,
+            CA_CODECONTRAT: "",
+            DATEDEBUT: $scope.FormAddEditionAssurance.dateDebut,//$rootScope.DATE_PREMIER_EXERCICE
+            DATEFIN: $scope.FormAddEditionAssurance.dateFin,
+            OP_CODEOPERATEUREDITION: $rootScope.CODE_OPERATEUR,
+            RQ_CODERISQUE: $scope.FormAddEditionAssurance.Risque,
+            TI_IDTIERS: $scope.FormAddEditionAssurance.CompagnieAssurance,
+            TI_IDTIERSCOMMERCIAL: $scope.FormAddEditionAssurance.Commercial,
+            TI_IDTIERSCLIENT: info,
+            EX_EXERCICE:  $scope.FormAddEditionAssurance.Exercice,
+            "PY_CODEPAYS": "",
+            "VL_CODEVILLE": "",
+            "CO_CODECOMMUNE": "",
+            "ZA_CODEZONEAUTO": "",
+            "NS_CODENATURESINISTRE": "",
+            TA_CODETYPEAFFAIRES: $scope.FormAddEditionAssurance.TypeAffaire,
+            CT_CODESTAUT: $scope.FormAddEditionAssurance.StatutContrat,
+            ET_TYPEETAT: "ASAVIEGRIME",
+            //ENTETE1: $scope.selectFormats,
+            "ZN_CODEZONECOMMERCIAL": "",
+            "SL_LIBELLEECRAN": "Saisie de Continent",
+            "SL_LIBELLEMOUCHARD": "INSERTIONS",
+            "TYPEOPERATION": "",
+            "LG_CODELANGUE": "fr",
+            "vappNomFormule": [
+                  "Entete1",
+                  "Entete2",
+                  "Entete3",
+                  "Entete4",
+                  "LibelleEtat",
+                  "Date1",
+                    "Date2"
+            ],
+            "vappValeurFormule": [
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE1,
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE2,
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE3,
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE4,
+              "AVIS DE REGLEMENT DES PRIMES D'ASSURANCES",
+              $scope.FormAddEditionAssurance.dateDebut,
+              $scope.FormAddEditionAssurance.dateFin,
+              $scope.selectFormats
+              ],
+              "ET_DOSSIER": "ASSURANCE",
+              "ET_NOMETAT": "SituationCompteClient.rpt",
+            clsObjetEnvoi: {
+              OE_A: $rootScope.CODE_AGENCE,
+              OE_Y: $rootScope.CODE_OPERATEUR,
+              OE_J: $rootScope.DATE_JOURNEE_DE_TRAVAIL,
+              OE_E: $rootScope.CODE_ENTREPOT,
+            },
+          },
+        ]
+          
+      /*  $scope.Adresse = $scope.appelServiceWeb.split('/')
+        $scope.Adresse = $scope.Adresse[0] + '//' + $scope.Adresse[2]
+        $http
+          .post($scope.Adresse +
+            "/ServiceEdition/wsEditionEtatAssurance.svc/pvgInsertIntoDatasetEtatAssuranceAvisReglementPrime", $scope.objet_envoie, {
+            //headers: $scope.headers
+          })*/
+          $http
+          .post(
+            "/EditionEtatAssurance/ListeAvisdeReglement/", $scope.objet_envoie, {
+            //headers: $scope.headers
+          })
+          .then(function (reponse) {
+              $scope.RetourInserteditionApercuListe = reponse.data;
+              $scope.RetourInserteditionApercuListe = $scope.RetourInserteditionApercuListe;
+             // $scope.RetourInserteditionListe = $scope.listeDemande.TABLE;
+              if ($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_RESULTAT === "TRUE") {
+                $scope.$emit("UNLOAD");
+                toastr["success"]($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE); // Affichage de la notification de succes
+                $window.open($scope.RetourInserteditionApercuListe[0].URL_ETAT, "_blank"); // Redirection sur l'etat dans une nouvelle fenetre
+                $scope.loading = false; 
+              } else {
+                $scope.Chargement = $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE;
+               $scope.$emit("UNLOAD");
+                $rootScope.MessageDesListes($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE);
+              }
+          })
+          .catch(function () {
+            $scope.$emit("UNLOAD");
+            $scope.Chargement = $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE;
+            $rootScope.ProblemeServeur(
+              $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE
+            );
+          });
+      }
+
+     
     }
   }
+
 
   $scope.afficheApercuEtatEncaissementPrime = function () {
     $scope.$emit("LOAD");
@@ -2777,7 +3023,7 @@
         $rootScope.EnregistrementNonReussi(
           "Veuillez selectionner une succursale"
         );
-      }  else if (
+      } /* else if (
         $scope.dateSuperioriteDebut($scope.FormAddEditionAssurance.dateFin) >
         $scope.dateSuperioriteFin($rootScope.DATE_JOURNEE_DE_TRAVAIL)
       ) {
@@ -2788,7 +3034,7 @@
         $scope.messageErreur =
           "La date de fin ne peut pas être plus grande que la date de la journée de travail.";
         $rootScope.MessageDerreurDesTypes($scope.messageErreur);
-      } else {
+      }*/ else {
          if($scope.FormAddEditionAssurance.Risque == undefined || $scope.FormAddEditionAssurance.Risque == "" || $scope.FormAddEditionAssurance.Risque == null){
              $scope.FormAddEditionAssurance.Risque = ""
          } 
@@ -2796,7 +3042,27 @@
          if($scope.FormAddEditionAssurance.TypeAffaire == undefined || $scope.FormAddEditionAssurance.TypeAffaire == "" || $scope.FormAddEditionAssurance.TypeAffaire == null){
             $scope.FormAddEditionAssurance.TypeAffaire = ""
          }
-
+         if($scope.FormAddEditionAssurance.dateFin){
+          const AnneeEffet = $scope.FormAddEditionAssurance.dateFin.substr(6, 4);
+          const MoisEffet = $scope.FormAddEditionAssurance.dateFin.substr(3, 2) - 1;
+          const JourEffet = $scope.FormAddEditionAssurance.dateFin.substr(0, 2);
+          const dateFinInit = new Date(AnneeEffet, MoisEffet, JourEffet);
+          
+        
+          // Ajouter un jour
+          dateFinInit.setDate(dateFinInit.getDate() + 1);
+  
+          // Formater la nouvelle date en JJ-MM-AAAA
+          const anneeNew = dateFinInit.getFullYear();
+          const moisNew = String(dateFinInit.getMonth() + 1).padStart(2, '0'); 
+          const jourNew = String(dateFinInit.getDate()).padStart(2, '0');
+  
+          // Mise à jour dans le scope
+          $scope.FormAddEditionAssurance.dateFin = `${jourNew}-${moisNew}-${anneeNew}`;
+        }
+         let risques = $scope.FormAddEditionAssurance.Risques;
+         let result = risques.length > 0 ? risques.join(", ").replace(/(\d{2})/g, "'$1'") : risques;
+         //$scope.FormAddEditionAssurance.Risques = $scope.FormAddEditionAssurance.Risques.map(risque => `'${risque}'`).join(",")
         $scope.objet_envoie = [
           {
             "AG_CODEAGENCE": $scope.FormAddEditionAssurance.Succursales,
@@ -2808,7 +3074,7 @@
             NOMETAT: $scope.recuperationnomfichier,
             ET_TYPEETAT: $scope.recuperationnom,
             ET_LIBELLEETAT: $scope.recuperationLibelleEtat,
-            RQ_CODERISQUE: $scope.FormAddEditionAssurance.Risque,
+            RQ_CODERISQUE: result,
             TA_CODETYPEAFFAIRES: $scope.FormAddEditionAssurance.TypeAffaire,
             FORMATETAT: formaEtat,
             "SL_LIBELLEECRAN": "Saisie de Continent",
@@ -2895,7 +3161,141 @@
           });
     }
   }
+
+  $scope.apercuEtatEtatCommissionMaphar = function (formaEtat) {
+    $("#modal_TypeFichierGlobale").modal('hide');
+    $scope.$emit("LOAD");
+    if (
+      $scope.FormAddEditionAssurance.Succursales === "" ||
+      $scope.FormAddEditionAssurance.Succursales === undefined
+    ) {
+      $scope.$emit("UNLOAD");
+      $("#idSuccursales").css("background-color", "#FFE9E0");
+      $rootScope.EnregistrementNonReussi(
+        "Veuillez selectionner une succursale"
+      );
+    }  else if (
+      $scope.dateSuperioriteDebut($scope.FormAddEditionAssurance.dateFin) >
+      $scope.dateSuperioriteFin($rootScope.DATE_JOURNEE_DE_TRAVAIL)
+    ) {
+      $scope.$emit("UNLOAD");
+      $(document).ready(function () {
+        $("#idDateFin").css("background-color", "#FFE9E0");
+      });
+      $scope.messageErreur =
+        "La date de fin ne peut pas être plus grande que la date de la journée de travail.";
+      $rootScope.MessageDerreurDesTypes($scope.messageErreur);
+    } else {
+
+        $scope.objet_envoie = [
+          {
+          "AG_CODEAGENCE": $scope.FormAddEditionAssurance.Succursales,
+          "EN_CODEENTREPOT": $scope.FormAddEditionAssurance.Entrepot,
+          "CA_CODECONTRAT": "",
+          "DATEDEBUT": $scope.FormAddEditionAssurance.dateDebut,
+          "DATEFIN": $scope.FormAddEditionAssurance.dateFin,
+          "OP_CODEOPERATEUREDITION": $rootScope.CODE_OPERATEUR,
+          "ET_LIBELLEETAT": $scope.recuperationLibelleEtat,
+          "RQ_CODERISQUE": "",
+          "TI_IDTIERS": "",
+          "TI_IDTIERSCLIENT":"",
+          "TA_CODETYPEAFFAIRES": "",
+          "CT_CODESTAUT": "",
+          FORMATETAT: formaEtat,
+          "EX_EXERCICE": $scope.FormAddEditionAssurance.Exercice,
+          NOMETAT: $scope.recuperationnomfichier,
+          ET_TYPEETAT: $scope.recuperationnom,
+            "SL_LIBELLEECRAN": "Saisie de Continent",
+            "SL_LIBELLEMOUCHARD": "INSERTIONS",
+            "TYPEOPERATION": "",
+            "LG_CODELANGUE": "fr",
+            "vappNomFormule": [
+                  "Entete1",
+                  "Entete2",
+                  "Entete3",
+                  "Entete4",
+                  "Date1",
+                  "Date2",
+                  "LibelleEtat"
+            ],
+            "vappValeurFormule": [
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE1,
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE2,
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE3,
+              $rootScope.infoDeLoperateur[0].clsAgences[0].ENTETE4,
+              $scope.FormAddEditionAssurance.dateDebut,
+              $scope.FormAddEditionAssurance.dateFin,
+              "ETAT DES COMMISSIONS MAPHAR",
+              formaEtat
+              ],
+              "ET_DOSSIER": "ASSURANCE",
+              "ET_NOMETAT": "TableauGestionCommissions.rpt",
+            clsObjetEnvoi: {
+              OE_A: $rootScope.CODE_AGENCE,
+              OE_Y: $rootScope.CODE_OPERATEUR,
+              OE_J: $rootScope.DATE_JOURNEE_DE_TRAVAIL,
+              OE_E: $rootScope.CODE_ENTREPOT,
+            },
+          },
+        ]
+          $http
+          .post(
+            "/EditionEtatAssurance/pvgInsertIntoDatasetEtatAssuranceTableauGestionCommission/", $scope.objet_envoie, {
+            //headers: $scope.headers
+          })
+          .then(function (reponse) {
+              $scope.RetourInserteditionApercuListe = reponse.data;
+              $scope.RetourInserteditionApercuListe = $scope.RetourInserteditionApercuListe;
+             // $scope.RetourInserteditionListe = $scope.listeDemande.TABLE;
+              if ($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_RESULTAT === "TRUE") {
+                $scope.$emit("UNLOAD");
+                toastr["success"]($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE); // Affichage de la notification de succes
+                $window.open($scope.RetourInserteditionApercuListe[0].URL_ETAT, "_blank"); // Redirection sur l'etat dans une nouvelle fenetre
+                $scope.loading = false; 
+              } else {
+                $scope.Chargement = $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE;
+               $scope.$emit("UNLOAD");
+                $rootScope.MessageDesListes($scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE);
+              }
+          })
+          .catch(function () {
+            $scope.$emit("UNLOAD");
+            $scope.Chargement = $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE;
+            $rootScope.ProblemeServeur(
+              $scope.RetourInserteditionApercuListe[0].clsObjetRetour.SL_MESSAGE
+            );
+          });
+
+  }
+}
+ $scope.afficheDatefinal = function () {
   
+  if($scope.recuperationEtIndex == "AS_REM_CHEQUE" ){
+    setTimeout(() => {
+      if($scope.FormAddEditionAssurance.dateFin){
+        const AnneeEffet = $scope.FormAddEditionAssurance.dateFin.substr(6, 4);
+        const MoisEffet = $scope.FormAddEditionAssurance.dateFin.substr(3, 2) - 1;
+        const JourEffet = $scope.FormAddEditionAssurance.dateFin.substr(0, 2);
+        const dateFinInit = new Date(AnneeEffet, MoisEffet, JourEffet);
+        
+      
+        // Ajouter un jour
+        dateFinInit.setDate(dateFinInit.getDate() + 1);
+
+        // Formater la nouvelle date en JJ-MM-AAAA
+        const anneeNew = dateFinInit.getFullYear();
+        const moisNew = String(dateFinInit.getMonth() + 1).padStart(2, '0'); 
+        const jourNew = String(dateFinInit.getDate()).padStart(2, '0');
+
+        // Mise à jour dans le scope
+        $scope.FormAddEditionAssurance.dateFin = `${jourNew}-${moisNew}-${anneeNew}`;
+      }
+      
+    }, 5000);
+   
+  }
+   
+ }
   $scope.selectFormat = function (formaEtats) {
     $scope.selectFormats = formaEtats
     var element = document.getElementById('doc')
@@ -2994,6 +3394,21 @@
             "La date de fin ne peut pas être plus grande que la date de la journée de travail.";
           $rootScope.MessageDerreurDesTypes($scope.messageErreur);
         } else {
+          if($scope.recuperationEtIndex == "AS_TAB_GESTION"){
+            
+            
+            if($scope.FormAddEditionAssurance.Risques.length > 0){
+              let risques = $scope.FormAddEditionAssurance.Risques;
+              $scope.FormAddEditionAssurance.Risque = risques.length > 0 ? risques.join(", ").replace(/(\d{2})/g, "'$1'") : risques;
+            }else{
+              $scope.$emit("UNLOAD");
+              $scope.messageErreur =
+              "Le risque est obligatoire.";
+              $rootScope.MessageDerreurDesTypes($scope.messageErreur);
+              return
+            }
+            
+          }
           
           $scope.objet_envoie = [
             {
@@ -3078,6 +3493,13 @@
               );
             });
         }
+      }
+      else  if (
+        $scope.recuperationEtIndex == "AS_TAB_GESTIONCOMMISSION" 
+      ) {
+          $scope.$emit("UNLOAD");
+          $scope.apercuEtatEtatCommissionMaphar(formaEtat)
+          $("#modal_TypeFichierGlobale").modal('show');
       }else  if (
         $scope.recuperationEtIndex == "AS_REM_CHEQUE" 
       ) {

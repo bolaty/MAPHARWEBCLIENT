@@ -764,6 +764,15 @@
             $("#idSuccursales").css("background-color", "#FFE9E0");
             $rootScope.ChampsNonRenseignes();
           } else {
+            var val = "Tiers2.rpt"
+            if($scope.recuperationEtIndex == "TI_LISTETIERS" && formaEtat == "xls"){
+              val = "Tiers2.rpt"
+            }else if ($scope.recuperationEtIndex == "TI_LISTETIERS" && formaEtat == "xlsx"){
+              val = "Tiers3.rpt"
+              formaEtat = "xlsxx"
+            }else{
+               val = "TiersSimple.rpt"
+            }
             $scope.objet_envoie = [
               {
                 AG_CODEAGENCE: "1000",
@@ -788,7 +797,7 @@
                 SL_LIBELLEMOUCHARD: "INSERTIONS",
                 TYPEOPERATION: "",
                 LG_CODELANGUE: "fr",
-                NOMETAT: $scope.recuperationnomfichier,
+                NOMETAT: $scope.recuperationEtIndex == "TI_LISTETIERS" ? val : $scope.recuperationnomfichier,
                 clsObjetEnvoi: {
                   OE_A: $rootScope.CODE_AGENCE,
                   OE_Y: $rootScope.CODE_OPERATEUR,

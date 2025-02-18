@@ -49,13 +49,17 @@ namespace HT_Assurance
 		private string _TI_DENOMINATIONASSUREUR = "";
 		private string _TI_NUMEROASSUREUR = "";
         private string _FORMATETAT = "";
-        
+        private string _TA_LIBLLETYPEAFFAIRES = "";
 
         #endregion
 
         #region ACCESSEURS
-
-         public string FORMATETAT
+        public string TA_LIBLLETYPEAFFAIRES
+        {
+            get { return _TA_LIBLLETYPEAFFAIRES; }
+            set { _TA_LIBLLETYPEAFFAIRES = value; }
+        }
+        public string FORMATETAT
         {
             get { return _FORMATETAT; }
             set { _FORMATETAT = value; }
@@ -288,6 +292,7 @@ namespace HT_Assurance
 			this.TI_DENOMINATIONASSUREUR = clsCtcontratchequephoto.TI_DENOMINATIONASSUREUR;  
 			this.TI_NUMEROASSUREUR = clsCtcontratchequephoto.TI_NUMEROASSUREUR;
             this.FORMATETAT = clsCtcontratchequephoto.FORMATETAT;
+            this.TA_LIBLLETYPEAFFAIRES = clsCtcontratchequephoto.TA_LIBLLETYPEAFFAIRES;
 
         }
 
